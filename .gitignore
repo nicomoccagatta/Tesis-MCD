@@ -12,7 +12,11 @@
 
 # Claude Code
 .claude/settings.local.json
-.claude/
+.claude/*
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/r-econometrics/
+!.claude/skills/python-panel-data/
 .agents/
 skills-lock.json
 
