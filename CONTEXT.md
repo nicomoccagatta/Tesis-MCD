@@ -53,6 +53,7 @@ Viabilidad verificada con queries reales en BigQuery:
 - `TP Latex/Template/`: plantilla ITBA original de referencia, sin tocar.
 - `Presentaciones/`: presentaciones dadas en el taller, numeradas. `02-presentacion_plan_de_trabajo.{html,pdf}` es la actual (deck HTML propio estilo dark data-science, exportado a PDF vía Chrome headless — no es Beamer/LaTeX). Para editarla, tocar el `.html` y regenerar el PDF (`--print-to-pdf`, `@page{size:13.333in 7.5in}`).
 - `bigquery/`: pipeline de extracción de datos de la tesis, versionado (ver `bigquery/CLAUDE.md`): subcarpeta por tabla consultada, pares `NNN-nombre.sql`+`.parquet`, script `run_query.sh` con dry-run/tope de bytes/export a Parquet vía DuckDB, `usage-log.csv` para trackear la cuota gratuita de 1TB/mes.
+- `.claude/skills/r-econometrics/` y `.claude/skills/python-panel-data/`: skills de Claude Code específicos de esta tesis (estimadores de panel/DiD escalonado — Callaway-Sant'Anna, Sun-Abraham — con código de referencia en R y Python), versionados acá porque son de nicho para este proyecto. Se activan solos al pedir código de estimación.
 
 ## Estado actual y próximos hitos
 

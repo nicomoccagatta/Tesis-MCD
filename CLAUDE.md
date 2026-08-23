@@ -24,7 +24,7 @@ Vive en `TP Latex/Project/main.tex`. Se compila con `pdflatex` + `bibtex` (dos p
 
 ## BigQuery
 
-Nunca correr `bq query` a mano para extracciones de datos de la tesis — usar siempre `bigquery/run_query.sh`, y seguir la convención completa de `bigquery/CLAUDE.md` (subcarpeta por tabla consultada, con **guiones bajos en vez de puntos** en el nombre de carpeta — una carpeta terminada en `.pages`, `.app`, `.key`, etc. rompe Finder en macOS).
+Usar siempre `bigquery/run_query.sh` para extracciones de datos de la tesis (nunca `bq query` a mano), y seguir la convención completa de `bigquery/CLAUDE.md` (subcarpeta por tabla consultada, con **guiones bajos en vez de puntos** en el nombre de carpeta — una carpeta terminada en `.pages`, `.app`, `.key`, etc. rompe Finder en macOS). Excepción: una verificación puntual de un solo valor (ej. chequear si hay filas duplicadas) puede correrse con `bq query` directo si es más simple — pero igual queda versionada como `.sql`+`.parquet` en su subcarpeta y anotada a mano en `usage-log.csv`, nunca sin registro. Antes de correr cualquier query (por `run_query.sh` o a mano), mostrar el costo del dry-run y esperar confirmación explícita del usuario — nunca auto-confirmar.
 
 ## Datos de carátula
 
