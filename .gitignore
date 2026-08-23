@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code
+.claude/settings.local.json
+.claude/
+.agents/
+skills-lock.json
+
+# Temp/backup files
+*.tmp
+*.bak
+~$*

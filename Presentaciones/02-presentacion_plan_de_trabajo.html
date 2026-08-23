@@ -1,0 +1,667 @@
+<title>Pipeline Causal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --stage-bg: #070c16;
+    --slide: #0f172a;
+    --surface: #141f38;
+    --surface-2: #182544;
+    --border: #263657;
+    --border-soft: #1c2a48;
+    --text-primary: #eef2fb;
+    --text-secondary: #9aabc9;
+    --text-muted: #5f7093;
+    --accent: #22d3ee;
+    --accent-soft: rgba(34,211,238,.14);
+    --status-event: #fbbf24;
+    --status-good: #34d399;
+    --status-warn: #fbbf24;
+    --status-bad: #fb7185;
+    --font-display: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ height: 100%; }
+
+  body{
+    margin: 0;
+    background: var(--stage-bg);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .deck{
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    max-height: 787.5px;
+    aspect-ratio: 16/9;
+    position: relative;
+    margin: auto;
+  }
+
+  .slide{
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(1100px 620px at 84% -10%, rgba(34,211,238,.09), transparent 60%),
+      var(--slide);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 4.2% 5% 3.4%;
+    display: none;
+    flex-direction: column;
+    gap: 1.8%;
+    box-shadow: 0 40px 90px -40px rgba(0,0,0,.75);
+    overflow: hidden;
+  }
+  .slide.is-active{ display: flex; }
+
+  .slide::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(var(--border-soft) 1px, transparent 1px);
+    background-size: 100% 60px;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.45), transparent 50%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,.45), transparent 50%);
+    pointer-events: none;
+  }
+
+  .kicker{
+    font-family: var(--font-mono);
+    font-size: 16px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative; z-index: 1;
+  }
+  .kicker svg{ width: 19px; height: 19px; flex-shrink: 0; }
+
+  h1{ margin: 0; font-weight: 800; letter-spacing: -.01em; text-wrap: balance; color: var(--text-primary); position: relative; z-index: 1; }
+  h2.slide-title{ font-size: 34px; margin-bottom: 2px; }
+
+  .content{ flex: 1; min-height: 0; position: relative; z-index: 1; display: flex; flex-direction: column; gap: 18px; justify-content: center; }
+
+  ul.points{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  ul.points li{ display: flex; gap: 14px; align-items: flex-start; font-size: 20px; line-height: 1.48; color: var(--text-secondary); }
+  ul.points li b{ color: var(--text-primary); font-weight: 700; }
+  ul.points li .bullet{ flex-shrink: 0; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); margin-top: 9px; box-shadow: 0 0 0 3px var(--accent-soft); }
+
+  .callout{
+    margin-top: 4px;
+    border: 1px solid rgba(251,191,36,.35);
+    background: rgba(251,191,36,.08);
+    border-radius: 12px;
+    padding: 16px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .callout svg{ width: 23px; height: 23px; color: var(--status-event); flex-shrink: 0; margin-top: 2px; }
+  .callout .callout-label{ font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--status-event); margin-bottom: 4px; }
+  .callout p{ margin: 0; font-size: 20px; color: var(--text-primary); line-height: 1.4; }
+
+  .source-line{ font-family: var(--font-mono); font-size: 13.5px; color: var(--text-muted); position: relative; z-index: 1; line-height: 1.5; }
+  .source-line b{ color: var(--text-secondary); font-weight: 600; }
+
+  /* footer / nav */
+  .foot{ display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); position: relative; z-index: 1; }
+  .foot .badge{ font-family: var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+
+  /* ---- Shared meta-row (author/director block) ---- */
+  .meta-row{ display: flex; flex-wrap: wrap; row-gap: 10px; column-gap: 40px; font-family: var(--font-mono); font-size: 15px; color: var(--text-secondary); }
+  .meta-row div{ white-space: nowrap; }
+  .meta-row b{ color: var(--text-primary); font-weight: 600; font-family: var(--font-display); }
+
+  /* ---- Slide 1: cover ---- */
+  .cover{ justify-content: center; align-items: flex-start; }
+  .cover h1{ font-size: 44px; max-width: 19ch; line-height: 1.16; }
+  .cover .subtitle{ font-size: 21px; color: var(--text-secondary); margin: 14px 0 0; max-width: 42ch; }
+  .cover .meta-row{ margin-top: auto; }
+  .cover-mark{ position: absolute; right: 5%; bottom: 6%; display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-family: var(--font-mono); font-size: 13px; }
+  .cover-mark svg{ width: 17px; height: 17px; color: var(--accent); }
+
+  /* ---- Closing slide ---- */
+  .closing{ justify-content: center; align-items: center; text-align: center; }
+  .closing .big{ font-size: 56px; margin: 0; }
+  .closing .sub{ font-size: 22px; color: var(--text-secondary); margin: 14px 0 0; }
+  .closing .meta-row{ justify-content: center; margin-top: 44px; }
+
+  /* ---- Hypothesis grid ---- */
+  .hgrid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .hcard{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .hcard .htag{ font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); letter-spacing: .08em; margin-bottom: 9px; }
+  .hcard p{ margin: 0; font-size: 17px; line-height: 1.46; color: var(--text-secondary); }
+  .objective{ display: flex; gap: 14px; align-items: center; background: var(--accent-soft); border: 1px solid rgba(34,211,238,.35); border-radius: 12px; padding: 16px 22px; margin-top: 4px; }
+  .objective svg{ width: 23px; height: 23px; color: var(--accent); flex-shrink: 0; }
+  .objective p{ margin: 0; font-size: 19px; color: var(--text-primary); line-height: 1.4; }
+  .objective .otag{ font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); letter-spacing: .08em; display:block; margin-bottom: 4px; }
+
+  /* ---- Dataset KPIs ---- */
+  .kpi-row{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .kpi{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .kpi .kpi-label{ font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 9px; }
+  .kpi .kpi-value{ font-family: var(--font-mono); font-size: 30px; font-weight: 700; color: var(--text-primary); }
+  .kpi .kpi-sub{ font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
+
+  .semaphore{ margin-top: 2px; }
+  .semaphore-label{ display: flex; justify-content: space-between; font-size: 14.5px; color: var(--text-secondary); margin-bottom: 9px; }
+  .semaphore-bar{ display: flex; height: 18px; border-radius: 9px; overflow: hidden; border: 1px solid var(--border); }
+  .semaphore-bar span{ height: 100%; }
+  .semaphore-legend{ display: flex; gap: 26px; margin-top: 11px; font-size: 14.5px; color: var(--text-secondary); }
+  .semaphore-legend .sw{ display: inline-flex; align-items: center; gap: 7px; }
+  .semaphore-legend i{ width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+
+  /* ---- Viability sparkline ---- */
+  .viab-grid{ display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; flex: 1; min-height: 0; align-items: stretch; }
+  .spark-card{ background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px 12px; display: flex; flex-direction: column; }
+  .spark-head{ display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+  .spark-head .spark-title{ font-size: 15px; color: var(--text-secondary); font-weight: 600; }
+  .spark-head .spark-note{ font-family: var(--font-mono); font-size: 12.5px; color: var(--status-event); }
+  #sparkChart{ width: 100%; flex: 1; overflow: visible; }
+  .spark-axis{ font-family: var(--font-mono); font-size: 11px; fill: var(--text-muted); }
+  .spark-grid{ stroke: var(--border-soft); stroke-width: 1; }
+  .spark-area{ fill: url(#sparkGradient); }
+  .spark-line{ fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .spark-annot-rule{ stroke: var(--status-event); stroke-width: 1.2; stroke-dasharray: 3 4; }
+  .spark-annot-text{ font-family: var(--font-mono); font-size: 12px; fill: var(--status-event); font-weight: 600; }
+  .spark-end{ fill: var(--accent); stroke: var(--surface); stroke-width: 2; }
+
+  .facts{ display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+  .fact{ display: flex; gap: 12px; align-items: flex-start; }
+  .fact svg{ width: 19px; height: 19px; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+  .fact p{ margin: 0; font-size: 15.5px; line-height: 1.42; color: var(--text-secondary); }
+  .fact p b{ color: var(--text-primary); }
+
+  /* ---- Alcances y limitaciones ---- */
+  .scope-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 26px; flex: 1; min-height: 0; }
+  .scope-col{ display: flex; flex-direction: column; gap: 12px; }
+  .scope-head{ display: flex; align-items: center; gap: 9px; }
+  .scope-head svg{ width: 20px; height: 20px; }
+  .scope-head.ok svg{ color: var(--status-good); }
+  .scope-head.warn svg{ color: var(--status-event); }
+  .scope-head span{ font-size: 15.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-primary); }
+  ul.scope-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+  ul.scope-list li{ font-size: 15.5px; line-height: 1.42; color: var(--text-secondary); padding-left: 16px; position: relative; }
+  ul.scope-list li::before{ content: "\2013"; position: absolute; left: 0; color: var(--text-muted); }
+
+  /* ---- Kick-off (pipeline + strategy) ---- */
+  .kickoff-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 34px; flex: 1; min-height: 0; }
+  .pipeline{ display: flex; flex-direction: column; justify-content: space-around; position: relative; padding-left: 28px; }
+  .pipeline-track{ position: absolute; left: 12px; top: 14px; bottom: 14px; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--border)); opacity: .55; overflow: hidden; }
+  .pipeline-track::after{ content:""; position:absolute; inset:0; background: linear-gradient(to bottom, transparent, var(--accent) 40%, transparent 70%); background-size: 100% 200%; animation: flow 3.2s linear infinite; }
+  @keyframes flow{ 0%{ background-position: 0 -200%; } 100%{ background-position: 0 200%; } }
+  .node{ position: relative; display: flex; gap: 13px; align-items: flex-start; }
+  .node-dot{ position: absolute; left: -28px; top: 1px; width: 25px; height: 25px; border-radius: 50%; background: var(--surface-2); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
+  .node-dot svg{ width: 13px; height: 13px; }
+  .node.is-active .node-dot{ border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); color: var(--slide); background: var(--accent); }
+  .node-index{ font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); letter-spacing: .06em; }
+  .node-title{ font-size: 17px; font-weight: 700; margin: 2px 0 3px; color: var(--text-primary); }
+  .node-desc{ font-size: 13.5px; color: var(--text-secondary); line-height: 1.45; max-width: 32ch; }
+  .node.is-active .node-title{ color: var(--accent); }
+
+  .strategy{ display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+  .strategy h3{ margin: 0 0 4px; font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+  .chain{ display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+  .chain .step{ background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; color: var(--text-primary); font-weight: 600; font-size: 14px; }
+  .chain svg{ width: 15px; height: 15px; color: var(--text-muted); }
+  .tools{ display: flex; flex-wrap: wrap; gap: 9px; margin-top: 2px; }
+  .tools span{ font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary); background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; }
+
+  /* ---- Cronograma table ---- */
+  .table-wrap{ flex: 1; min-height: 0; overflow: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table.cron{ width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  table.cron thead th{ text-align: left; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); background: var(--surface-2); padding: 10px 16px; position: sticky; top: 0; }
+  table.cron tbody td{ padding: 9px 16px; border-top: 1px solid var(--border-soft); color: var(--text-secondary); }
+  table.cron tbody tr:hover{ background: rgba(34,211,238,.05); }
+  table.cron td.wk, table.cron td.mo{ font-family: var(--font-mono); color: var(--text-primary); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  table.cron td.deliv{ color: var(--accent); font-weight: 600; }
+
+  /* ---- Nav chrome (screen only) ---- */
+  .nav{ position: fixed; left: 0; right: 0; bottom: 18px; display: flex; align-items: center; justify-content: center; gap: 14px; z-index: 10; font-family: var(--font-mono); }
+  .nav button{ appearance: none; border: 1px solid var(--border); background: var(--surface); color: var(--text-primary); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color .15s, background .15s; }
+  .nav button:hover{ border-color: var(--accent); background: var(--surface-2); }
+  .nav button svg{ width: 17px; height: 17px; }
+  .nav .counter{ color: var(--text-muted); font-size: 13px; min-width: 56px; text-align: center; }
+  .progress{ position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); z-index: 10; transition: width .25s ease; box-shadow: 0 0 12px rgba(34,211,238,.6); }
+
+  @media (prefers-reduced-motion: reduce){
+    .pipeline-track::after{ animation: none; }
+    .progress{ transition: none; }
+  }
+
+  /* ================= PRINT (PDF export) ================= */
+  @media print{
+    @page{ size: 13.333in 7.5in; margin: 0; }
+    html,body{ height: auto; overflow: visible; background: var(--slide); }
+    body{ display: block; padding: 0; }
+    .nav, .progress{ display: none !important; }
+    .deck{ all: unset; display: block; width: auto; }
+    .slide{
+      display: flex !important;
+      position: relative;
+      inset: auto;
+      width: 13.333in;
+      height: 7.5in;
+      border-radius: 0;
+      box-shadow: none;
+      page-break-after: always;
+      break-after: page;
+      padding: 0.5in 0.6in 0.42in;
+    }
+    .slide:last-child{ page-break-after: auto; break-after: auto; }
+  }
+</style>
+
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+  <!-- 1. CARATULA -->
+  <section class="slide cover is-active">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+      Taller de Tesis I &middot; ITBA
+    </p>
+    <h1>Efecto causal de las migraciones de tecnología frontend sobre la experiencia de usuario real</h1>
+    <p class="subtitle">Un estudio cuasi-experimental a gran escala sobre Core Web Vitals</p>
+    <div class="meta-row">
+      <div><b>Alumno:</b> Moccagatta, Nicolás &middot; Leg. 106396</div>
+      <div><b>Director:</b> Ariel Olaf Salgado Corrado</div>
+      <div><b>Co-Director:</b> Carlos Sarraute</div>
+      <div><b>Fecha:</b> Segundo cuatrimestre, 2026</div>
+    </div>
+    <div class="cover-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      10 min
+    </div>
+  </section>
+
+  <!-- 2. INTRODUCCION -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      01 &middot; Introducción
+    </p>
+    <h2 class="slide-title">Contexto y problema</h2>
+    <div class="content">
+      <ul class="points">
+        <li><span class="bullet"></span><span><b>Core Web Vitals</b> (Google): LCP, INP y CLS, medidos sobre usuarios reales de Chrome y publicados mensualmente en <b>CrUX</b>.</span></li>
+        <li><span class="bullet"></span><span><b>HTTP Archive</b> crawlea millones de sitios y detecta su tecnología frontend (jQuery, React, Vue, WordPress, Next.js&hellip;).</span></li>
+        <li><span class="bullet"></span><span>La industria migra de tecnología prometiendo mejor performance, casi sin validarlo con evidencia rigurosa.</span></li>
+      </ul>
+      <div class="callout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+        <div><div class="callout-label">Problema</div><p>&iquest;Las migraciones producen una mejora real y medible, siguiendo a los mismos sitios en el tiempo?</p></div>
+      </div>
+    </div>
+    <div class="source-line">Antecedentes &middot; Card &amp; Krueger 1994 &middot; Goodman-Bacon 2021 &middot; Callaway &amp; Sant'Anna 2021 &middot; Ghattas et al. 2025</div>
+  </section>
+
+  <!-- 3. JUSTIFICACION -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+      02 &middot; Justificación del estudio
+    </p>
+    <h2 class="slide-title">Un vacío entre industria, laboratorio y ciencia de datos</h2>
+    <div class="content">
+      <ul class="points">
+        <li><span class="bullet"></span><span><b>Hoy:</b> evidencia industrial transversal, o de laboratorio a escala mínima; ninguna sigue sitios reales en el tiempo con diseño causal.</span></li>
+        <li><span class="bullet"></span><span><b>El vacío:</b> falta combinar seguimiento longitudinal, experiencia de usuario real y lectura causal.</span></li>
+        <li><span class="bullet"></span><span><b>A quién le sirve:</b> equipos que hoy migran con evidencia anecdótica; en ciencia, une performance web e inferencia causal.</span></li>
+        <li><span class="bullet"></span><span>Datos 100&thinsp;% públicos vía BigQuery, sin datos personales.</span></li>
+      </ul>
+    </div>
+    <div class="source-line">Revisión sistemática &middot; Ghattas, Odeh &amp; Mora (2025) &middot; 6.657 estudios 2010&ndash;2024 sin efectos causales de decisiones de arquitectura</div>
+  </section>
+
+  <!-- 4. HIPOTESIS Y OBJETIVOS -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3v6l-6 8.5A1 1 0 0 0 4 19h16a1 1 0 0 0 1-1.5L15 9V3"/><path d="M9 3h6"/></svg>
+      03 &middot; Hipótesis y objetivos
+    </p>
+    <h2 class="slide-title">Qué esperamos encontrar</h2>
+    <div class="content">
+      <div class="hgrid">
+        <div class="hcard"><div class="htag">H1 &middot; principal</div><p>jQuery&rarr;React (y similares) mejora LCP e INP frente a un grupo de control emparejado.</p></div>
+        <div class="hcard"><div class="htag">H2 &middot; heterogeneidad</div><p>El efecto es mayor desde tecnologías legacy y varía según el tráfico del sitio.</p></div>
+        <div class="hcard"><div class="htag">H3 &middot; sesgo TWFE</div><p>El estimador clásico sobreestima el efecto frente al de Callaway y Sant'Anna.</p></div>
+      </div>
+      <div class="objective">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <p><span class="otag">Objetivo general</span>Estimar el efecto causal de las migraciones frontend sobre Core Web Vitals con inferencia causal para panel de tratamiento escalonado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. DATASET -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
+      04 &middot; Descripción del set de datos
+    </p>
+    <h2 class="slide-title">HTTP Archive + CrUX, verificado en BigQuery</h2>
+    <div class="content">
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-label">Origins en CrUX</div><div class="kpi-value">18,21M</div><div class="kpi-sub">jun 2026 &middot; 97,4% con p75 LCP</div></div>
+        <div class="kpi"><div class="kpi-label">Root pages HTTP Archive</div><div class="kpi-value">16,27M</div><div class="kpi-sub">jul 2026</div></div>
+        <div class="kpi"><div class="kpi-label">jQuery &rarr; React</div><div class="kpi-value">62.457</div><div class="kpi-sub">migraciones en 1 año</div></div>
+        <div class="kpi"><div class="kpi-label">Abandono WordPress</div><div class="kpi-value">116,86K</div><div class="kpi-sub">jun25&ndash;jun26</div></div>
+      </div>
+      <div class="semaphore">
+        <div class="semaphore-label"><span>Semáforo de calidad LCP &middot; jun 2026</span><span>17,73M origins con dato</span></div>
+        <div class="semaphore-bar">
+          <span style="width:70.2%; background:var(--status-good)"></span>
+          <span style="width:20.0%; background:var(--status-warn)"></span>
+          <span style="width:9.7%; background:var(--status-bad)"></span>
+        </div>
+        <div class="semaphore-legend">
+          <span class="sw"><i style="background:var(--status-good)"></i>Good 70,2%</span>
+          <span class="sw"><i style="background:var(--status-warn)"></i>Needs Improvement 20,0%</span>
+          <span class="sw"><i style="background:var(--status-bad)"></i>Poor 9,7%</span>
+        </div>
+      </div>
+    </div>
+    <div class="source-line">Unidad de análisis: el origen web (dominio) &middot; sin datos personales</div>
+  </section>
+
+  <!-- 6. VIABILIDAD Y PRECEDENTE -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+      05 &middot; Viabilidad y precedente
+    </p>
+    <h2 class="slide-title">El panel ya existe y crece de forma estable</h2>
+    <div class="viab-grid">
+      <div class="spark-card">
+        <div class="spark-head">
+          <span class="spark-title">Root pages únicas en el panel &middot; semestral</span>
+          <span class="spark-note">+55% en un semestre</span>
+        </div>
+        <svg id="sparkChart" viewBox="0 0 620 210" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="sparkGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.30"/>
+              <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g id="sparkGridGroup"></g>
+          <path id="sparkAreaPath" class="spark-area"></path>
+          <path id="sparkLinePath" class="spark-line"></path>
+          <line id="sparkAnnotRule" class="spark-annot-rule"></line>
+          <text id="sparkAnnotText" class="spark-annot-text"></text>
+          <g id="sparkAxisGroup"></g>
+          <circle id="sparkEndDot" class="spark-end" r="4.5"></circle>
+        </svg>
+      </div>
+      <div class="facts">
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          <p>Dos rampas de crecimiento (2018&ndash;2019 y 2022&ndash;2023); desde 2023 el panel es <b>estable</b>, con estacionalidad enero/julio.</p>
+        </div>
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <p>Costo de extracción: <b>~13&nbsp;GB/mes</b> de scan &middot; panel completo de 8 años &asymp; <b>1,2&nbsp;TB</b> (una sola vez).</p>
+        </div>
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          <p><b>Ruth et al. (2022, ACM IMC):</b> CrUX es el ranking de sitios más preciso entre los evaluados.</p>
+        </div>
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+          <p><b>Beugin et al. (2026, arXiv):</b> combina HTTP Archive + CrUX en un diseño longitudinal estructuralmente similar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. ALCANCES Y LIMITACIONES -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+      06 &middot; Alcances y limitaciones
+    </p>
+    <h2 class="slide-title">Qué cubre este trabajo y qué no</h2>
+    <div class="scope-grid">
+      <div class="scope-col">
+        <div class="scope-head ok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Alcances</span>
+        </div>
+        <ul class="scope-list">
+          <li>Pares acotados de migración; foco principal en jQuery&rarr;React (mayor volumen).</li>
+          <li>Ventana temporal &asymp;2018&ndash;2026, con lista de orígenes de CrUX ya consistente.</li>
+          <li>Cohorte de sitios definida point-in-time, sin sesgo de supervivencia.</li>
+          <li>Diseño observacional: efecto ATT, no experimento aleatorizado.</li>
+        </ul>
+      </div>
+      <div class="scope-col">
+        <div class="scope-head warn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg>
+          <span>Limitaciones</span>
+        </div>
+        <ul class="scope-list">
+          <li>CrUX solo cubre sitios con tráfico Chrome suficiente (sesgo hacia audiencia media/alta).</li>
+          <li>Detección de Wappalyzer imperfecta; se exige persistencia &ge;3 meses + validación manual.</li>
+          <li>La migración no es aleatoria &rarr; matching + verificación de tendencias paralelas.</li>
+          <li>Las reglas de detección cambiaron en el tiempo; puede confundirse con migración real.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. KICK-OFF -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3Z"/></svg>
+      07 &middot; Kick-off del proyecto
+    </p>
+    <h2 class="slide-title">Del panel al efecto causal</h2>
+    <div class="kickoff-grid">
+      <div class="pipeline">
+        <div class="pipeline-track"></div>
+        <div class="node">
+          <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></svg></span>
+          <div><div class="node-index">01</div><div class="node-title">Crawl mensual</div><div class="node-desc">HTTP Archive + detección Wappalyzer</div></div>
+        </div>
+        <div class="node">
+          <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></span>
+          <div><div class="node-index">02</div><div class="node-title">Panel en BigQuery</div><div class="node-desc">Tecnología como SCD tipo 2 + cruce con CrUX</div></div>
+        </div>
+        <div class="node">
+          <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span>
+          <div><div class="node-index">03</div><div class="node-title">Detección de evento</div><div class="node-desc">Persistencia &ge;3 meses + validación manual</div></div>
+        </div>
+        <div class="node is-active">
+          <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+          <div><div class="node-index">04</div><div class="node-title">Estimación causal</div><div class="node-desc">DiD escalonado + causal forests</div></div>
+        </div>
+      </div>
+      <div class="strategy">
+        <div>
+          <h3>Estrategia de modelado</h3>
+          <div class="chain">
+            <span class="step">Matching PS</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <span class="step">Tendencias paralelas</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <span class="step">Callaway&amp;Sant'Anna</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <span class="step">Causal forests</span>
+          </div>
+        </div>
+        <div>
+          <h3>Herramientas</h3>
+          <div class="tools">
+            <span>BigQuery / SQL</span><span>pandas</span><span>statsmodels</span><span>scikit-learn</span><span>econml</span><span>git + seeds</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CRONOGRAMA -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      08 &middot; Cronograma de actividades
+    </p>
+    <h2 class="slide-title">10 meses de trabajo</h2>
+    <div class="table-wrap">
+      <table class="cron">
+        <thead><tr><th>Semana</th><th>Mes</th><th>Tareas</th><th>Entregable</th></tr></thead>
+        <tbody>
+          <tr><td class="wk">1&ndash;4</td><td class="mo">1</td><td>Literatura, acceso a BigQuery, diseño del panel</td><td class="deliv">Especificación</td></tr>
+          <tr><td class="wk">5&ndash;10</td><td class="mo">2</td><td>Construcción del panel (HTTP Archive + CrUX)</td><td class="deliv">Panel construido</td></tr>
+          <tr><td class="wk">11&ndash;16</td><td class="mo">3</td><td>Detección y validación de migraciones</td><td class="deliv">Catálogo de eventos</td></tr>
+          <tr><td class="wk">17&ndash;20</td><td class="mo">4</td><td>Selección de pares y matching de control</td><td class="deliv">Diseño cuasi-experimental</td></tr>
+          <tr><td class="wk">21&ndash;24</td><td class="mo">5</td><td>Verificación de tendencias paralelas</td><td class="deliv">Validación de supuestos</td></tr>
+          <tr><td class="wk">25&ndash;30</td><td class="mo">6&ndash;7</td><td>Estimación DiD escalonado</td><td class="deliv">Resultados H1/H3</td></tr>
+          <tr><td class="wk">31&ndash;34</td><td class="mo">8</td><td>Pares adicionales (robustez)</td><td class="deliv">Análisis de robustez</td></tr>
+          <tr><td class="wk">35&ndash;38</td><td class="mo">9</td><td>Heterogeneidad (causal forests)</td><td class="deliv">CATE por covariables</td></tr>
+          <tr><td class="wk">39&ndash;43</td><td class="mo">10</td><td>Redacción final y defensa</td><td class="deliv">Tesis finalizada</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="foot"><span class="badge">Taller de Tesis I &middot; ITBA</span><span class="badge">Moccagatta, N. &middot; Leg. 106396</span></div>
+  </section>
+
+  <!-- 10. CIERRE -->
+  <section class="slide closing">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Cierre
+    </p>
+    <h1 class="big">Gracias</h1>
+    <p class="sub">&iquest;Preguntas?</p>
+    <div class="meta-row">
+      <div><b>Alumno:</b> Moccagatta, Nicolás &middot; Leg. 106396</div>
+      <div><b>Director:</b> Ariel Olaf Salgado Corrado</div>
+      <div><b>Co-Director:</b> Carlos Sarraute</div>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prevBtn" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+  </button>
+  <span class="counter" id="counter">1 / 10</span>
+  <button id="nextBtn" aria-label="Siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var counter = document.getElementById('counter');
+  var progress = document.getElementById('progress');
+  var idx = 0;
+
+  function render(){
+    slides.forEach(function(s, i){ s.classList.toggle('is-active', i === idx); });
+    counter.textContent = (idx + 1) + ' / ' + slides.length;
+    progress.style.width = (((idx + 1) / slides.length) * 100) + '%';
+  }
+  function go(delta){
+    idx = Math.max(0, Math.min(slides.length - 1, idx + delta));
+    render();
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', function(){ go(-1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ go(1); });
+
+  window.addEventListener('keydown', function(e){
+    if (['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key) !== -1){ e.preventDefault(); go(1); }
+    if (['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key) !== -1){ e.preventDefault(); go(-1); }
+    if (e.key === 'Home'){ idx = 0; render(); }
+    if (e.key === 'End'){ idx = slides.length - 1; render(); }
+  });
+
+  var touchStartX = null;
+  document.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if (touchStartX === null) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    touchStartX = null;
+  }, {passive:true});
+
+  render();
+})();
+</script>
+
+<script>
+(function(){
+  var labels = ["2020-01","2020-07","2021-01","2021-07","2022-01","2022-07","2023-01","2023-07","2024-01","2024-07","2025-01","2025-07","2026-01","2026-07"];
+  var values = [5.66,6.98,7.82,8.22,8.45,10.79,16.75,17.17,15.79,16.74,15.70,16.27,15.48,16.27];
+  var jumpFrom = 5, jumpTo = 6; // 2022-07 -> 2023-01
+
+  var W = 620, H = 210, padL = 30, padR = 10, padT = 14, padB = 24;
+  var plotW = W - padL - padR, plotH = H - padT - padB;
+  var minV = 0, maxV = 19;
+
+  function x(i){ return padL + (i / (values.length - 1)) * plotW; }
+  function y(v){ return padT + (1 - (v - minV) / (maxV - minV)) * plotH; }
+
+  var linePts = values.map(function(v,i){ return x(i) + "," + y(v); }).join(" L ");
+  document.getElementById("sparkLinePath").setAttribute("d", "M " + linePts);
+
+  var areaPts = "M " + x(0) + "," + y(values[0]) + " L " + linePts +
+    " L " + x(values.length-1) + "," + (padT+plotH) + " L " + x(0) + "," + (padT+plotH) + " Z";
+  document.getElementById("sparkAreaPath").setAttribute("d", areaPts);
+
+  var gridGroup = document.getElementById("sparkGridGroup");
+  [0,5,10,15].forEach(function(v){
+    var gy = y(v);
+    var line = document.createElementNS("http://www.w3.org/2000/svg","line");
+    line.setAttribute("x1", padL); line.setAttribute("x2", W-padR);
+    line.setAttribute("y1", gy); line.setAttribute("y2", gy);
+    line.setAttribute("class","spark-grid");
+    gridGroup.appendChild(line);
+    var t = document.createElementNS("http://www.w3.org/2000/svg","text");
+    t.setAttribute("x", 4); t.setAttribute("y", gy+3); t.setAttribute("class","spark-axis");
+    t.textContent = v + "M";
+    gridGroup.appendChild(t);
+  });
+
+  var axisGroup = document.getElementById("sparkAxisGroup");
+  var tickIdx = [0, 4, 8, labels.length - 1];
+  tickIdx.forEach(function(i){
+    var t = document.createElementNS("http://www.w3.org/2000/svg","text");
+    t.setAttribute("x", x(i)); t.setAttribute("y", H-6);
+    t.setAttribute("text-anchor", i === labels.length-1 ? "end" : (i === 0 ? "start" : "middle"));
+    t.setAttribute("class","spark-axis");
+    t.textContent = labels[i].slice(0,4);
+    axisGroup.appendChild(t);
+  });
+
+  var jx = x(jumpTo);
+  var rule = document.getElementById("sparkAnnotRule");
+  rule.setAttribute("x1", jx); rule.setAttribute("x2", jx);
+  rule.setAttribute("y1", padT); rule.setAttribute("y2", padT+plotH);
+  var txt = document.getElementById("sparkAnnotText");
+  txt.setAttribute("x", jx + 6); txt.setAttribute("y", padT + 13);
+  txt.textContent = "2022-07 → 2023-01";
+
+  var lastX = x(values.length-1), lastY = y(values[values.length-1]);
+  document.getElementById("sparkEndDot").setAttribute("cx", lastX);
+  document.getElementById("sparkEndDot").setAttribute("cy", lastY);
+})();
+</script>

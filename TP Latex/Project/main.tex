@@ -1,0 +1,288 @@
+
+\documentclass[12pt, a4paper]{article}
+
+\setlength{\headheight}{14.32365pt}
+\addtolength{\topmargin}{-0.00365pt}
+
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage{helvet} % Tipografía sans-serif limpia estilo Helvetica/Arial
+\renewcommand{\familydefault}{\sfdefault} % Configura el documento en sans-serif
+
+
+\babelprovide[import, onchar=ids fonts]{spanish}
+\babelprovide[import, onchar=ids fonts]{english}
+
+
+\usepackage{enumitem}
+\setlist[itemize]{label=-}
+
+\usepackage{xcolor}
+% Azul Oficial ITBA (#002B49)
+\definecolor{itbablue}{RGB}{0, 43, 73}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+
+% Configuración de estilo de títulos de sección
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{itbablue}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{itbablue}}{\thesubsection.}{0.5em}{}
+
+% Configuración de encabezados y pies de página para páginas interiores
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small\textcolor{gray}{ITBA -- Taller de Tesis I}}
+\lhead{\small\textcolor{gray}{\leftmark}}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=itbablue,
+    citecolor=itbablue,
+    urlcolor=itbablue,
+    pdfauthor={Moccagatta, Nicolás},
+    pdftitle={Efecto causal de las migraciones de tecnología frontend sobre la experiencia de usuario real -- ITBA}
+}
+
+\begin{document}
+
+\begin{titlepage}
+    % Dibujo del marco perimetral idéntico al PDF original
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[line width=1.2pt, color=itbablue]
+            ($(current page.north west) + (1.2cm,-1.2cm)$)
+            rectangle
+            ($(current page.south east) + (-1.2cm,1.2cm)$);
+        \draw[line width=0.5pt, color=itbablue]
+            ($(current page.north west) + (1.3cm,-1.3cm)$)
+            rectangle
+            ($(current page.south east) + (-1.3cm,1.3cm)$);
+    \end{tikzpicture}
+
+    \vspace*{-0.2cm}
+
+    % Encabezado superior: Nombre de la institución a la izquierda y Logo ITBA a la derecha
+    \noindent
+    \begin{minipage}[c]{0.6\textwidth}
+        {\bfseries\large INSTITUTO TECNOLÓGICO\\DE BUENOS AIRES}
+    \end{minipage}%
+    \begin{minipage}[c]{0.4\textwidth}
+        \raggedleft
+        \IfFileExists{logo-itba.png}{%
+            \includegraphics[width=4.2cm]{logo-itba.png}%
+        }{%
+            \framebox{\parbox{3.8cm}{\centering \textbf{ITBA}\\[2pt]\small Logo Institucional}}%
+        }
+    \end{minipage}
+
+    \vfill
+
+    % Título del proyecto centrado
+    \begin{center}
+        {\fontsize{16pt}{24pt}\selectfont \textbf{EFECTO CAUSAL DE LAS MIGRACIONES DE TECNOLOGÍA FRONTEND SOBRE LA EXPERIENCIA DE USUARIO REAL: UN ESTUDIO CUASI-EXPERIMENTAL A GRAN ESCALA SOBRE CORE WEB VITALS}}
+    \end{center}
+
+    \vfill
+
+    % Información del trabajo y de la materia
+    \noindent
+    \begin{minipage}{\textwidth}
+        \setstretch{1.3}
+        \large
+        \textbf{Alumno:} Moccagatta, Nicolás (Leg. N.\textsuperscript{o} 106396) \\[0.3cm]
+        \textbf{Director:} Ariel Olaf Salgado Corrado \\[0.3cm]
+        \textbf{Co-Director:} Carlos Sarraute \\[0.3cm]
+        \textbf{Materia:} Taller de Tesis I -- Maestría en Ciencia de Datos
+    \end{minipage}
+
+    \vfill
+    \vspace{0.8cm}
+
+    % Pie de la carátula centrado
+    \begin{center}
+        {\large \textbf{BUENOS AIRES}} \\[0.2cm]
+        {\large \textbf{SEGUNDO CUATRIMESTRE, 2026}}
+    \end{center}
+    \vspace*{0.3cm}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\newpage
+
+
+
+
+\section{Introducción}
+
+\subsection{Contexto del proyecto}
+
+Cuando un usuario abre un sitio web en su celular o su computadora, la velocidad con la que ese sitio responde condiciona directamente si se queda, si compra, si vuelve. Google intentó estandarizar esa noción difusa de ``velocidad percibida'' en un conjunto de tres métricas llamadas Core Web Vitals: el Largest Contentful Paint (LCP), que mide cuánto tarda en aparecer el elemento visual más grande de la pantalla; el Interaction to Next Paint (INP), que mide qué tan rápido responde la página a una interacción del usuario; y el Cumulative Layout Shift (CLS), que mide cuánto se mueve el contenido de forma inesperada mientras la página carga. Estas tres métricas se recolectan de navegadores Chrome reales, de forma agregada y anónima, y se publican mensualmente en un dataset público llamado Chrome User Experience Report (CrUX). A diferencia de un benchmark de laboratorio, CrUX refleja la experiencia efectiva de miles de millones de visitas reales.
+
+En paralelo, existe otro proyecto público llamado HTTP Archive, que rastrea mensualmente millones de sitios web y, entre otras cosas, detecta qué tecnologías usa cada uno: si corre sobre WordPress o Shopify, si el frontend está armado con jQuery, React, Vue o algún framework más reciente como Next.js o Astro. Esta detección se hace con una herramienta llamada Wappalyzer, que identifica tecnologías a partir de patrones en el código fuente, las cabeceras HTTP y otros indicios técnicos.
+
+HTTP Archive y CrUX están relacionados pero son dos fuentes distintas, mantenidas por equipos distintos. Desde 2018, HTTP Archive usa la lista de orígenes de CrUX para decidir qué sitios rastrear, y cada página que rastrea incluye además una copia puntual de los valores de CrUX vigentes ese mes; el panel mensual completo que usa este trabajo se toma directamente de la publicación propia de CrUX, no de esa copia embebida. HTTP Archive se usa exclusivamente como fuente de la tecnología detectada en cada sitio, que es el dato que CrUX no tiene.
+
+La industria del desarrollo web toma constantemente decisiones de migración entre estas tecnologías (dejar jQuery por React, pasar de WordPress a una arquitectura desacoplada tipo Jamstack) y suele justificarlas, al menos en parte, con la promesa de una mejora en performance. Sin embargo, esa promesa rara vez se contrasta con evidencia rigurosa: lo habitual es apoyarse en casos de éxito puntuales de una empresa, en benchmarks de laboratorio sobre aplicaciones de prueba, o en comparaciones de sitios distintos en un mismo momento, que confunden el efecto de la tecnología con otros factores (presupuesto del equipo, tipo de negocio, madurez del sitio). El cruce de HTTP Archive y CrUX abre una posibilidad distinta: seguir a los mismos sitios en el tiempo y observar qué pasa con su experiencia de usuario real cuando efectivamente cambian de tecnología.
+
+Esta pregunta viene madurando desde antes del inicio del taller. En un trabajo de la cursada de la maestría se cruzó, por curiosidad personal, el historial de escucha musical del propio alumno con su actividad de commits en GitHub, para ver si existía alguna relación entre ambos. El análisis se limitó deliberadamente a explorar co-ocurrencia y no a probar causalidad, porque el diseño disponible en ese momento (dos series de tiempo superpuestas) no alcanzaba para más. Ese límite, declarado en su momento, es el punto de partida de este trabajo: acá se dispone de un evento de tratamiento bien definido (la migración tecnológica), un grupo de sitios que no lo recibe, y una batería de métodos pensados específicamente para separar una asociación de un efecto.
+
+\subsection{Justificación del estudio}
+
+La justificación de este trabajo parte de tres limitaciones del conocimiento disponible hoy sobre la relación entre tecnología frontend y performance web.
+
+En primer lugar, la evidencia que produce la propia industria (el Core Web Vitals Technology Report de HTTP Archive \cite{httparchive2025cwvtech}, el capítulo de Performance del Web Almanac \cite{httparchive2025almanac}) es transversal: compara, en un corte del tiempo, qué porcentaje de sitios construidos con cada tecnología aprueba los Core Web Vitals. Ese tipo de comparación no controla por el hecho de que los sitios que usan una tecnología u otra pueden ser sistemáticamente distintos entre sí desde antes de adoptarla.
+
+En segundo lugar, la literatura académica sobre frameworks frontend es, en el mejor de los casos, experimental a pequeña escala sobre aplicaciones de prueba armadas específicamente para el estudio \cite{tong2023comparative}, y en el resto de los casos es una síntesis narrativa de literatura y casos reportados por la industria, sin datos propios \cite{tulsyan2024impact}. Ninguna de las dos aporta lo que hace falta para responder esta pregunta: qué pasa cuando un sitio real, con su tráfico real, cambia de tecnología.
+
+En tercer lugar, ningún trabajo identificado combina las tres condiciones necesarias para responder esta pregunta con solidez: seguimiento longitudinal de los mismos sitios en el tiempo, una medida de experiencia de usuario real (no de laboratorio) y un diseño que permita una lectura causal, en vez de puramente correlacional. La revisión sistemática más reciente sobre predicción de performance web, que relevó 6.657 estudios entre 2010 y 2024 \cite{ghattas2025review}, confirma este vacío: encuentra que el campo se concentra en modelos que predicen un puntaje de performance a partir de métricas técnicas, mayormente en sitios de gobierno electrónico y educación, y no identifica estudios que estimen el efecto de decisiones tecnológicas concretas sobre la experiencia de usuarios reales.
+
+El aporte de este trabajo se ubica exactamente en ese cruce: construir un panel longitudinal de sitios a partir de datos públicos y aplicar técnicas de inferencia causal, ya maduras en economía aplicada pero prácticamente no usadas en el estudio de la performance web, para estimar si las migraciones de tecnología realmente producen la mejora que se les atribuye, y en qué casos. En el plano científico, esto llena un vacío metodológico concreto. En el plano práctico, aporta evidencia a un tipo de decisión que hoy la industria toma con muy poco sustento empírico.
+
+Vale mencionar, además, que la elección de este tema responde también a una razón práctica aprendida en trabajos previos de la maestría: los datos de HTTP Archive y de CrUX son completamente públicos y accesibles vía BigQuery, sin necesidad de tramitar autorizaciones institucionales ni de trabajar con datos de personas, a diferencia de otras fuentes (redes sociales) exploradas anteriormente y descartadas por restricciones de acceso.
+
+Buena parte de la ingeniería de datos que requiere este trabajo ya fue practicada, aunque sobre otro dominio, en materias previas de la maestría: la extracción de tablas particionadas por fecha desde un dataset público de BigQuery hacia un esquema dimensional propio, el versionado de atributos que cambian en el tiempo (dimensiones de cambio lento, o SCD) y la corrección de discontinuidades de medición entre sucesivas mediciones de un panel. Lo que no está cubierto por ninguna materia cursada, y constituye el aporte metodológico central de esta tesis, es el armazón de inferencia causal propiamente dicho: el diseño de diferencias en diferencias, el tratamiento de la adopción escalonada y la estimación de heterogeneidad de efectos que se detallan en la Sección \ref{sec:solucion}.
+
+\subsection{Alcances del trabajo}
+
+El estudio se circunscribe a un conjunto acotado de pares de migración tecnológica (por ejemplo, jQuery a React, o el abandono de WordPress), elegidos por tener volumen suficiente de casos y una detección estable en Wappalyzer a lo largo del tiempo. La ventana temporal utilizable es aproximadamente 2018-2026, período en el que el corpus de HTTP Archive ya sigue la lista de orígenes de CrUX de forma consistente. La cohorte de sitios elegibles se define de forma point-in-time (según su estado antes del evento de migración), para no introducir sesgo de supervivencia.
+
+El diseño es observacional y cuasi-experimental, no un experimento aleatorizado: se estima el efecto promedio sobre los sitios tratados (ATT, average treatment effect on the treated) y su heterogeneidad, sin pretensión de generalizar a cualquier migración imaginable ni de establecer causalidad en el sentido experimental estricto.
+
+\section{Estado de la cuestión}
+
+La literatura relevante para este trabajo puede ordenarse en tres líneas, a las que se suma una cuarta ajena al dominio de performance web pero central para la metodología.
+
+\subsection{Evidencia industrial y de laboratorio}
+
+Una primera línea es la evidencia de tipo industrial sobre tecnología y Core Web Vitals: el Core Web Vitals Technology Report \cite{httparchive2025cwvtech} y el Web Almanac \cite{httparchive2025almanac}, ambos producidos por HTTP Archive, cruzan la tecnología detectada en cada sitio con su desempeño en CrUX. Es la fuente de datos más parecida a la que usa este trabajo, pero su análisis es descriptivo y transversal: compara sitios distintos en un mismo mes, sin seguirlos en el tiempo ni controlar por diferencias previas entre ellos.
+
+Una segunda línea es la literatura sobre frameworks frontend y su desempeño. Tong, Jikson y Gunawan \cite{tong2023comparative} comparan React, Vue y Next.js sobre aplicaciones de referencia construidas específicamente para el estudio, midiendo tiempos de respuesta y el costo de operaciones puntuales sobre el DOM; es evidencia experimental limpia, pero de pequeña escala y sin usuarios reales de por medio. Tulsyan et al. \cite{tulsyan2024impact}, en cambio, no corren un experimento propio: sintetizan literatura existente y casos reportados por la industria sobre el impacto de los frameworks de JavaScript en la performance y la experiencia de usuario, con un aporte panorámico más que cuantitativo. Ninguno de los dos trabajos sigue sitios reales en producción a lo largo del tiempo ni usa datos de usuarios.
+
+\subsection{Uso descriptivo de CrUX y vacío metodológico}
+
+Una tercera línea usa CrUX a gran escala con fines descriptivos. Sengupta et al. \cite{sengupta2023crux} analizan la experiencia de navegación real de los usuarios de CrUX según el dispositivo y el país, mostrando el potencial del dataset para investigación a escala. El trabajo, sin embargo, no estudia tecnología ni migraciones: caracteriza la experiencia de navegación en general.
+
+A esto se suma la revisión sistemática de Ghattas, Odeh y Mora \cite{ghattas2025review}, que sintetiza treinta estudios de alta calidad sobre predicción de performance web publicados entre 2010 y 2024, y concluye que el campo se concentra en modelos de predicción de un puntaje de performance, mayormente sobre sitios de gobierno y educación, con escasa adopción de aprendizaje automático y sin estudios de efectos causales de decisiones de arquitectura.
+
+\subsection{Inferencia causal para datos de panel con tratamiento escalonado}
+
+Una cuarta línea, ajena al dominio de performance web pero central para la metodología de este trabajo, es la literatura de inferencia causal sobre datos de panel con tratamiento escalonado (staggered treatment), es decir, cuando distintas unidades reciben un tratamiento (en este caso, la migración) en distintos momentos del tiempo. El diseño clásico de diferencias en diferencias (DiD) se remonta al trabajo de Card y Krueger \cite{cardkrueger1994}, que comparó el empleo en locales de comida rápida de dos estados con distinta política de salario mínimo, antes y después del cambio. Cuando el tratamiento no ocurre en un único momento sino escalonado en el tiempo, como es el caso de las migraciones tecnológicas, el estimador clásico de efectos fijos bidireccionales (TWFE) puede arrojar estimaciones sesgadas, porque termina comparando implícitamente unidades que ya recibieron el tratamiento contra otras que lo recibieron antes, en vez de contra un grupo de control no tratado; este problema fue formalizado por Goodman-Bacon \cite{goodmanbacon2021}. Callaway y Sant'Anna \cite{callawaysantanna2021} proponen un estimador robusto a ese sesgo, que identifica el efecto del tratamiento separadamente para cada cohorte de adopción y cada período, y lo agrega de forma consistente. Para estudiar si el efecto de una migración varía según las características del sitio, existe además una familia de métodos de aprendizaje automático causal, entre los que se destacan los bosques aleatorios causales (causal forests) de Wager y Athey \cite{wagerathey2018}, que permiten estimar el efecto de tratamiento condicional a covariables (CATE) sin imponer una forma funcional arbitraria.
+
+En síntesis, el vacío que aborda este trabajo se ubica en la intersección de estas líneas: existe evidencia industrial transversal sobre tecnología y Core Web Vitals, existe evidencia experimental de laboratorio sobre frameworks, existe uso descriptivo de CrUX a escala y existe un conjunto de métodos causales maduro en econometría aplicada, pero nadie combinó las cuatro cosas para estimar el efecto de las decisiones de arquitectura de software sobre la experiencia real de los usuarios.
+
+\section{Definición del problema}
+
+\subsection{Problema general}
+
+El problema que aborda este trabajo es estimar el efecto causal de las migraciones de tecnología frontend, detectadas en el panel mensual de HTTP Archive, sobre las métricas de experiencia de usuario real publicadas en CrUX, tratando cada migración como un cuasi-experimento y aplicando un diseño de diferencias en diferencias robusto a tratamiento escalonado, con un grupo de control de sitios comparables que no migraron, utilizando exclusivamente datos públicos.
+
+Se distingue de los antecedentes más cercanos en tres aspectos. Respecto del Core Web Vitals Technology Report y el Web Almanac, la diferencia es de diseño: en vez de comparar sitios distintos en un corte del tiempo, este trabajo sigue a los mismos sitios antes y después de un evento de migración. Respecto de los estudios de laboratorio, la diferencia es de escala y de validez externa: en vez de aplicaciones de prueba, se trabaja con el universo de sitios reales que cubre CrUX. Respecto del uso descriptivo de CrUX en la literatura, la diferencia es de objetivo: en vez de caracterizar la experiencia de navegación en general, se aísla el efecto de un tipo específico de decisión, la migración tecnológica.
+
+\subsection{Preguntas de investigación}
+
+¿Las migraciones desde tecnologías frontend con mayor carga de JavaScript bloqueante hacia frameworks modernos producen una mejora causal y estadísticamente significativa en la experiencia de usuario real (LCP, INP), respecto de la trayectoria que hubieran seguido los mismos sitios de no migrar? ¿Ese efecto es homogéneo entre distintos tipos de migración y niveles de tráfico, o varía sistemáticamente según las características del sitio? ¿En qué medida un estimador clásico de efectos fijos bidireccionales, ampliamente usado en la práctica, sobreestima ese efecto frente a un estimador robusto al sesgo de tratamiento escalonado?
+
+\section{Descripción del set de datos}
+\label{sec:dataset}
+
+\subsection{Origen y contexto del dataset}
+
+Los datos que sostienen este trabajo son en su totalidad públicos y se acceden vía BigQuery: la tabla de crawls de HTTP Archive (\texttt{httparchive.crawl.pages}), que incluye para cada origen y cada mes la tecnología detectada por Wappalyzer, y la tabla materializada de CrUX (\texttt{chrome-ux-report.materialized.metrics\_summary}), que incluye para cada origen y cada mes el percentil 75 de LCP, INP y CLS. No se trabaja en ningún momento con datos personales: la unidad de análisis es el origen web (el dominio), no el usuario individual.
+
+El uso de ambas fuentes con fines de investigación tiene precedente en la literatura, aunque no en la combinación causal que propone este trabajo. Ruth et al. \cite{ruth2022toppling}, en un estudio publicado en la Internet Measurement Conference de ACM, evaluaron la exactitud de distintos rankings de sitios web y concluyeron que CrUX es, de las fuentes comparadas, la que mejor refleja la popularidad real de un sitio \cite{chromedev2025cruxmethodology}, lo que respalda su uso como dataset de investigación. Beugin et al. \cite{beugin2026lessons} combinaron crawls históricos de HTTP Archive con datos de CrUX para estudiar, de forma longitudinal a lo largo de siete años, la adopción y el abandono de un conjunto de APIs web, en un diseño de datos estructuralmente similar al que se usa en este trabajo, aunque con un objetivo distinto (caracterizar la adopción de una tecnología, no estimar su efecto causal sobre una métrica de resultado).
+
+\subsection{Descripción técnica}
+
+Un relevamiento inicial contra ambas fuentes (BigQuery, agosto de 2026) confirma la viabilidad del panel. El outcome de CrUX está disponible de forma mensual entre 2017-10 y 2026-07; en junio de 2026 cubre \textbf{18.210.344} origins, con un 97,4\,\% de cobertura de p75 de LCP. HTTP Archive, filtrando únicamente páginas raíz para alinear la granularidad con CrUX, releva \textbf{16.268.243} orígenes en julio de 2026. La distribución de calidad de LCP en junio de 2026 es 70,2\,\% ``Good'' ($\leq$2,5\,s), 20,0\,\% ``Needs Improvement'' (2,5-4\,s) y 9,7\,\% ``Poor'' ($>$4\,s).
+
+El volumen de eventos de migración detectados en una única ventana de un año (junio 2025 a junio 2026) es, para los pares de interés: 62.457 migraciones de jQuery a React, 116.864 abandonos de WordPress y 10.047 migraciones de React a Next.js; un orden de magnitud muy por encima de lo necesario para sostener un diseño de diferencias en diferencias con cohortes de adopción escalonada. Las variables clave del panel son, por origen y por mes: la tecnología detectada (dimensión versionada como SCD tipo 2, con rango de vigencia desde/hasta), y el percentil 75 de LCP, INP y CLS.
+
+El tamaño del panel no crece de forma monótona: se identifican dos rampas de expansión fuerte (2018-2019 y 2022-2023) seguidas de un período de relativa estabilidad; desde mediados de 2023 la cantidad de orígenes cubiertos oscila estacionalmente entre aproximadamente 15,5 y 17 millones (mínimos en enero, máximos a mitad de año), sin una tendencia de crecimiento neta. Esta estabilidad reciente favorece construir un panel balanceado sobre la ventana 2023-2026, sin impedir extender el análisis a años anteriores siempre que el cambio de composición de la muestra de 2018-2019 se trate explícitamente como un quiebre estructural y no como parte de un panel homogéneo. En términos de costo computacional, extraer la dimensión de tecnología por origen y por mes insume aproximadamente 13 GB de escaneo en BigQuery por cada mes consultado, por lo que construir el panel completo de ocho años implica un escaneo del orden de 1,2 TB, alcanzable dentro de la cuota gratuita mensual de BigQuery distribuyendo la extracción en pocos meses o muestreando trimestralmente.
+
+\section{Hipótesis}
+
+\textbf{Hipótesis principal (H1).} Las migraciones desde tecnologías frontend con mayor carga de JavaScript bloqueante hacia frameworks modernos (por ejemplo, de jQuery a React) producen una mejora estadísticamente significativa en el LCP y el INP de los sitios migrados, respecto de la trayectoria que hubieran seguido de no migrar, estimada a partir de un grupo de control emparejado. La evaluación se realiza mediante un diseño de estudio por eventos (event study) alrededor del mes de la migración, y se busca rechazar la hipótesis nula de ausencia de efecto.
+
+\textbf{Hipótesis secundaria (H2).} El efecto de la migración no es homogéneo: es mayor en las migraciones que parten de tecnologías legacy (jQuery, plantillas de WordPress sin optimizar) que en las migraciones entre frameworks ya modernos (por ejemplo, de React a Next.js), y varía según el nivel de tráfico del sitio.
+
+\textbf{Hipótesis secundaria (H3).} Parte del efecto que arrojaría un estimador clásico de efectos fijos bidireccionales (TWFE) sobre este panel está inflado por el sesgo de comparaciones entre grupos ya tratados que describe Goodman-Bacon \cite{goodmanbacon2021}; se espera que el estimador robusto de Callaway y Sant'Anna \cite{callawaysantanna2021} arroje un efecto de menor magnitud que el estimador clásico, aunque igualmente significativo.
+
+Las variables operativas de estas hipótesis, tecnología detectada y percentil 75 de LCP, INP y CLS, fueron descriptas en la Sección \ref{sec:dataset}.
+
+\section{Objetivos}
+
+\subsection{Objetivo General}
+
+Estimar el efecto causal de las migraciones de tecnología frontend sobre las métricas de experiencia de usuario real (Core Web Vitals), a partir de un panel longitudinal público construido con datos de HTTP Archive y CrUX, mediante técnicas de inferencia causal para datos de panel con tratamiento escalonado.
+
+\subsection{Objetivos Específicos}
+
+\begin{enumerate}
+    \item \textbf{Construcción del panel:} construir un panel mensual de orígenes web con tecnología detectada y Core Web Vitals asociados, para una ventana temporal de al menos seis años.
+    \item \textbf{Detección y validación de migraciones:} detectar eventos de migración tecnológica sobre un conjunto acotado de pares de tecnologías, y validar la precisión de esa detección.
+    \item \textbf{Definición del grupo de control:} definir, para cada sitio migrado, un grupo de control emparejado de sitios comparables que no migraron.
+    \item \textbf{Estimación del efecto causal:} estimar el efecto causal de la migración sobre LCP, INP y CLS mediante un diseño de diferencias en diferencias robusto a tratamiento escalonado.
+    \item \textbf{Caracterización de heterogeneidad:} caracterizar cómo varía ese efecto según el tipo de migración y las características del sitio.
+\end{enumerate}
+
+\section{Solución propuesta a desarrollar en el TFI o tesis}
+\label{sec:solucion}
+
+La solución propuesta parte de una premisa simple: cada vez que un sitio cambia de tecnología frontend, ese cambio queda registrado mes a mes en HTTP Archive, y su efecto sobre la experiencia de los usuarios queda registrado mes a mes en CrUX. Cruzando ambas fuentes es posible tratar cada migración como un experimento natural y estimar su efecto con las mismas herramientas que se usan en economía aplicada para evaluar el impacto de una política pública sobre un conjunto de unidades que la reciben en distintos momentos.
+
+\subsection{Metodología}
+
+\textbf{(a) Construcción del panel.} Se extrae de HTTP Archive, mes a mes, la tecnología detectada para cada origen que además tenga métricas publicadas en CrUX ese mismo mes, separando cliente móvil y de escritorio. Se releva primero el rango de fechas disponible en ambas fuentes y la cobertura del cruce entre ellas, y se define la cohorte de orígenes elegibles de forma point-in-time, según su estado en el mes anterior a cualquier posible migración, para no introducir sesgo de supervivencia.
+
+\textbf{(b) Detección y validación de eventos de migración.} Se define una migración como un origen que deja de tener detectada la tecnología A y pasa a tener detectada la tecnología B, y que sostiene ese cambio durante al menos tres meses consecutivos, para filtrar el ruido de detección. La dimensión de tecnología del panel se versiona como una dimensión de cambio lento (SCD tipo 2), donde cada fila registra un origen, una tecnología y un rango de vigencia; la fecha del evento de tratamiento es simplemente el inicio de vigencia del nuevo valor. Antes de elegir qué pares de tecnología estudiar, se analiza para cada tecnología su patrón de adopción y abandono a lo largo del tiempo, priorizando pares donde la detección es estable. Sobre una muestra aleatoria de migraciones detectadas se realiza una validación manual contra copias históricas del sitio (Wayback Machine) para estimar la precisión de la detección.
+
+\textbf{(c) Diseño cuasi-experimental y grupo de control.} Para cada sitio migrado se construye un grupo de control de orígenes que no migraron en la misma ventana temporal, emparejados por covariables previas al evento: nivel de tráfico (rango de CrUX), país predominante y nivel de Core Web Vitals en los meses anteriores a la migración. Se verifica el supuesto de tendencias paralelas comparando la evolución de las métricas entre tratados y controles en el período previo al evento, y las covariables de emparejamiento se calculan siempre con información estrictamente anterior al mes de la migración de cada sitio. Este cuidado no es solo una precaución teórica: en un proyecto anterior de la maestría, sobre un problema de recomendación, una definición de corte temporal aparentemente razonable resultó filtrar información del futuro y produjo una mejora que solo existía dentro de la muestra de entrenamiento, sin sostenerse en una evaluación honesta. Ese antecedente es la razón concreta por la que acá el chequeo de tendencias paralelas se trata como un paso obligatorio y no como un formalismo.
+
+\textbf{(d) Estimación del efecto causal.} Se estima un diseño de estudio por eventos alrededor del mes de la migración. Como el tratamiento ocurre en distintos meses para distintos sitios, se evita el estimador clásico de efectos fijos bidireccionales por el sesgo que señala Goodman-Bacon \cite{goodmanbacon2021}, y se utiliza en su lugar el estimador de Callaway y Sant'Anna \cite{callawaysantanna2021}, que estima el efecto por separado para cada cohorte de adopción y cada período, y lo agrega de forma consistente. Los errores estándar se calculan clusterizados por origen, y ante la comparación de varios pares de tecnología en simultáneo se aplica corrección por múltiples pruebas (Benjamini-Hochberg).
+
+\textbf{(e) Heterogeneidad de efectos.} Sobre las migraciones con efecto estimado, se ajustan bosques aleatorios causales \cite{wagerathey2018} para estimar el efecto de tratamiento condicional a covariables como el tipo de migración, el nivel de tráfico previo y el país, sin imponer una forma funcional arbitraria a esa heterogeneidad, y se reporta la importancia relativa de cada covariable en explicar las diferencias de efecto.
+
+\subsection{Técnicas / Herramientas}
+
+El procesamiento del panel se realiza en BigQuery mediante SQL, dado el volumen de datos involucrado (varios terabytes de crawls mensuales). El análisis posterior se realiza en Python, con pandas y NumPy para la manipulación de datos. La estimación de diferencias en diferencias con tratamiento escalonado se implementa con una librería que reproduzca el estimador de Callaway y Sant'Anna (como el paquete \texttt{differences} o \texttt{csdid} en Python, o una llamada al paquete \texttt{did} de R vía \texttt{rpy2} si el soporte en Python resultara insuficiente), y \texttt{statsmodels} para los modelos de referencia y las pruebas de hipótesis. El emparejamiento del grupo de control se realiza con \texttt{scikit-learn}, usando un modelo de gradient boosting como estimador del puntaje de propensión y búsqueda de vecinos más cercanos sobre ese puntaje. Los bosques aleatorios causales se ajustan con la librería \texttt{econml} o, alternativamente, con \texttt{grf} de R vía \texttt{rpy2}. Para la reproducibilidad se usa control de versiones con Git y semillas aleatorias fijas en cada etapa estocástica del pipeline.
+
+\section{Cronograma de actividades}
+
+\vspace{0.3cm}
+\begin{center}
+\small
+\begin{tabular}{|c|c|p{6cm}|p{3.5cm}|}
+\hline
+\textbf{Semana} & \textbf{Fechas} & \textbf{Tareas} & \textbf{Entregable} \\ \hline
+1--4 & Mes 1 & Revisión final de literatura, acceso a BigQuery y diseño técnico del panel & Especificación del panel \\ \hline
+5--10 & Mes 2 & Construcción del panel HTTP Archive + CrUX (pipeline SQL, dimensión SCD-2 de tecnología) & Panel construido \\ \hline
+11--16 & Mes 3 & Detección y validación de eventos de migración (persistencia, muestreo manual Wayback Machine) & Catálogo de eventos validado \\ \hline
+17--20 & Mes 4 & Selección de pares tecnológicos y matching del grupo de control (propensity score) & Diseño cuasi-experimental \\ \hline
+21--24 & Mes 5 & Verificación de tendencias paralelas y ajustes al diseño & Validación de supuestos \\ \hline
+25--30 & Mes 6--7 & Estimación DiD escalonado (Callaway y Sant'Anna) sobre jQuery$\to$React & Resultados H1/H3 \\ \hline
+31--34 & Mes 8 & Extensión a pares adicionales como robustez & Análisis de robustez \\ \hline
+35--38 & Mes 9 & Heterogeneidad de efectos con causal forests (H2) & CATE por covariables \\ \hline
+39--43 & Mes 10 & Redacción final de la tesis y preparación de la defensa & Tesis finalizada \\ \hline
+\end{tabular}
+\end{center}
+
+\section{Limitaciones}
+
+CrUX solo publica métricas de orígenes con tráfico de Chrome suficiente, lo que excluye a los sitios de baja audiencia y deja la muestra compuesta mayormente por sitios de mediana o alta audiencia. La detección de tecnología de Wappalyzer no es perfecta: algunas tecnologías muestran un patrón de adopción y abandono simultáneo mes a mes (lo que sugiere ruido de detección más que cambios reales), mientras que otras son mucho más estables; esto se releva empíricamente antes de elegir los pares de migración a estudiar. La migración de tecnología no es un evento aleatorio: los sitios que deciden migrar pueden diferir sistemáticamente de los que no lo hacen, lo que se aborda con matching sobre covariables previas al evento y con la verificación del supuesto de tendencias paralelas, aunque esto reduce el riesgo sin eliminarlo del todo. Por último, las reglas de detección de Wappalyzer cambiaron a lo largo de los años, por lo que un cambio de tecnología detectado puede en algunos casos reflejar un cambio en las reglas y no una migración real del sitio; esto se mitiga exigiendo persistencia del cambio durante varios meses consecutivos y validando manualmente una muestra de casos.
+
+\section{Referencias-Bibliografía}
+\bibliographystyle{unsrt}
+\bibliography{bibliografia}
+
+\end{document}

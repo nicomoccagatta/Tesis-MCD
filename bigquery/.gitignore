@@ -1,0 +1,4 @@
+# Intermedio del pipeline: se borra solo al final de run_query.sh.
+# Esto es una red de seguridad por si una corrida se corta a mitad de camino.
+*.csv
+!usage-log.csv
