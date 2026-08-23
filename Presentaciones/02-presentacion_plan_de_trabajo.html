@@ -157,13 +157,16 @@
   .kpi .kpi-value{ font-family: var(--font-mono); font-size: 30px; font-weight: 700; color: var(--text-primary); }
   .kpi .kpi-sub{ font-size: 13px; color: var(--text-secondary); margin-top: 6px; }
 
-  .semaphore{ margin-top: 2px; }
-  .semaphore-label{ display: flex; justify-content: space-between; font-size: 14.5px; color: var(--text-secondary); margin-bottom: 9px; }
-  .semaphore-bar{ display: flex; height: 18px; border-radius: 9px; overflow: hidden; border: 1px solid var(--border); }
-  .semaphore-bar span{ height: 100%; }
-  .semaphore-legend{ display: flex; gap: 26px; margin-top: 11px; font-size: 14.5px; color: var(--text-secondary); }
+  .semaphores{ display: flex; flex-direction: column; gap: 9px; margin-top: 2px; }
+  .sem-row{ display: grid; grid-template-columns: 96px 1fr 190px; align-items: center; gap: 14px; }
+  .sem-row .sem-name{ font-size: 14.5px; color: var(--text-primary); font-weight: 700; }
+  .sem-row .sem-cov{ display: block; font-size: 11.5px; color: var(--text-muted); font-weight: 400; margin-top: 1px; }
+  .sem-bar{ display: flex; height: 14px; border-radius: 7px; overflow: hidden; border: 1px solid var(--border); }
+  .sem-bar span{ height: 100%; }
+  .sem-pct{ font-family: var(--font-mono); font-size: 12.5px; color: var(--text-secondary); text-align: right; white-space: nowrap; }
+  .semaphore-legend{ display: flex; gap: 26px; margin-top: 4px; font-size: 13px; color: var(--text-secondary); }
   .semaphore-legend .sw{ display: inline-flex; align-items: center; gap: 7px; }
-  .semaphore-legend i{ width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  .semaphore-legend i{ width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 
   /* ---- Viability sparkline ---- */
   .viab-grid{ display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; flex: 1; min-height: 0; align-items: stretch; }
@@ -357,26 +360,47 @@
     <h2 class="slide-title">HTTP Archive + CrUX, verificado en BigQuery</h2>
     <div class="content">
       <div class="kpi-row">
-        <div class="kpi"><div class="kpi-label">Origins en CrUX</div><div class="kpi-value">18,21M</div><div class="kpi-sub">jun 2026 &middot; 97,4% con p75 LCP</div></div>
+        <div class="kpi"><div class="kpi-label">Origins en CrUX</div><div class="kpi-value">18,06M</div><div class="kpi-sub">jul 2026</div></div>
         <div class="kpi"><div class="kpi-label">Root pages HTTP Archive</div><div class="kpi-value">16,27M</div><div class="kpi-sub">jul 2026</div></div>
-        <div class="kpi"><div class="kpi-label">jQuery &rarr; React</div><div class="kpi-value">62.457</div><div class="kpi-sub">migraciones en 1 año</div></div>
+        <div class="kpi"><div class="kpi-label">jQuery &rarr; React</div><div class="kpi-value">62.457</div><div class="kpi-sub">jun25&ndash;jun26</div></div>
         <div class="kpi"><div class="kpi-label">Abandono WordPress</div><div class="kpi-value">116,86K</div><div class="kpi-sub">jun25&ndash;jun26</div></div>
       </div>
-      <div class="semaphore">
-        <div class="semaphore-label"><span>Semáforo de calidad LCP &middot; jun 2026</span><span>17,73M origins con dato</span></div>
-        <div class="semaphore-bar">
-          <span style="width:70.2%; background:var(--status-good)"></span>
-          <span style="width:20.0%; background:var(--status-warn)"></span>
-          <span style="width:9.7%; background:var(--status-bad)"></span>
+      <div class="semaphores">
+        <div class="sem-row">
+          <span class="sem-name">LCP<span class="sem-cov">97,3% cobertura</span></span>
+          <div class="sem-bar">
+            <span style="width:70.8%; background:var(--status-good)"></span>
+            <span style="width:19.8%; background:var(--status-warn)"></span>
+            <span style="width:9.4%; background:var(--status-bad)"></span>
+          </div>
+          <div class="sem-pct">70,8 / 19,8 / 9,4&thinsp;%</div>
+        </div>
+        <div class="sem-row">
+          <span class="sem-name">INP<span class="sem-cov">70,1% cobertura</span></span>
+          <div class="sem-bar">
+            <span style="width:88.4%; background:var(--status-good)"></span>
+            <span style="width:9.5%; background:var(--status-warn)"></span>
+            <span style="width:2.0%; background:var(--status-bad)"></span>
+          </div>
+          <div class="sem-pct">88,4 / 9,5 / 2,0&thinsp;%</div>
+        </div>
+        <div class="sem-row">
+          <span class="sem-name">CLS<span class="sem-cov">99,4% cobertura</span></span>
+          <div class="sem-bar">
+            <span style="width:87.2%; background:var(--status-good)"></span>
+            <span style="width:6.5%; background:var(--status-warn)"></span>
+            <span style="width:6.3%; background:var(--status-bad)"></span>
+          </div>
+          <div class="sem-pct">87,2 / 6,5 / 6,3&thinsp;%</div>
         </div>
         <div class="semaphore-legend">
-          <span class="sw"><i style="background:var(--status-good)"></i>Good 70,2%</span>
-          <span class="sw"><i style="background:var(--status-warn)"></i>Needs Improvement 20,0%</span>
-          <span class="sw"><i style="background:var(--status-bad)"></i>Poor 9,7%</span>
+          <span class="sw"><i style="background:var(--status-good)"></i>Good</span>
+          <span class="sw"><i style="background:var(--status-warn)"></i>Needs Improvement</span>
+          <span class="sw"><i style="background:var(--status-bad)"></i>Poor</span>
         </div>
       </div>
     </div>
-    <div class="source-line">Unidad de análisis: el origen web (dominio) &middot; sin datos personales</div>
+    <div class="source-line">Julio 2026, mismo mes en ambas fuentes &middot; unidad de análisis: el origen web (dominio) &middot; sin datos personales</div>
   </section>
 
   <!-- 6. VIABILIDAD Y PRECEDENTE -->

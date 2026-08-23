@@ -33,9 +33,12 @@ Detalle completo (objetivos específicos, justificación extendida) en `TP Latex
 Fuentes 100% públicas, accedidas vía BigQuery: `httparchive.crawl.pages` (tecnología detectada por origen/mes) y `chrome-ux-report.materialized.metrics_summary` (p75 de LCP/INP/CLS por origen/mes). Unidad de análisis: el origen web (dominio), sin datos personales.
 
 Viabilidad verificada con queries reales en BigQuery:
-- **18.210.344** origins en CrUX (jun 2026, 97,4% con p75 LCP); **16.268.243** root pages en HTTP Archive (jul 2026).
-- Semáforo de calidad LCP (jun 2026): 70,2% Good, 20,0% Needs Improvement, 9,7% Poor.
-- Volumen de migraciones en un año: 62.457 jQuery→React, 116.864 abandonos de WordPress, 10.047 React→Next.js.
+- **18.059.068** origins en CrUX y **16.268.243** root pages en HTTP Archive, ambos para **julio 2026** (mismo mes en las dos fuentes, para que sean comparables).
+- Semáforos de calidad, julio 2026 (Good / Needs Improvement / Poor, sobre el % de origins con dato):
+  - LCP (97,3% cobertura): 70,8% / 19,8% / 9,4%.
+  - INP (70,1% cobertura, menor porque requiere interacciones del usuario): 88,4% / 9,5% / 2,0%.
+  - CLS (99,4% cobertura): 87,2% / 6,5% / 6,3%.
+- Volumen de migraciones en la ventana **junio 2025 – junio 2026**: 62.457 jQuery→React, 116.864 abandonos de WordPress, 10.047 React→Next.js.
 - El panel no crece monótonamente: dos rampas de expansión (2018-2019 y 2022-2023) y luego estabilidad con estacionalidad enero/julio desde 2023 — la ventana 2023-2026 es la más estable para un panel balanceado.
 - Costo de extracción: ~13 GB de escaneo por mes consultado; panel completo de 8 años ≈ 1,2 TB (una sola vez), viable dentro de la cuota gratuita mensual de BigQuery repartiéndolo en un par de meses.
 - Proyecto de trabajo: `tesis-506222` (GCP, Sandbox, sin billing). Ver `bigquery/CLAUDE.md` para límites conocidos (tablas expiran a 60 días, sin Cloud Storage) y la convención de extracción.
