@@ -140,18 +140,9 @@
   .closing .sub{ font-size: 22px; color: var(--text-secondary); margin: 14px 0 0; }
   .closing .meta-row{ justify-content: center; margin-top: 44px; }
 
-  /* ---- Agenda cards ---- */
-  .hgrid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .hcard{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
-  .hcard .htag{ font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); letter-spacing: .08em; }
-  .hcard h3{ margin: 0; font-size: 18px; color: var(--text-primary); line-height: 1.3; }
-  .hcard p{ margin: 0; font-size: 15px; line-height: 1.46; color: var(--text-secondary); }
-  .status-chip{ align-self: flex-start; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
-  .status-chip.done{ background: rgba(52,211,153,.14); color: var(--status-good); border: 1px solid rgba(52,211,153,.35); }
-  .status-chip.new{ background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(34,211,238,.35); }
-
   /* ---- KPI row ---- */
   .kpi-row{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .kpi-row.cols-2{ grid-template-columns: repeat(2, 1fr); }
   .kpi{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; }
   .kpi .kpi-label{ font-size: 12.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
   .kpi .kpi-value{ font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--text-primary); }
@@ -259,38 +250,7 @@
     </div>
   </section>
 
-  <!-- 2. AGENDA -->
-  <section class="slide">
-    <p class="kicker">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-      Agenda
-    </p>
-    <h2 class="slide-title">Los tres frentes de este hito</h2>
-    <div class="content">
-      <div class="hgrid">
-        <div class="hcard">
-          <span class="status-chip done">Cerrado</span>
-          <div class="htag">01</div>
-          <h3>Revisión final de literatura</h3>
-          <p>Gap confirmado y reverificado contra abstracts reales el 23/08/2026.</p>
-        </div>
-        <div class="hcard">
-          <span class="status-chip done">Cerrado</span>
-          <div class="htag">02</div>
-          <h3>Diseño técnico del panel</h3>
-          <p>SCD tipo 2, detección de eventos, matching y estimador especificados en la propuesta.</p>
-        </div>
-        <div class="hcard">
-          <span class="status-chip new">Relevado hoy</span>
-          <div class="htag">03</div>
-          <h3>Cobertura del cruce entre fuentes</h3>
-          <p>Primer número propio sobre qué fracción de cada fuente aparece en la otra, 2018&ndash;2026.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. LITERATURA -->
+  <!-- 2. LITERATURA -->
   <section class="slide">
     <p class="kicker">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
@@ -298,18 +258,17 @@
     </p>
     <h2 class="slide-title">El vacío sigue abierto</h2>
     <div class="content">
-      <ul class="points">
-        <li><span class="bullet"></span><span><b>Evidencia industrial</b> (HTTP Archive) y <b>benchmarks de laboratorio</b>: transversales o a pequeña escala, sin seguimiento longitudinal.</span></li>
-        <li><span class="bullet"></span><span><b>Revisión sistemática</b> (Ghattas, Odeh &amp; Mora 2025, 6.657 estudios 2010&ndash;2024): ningún trabajo estima el efecto de decisiones tecnológicas sobre experiencia real de usuarios.</span></li>
-        <li><span class="bullet"></span><span><b>Precedentes de legitimidad:</b> Ruth et al. (2022, ACM IMC) validan a CrUX como el ranking más preciso; Beugin et al. (2026, arXiv) combinan ambas fuentes en un diseño longitudinal, pero con objetivo descriptivo, no causal.</span></li>
-        <li><span class="bullet"></span><span>Búsqueda <b>reverificada el 23/08/2026</b>: un único paper cercano por palabras clave, descartado tras leer el abstract completo.</span></li>
-      </ul>
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-label">Revisión sistemática 2010&ndash;2024</div><div class="kpi-value">6.657</div><div class="kpi-sub">estudios &middot; Ghattas, Odeh &amp; Mora (2025)</div></div>
+        <div class="kpi"><div class="kpi-label">Con diseño causal longitudinal</div><div class="kpi-value">0</div><div class="kpi-sub">de esos 6.657 estudios</div></div>
+        <div class="kpi"><div class="kpi-label">Última reverificación</div><div class="kpi-value">23/08/2026</div><div class="kpi-sub">1 paper cercano, descartado tras leer el abstract</div></div>
+      </div>
       <div class="callout">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
         <div><div class="callout-label">Confirmado</div><p>Ningún trabajo combina seguimiento longitudinal + experiencia real de usuario + lectura causal sobre migraciones de tecnología frontend.</p></div>
       </div>
     </div>
-    <div class="source-line">Ghattas, Odeh &amp; Mora (2025) &middot; Ruth, Kumar, Wang, Valenta &amp; Durumeric (2022) &middot; Beugin, Barford &amp; McDaniel (2026)</div>
+    <div class="source-line">Ghattas, Odeh &amp; Mora (2025) &middot; Ruth, Kumar, Wang, Valenta &amp; Durumeric (2022) &middot; validan a CrUX como el ranking más preciso &middot; Beugin, Barford &amp; McDaniel (2026) &middot; HTTP Archive+CrUX longitudinal, objetivo descriptivo no causal</div>
   </section>
 
   <!-- 4. DISEÑO TECNICO DEL PANEL -->
@@ -356,12 +315,6 @@
           <h3>Errores y correcciones</h3>
           <div class="tools">
             <span>clustered por origen</span><span>Benjamini-Hochberg</span><span>ATT, no experimento aleatorizado</span>
-          </div>
-        </div>
-        <div>
-          <h3>Ya versionado</h3>
-          <div class="tools">
-            <span>.claude/skills/r-econometrics</span><span>.claude/skills/python-panel-data</span>
           </div>
         </div>
       </div>
@@ -416,14 +369,9 @@
     </p>
     <h2 class="slide-title">La ventana 2023&ndash;2026 queda confirmada con un número propio</h2>
     <div class="content">
-      <ul class="points">
-        <li><span class="bullet"></span><span>Hasta ahora la ventana 2023&ndash;2026 se justificaba solo por el <b>crecimiento</b> de cada fuente por separado; hoy se confirma con la <b>cobertura del cruce en sí</b>.</span></li>
-        <li><span class="bullet"></span><span>Con los tres frentes cerrados, el hito de las semanas 1&ndash;4 queda completo antes de la fecha del cronograma (25/09/2026).</span></li>
-        <li><span class="bullet"></span><span><b>Próxima etapa (semanas 5&ndash;10):</b> construcción real del panel &mdash; tecnología como SCD tipo 2 sobre la ventana confirmada.</span></li>
-      </ul>
-      <div class="callout">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-        <div><div class="callout-label">Para la próxima reunión</div><p>Primer avance de la construcción del panel sobre la ventana 2023&ndash;2026.</p></div>
+      <div class="kpi-row cols-2">
+        <div class="kpi"><div class="kpi-label">Hito semanas 1&ndash;4</div><div class="kpi-value">Cerrado</div><div class="kpi-sub">vence 25/09/2026 &middot; 3 de 3 frentes</div></div>
+        <div class="kpi"><div class="kpi-label">Próxima etapa</div><div class="kpi-value">Semanas 5&ndash;10</div><div class="kpi-sub">construcción del panel &middot; ventana 2023&ndash;2026</div></div>
       </div>
     </div>
     <div class="foot"><span class="badge">Taller de Tesis I &middot; ITBA</span><span class="badge">Moccagatta, N. &middot; Leg. 106396</span></div>
@@ -450,7 +398,7 @@
   <button id="prevBtn" aria-label="Anterior">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
   </button>
-  <span class="counter" id="counter">1 / 7</span>
+  <span class="counter" id="counter">1 / 6</span>
   <button id="nextBtn" aria-label="Siguiente">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
   </button>
