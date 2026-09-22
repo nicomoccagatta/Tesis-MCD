@@ -40,6 +40,9 @@ httparchive_crawl_pages/
 chrome-ux-report_materialized_metrics_summary/
   001-crux-lcp-semaforo-jun2026.sql
   001-crux-lcp-semaforo-jun2026.parquet
+cross_source/
+  001-migraciones-y-did-dos-periodos-jun2025-jun2026.sql
+  001-migraciones-y-did-dos-periodos-jun2025-jun2026.parquet
 ```
 
 **Por qué sin puntos:** una carpeta llamada `httparchive.crawl.pages` termina
@@ -50,10 +53,10 @@ Los guiones bajos evitan el problema por completo. Dentro del `.sql`, la
 tabla real de BigQuery sigue escribiéndose con puntos (es la sintaxis válida
 de BigQuery); el reemplazo es solo para el nombre de la carpeta en disco.
 
-Si una query cruza más de una tabla (por ejemplo, panel + CrUX), va en la
-subcarpeta de la tabla particionada que domina el costo/filtro (normalmente
-`httparchive_crawl_pages`), y las demás tablas involucradas se mencionan en el
-header de comentario.
+Si una query cruza más de una tabla (por ejemplo, panel + CrUX), va en
+`cross_source/`, con su propia numeración secuencial independiente de las
+demás subcarpetas, y todas las tablas involucradas se mencionan en el header
+de comentario.
 
 El número es puramente secuencial dentro de su tabla (orden en que se corrió),
 no codifica nada más. El nombre descriptivo sí debe ser específico (qué
