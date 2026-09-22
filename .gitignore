@@ -17,6 +17,9 @@
 .claude/skills/*
 !.claude/skills/r-econometrics/
 !.claude/skills/python-panel-data/
+!.claude/skills/academic-paper-writer/
+!.claude/skills/latex-tables/
+!.claude/skills/latex/
 .agents/
 skills-lock.json
 

@@ -55,7 +55,11 @@ Viabilidad verificada con queries reales en BigQuery:
 - `TP Latex/Template/`: plantilla ITBA original de referencia, sin tocar.
 - `Presentaciones/`: presentaciones dadas en el taller, numeradas. `02-presentacion_plan_de_trabajo.{html,pdf}` es la actual (deck HTML propio estilo dark data-science, exportado a PDF vía Chrome headless — no es Beamer/LaTeX). Para editarla, tocar el `.html` y regenerar el PDF (`--print-to-pdf`, `@page{size:13.333in 7.5in}`).
 - `bigquery/`: pipeline de extracción de datos de la tesis, versionado (ver `bigquery/CLAUDE.md`): subcarpeta por tabla consultada (o `cross_source/` cuando la query cruza ambas fuentes), pares `NNN-nombre.sql`+`.parquet`, script `run_query.sh` con dry-run/tope de bytes/export a Parquet vía DuckDB, `usage-log.csv` para trackear la cuota gratuita de 1TB/mes.
-- `.claude/skills/r-econometrics/` y `.claude/skills/python-panel-data/`: skills de Claude Code específicos de esta tesis (estimadores de panel/DiD escalonado — Callaway-Sant'Anna, Sun-Abraham — con código de referencia en R y Python), versionados acá porque son de nicho para este proyecto. Se activan solos al pedir código de estimación.
+- `.claude/skills/`: skills de Claude Code versionados en este repo porque son específicos de esta tesis (se activan solos según el pedido, no hace falta invocarlos a mano):
+  - `r-econometrics/` y `python-panel-data/`: estimadores de panel/DiD escalonado — Callaway-Sant'Anna, Sun-Abraham — con código de referencia en R y Python.
+  - `academic-paper-writer/`: estructura de paper empírico de economía (introducción, literatura, identificación, resultados, robustez, discusión, respuesta a referato) para `TP Latex/Project/main.tex`.
+  - `latex-tables/`: tablas de LaTeX generadas desde código (`esttab`, `modelsummary`, `pyfixest.etable`) para las tablas de DiD/balance de matching del documento escrito.
+  - `latex/`: LaTeX general (documento/snippet) para figuras TikZ y tipografía de `main.tex`. Su modo Beamer **no aplica** — la presentación de cátedra es HTML/CSS propio, no Beamer (ver más abajo).
 
 ## Estado actual y próximos hitos
 
