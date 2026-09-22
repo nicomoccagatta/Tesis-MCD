@@ -328,6 +328,35 @@
     <div class="source-line">Especificación completa en <b>TP Latex/Project/main.tex</b> &middot; sección Solución propuesta</div>
   </section>
 
+  <!-- 4b. CONSTRUCCION DEL PANEL -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
+      02 &middot; Diseño técnico del panel
+    </p>
+    <h2 class="slide-title">Construcción del panel: de las tablas fuente a la unidad de análisis</h2>
+    <div class="table-wrap">
+      <table class="cron">
+        <colgroup><col style="width:26%"><col style="width:22%"><col style="width:16%"><col style="width:36%"></colgroup>
+        <thead><tr><th>Variable</th><th>Fuente</th><th>Granularidad</th><th>Rol en el diseño</th></tr></thead>
+        <tbody>
+          <tr><td>Tecnología detectada (Wappalyzer)</td><td class="mo">HTTP Archive, <code>crawl.pages</code></td><td>Origen, mes, cliente</td><td>Define el tratamiento: su cambio sostenido es el evento de migración</td></tr>
+          <tr><td>p75 de LCP</td><td class="mo">CrUX, <code>metrics_summary</code></td><td>Origen, mes</td><td>Variable de resultado principal (H1)</td></tr>
+          <tr><td>p75 de INP</td><td class="mo">CrUX, <code>metrics_summary</code></td><td>Origen, mes</td><td>Variable de resultado principal (H1)</td></tr>
+          <tr><td>p75 de CLS</td><td class="mo">CrUX, <code>metrics_summary</code></td><td>Origen, mes</td><td>Variable de resultado secundaria</td></tr>
+          <tr><td>Rango de tráfico del origen</td><td class="mo">CrUX</td><td>Origen, mes</td><td>Covariable de emparejamiento y eje de heterogeneidad (H2)</td></tr>
+          <tr><td>País predominante</td><td class="mo">CrUX, tablas por país</td><td>Origen, mes</td><td>Covariable de emparejamiento</td></tr>
+          <tr><td>Cliente (móvil o escritorio)</td><td class="mo">HTTP Archive</td><td>Origen, mes</td><td>Estratificación: panel separado por cliente</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+      <div><div class="callout-label">Cómo se arma</div><p>Se cruza <code>crawl.pages</code> con <code>metrics_summary</code> por origen y mes. La tecnología se versiona como <b>SCD tipo 2</b>: cada fila = origen + tecnología + rango de vigencia (desde/hasta); el inicio de vigencia del valor nuevo es la fecha del evento. La cohorte de orígenes elegibles se define <b>point-in-time</b> (según su estado el mes anterior a cualquier migración posible), para no introducir sesgo de supervivencia.</p></div>
+    </div>
+    <div class="source-line">Unidad de observación: origen-mes &middot; panel construido por separado para cliente móvil y de escritorio &middot; TP Latex/Project/main.tex, Metodología (a) Construcción del panel</div>
+  </section>
+
   <!-- 5. COBERTURA DEL CRUCE -->
   <section class="slide">
     <p class="kicker">
@@ -404,7 +433,7 @@
   <button id="prevBtn" aria-label="Anterior">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
   </button>
-  <span class="counter" id="counter">1 / 6</span>
+  <span class="counter" id="counter">1 / 7</span>
   <button id="nextBtn" aria-label="Siguiente">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
   </button>
