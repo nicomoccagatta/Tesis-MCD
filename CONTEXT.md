@@ -38,7 +38,8 @@ Viabilidad verificada con queries reales en BigQuery:
   - LCP (97,3% cobertura): 70,8% / 19,8% / 9,4%.
   - INP (70,1% cobertura, menor porque requiere interacciones del usuario): 88,4% / 9,5% / 2,0%.
   - CLS (99,4% cobertura): 87,2% / 6,5% / 6,3%.
-- Volumen de migraciones en la ventana **junio 2025 – junio 2026**: 62.457 jQuery→React, 116.864 abandonos de WordPress, 10.047 React→Next.js.
+- Volumen de migraciones entre los cortes **junio 2025** y **junio 2026** (páginas raíz, crawl móvil, presentes en ambos meses): **62.457** jQuery→React, **65.407** abandonos de WordPress, **9.059** React→Next.js. Versionado en `bigquery/httparchive_crawl_pages/002-migraciones-y-did-dos-periodos-jun2025-jun2026`. Las cifras viejas de WordPress (116.864) y Next.js (10.047), usadas antes en la presentación, no reprodujeron con esta definición y quedaron reemplazadas; la de jQuery→React sí reprodujo exacta.
+- **DiD exploratorio de dos períodos** (mismo query, jun25 vs jun26, control = los que se quedaron en la tecnología de origen): jQuery→React **+41 ms** LCP y **+41 ms** INP (el grupo migrado queda *peor* que su control), abandono de WordPress **−671 ms** LCP / +12 ms INP, React→Next.js **−34 ms** LCP / 0 INP. En los tres pares los tratados arrancan 200-300 ms peor que los controles, o sea que hay reversión a la media sin emparejar. **No confirma H1** y así está escrito en el documento: es el argumento concreto de por qué hacen falta matching y Callaway-Sant'Anna.
 - El panel no crece monótonamente: dos rampas de expansión (2018-2019 y 2022-2023) y luego estabilidad con estacionalidad enero/julio desde 2023 — la ventana 2023-2026 es la más estable para un panel balanceado.
 - Costo de extracción: ~13 GB de escaneo por mes consultado; panel completo de 8 años ≈ 1,2 TB (una sola vez), viable dentro de la cuota gratuita mensual de BigQuery repartiéndolo en un par de meses.
 - Proyecto de trabajo: `tesis-506222` (GCP, Sandbox, sin billing). Ver `bigquery/CLAUDE.md` para límites conocidos (tablas expiran a 60 días, sin Cloud Storage) y la convención de extracción.
@@ -58,5 +59,5 @@ Viabilidad verificada con queries reales en BigQuery:
 ## Estado actual y próximos hitos
 
 - **Viernes 28/8/2026:** entrega de la presentación de cátedra (10 min).
-- **Viernes 4/9/2026:** entrega de la versión final del documento escrito.
+- **Viernes 4/9/2026:** entregada la versión final del documento escrito, ya alineada al template actualizado por la cátedra (encabezado `ITBA -- Proyecto de Tesis`, carátula con campo `PROFESORES`, cronograma con fechas concretas, sin `\section{Referencias-Bibliografía}` manual). El documento tiene ahora 3 figuras (semáforo CWV, evolución del panel, esquema del diseño) y 2 tablas (variables operativas, DiD exploratorio).
 - Ejecución real de la tesis ya en marcha: primera extracción validada end-to-end en `bigquery/httparchive_crawl_pages/001-panel-root-pages-growth-2020-2026`.
