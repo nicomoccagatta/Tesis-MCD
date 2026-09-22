@@ -256,18 +256,25 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       01 &middot; Revisión final de literatura
     </p>
-    <h2 class="slide-title">El vacío sigue abierto</h2>
-    <div class="content">
-      <ul class="points">
-        <li><span class="bullet"></span><span><b>Evidencia principal:</b> Ghattas, Odeh &amp; Mora (2025) &mdash; revisión sistemática con metodología PRISMA sobre 7 bases de datos académicas, que sintetiza <b>30 estudios de alta calidad</b> sobre performance web (2010&ndash;2024). Su conclusión publicada: ninguno hace un análisis causal de decisiones de arquitectura.</span></li>
-        <li><span class="bullet"></span><span><b>Chequeo adicional propio</b>, dirigido específicamente a nuestra combinación de criterios (causal + panel longitudinal + experiencia real de usuario + migración de tecnología): el único trabajo adyacente identificado es <i>&ldquo;Symmetry-Aware Causal-Inference-Driven Web Performance Modeling&rdquo;</i> (<i>Symmetry</i>, dic. 2025) &mdash; descartado porque hace <i>causal discovery</i> sobre la estructura DOM de una sola página para diagnóstico puntual, no inferencia causal de panel entre sitios reales en el tiempo.</span></li>
-      </ul>
-      <div class="callout">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-        <div><div class="callout-label">Confirmado</div><p>Ningún trabajo combina seguimiento longitudinal + experiencia real de usuario + lectura causal sobre migraciones de tecnología frontend.</p></div>
-      </div>
+    <h2 class="slide-title">Cinco líneas de evidencia, ninguna combina las piezas</h2>
+    <div class="table-wrap">
+      <table class="cron">
+        <colgroup><col style="width:20%"><col style="width:38%"><col style="width:42%"></colgroup>
+        <thead><tr><th>Línea de evidencia</th><th>Trabajos</th><th>Por qué no responde nuestra pregunta</th></tr></thead>
+        <tbody>
+          <tr><td>Industrial</td><td>CWV Technology Report + Web Almanac (HTTP Archive)</td><td>Transversal: compara sitios distintos en un mismo mes, no sigue a los mismos sitios en el tiempo</td></tr>
+          <tr><td>Laboratorio</td><td>Tong, Jikson &amp; Gunawan (2023); Tulsyan et al. (2024)</td><td>Apps de prueba a pequeña escala, o síntesis narrativa sin datos propios; sin usuarios reales</td></tr>
+          <tr><td>CrUX descriptivo</td><td>Sengupta et al. (2023)</td><td>Caracteriza experiencia de navegación en general, no estudia tecnología ni migraciones</td></tr>
+          <tr><td>Revisión sistemática</td><td>Ghattas, Odeh &amp; Mora (2025), 30 estudios de alta calidad</td><td>Ninguno hace análisis causal de decisiones de arquitectura</td></tr>
+          <tr><td>Métodos causales</td><td>Card &amp; Krueger (1994), Goodman-Bacon (2021), Callaway &amp; Sant'Anna (2021), Wager &amp; Athey (2018)</td><td>Maduros en econometría aplicada, nunca usados en performance web</td></tr>
+        </tbody>
+      </table>
     </div>
-    <div class="source-line">Ghattas, Odeh &amp; Mora (2025), DOI 10.3390/computers14100446 &middot; Symmetry, dic. 2025, DOI 10.3390/sym17122058</div>
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+      <div><div class="callout-label">Confirmado, más un chequeo propio dirigido</div><p>Existen las cinco piezas por separado, pero nadie las combinó. Chequeo adicional propio sobre nuestra combinación exacta: único trabajo adyacente, <i>&ldquo;Symmetry-Aware Causal-Inference-Driven Web Performance Modeling&rdquo;</i> (Symmetry, dic. 2025) &mdash; descartado, hace causal discovery de una sola página, no panel.</p></div>
+    </div>
+    <div class="source-line">Card &amp; Krueger (1994) &middot; Goodman-Bacon (2021) &middot; Callaway &amp; Sant'Anna (2021) &middot; Wager &amp; Athey (2018) &middot; Ghattas, Odeh &amp; Mora (2025), DOI 10.3390/computers14100446 &middot; Symmetry, dic. 2025, DOI 10.3390/sym17122058</div>
   </section>
 
   <!-- 4. DISEÑO TECNICO DEL PANEL -->
