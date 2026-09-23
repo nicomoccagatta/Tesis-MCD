@@ -142,7 +142,6 @@
 
   /* ---- KPI row ---- */
   .kpi-row{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .kpi-row.cols-2{ grid-template-columns: repeat(2, 1fr); }
   .kpi{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; }
   .kpi .kpi-label{ font-size: 12.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
   .kpi .kpi-value{ font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--text-primary); }
@@ -162,12 +161,10 @@
   .node-title{ font-size: 17px; font-weight: 700; margin: 2px 0 3px; color: var(--text-primary); }
   .node-desc{ font-size: 13.5px; color: var(--text-secondary); line-height: 1.45; max-width: 32ch; }
   .node.is-active .node-title{ color: var(--accent); }
+  .nowrap{ white-space: nowrap; }
 
-  .strategy{ display: flex; flex-direction: column; gap: 16px; justify-content: center; }
+  .strategy{ display: flex; flex-direction: column; gap: 16px; justify-content: space-around; }
   .strategy h3{ margin: 0 0 4px; font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
-  .chain{ display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
-  .chain .step{ background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; color: var(--text-primary); font-weight: 600; font-size: 14px; }
-  .chain svg{ width: 15px; height: 15px; color: var(--text-muted); }
   .tools{ display: flex; flex-wrap: wrap; gap: 9px; margin-top: 2px; }
   .tools span{ font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary); background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; }
 
@@ -185,6 +182,8 @@
   table.cron tbody tr.row-done td{ color: var(--text-primary); }
   table.cron tbody tr.row-done td.wk{ color: var(--status-good); }
   table.cron tbody tr.row-done td.deliv{ color: var(--status-good); }
+  table.cron.fill{ height: 100%; }
+  table.cron.fill tbody td{ vertical-align: middle; }
   table.cron code{ font-family: var(--font-mono); font-size: 12.5px; color: var(--text-primary); }
 
   /* ---- Coverage dual-line chart ---- */
@@ -195,7 +194,7 @@
   .legend-row{ display: flex; gap: 22px; }
   .legend-row .lk{ display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 12.5px; color: var(--text-secondary); }
   .legend-row .lk i{ width: 12px; height: 2px; border-radius: 1px; display: inline-block; }
-  #covChart{ width: 100%; flex: 1; overflow: visible; }
+  #covChart{ width: 100%; flex: 1; min-height: 0; height: 0; overflow: visible; }
   .cov-axis{ font-family: var(--font-mono); font-size: 11px; fill: var(--text-muted); }
   .cov-grid-line{ stroke: var(--border-soft); stroke-width: 1; }
   .cov-threshold-line{ stroke: var(--text-secondary); stroke-width: 1.5; stroke-dasharray: 5 4; }
@@ -207,6 +206,8 @@
   .cov-dot-2{ fill: var(--series-2); stroke: var(--surface); stroke-width: 2; }
   .cov-end-label{ font-family: var(--font-mono); font-size: 12px; font-weight: 700; }
   .cov-annot-rule{ stroke: var(--status-event); stroke-width: 1.2; stroke-dasharray: 3 4; }
+  .cov-stable-rule{ stroke: var(--status-good); stroke-width: 1.2; stroke-dasharray: 3 4; }
+  .cov-stable-text{ font-family: var(--font-mono); font-size: 12px; fill: var(--status-good); font-weight: 600; }
   .cov-annot-text{ font-family: var(--font-mono); font-size: 12px; fill: var(--status-event); font-weight: 600; }
 
   /* ---- Nav chrome (screen only) ---- */
@@ -260,7 +261,7 @@
       <div><b>Alumno:</b> Moccagatta, Nicolás &middot; Leg. 106396</div>
       <div><b>Director:</b> Ariel Olaf Salgado Corrado</div>
       <div><b>Co-Director:</b> Carlos Sarraute</div>
-      <div><b>Fecha:</b> 22 de septiembre de 2026</div>
+      <div><b>Fecha:</b> 24 de septiembre de 2026</div>
     </div>
     <div class="cover-mark">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
@@ -276,7 +277,7 @@
     </p>
     <h2 class="slide-title">Cinco líneas de evidencia, ninguna combina las piezas</h2>
     <div class="table-wrap">
-      <table class="cron">
+      <table class="cron fill">
         <colgroup><col style="width:20%"><col style="width:38%"><col style="width:42%"></colgroup>
         <thead><tr><th>Línea de evidencia</th><th>Trabajos</th><th>Por qué no responde nuestra pregunta</th></tr></thead>
         <tbody>
@@ -284,7 +285,7 @@
           <tr><td>Laboratorio</td><td>Tong, Jikson &amp; Gunawan (2023); Tulsyan et al. (2024)</td><td>Apps de prueba a pequeña escala, o síntesis narrativa sin datos propios; sin usuarios reales</td></tr>
           <tr><td>CrUX descriptivo</td><td>Sengupta et al. (2023)</td><td>Caracteriza experiencia de navegación en general, no estudia tecnología ni migraciones</td></tr>
           <tr><td>Revisión sistemática</td><td>Ghattas, Odeh &amp; Mora (2025), 30 estudios de alta calidad</td><td>Ninguno hace análisis causal de decisiones de arquitectura</td></tr>
-          <tr><td>Métodos causales</td><td>Card &amp; Krueger (1994), Goodman-Bacon (2021), Callaway &amp; Sant'Anna (2021), Wager &amp; Athey (2018)</td><td>Maduros en econometría aplicada, nunca usados en performance web</td></tr>
+          <tr><td>Métodos causales</td><td>Card &amp; Krueger (1994), Goodman-Bacon (2021), Callaway &amp; Sant'Anna (2021), Wager &amp; Athey (2018)</td><td>Maduros en econometría aplicada, sin aplicación identificada en performance web</td></tr>
         </tbody>
       </table>
     </div>
@@ -307,7 +308,7 @@
         <div class="pipeline-track"></div>
         <div class="node">
           <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></span>
-          <div><div class="node-index">01</div><div class="node-title">Panel como SCD tipo 2</div><div class="node-desc">Tecnología detectada como dimensión de cambio lento, cohorte definida point-in-time</div></div>
+          <div><div class="node-index">01</div><div class="node-title">Panel como SCD tipo 2</div><div class="node-desc">Tecnología detectada como dimensión de cambio lento, cohorte definida <span class="nowrap">point-in-time</span></div></div>
         </div>
         <div class="node">
           <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span>
@@ -324,21 +325,21 @@
       </div>
       <div class="strategy">
         <div>
-          <h3>Cadena de estimación</h3>
-          <div class="chain">
-            <span class="step">Matching PS</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            <span class="step">Tendencias paralelas</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            <span class="step">Callaway&amp;Sant'Anna</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            <span class="step">Causal forests</span>
+          <h3>Estimando</h3>
+          <div class="tools">
+            <span>ATT sobre los orígenes migrados</span><span>cuasi-experimento, no aleatorizado</span>
           </div>
         </div>
         <div>
-          <h3>Errores y correcciones</h3>
+          <h3>Inferencia</h3>
           <div class="tools">
-            <span>clustered por origen</span><span>Benjamini-Hochberg</span><span>ATT, no experimento aleatorizado</span>
+            <span>errores clusterizados por origen</span><span>Benjamini-Hochberg entre pares tecnológicos</span>
+          </div>
+        </div>
+        <div>
+          <h3>Comparación y robustez</h3>
+          <div class="tools">
+            <span>TWFE como referencia (H3)</span><span>réplica con Sun y Abraham</span>
           </div>
         </div>
       </div>
@@ -359,7 +360,7 @@
         <thead><tr><th>Variable</th><th>Fuente</th><th>Granularidad</th><th>Rol en el diseño</th></tr></thead>
         <tbody>
           <tr><td>Tecnología detectada (Wappalyzer)</td><td class="mo">HTTP Archive, <code>crawl.pages</code></td><td>Origen, mes, cliente</td><td>Define el tratamiento: su cambio sostenido es el evento de migración</td></tr>
-          <tr><td>p75 de LCP, INP y CLS</td><td class="mo">CrUX, <code>metrics_summary</code></td><td>Origen, mes</td><td>LCP e INP: resultado principal (H1) &middot; CLS: resultado secundaria</td></tr>
+          <tr><td>p75 de LCP, INP y CLS</td><td class="mo">CrUX, <code>metrics_summary</code></td><td>Origen, mes</td><td>LCP e INP: resultado principal (H1) &middot; CLS: resultado secundario</td></tr>
           <tr><td>Rango de tráfico del origen</td><td class="mo">CrUX</td><td>Origen, mes</td><td>Covariable de emparejamiento y eje de heterogeneidad (H2)</td></tr>
           <tr><td>País predominante</td><td class="mo">CrUX, tablas por país</td><td>Origen, mes</td><td>Covariable de emparejamiento</td></tr>
           <tr><td>Cliente (móvil o escritorio)</td><td class="mo">HTTP Archive</td><td>Origen, mes</td><td>Estratificación: panel separado por cliente</td></tr>
@@ -379,10 +380,11 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
       03 &middot; Relevamiento de cobertura del cruce entre fuentes
     </p>
-    <h2 class="slide-title">Desde 2019, ambas curvas superan el 50% de cobertura</h2>
-    <div class="kpi-row cols-2">
-      <div class="kpi"><div class="kpi-label">Ene 2018</div><div class="kpi-value">27,6% / 4,4%</div><div class="kpi-sub">Por debajo del 50% en una dirección &middot; cruce insuficiente</div></div>
+    <h2 class="slide-title">Desde 2019 el cruce supera el 50%; desde 2023 se estabiliza</h2>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-label">Ene 2018</div><div class="kpi-value">27,6% / 4,4%</div><div class="kpi-sub">Por debajo del 50% en ambas direcciones &middot; cruce insuficiente</div></div>
       <div class="kpi"><div class="kpi-label">2019-01 en adelante</div><div class="kpi-value">65,1&ndash;91,5% / 60,5&ndash;84,3%</div><div class="kpi-sub">Mínimo y máximo real de cada serie &middot; siempre &gt;50%, hasta jul-2026</div></div>
+      <div class="kpi"><div class="kpi-label">2023-01 en adelante</div><div class="kpi-value">87,1&ndash;91,5% / 75,7&ndash;84,3%</div><div class="kpi-sub">Sin caídas bruscas &middot; ventana del panel 2023&ndash;2026</div></div>
     </div>
     <div class="cov-grid">
       <div class="chart-card">
@@ -400,6 +402,8 @@
           <path id="covLine2Path" class="cov-line-2"></path>
           <line id="covAnnotRule" class="cov-annot-rule"></line>
           <text id="covAnnotText" class="cov-annot-text"></text>
+          <line id="covStableRule" class="cov-stable-rule"></line>
+          <text id="covStableText" class="cov-stable-text"></text>
           <g id="covAxisGroup"></g>
           <circle id="covEndDot1" class="cov-dot-1" r="4.5"></circle>
           <circle id="covEndDot2" class="cov-dot-2" r="4.5"></circle>
@@ -510,6 +514,7 @@
   var s1 = [27.6,65.0,79.6,74.4,65.1,77.6,79.7,75.8,80.0,91.1,87.5,88.6,91.5,88.4,91.0,89.2,90.5,87.1]; // % HA con CrUX
   var s2 = [4.4,26.8,68.8,76.7,61.4,71.9,75.8,76.0,75.8,60.5,81.0,84.3,77.7,81.6,76.9,80.0,75.7,78.3];  // % CrUX con HA
   var breakIdx = 2; // 2019-01 -- desde acá ambas series quedan siempre por encima del 50%
+  var stableIdx = 10; // 2023-01 -- desde acá la cobertura se estabiliza (ventana del panel)
 
   var W = 900, H = 260, padL = 34, padR = 46, padT = 16, padB = 26;
   var plotW = W - padL - padR, plotH = H - padT - padB;
@@ -548,7 +553,7 @@
   });
 
   var axisGroup = document.getElementById("covAxisGroup");
-  var tickIdx = [0, breakIdx, 10, labels.length - 1];
+  var tickIdx = [0, breakIdx, stableIdx, labels.length - 1];
   tickIdx.forEach(function(i){
     var t = document.createElementNS("http://www.w3.org/2000/svg","text");
     t.setAttribute("x", x(i)); t.setAttribute("y", H-6);
@@ -566,6 +571,14 @@
   txt.setAttribute("x", bx + 6); txt.setAttribute("y", padT + 13);
   txt.textContent = "2019-01 · ambas superan el 50%";
 
+  var sx = x(stableIdx);
+  var stableRule = document.getElementById("covStableRule");
+  stableRule.setAttribute("x1", sx); stableRule.setAttribute("x2", sx);
+  stableRule.setAttribute("y1", padT); stableRule.setAttribute("y2", padT+plotH);
+  var stableTxt = document.getElementById("covStableText");
+  stableTxt.setAttribute("x", sx + 6); stableTxt.setAttribute("y", padT + plotH - 8);
+  stableTxt.textContent = "2023-01 · cobertura estable";
+
   var lastX = x(labels.length-1);
   var y1 = y(s1[s1.length-1]), y2 = y(s2[s2.length-1]);
   document.getElementById("covEndDot1").setAttribute("cx", lastX);
@@ -575,9 +588,9 @@
 
   var l1 = document.getElementById("covEndLabel1");
   l1.setAttribute("x", lastX + 9); l1.setAttribute("y", y1 + 4);
-  l1.textContent = s1[s1.length-1].toFixed(1) + "%";
+  l1.textContent = s1[s1.length-1].toFixed(1).replace(".", ",") + "%";
   var l2 = document.getElementById("covEndLabel2");
   l2.setAttribute("x", lastX + 9); l2.setAttribute("y", y2 + 4);
-  l2.textContent = s2[s2.length-1].toFixed(1) + "%";
+  l2.textContent = s2[s2.length-1].toFixed(1).replace(".", ",") + "%";
 })();
 </script>
