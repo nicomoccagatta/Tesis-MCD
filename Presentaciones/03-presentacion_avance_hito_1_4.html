@@ -1,0 +1,623 @@
+<title>Avance Hito 1-4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --stage-bg: #070c16;
+    --slide: #0f172a;
+    --surface: #141f38;
+    --surface-2: #182544;
+    --border: #263657;
+    --border-soft: #1c2a48;
+    --text-primary: #eef2fb;
+    --text-secondary: #9aabc9;
+    --text-muted: #5f7093;
+    --accent: #22d3ee;
+    --accent-soft: rgba(34,211,238,.14);
+    --status-event: #fbbf24;
+    --status-good: #34d399;
+    --status-warn: #fbbf24;
+    --status-bad: #fb7185;
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --font-display: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ height: 100%; }
+
+  body{
+    margin: 0;
+    background: var(--stage-bg);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .deck{
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    max-height: 787.5px;
+    aspect-ratio: 16/9;
+    position: relative;
+    margin: auto;
+  }
+
+  .slide{
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(1100px 620px at 84% -10%, rgba(34,211,238,.09), transparent 60%),
+      var(--slide);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 4.2% 5% 3.4%;
+    display: none;
+    flex-direction: column;
+    gap: 1.8%;
+    box-shadow: 0 40px 90px -40px rgba(0,0,0,.75);
+    overflow: hidden;
+  }
+  .slide.is-active{ display: flex; }
+
+  .slide::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(var(--border-soft) 1px, transparent 1px);
+    background-size: 100% 60px;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.45), transparent 50%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,.45), transparent 50%);
+    pointer-events: none;
+  }
+
+  .kicker{
+    font-family: var(--font-mono);
+    font-size: 16px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative; z-index: 1;
+  }
+  .kicker svg{ width: 19px; height: 19px; flex-shrink: 0; }
+
+  h1{ margin: 0; font-weight: 800; letter-spacing: -.01em; text-wrap: balance; color: var(--text-primary); position: relative; z-index: 1; }
+  h2.slide-title{ font-size: 34px; margin-bottom: 2px; }
+
+  .content{ flex: 1; min-height: 0; position: relative; z-index: 1; display: flex; flex-direction: column; gap: 18px; justify-content: center; }
+
+  ul.points{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  ul.points li{ display: flex; gap: 14px; align-items: flex-start; font-size: 20px; line-height: 1.48; color: var(--text-secondary); }
+  ul.points li b{ color: var(--text-primary); font-weight: 700; }
+  ul.points li .bullet{ flex-shrink: 0; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); margin-top: 9px; box-shadow: 0 0 0 3px var(--accent-soft); }
+
+  .callout{
+    margin-top: 4px;
+    border: 1px solid rgba(251,191,36,.35);
+    background: rgba(251,191,36,.08);
+    border-radius: 12px;
+    padding: 16px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .callout svg{ width: 23px; height: 23px; color: var(--status-event); flex-shrink: 0; margin-top: 2px; }
+  .callout .callout-label{ font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--status-event); margin-bottom: 4px; }
+  .callout p{ margin: 0; font-size: 20px; color: var(--text-primary); line-height: 1.4; }
+
+  .source-line{ font-family: var(--font-mono); font-size: 13.5px; color: var(--text-muted); position: relative; z-index: 1; line-height: 1.5; }
+  .source-line b{ color: var(--text-secondary); font-weight: 600; }
+
+  .foot{ display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); position: relative; z-index: 1; }
+  .foot .badge{ font-family: var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+
+  .meta-row{ display: flex; flex-wrap: wrap; row-gap: 10px; column-gap: 40px; font-family: var(--font-mono); font-size: 15px; color: var(--text-secondary); }
+  .meta-row div{ white-space: nowrap; }
+  .meta-row b{ color: var(--text-primary); font-weight: 600; font-family: var(--font-display); }
+
+  /* ---- Cover ---- */
+  .cover{ justify-content: center; align-items: flex-start; }
+  .cover h1{ font-size: 40px; max-width: 22ch; line-height: 1.18; }
+  .cover .subtitle{ font-size: 20px; color: var(--text-secondary); margin: 14px 0 0; max-width: 46ch; }
+  .cover .meta-row{ margin-top: auto; }
+  .cover-mark{ position: absolute; right: 5%; bottom: 6%; display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-family: var(--font-mono); font-size: 13px; }
+  .cover-mark svg{ width: 17px; height: 17px; color: var(--accent); }
+
+  /* ---- Closing ---- */
+  .closing{ justify-content: center; align-items: center; text-align: center; }
+  .closing .big{ font-size: 56px; margin: 0; }
+  .closing .sub{ font-size: 22px; color: var(--text-secondary); margin: 14px 0 0; }
+  .closing .meta-row{ justify-content: center; margin-top: 44px; }
+
+  /* ---- KPI row ---- */
+  .kpi-row{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .kpi{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; }
+  .kpi .kpi-label{ font-size: 12.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
+  .kpi .kpi-value{ font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--text-primary); }
+  .kpi .kpi-sub{ font-size: 12.5px; color: var(--text-secondary); margin-top: 6px; line-height: 1.4; }
+
+  /* ---- Kick-off pipeline (reused for panel design) ---- */
+  .kickoff-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 34px; flex: 1; min-height: 0; }
+  .pipeline{ display: flex; flex-direction: column; justify-content: space-around; position: relative; padding-left: 28px; }
+  .pipeline-track{ position: absolute; left: 12px; top: 14px; bottom: 14px; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--border)); opacity: .55; overflow: hidden; }
+  .pipeline-track::after{ content:""; position:absolute; inset:0; background: linear-gradient(to bottom, transparent, var(--accent) 40%, transparent 70%); background-size: 100% 200%; animation: flow 3.2s linear infinite; }
+  @keyframes flow{ 0%{ background-position: 0 -200%; } 100%{ background-position: 0 200%; } }
+  .node{ position: relative; display: flex; gap: 13px; align-items: flex-start; }
+  .node-dot{ position: absolute; left: -28px; top: 1px; width: 25px; height: 25px; border-radius: 50%; background: var(--surface-2); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
+  .node-dot svg{ width: 13px; height: 13px; }
+  .node.is-active .node-dot{ border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); color: var(--slide); background: var(--accent); }
+  .node-index{ font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); letter-spacing: .06em; }
+  .node-title{ font-size: 17px; font-weight: 700; margin: 2px 0 3px; color: var(--text-primary); }
+  .node-desc{ font-size: 13.5px; color: var(--text-secondary); line-height: 1.45; max-width: 32ch; }
+  .node.is-active .node-title{ color: var(--accent); }
+  .nowrap{ white-space: nowrap; }
+
+  .strategy{ display: flex; flex-direction: column; gap: 16px; justify-content: space-around; }
+  .strategy h3{ margin: 0 0 4px; font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+  .tools{ display: flex; flex-wrap: wrap; gap: 9px; margin-top: 2px; }
+  .tools span{ font-family: var(--font-mono); font-size: 13px; color: var(--text-secondary); background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; }
+
+  /* ---- Data table (evidencia / variables) ---- */
+  .table-wrap{ flex: 1; min-height: 0; overflow: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table.cron{ width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  table.cron thead th{ text-align: left; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); background: var(--surface-2); padding: 7px 14px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border-soft); position: sticky; top: 0; }
+  table.cron thead th:last-child{ border-right: none; }
+  table.cron tbody td{ padding: 6px 14px; border-top: 1px solid var(--border); border-right: 1px solid var(--border-soft); color: var(--text-secondary); vertical-align: top; }
+  table.cron tbody td:last-child{ border-right: none; }
+  table.cron tbody tr:hover{ background: rgba(34,211,238,.05); }
+  table.cron td.wk, table.cron td.mo{ font-family: var(--font-mono); color: var(--text-primary); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  table.cron td.deliv{ color: var(--accent); font-weight: 600; }
+  table.cron tbody tr.row-done{ background: rgba(52,211,153,.10); }
+  table.cron tbody tr.row-done td{ color: var(--text-primary); }
+  table.cron tbody tr.row-done td.wk{ color: var(--status-good); }
+  table.cron tbody tr.row-done td.deliv{ color: var(--status-good); }
+  table.cron.fill{ height: 100%; }
+  table.cron.fill tbody td{ vertical-align: middle; }
+  table.cron a{ color: var(--accent); text-decoration: none; font-family: var(--font-mono); font-size: 12.5px; }
+  table.cron code{ font-family: var(--font-mono); font-size: 12.5px; color: var(--text-primary); }
+
+  /* ---- Coverage dual-line chart ---- */
+  .cov-grid{ display: grid; grid-template-columns: 1fr; gap: 14px; flex: 1; min-height: 0; }
+  .chart-card{ background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 22px 10px; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  .chart-head{ display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .chart-title{ font-size: 15px; color: var(--text-secondary); font-weight: 600; }
+  .legend-row{ display: flex; gap: 22px; }
+  .legend-row .lk{ display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 12.5px; color: var(--text-secondary); }
+  .legend-row .lk i{ width: 12px; height: 2px; border-radius: 1px; display: inline-block; }
+  #covChart{ width: 100%; flex: 1; min-height: 0; height: 0; overflow: visible; }
+  .cov-axis{ font-family: var(--font-mono); font-size: 13px; fill: var(--text-muted); }
+  .cov-grid-line{ stroke: var(--border-soft); stroke-width: 1; }
+  .cov-threshold-line{ stroke: var(--text-secondary); stroke-width: 1.5; stroke-dasharray: 5 4; }
+  .cov-threshold-label{ fill: var(--text-secondary); font-weight: 700; }
+  .cov-region{ fill: rgba(34,211,238,.06); }
+  .cov-line-1{ fill: none; stroke: var(--series-1); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .cov-line-2{ fill: none; stroke: var(--series-2); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .cov-dot-1{ fill: var(--series-1); stroke: var(--surface); stroke-width: 2; }
+  .cov-dot-2{ fill: var(--series-2); stroke: var(--surface); stroke-width: 2; }
+  .cov-end-label{ font-family: var(--font-mono); font-size: 14px; font-weight: 700; }
+  .cov-annot-rule{ stroke: var(--status-event); stroke-width: 1.2; stroke-dasharray: 3 4; }
+  .cov-stable-rule{ stroke: var(--status-good); stroke-width: 1.2; stroke-dasharray: 3 4; }
+  .cov-stable-text{ font-family: var(--font-mono); font-size: 14px; fill: var(--status-good); font-weight: 600; }
+  .cov-annot-text{ font-family: var(--font-mono); font-size: 14px; fill: var(--status-event); font-weight: 600; }
+
+  /* ---- Nav chrome (screen only) ---- */
+  .nav{ position: fixed; left: 0; right: 0; bottom: 18px; display: flex; align-items: center; justify-content: center; gap: 14px; z-index: 10; font-family: var(--font-mono); }
+  .nav button{ appearance: none; border: 1px solid var(--border); background: var(--surface); color: var(--text-primary); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color .15s, background .15s; }
+  .nav button:hover{ border-color: var(--accent); background: var(--surface-2); }
+  .nav button svg{ width: 17px; height: 17px; }
+  .nav .counter{ color: var(--text-muted); font-size: 13px; min-width: 56px; text-align: center; }
+  .progress{ position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); z-index: 10; transition: width .25s ease; box-shadow: 0 0 12px rgba(34,211,238,.6); }
+
+  @media (prefers-reduced-motion: reduce){
+    .pipeline-track::after{ animation: none; }
+    .progress{ transition: none; }
+  }
+
+  /* ================= PRINT (PDF export) ================= */
+  @media print{
+    @page{ size: 13.333in 7.5in; margin: 0; }
+    html,body{ height: auto; overflow: visible; background: var(--slide); }
+    body{ display: block; padding: 0; }
+    .nav, .progress{ display: none !important; }
+    .deck{ all: unset; display: block; width: auto; }
+    .slide{
+      display: flex !important;
+      position: relative;
+      inset: auto;
+      width: 13.333in;
+      height: 7.5in;
+      border-radius: 0;
+      box-shadow: none;
+      page-break-after: always;
+      break-after: page;
+      padding: 0.5in 0.6in 0.42in;
+    }
+    .slide:last-child{ page-break-after: auto; break-after: auto; }
+  }
+</style>
+
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+  <!-- 1. CARATULA -->
+  <section class="slide cover is-active">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+      Taller de Tesis I &middot; ITBA &middot; Reunión de avance
+    </p>
+    <h1>Revisión de literatura, diseño técnico del panel y cobertura del cruce de fuentes</h1>
+    <p class="subtitle">Estado del hito de las semanas 1&ndash;4 del cronograma</p>
+    <div class="meta-row">
+      <div><b>Alumno:</b> Moccagatta, Nicolás &middot; Leg. 106396</div>
+      <div><b>Director:</b> Ariel Olaf Salgado Corrado</div>
+      <div><b>Co-Director:</b> Carlos Sarraute</div>
+      <div><b>Fecha:</b> 24 de septiembre de 2026</div>
+    </div>
+    <div class="cover-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Semanas 1&ndash;4 de 48
+    </div>
+  </section>
+
+  <!-- 2. CRONOGRAMA -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3Z"/></svg>
+      Cronograma de actividades
+    </p>
+    <div class="table-wrap">
+      <table class="cron">
+        <colgroup><col style="width:8%"><col style="width:15%"><col style="width:53%"><col style="width:24%"></colgroup>
+        <thead><tr><th>Semana</th><th>Fechas</th><th>Tareas</th><th>Entregable</th></tr></thead>
+        <tbody>
+          <tr class="row-done"><td class="wk">1&ndash;4</td><td>31/08&ndash;25/09/2026</td><td>Revisión final de literatura, diseño técnico del panel y relevamiento de cobertura del cruce entre fuentes</td><td class="deliv">Cerrado</td></tr>
+          <tr><td class="wk">5&ndash;10</td><td>28/09&ndash;06/11/2026</td><td>Construcción del panel HTTP Archive + CrUX (pipeline SQL, dimensión SCD-2 de tecnología)</td><td class="deliv">Panel construido</td></tr>
+          <tr><td class="wk">11&ndash;16</td><td>09/11&ndash;18/12/2026</td><td>Detección de eventos de migración y validación manual de una muestra contra Wayback Machine</td><td class="deliv">Catálogo de eventos validado</td></tr>
+          <tr><td class="wk">17&ndash;24</td><td>21/12/2026&ndash;12/02/2027</td><td>Selección de pares tecnológicos y armado del grupo de control por puntaje de propensión</td><td class="deliv">Diseño cuasi-experimental</td></tr>
+          <tr><td class="wk">25&ndash;28</td><td>15/02&ndash;12/03/2027</td><td>Verificación del supuesto de tendencias paralelas y ajustes al emparejamiento</td><td class="deliv">Validación de supuestos</td></tr>
+          <tr><td class="wk">29&ndash;34</td><td>15/03&ndash;23/04/2027</td><td>Estimación DiD escalonado (Callaway y Sant'Anna) sobre jQuery&rarr;React, con TWFE como referencia</td><td class="deliv">Resultados H1 y H3</td></tr>
+          <tr><td class="wk">35&ndash;38</td><td>26/04&ndash;21/05/2027</td><td>Extensión a los pares restantes y réplica con el estimador de Sun y Abraham</td><td class="deliv">Análisis de robustez</td></tr>
+          <tr><td class="wk">39&ndash;42</td><td>24/05&ndash;18/06/2027</td><td>Heterogeneidad de efectos con bosques aleatorios causales</td><td class="deliv">CATE por covariables</td></tr>
+          <tr><td class="wk">43&ndash;48</td><td>21/06&ndash;30/07/2027</td><td>Redacción final de la tesis y preparación de la defensa</td><td class="deliv">Tesis finalizada</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="foot"><span class="badge">Taller de Tesis I &middot; ITBA</span><span class="badge">Moccagatta, N. &middot; Leg. 106396</span></div>
+  </section>
+
+  <!-- 3. LITERATURA -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      01 &middot; Revisión final de literatura
+    </p>
+    <h2 class="slide-title">Cinco líneas de evidencia, ninguna combina las piezas</h2>
+    <div class="table-wrap">
+      <table class="cron fill">
+        <colgroup><col style="width:20%"><col style="width:38%"><col style="width:42%"></colgroup>
+        <thead><tr><th>Línea de evidencia</th><th>Trabajos</th><th>Por qué no responde nuestra pregunta</th></tr></thead>
+        <tbody>
+          <tr><td>Industrial</td><td>CWV Technology Report + Web Almanac (HTTP Archive)</td><td>Transversal: compara sitios distintos en un mismo mes, no sigue a los mismos sitios en el tiempo</td></tr>
+          <tr><td>Laboratorio</td><td>Tong, Jikson &amp; Gunawan (2023); Tulsyan et al. (2024)</td><td>Apps de prueba a pequeña escala, o síntesis narrativa sin datos propios; sin usuarios reales</td></tr>
+          <tr><td>CrUX descriptivo</td><td>Sengupta et al. (2023)</td><td>Caracteriza experiencia de navegación en general, no estudia tecnología ni migraciones</td></tr>
+          <tr><td>Revisión sistemática</td><td>Ghattas, Odeh &amp; Mora (2025), 30 estudios de alta calidad</td><td>Ninguno hace análisis causal de decisiones de arquitectura</td></tr>
+          <tr><td>Métodos causales</td><td>Card &amp; Krueger (1994), Goodman-Bacon (2021), Callaway &amp; Sant'Anna (2021), Wager &amp; Athey (2018)</td><td>Maduros en econometría aplicada, sin aplicación identificada en performance web</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+      <div><div class="callout-label">Confirmado, más un chequeo propio dirigido</div><p>Existen las cinco piezas por separado, pero nadie las combinó. Chequeo adicional propio sobre nuestra combinación exacta: único trabajo adyacente, <i>&ldquo;Symmetry-Aware Causal-Inference-Driven Web Performance Modeling&rdquo;</i> (Symmetry, dic. 2025) &mdash; descartado, hace causal discovery de una sola página, no panel.</p></div>
+    </div>
+    <div class="source-line">Ghattas, Odeh &amp; Mora (2025), DOI 10.3390/computers14100446 &middot; Symmetry, dic. 2025, DOI 10.3390/sym17122058</div>
+  </section>
+
+  <!-- 4. DISEÑO TECNICO DEL PANEL -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
+      02 &middot; Diseño técnico del panel
+    </p>
+    <h2 class="slide-title">De la tecnología detectada al efecto causal</h2>
+    <div class="kickoff-grid">
+      <div class="pipeline">
+        <div class="pipeline-track"></div>
+        <div class="node">
+          <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></span>
+          <div><div class="node-index">01</div><div class="node-title">Panel como SCD tipo 2</div><div class="node-desc">Tecnología detectada como dimensión de cambio lento, cohorte definida <span class="nowrap">point-in-time</span></div></div>
+        </div>
+        <div class="node">
+          <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span>
+          <div><div class="node-index">02</div><div class="node-title">Detección de eventos</div><div class="node-desc">Persistencia &ge;3 meses + validación manual muestral contra Wayback Machine</div></div>
+        </div>
+        <div class="node">
+          <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <div><div class="node-index">03</div><div class="node-title">Grupo de control</div><div class="node-desc">Matching por propensity score + verificación de tendencias paralelas</div></div>
+        </div>
+        <div class="node is-active">
+          <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></span>
+          <div><div class="node-index">04</div><div class="node-title">Estimación causal</div><div class="node-desc">Callaway&amp;Sant'Anna (robusto a tratamiento escalonado) + causal forests para heterogeneidad</div></div>
+        </div>
+      </div>
+      <div class="strategy">
+        <div>
+          <h3>Estimando</h3>
+          <div class="tools">
+            <span>ATT sobre los orígenes migrados</span><span>cuasi-experimento, no aleatorizado</span>
+          </div>
+        </div>
+        <div>
+          <h3>Inferencia</h3>
+          <div class="tools">
+            <span>errores clusterizados por origen</span><span>Benjamini-Hochberg entre pares tecnológicos</span>
+          </div>
+        </div>
+        <div>
+          <h3>Comparación y robustez</h3>
+          <div class="tools">
+            <span>TWFE como referencia (H3)</span><span>réplica con Sun y Abraham</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="source-line">Especificación completa en <b>TP Latex/Project/main.tex</b> &middot; sección Solución propuesta</div>
+  </section>
+
+  <!-- 5. CONSTRUCCION DEL PANEL -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
+      02 &middot; Diseño técnico del panel
+    </p>
+    <h2 class="slide-title">Construcción del panel: de las tablas fuente a la unidad de análisis</h2>
+    <div class="table-wrap">
+      <table class="cron">
+        <colgroup><col style="width:24%"><col style="width:20%"><col style="width:21%"><col style="width:35%"></colgroup>
+        <thead><tr><th>Variable</th><th>Fuente</th><th>Granularidad</th><th>Rol en el diseño</th></tr></thead>
+        <tbody>
+          <tr><td>Tecnología detectada (Wappalyzer)</td><td class="mo">HTTP Archive, <code>crawl.pages</code></td><td>Origen, mes, cliente</td><td>Define el tratamiento: su cambio sostenido es el evento de migración</td></tr>
+          <tr><td>p75 de LCP, INP y CLS</td><td class="mo">CrUX, <code>device_summary</code></td><td>Origen, mes, dispositivo</td><td>LCP e INP: resultado principal (H1) &middot; CLS: resultado secundario</td></tr>
+          <tr><td>Rango de tráfico del origen</td><td class="mo">CrUX</td><td>Origen, mes</td><td>Covariable de emparejamiento y eje de heterogeneidad (H2)</td></tr>
+          <tr><td>País predominante</td><td class="mo">CrUX, tablas por país</td><td>Origen, mes</td><td>Covariable de emparejamiento</td></tr>
+          <tr><td>Cliente (móvil o escritorio)</td><td class="mo">HTTP Archive</td><td>Origen, mes</td><td>Estratificación: panel separado por cliente</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+      <div><div class="callout-label">Cómo se arma</div><p>Se cruza <code>crawl.pages</code> con <code>device_summary</code> por origen, mes y dispositivo (móvil &harr; <code>phone</code>, escritorio &harr; <code>desktop</code>). La tecnología se versiona como <b>SCD tipo 2</b>: cada fila = origen + tecnología + rango de vigencia (desde/hasta); el inicio de vigencia del valor nuevo es la fecha del evento. La cohorte de orígenes elegibles se define <b>point-in-time</b> (según su estado el mes anterior a cualquier migración posible), para no introducir sesgo de supervivencia.</p></div>
+    </div>
+    <div class="source-line">Unidad de observación: origen-mes &middot; panel construido por separado para cliente móvil y de escritorio &middot; TP Latex/Project/main.tex, Metodología (a) Construcción del panel</div>
+  </section>
+
+  <!-- 6. COBERTURA DEL CRUCE -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+      03 &middot; Relevamiento de cobertura del cruce entre fuentes
+    </p>
+    <h2 class="slide-title">Desde 2019 el cruce supera el 50%; desde 2023 se estabiliza</h2>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-label">Ene 2018</div><div class="kpi-value">27,6% / 4,4%</div><div class="kpi-sub">Por debajo del 50% en ambas direcciones &middot; cruce insuficiente</div></div>
+      <div class="kpi"><div class="kpi-label">2019-01 en adelante</div><div class="kpi-value">65,1&ndash;91,5% / 60,5&ndash;84,3%</div><div class="kpi-sub">Mínimo y máximo real de cada serie &middot; siempre &gt;50%, hasta jul-2026</div></div>
+      <div class="kpi"><div class="kpi-label">2023-01 en adelante</div><div class="kpi-value">87,1&ndash;91,5% / 75,7&ndash;84,3%</div><div class="kpi-sub">Sin caídas bruscas &middot; ventana del panel 2023&ndash;2026</div></div>
+    </div>
+    <div class="cov-grid">
+      <div class="chart-card">
+        <div class="chart-head">
+          <span class="chart-title">Cobertura del cruce HTTP Archive &harr; CrUX &middot; semestral, 2018&ndash;2026</span>
+          <div class="legend-row">
+            <span class="lk"><i style="background:var(--series-1)"></i>% root pages de HA con dato en CrUX</span>
+            <span class="lk"><i style="background:var(--series-2)"></i>% origins de CrUX presentes en HA</span>
+          </div>
+        </div>
+        <svg id="covChart" viewBox="0 0 1180 260">
+          <g id="covRegionGroup"></g>
+          <g id="covGridGroup"></g>
+          <path id="covLine1Path" class="cov-line-1"></path>
+          <path id="covLine2Path" class="cov-line-2"></path>
+          <line id="covAnnotRule" class="cov-annot-rule"></line>
+          <text id="covAnnotText" class="cov-annot-text"></text>
+          <line id="covStableRule" class="cov-stable-rule"></line>
+          <text id="covStableText" class="cov-stable-text"></text>
+          <g id="covAxisGroup"></g>
+          <circle id="covEndDot1" class="cov-dot-1" r="4.5"></circle>
+          <circle id="covEndDot2" class="cov-dot-2" r="4.5"></circle>
+          <text id="covEndLabel1" class="cov-end-label" fill="var(--series-1)"></text>
+          <text id="covEndLabel2" class="cov-end-label" fill="var(--series-2)"></text>
+        </svg>
+      </div>
+    </div>
+    <div class="source-line">18 fechas semestrales &middot; <b>bigquery/cross_source/002-cobertura-cruce-httparchive-crux-2018-2026</b> &middot; ~34,3 GB escaneados</div>
+  </section>
+
+  <!-- 7. EXTRA: VALIDACION CONTRA WAYBACK MACHINE -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Extra &middot; Validación de eventos contra Wayback Machine
+    </p>
+    <h2 class="slide-title">jQuery&rarr;React: detectado en HTTP Archive, verificado en Wayback</h2>
+    <div class="table-wrap">
+      <table class="cron fill">
+        <colgroup><col style="width:17%"><col style="width:8%"><col style="width:33%"><col style="width:21%"><col style="width:21%"></colgroup>
+        <thead><tr><th>Origen</th><th>Rank</th><th>Wappalyzer (HTTP Archive) jun-25 &rarr; jun-26</th><th>Wayback: antes</th><th>Wayback: después</th></tr></thead>
+        <tbody>
+          <tr><td class="mo">www.newsweek.com</td><td>top 1k</td><td>Swiper, core-js, jQuery &rarr; <b>Next.js, React, core-js</b></td><td><a href="https://web.archive.org/web/20250615231213/https://www.newsweek.com/">2025-06-15</a>: <code>jQuery(…)</code> inline &times;6</td><td><a href="https://web.archive.org/web/20260615194555/https://www.newsweek.com/">2026-06-15</a>: <code>/_next/static</code> &times;323</td></tr>
+          <tr><td class="mo">www.chase.com</td><td>top 5k</td><td>Boomerang, Lodash, RequireJS, jQuery &rarr; <b>Next.js, React, styled-components</b></td><td><a href="https://web.archive.org/web/20250616010355/https://www.chase.com/">2025-06-16</a>: <code>jquery.min.js</code></td><td><a href="https://web.archive.org/web/20260615190744/https://www.chase.com/">2026-06-15</a>: <code>/_next/static</code> &times;28</td></tr>
+          <tr><td class="mo">pbskids.org</td><td>top 5k</td><td>Modernizr, RequireJS, jQuery &rarr; <b>Next.js, React</b></td><td><a href="https://web.archive.org/web/20250615213408/https://pbskids.org/">2025-06-15</a>: plugins <code>jquery.*.js</code></td><td><a href="https://web.archive.org/web/20260615200356/https://pbskids.org/">2026-06-15</a>: <code>/_next/static</code> &times;38</td></tr>
+          <tr><td class="mo">www.pagina12.com.ar</td><td>top 5k</td><td>Glider.js, core-js, jQuery &rarr; <b>Boomerang, React, core-js</b></td><td><a href="https://web.archive.org/web/20250615232719/https://www.pagina12.com.ar/">2025-06-15</a>: <code>jQuery(…)</code> inline &times;5</td><td><a href="https://web.archive.org/web/20260615234950/https://www.pagina12.com.ar/">2026-06-15</a>: <code>react.js</code> (Arc XP)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+      <div><div class="callout-label">Piloto del paso 02 (detección de eventos)</div><p>23 orígenes del top 10k con jQuery sin React en mar y jun-2025 y React sin jQuery en mar y jun-2026 (crawl móvil). De 5 revisados en el HTML archivado, 4 confirman el cambio; en <code>www.n-tv.de</code> el HTML de 2025 no referencia jQuery (puede venir dentro de un bundle), así que queda como no concluyente.</p></div>
+    </div>
+    <div class="source-line"><b>bigquery/httparchive_crawl_pages/002-ejemplos-migracion-jquery-react-top10k-2025-2026</b> &middot; capturas <code>id_</code> de web.archive.org más cercanas al 15/06 de cada año</div>
+  </section>
+
+  <!-- 8. CIERRE -->
+  <section class="slide closing">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Cierre
+    </p>
+    <h1 class="big">Gracias</h1>
+    <p class="sub">&iquest;Preguntas?</p>
+    <div class="meta-row">
+      <div><b>Alumno:</b> Moccagatta, Nicolás &middot; Leg. 106396</div>
+      <div><b>Director:</b> Ariel Olaf Salgado Corrado</div>
+      <div><b>Co-Director:</b> Carlos Sarraute</div>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prevBtn" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+  </button>
+  <span class="counter" id="counter">1 / 7</span>
+  <button id="nextBtn" aria-label="Siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var counter = document.getElementById('counter');
+  var progress = document.getElementById('progress');
+  var idx = 0;
+
+  function render(){
+    slides.forEach(function(s, i){ s.classList.toggle('is-active', i === idx); });
+    counter.textContent = (idx + 1) + ' / ' + slides.length;
+    progress.style.width = (((idx + 1) / slides.length) * 100) + '%';
+  }
+  function go(delta){
+    idx = Math.max(0, Math.min(slides.length - 1, idx + delta));
+    render();
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', function(){ go(-1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ go(1); });
+
+  window.addEventListener('keydown', function(e){
+    if (['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key) !== -1){ e.preventDefault(); go(1); }
+    if (['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key) !== -1){ e.preventDefault(); go(-1); }
+    if (e.key === 'Home'){ idx = 0; render(); }
+    if (e.key === 'End'){ idx = slides.length - 1; render(); }
+  });
+
+  var touchStartX = null;
+  document.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if (touchStartX === null) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    touchStartX = null;
+  }, {passive:true});
+
+  render();
+})();
+</script>
+
+<script>
+(function(){
+  var labels = ["2018-01","2018-07","2019-01","2019-07","2020-01","2020-07","2021-01","2021-07","2022-01","2022-07","2023-01","2023-07","2024-01","2024-07","2025-01","2025-07","2026-01","2026-07"];
+  var s1 = [27.6,65.0,79.6,74.4,65.1,77.6,79.7,75.8,80.0,91.1,87.5,88.6,91.5,88.4,91.0,89.2,90.5,87.1]; // % HA con CrUX
+  var s2 = [4.4,26.8,68.8,76.7,61.4,71.9,75.8,76.0,75.8,60.5,81.0,84.3,77.7,81.6,76.9,80.0,75.7,78.3];  // % CrUX con HA
+  var breakIdx = 2; // 2019-01 -- desde acá ambas series quedan siempre por encima del 50%
+  var stableIdx = 10; // 2023-01 -- desde acá la cobertura se estabiliza (ventana del panel)
+
+  var W = 1180, H = 260, padL = 34, padR = 46, padT = 16, padB = 26;
+  var plotW = W - padL - padR, plotH = H - padT - padB;
+  var minV = 0, maxV = 100;
+
+  function x(i){ return padL + (i / (labels.length - 1)) * plotW; }
+  function y(v){ return padT + (1 - (v - minV) / (maxV - minV)) * plotH; }
+
+  function pathFor(values){
+    return "M " + values.map(function(v,i){ return x(i) + "," + y(v); }).join(" L ");
+  }
+  document.getElementById("covLine1Path").setAttribute("d", pathFor(s1));
+  document.getElementById("covLine2Path").setAttribute("d", pathFor(s2));
+
+  // stable region from breakIdx to end
+  var regionGroup = document.getElementById("covRegionGroup");
+  var rect = document.createElementNS("http://www.w3.org/2000/svg","rect");
+  rect.setAttribute("x", x(breakIdx)); rect.setAttribute("y", padT);
+  rect.setAttribute("width", x(labels.length-1) - x(breakIdx)); rect.setAttribute("height", plotH);
+  rect.setAttribute("class", "cov-region");
+  regionGroup.appendChild(rect);
+
+  var gridGroup = document.getElementById("covGridGroup");
+  [0,25,50,75,100].forEach(function(v){
+    var gy = y(v);
+    var line = document.createElementNS("http://www.w3.org/2000/svg","line");
+    line.setAttribute("x1", padL); line.setAttribute("x2", W-padR);
+    line.setAttribute("y1", gy); line.setAttribute("y2", gy);
+    line.setAttribute("class", v === 50 ? "cov-threshold-line" : "cov-grid-line");
+    gridGroup.appendChild(line);
+    var t = document.createElementNS("http://www.w3.org/2000/svg","text");
+    t.setAttribute("x", 6); t.setAttribute("y", gy+3);
+    t.setAttribute("class", v === 50 ? "cov-axis cov-threshold-label" : "cov-axis");
+    t.textContent = v + "%";
+    gridGroup.appendChild(t);
+  });
+
+  var axisGroup = document.getElementById("covAxisGroup");
+  var tickIdx = [0, breakIdx, stableIdx, labels.length - 1];
+  tickIdx.forEach(function(i){
+    var t = document.createElementNS("http://www.w3.org/2000/svg","text");
+    t.setAttribute("x", x(i)); t.setAttribute("y", H-6);
+    t.setAttribute("text-anchor", i === labels.length-1 ? "end" : (i === 0 ? "start" : "middle"));
+    t.setAttribute("class","cov-axis");
+    t.textContent = labels[i];
+    axisGroup.appendChild(t);
+  });
+
+  var bx = x(breakIdx);
+  var rule = document.getElementById("covAnnotRule");
+  rule.setAttribute("x1", bx); rule.setAttribute("x2", bx);
+  rule.setAttribute("y1", padT); rule.setAttribute("y2", padT+plotH);
+  var txt = document.getElementById("covAnnotText");
+  txt.setAttribute("x", bx + 6); txt.setAttribute("y", padT + 13);
+  txt.textContent = "2019-01 · ambas superan el 50%";
+
+  var sx = x(stableIdx);
+  var stableRule = document.getElementById("covStableRule");
+  stableRule.setAttribute("x1", sx); stableRule.setAttribute("x2", sx);
+  stableRule.setAttribute("y1", padT); stableRule.setAttribute("y2", padT+plotH);
+  var stableTxt = document.getElementById("covStableText");
+  stableTxt.setAttribute("x", sx + 6); stableTxt.setAttribute("y", padT + plotH - 8);
+  stableTxt.textContent = "2023-01 · cobertura estable";
+
+  var lastX = x(labels.length-1);
+  var y1 = y(s1[s1.length-1]), y2 = y(s2[s2.length-1]);
+  document.getElementById("covEndDot1").setAttribute("cx", lastX);
+  document.getElementById("covEndDot1").setAttribute("cy", y1);
+  document.getElementById("covEndDot2").setAttribute("cx", lastX);
+  document.getElementById("covEndDot2").setAttribute("cy", y2);
+
+  var l1 = document.getElementById("covEndLabel1");
+  l1.setAttribute("x", lastX + 9); l1.setAttribute("y", y1 + 4);
+  l1.textContent = s1[s1.length-1].toFixed(1).replace(".", ",") + "%";
+  var l2 = document.getElementById("covEndLabel2");
+  l2.setAttribute("x", lastX + 9); l2.setAttribute("y", y2 + 4);
+  l2.textContent = s2[s2.length-1].toFixed(1).replace(".", ",") + "%";
+})();
+</script>
