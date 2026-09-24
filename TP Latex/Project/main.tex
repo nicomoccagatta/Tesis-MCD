@@ -203,7 +203,7 @@ Se distingue de los antecedentes más cercanos en tres aspectos. Respecto del Co
 
 \subsection{Origen y contexto del dataset}
 
-Los datos que sostienen este trabajo son en su totalidad públicos y se acceden vía BigQuery: la tabla de crawls de HTTP Archive (\texttt{httparchive.crawl.pages}), que incluye para cada origen y cada mes la tecnología detectada por Wappalyzer, y la tabla materializada de CrUX (\texttt{chrome-ux-report.materialized.metrics\_summary}), que incluye para cada origen y cada mes el percentil 75 de LCP, INP y CLS. No se trabaja en ningún momento con datos personales: la unidad de análisis es el origen web (el dominio), no el usuario individual.
+Los datos que sostienen este trabajo son en su totalidad públicos y se acceden vía BigQuery: la tabla de crawls de HTTP Archive (\texttt{httparchive.crawl.pages}), que incluye para cada origen y cada mes la tecnología detectada por Wappalyzer, y la tabla materializada de CrUX por dispositivo (\texttt{chrome-ux-report.materialized.device\_summary}), que incluye para cada origen, cada mes y cada tipo de dispositivo el percentil 75 de LCP, INP y CLS, de modo que cada cliente de HTTP Archive (móvil o escritorio) se cruza con la experiencia de usuario de ese mismo dispositivo. No se trabaja en ningún momento con datos personales: la unidad de análisis es el origen web (el dominio), no el usuario individual.
 
 El uso de ambas fuentes con fines de investigación tiene precedente en la literatura, aunque no en la combinación causal que propone este trabajo. Ruth et al. \cite{ruth2022toppling}, en un estudio publicado en la Internet Measurement Conference de ACM, evaluaron la exactitud de distintos rankings de sitios web y concluyeron que CrUX es, de las fuentes comparadas, la que mejor refleja la popularidad real de un sitio \cite{chromedev2025cruxmethodology}, lo que respalda su uso como dataset de investigación. Beugin et al. \cite{beugin2026lessons} combinaron crawls históricos de HTTP Archive con datos de CrUX para estudiar, de forma longitudinal a lo largo de siete años, la adopción y el abandono de un conjunto de APIs web, en un diseño de datos estructuralmente similar al que se usa en este trabajo, aunque con un objetivo distinto (caracterizar la adopción de una tecnología, no estimar su efecto causal sobre una métrica de resultado).
 
@@ -252,9 +252,9 @@ La Tabla \ref{tab:variables} lista las variables operativas del panel y el papel
 \hline
 \textbf{Variable} & \textbf{Fuente} & \textbf{Granularidad} & \textbf{Rol en el diseño} \\ \hline
 Tecnología detectada (Wappalyzer) & HTTP Archive, \texttt{crawl.pages} & Origen, mes y cliente & Define el tratamiento: su cambio sostenido es el evento de migración \\ \hline
-p75 de LCP & CrUX, \texttt{metrics\_summary} & Origen y mes & Variable de resultado principal (H1) \\ \hline
-p75 de INP & CrUX, \texttt{metrics\_summary} & Origen y mes & Variable de resultado principal (H1) \\ \hline
-p75 de CLS & CrUX, \texttt{metrics\_summary} & Origen y mes & Variable de resultado secundaria \\ \hline
+p75 de LCP & CrUX, \texttt{device\_summary} & Origen, mes y dispositivo & Variable de resultado principal (H1) \\ \hline
+p75 de INP & CrUX, \texttt{device\_summary} & Origen, mes y dispositivo & Variable de resultado principal (H1) \\ \hline
+p75 de CLS & CrUX, \texttt{device\_summary} & Origen, mes y dispositivo & Variable de resultado secundaria \\ \hline
 Rango de tráfico del origen & CrUX & Origen y mes & Covariable de emparejamiento y eje de heterogeneidad (H2) \\ \hline
 País predominante & CrUX, tablas por país & Origen y mes & Covariable de emparejamiento \\ \hline
 Cliente (móvil o escritorio) & HTTP Archive & Origen y mes & Estratificación: el panel se construye por separado para cada cliente \\ \hline
