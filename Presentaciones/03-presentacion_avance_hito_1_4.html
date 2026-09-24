@@ -269,7 +269,33 @@
     </div>
   </section>
 
-  <!-- 2. LITERATURA -->
+  <!-- 2. CRONOGRAMA -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3Z"/></svg>
+      Cronograma de actividades
+    </p>
+    <div class="table-wrap">
+      <table class="cron">
+        <colgroup><col style="width:8%"><col style="width:15%"><col style="width:53%"><col style="width:24%"></colgroup>
+        <thead><tr><th>Semana</th><th>Fechas</th><th>Tareas</th><th>Entregable</th></tr></thead>
+        <tbody>
+          <tr class="row-done"><td class="wk">1&ndash;4</td><td>31/08&ndash;25/09/2026</td><td>Revisión final de literatura, diseño técnico del panel y relevamiento de cobertura del cruce entre fuentes</td><td class="deliv">Cerrado</td></tr>
+          <tr><td class="wk">5&ndash;10</td><td>28/09&ndash;06/11/2026</td><td>Construcción del panel HTTP Archive + CrUX (pipeline SQL, dimensión SCD-2 de tecnología)</td><td class="deliv">Panel construido</td></tr>
+          <tr><td class="wk">11&ndash;16</td><td>09/11&ndash;18/12/2026</td><td>Detección de eventos de migración y validación manual de una muestra contra Wayback Machine</td><td class="deliv">Catálogo de eventos validado</td></tr>
+          <tr><td class="wk">17&ndash;24</td><td>21/12/2026&ndash;12/02/2027</td><td>Selección de pares tecnológicos y armado del grupo de control por puntaje de propensión</td><td class="deliv">Diseño cuasi-experimental</td></tr>
+          <tr><td class="wk">25&ndash;28</td><td>15/02&ndash;12/03/2027</td><td>Verificación del supuesto de tendencias paralelas y ajustes al emparejamiento</td><td class="deliv">Validación de supuestos</td></tr>
+          <tr><td class="wk">29&ndash;34</td><td>15/03&ndash;23/04/2027</td><td>Estimación DiD escalonado (Callaway y Sant'Anna) sobre jQuery&rarr;React, con TWFE como referencia</td><td class="deliv">Resultados H1 y H3</td></tr>
+          <tr><td class="wk">35&ndash;38</td><td>26/04&ndash;21/05/2027</td><td>Extensión a los pares restantes y réplica con el estimador de Sun y Abraham</td><td class="deliv">Análisis de robustez</td></tr>
+          <tr><td class="wk">39&ndash;42</td><td>24/05&ndash;18/06/2027</td><td>Heterogeneidad de efectos con bosques aleatorios causales</td><td class="deliv">CATE por covariables</td></tr>
+          <tr><td class="wk">43&ndash;48</td><td>21/06&ndash;30/07/2027</td><td>Redacción final de la tesis y preparación de la defensa</td><td class="deliv">Tesis finalizada</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="foot"><span class="badge">Taller de Tesis I &middot; ITBA</span><span class="badge">Moccagatta, N. &middot; Leg. 106396</span></div>
+  </section>
+
+  <!-- 3. LITERATURA -->
   <section class="slide">
     <p class="kicker">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
@@ -347,7 +373,7 @@
     <div class="source-line">Especificación completa en <b>TP Latex/Project/main.tex</b> &middot; sección Solución propuesta</div>
   </section>
 
-  <!-- 4b. CONSTRUCCION DEL PANEL -->
+  <!-- 5. CONSTRUCCION DEL PANEL -->
   <section class="slide">
     <p class="kicker">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
@@ -374,7 +400,7 @@
     <div class="source-line">Unidad de observación: origen-mes &middot; panel construido por separado para cliente móvil y de escritorio &middot; TP Latex/Project/main.tex, Metodología (a) Construcción del panel</div>
   </section>
 
-  <!-- 5. COBERTURA DEL CRUCE -->
+  <!-- 6. COBERTURA DEL CRUCE -->
   <section class="slide">
     <p class="kicker">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
@@ -413,32 +439,6 @@
       </div>
     </div>
     <div class="source-line">18 fechas semestrales &middot; <b>bigquery/cross_source/002-cobertura-cruce-httparchive-crux-2018-2026</b> &middot; ~34,3 GB escaneados</div>
-  </section>
-
-  <!-- 6. IMPLICANCIA Y PROXIMOS PASOS -->
-  <section class="slide">
-    <p class="kicker">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3Z"/></svg>
-      Cronograma de actividades
-    </p>
-    <div class="table-wrap">
-      <table class="cron">
-        <colgroup><col style="width:8%"><col style="width:15%"><col style="width:53%"><col style="width:24%"></colgroup>
-        <thead><tr><th>Semana</th><th>Fechas</th><th>Tareas</th><th>Entregable</th></tr></thead>
-        <tbody>
-          <tr class="row-done"><td class="wk">1&ndash;4</td><td>31/08&ndash;25/09/2026</td><td>Revisión final de literatura, diseño técnico del panel y relevamiento de cobertura del cruce entre fuentes</td><td class="deliv">Cerrado</td></tr>
-          <tr><td class="wk">5&ndash;10</td><td>28/09&ndash;06/11/2026</td><td>Construcción del panel HTTP Archive + CrUX (pipeline SQL, dimensión SCD-2 de tecnología)</td><td class="deliv">Panel construido</td></tr>
-          <tr><td class="wk">11&ndash;16</td><td>09/11&ndash;18/12/2026</td><td>Detección de eventos de migración y validación manual de una muestra contra Wayback Machine</td><td class="deliv">Catálogo de eventos validado</td></tr>
-          <tr><td class="wk">17&ndash;24</td><td>21/12/2026&ndash;12/02/2027</td><td>Selección de pares tecnológicos y armado del grupo de control por puntaje de propensión</td><td class="deliv">Diseño cuasi-experimental</td></tr>
-          <tr><td class="wk">25&ndash;28</td><td>15/02&ndash;12/03/2027</td><td>Verificación del supuesto de tendencias paralelas y ajustes al emparejamiento</td><td class="deliv">Validación de supuestos</td></tr>
-          <tr><td class="wk">29&ndash;34</td><td>15/03&ndash;23/04/2027</td><td>Estimación DiD escalonado (Callaway y Sant'Anna) sobre jQuery&rarr;React, con TWFE como referencia</td><td class="deliv">Resultados H1 y H3</td></tr>
-          <tr><td class="wk">35&ndash;38</td><td>26/04&ndash;21/05/2027</td><td>Extensión a los pares restantes y réplica con el estimador de Sun y Abraham</td><td class="deliv">Análisis de robustez</td></tr>
-          <tr><td class="wk">39&ndash;42</td><td>24/05&ndash;18/06/2027</td><td>Heterogeneidad de efectos con bosques aleatorios causales</td><td class="deliv">CATE por covariables</td></tr>
-          <tr><td class="wk">43&ndash;48</td><td>21/06&ndash;30/07/2027</td><td>Redacción final de la tesis y preparación de la defensa</td><td class="deliv">Tesis finalizada</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="foot"><span class="badge">Taller de Tesis I &middot; ITBA</span><span class="badge">Moccagatta, N. &middot; Leg. 106396</span></div>
   </section>
 
   <!-- 7. CIERRE -->
