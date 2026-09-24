@@ -184,6 +184,7 @@
   table.cron tbody tr.row-done td.deliv{ color: var(--status-good); }
   table.cron.fill{ height: 100%; }
   table.cron.fill tbody td{ vertical-align: middle; }
+  table.cron a{ color: var(--accent); text-decoration: none; font-family: var(--font-mono); font-size: 12.5px; }
   table.cron code{ font-family: var(--font-mono); font-size: 12.5px; color: var(--text-primary); }
 
   /* ---- Coverage dual-line chart ---- */
@@ -441,7 +442,33 @@
     <div class="source-line">18 fechas semestrales &middot; <b>bigquery/cross_source/002-cobertura-cruce-httparchive-crux-2018-2026</b> &middot; ~34,3 GB escaneados</div>
   </section>
 
-  <!-- 7. CIERRE -->
+  <!-- 7. EXTRA: VALIDACION CONTRA WAYBACK MACHINE -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      Extra &middot; Validación de eventos contra Wayback Machine
+    </p>
+    <h2 class="slide-title">jQuery&rarr;React: detectado en HTTP Archive, verificado en Wayback</h2>
+    <div class="table-wrap">
+      <table class="cron fill">
+        <colgroup><col style="width:17%"><col style="width:8%"><col style="width:33%"><col style="width:21%"><col style="width:21%"></colgroup>
+        <thead><tr><th>Origen</th><th>Rank</th><th>Wappalyzer (HTTP Archive) jun-25 &rarr; jun-26</th><th>Wayback: antes</th><th>Wayback: después</th></tr></thead>
+        <tbody>
+          <tr><td class="mo">www.newsweek.com</td><td>top 1k</td><td>Swiper, core-js, jQuery &rarr; <b>Next.js, React, core-js</b></td><td><a href="https://web.archive.org/web/20250615231213/https://www.newsweek.com/">2025-06-15</a>: <code>jQuery(…)</code> inline &times;6</td><td><a href="https://web.archive.org/web/20260615194555/https://www.newsweek.com/">2026-06-15</a>: <code>/_next/static</code> &times;323</td></tr>
+          <tr><td class="mo">www.chase.com</td><td>top 5k</td><td>Boomerang, Lodash, RequireJS, jQuery &rarr; <b>Next.js, React, styled-components</b></td><td><a href="https://web.archive.org/web/20250616010355/https://www.chase.com/">2025-06-16</a>: <code>jquery.min.js</code></td><td><a href="https://web.archive.org/web/20260615190744/https://www.chase.com/">2026-06-15</a>: <code>/_next/static</code> &times;28</td></tr>
+          <tr><td class="mo">pbskids.org</td><td>top 5k</td><td>Modernizr, RequireJS, jQuery &rarr; <b>Next.js, React</b></td><td><a href="https://web.archive.org/web/20250615213408/https://pbskids.org/">2025-06-15</a>: plugins <code>jquery.*.js</code></td><td><a href="https://web.archive.org/web/20260615200356/https://pbskids.org/">2026-06-15</a>: <code>/_next/static</code> &times;38</td></tr>
+          <tr><td class="mo">www.pagina12.com.ar</td><td>top 5k</td><td>Glider.js, core-js, jQuery &rarr; <b>Boomerang, React, core-js</b></td><td><a href="https://web.archive.org/web/20250615232719/https://www.pagina12.com.ar/">2025-06-15</a>: <code>jQuery(…)</code> inline &times;5</td><td><a href="https://web.archive.org/web/20260615234950/https://www.pagina12.com.ar/">2026-06-15</a>: <code>react.js</code> (Arc XP)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+      <div><div class="callout-label">Piloto del paso 02 (detección de eventos)</div><p>23 orígenes del top 10k con jQuery sin React en mar y jun-2025 y React sin jQuery en mar y jun-2026 (crawl móvil). De 5 revisados en el HTML archivado, 4 confirman el cambio; en <code>www.n-tv.de</code> el HTML de 2025 no referencia jQuery (puede venir dentro de un bundle), así que queda como no concluyente.</p></div>
+    </div>
+    <div class="source-line"><b>bigquery/httparchive_crawl_pages/002-ejemplos-migracion-jquery-react-top10k-2025-2026</b> &middot; capturas <code>id_</code> de web.archive.org más cercanas al 15/06 de cada año</div>
+  </section>
+
+  <!-- 8. CIERRE -->
   <section class="slide closing">
     <p class="kicker">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
