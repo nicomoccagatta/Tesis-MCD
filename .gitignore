@@ -23,6 +23,17 @@
 .agents/
 skills-lock.json
 
+# LaTeX auxiliares
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
 # Temp/backup files
 *.tmp
 *.bak
