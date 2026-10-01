@@ -5,3 +5,5 @@ date,project,script,gb_scanned
 2026-09-04,tesis-506222,cross_source/001-migraciones-y-did-dos-periodos-jun2025-jun2026,29.3743
 2026-09-22,tesis-506222,cross_source/002-cobertura-cruce-httparchive-crux-2018-2026,34.2863
 2026-09-24,tesis-506222,httparchive_crawl_pages/002-ejemplos-migracion-jquery-react-top10k-2025-2026,117.1305
+2026-10-01,tesis-506222,cross_source/003-panel-piloto-sitio-tecnologia-top10k-2025,234.8694
+2026-10-01,tesis-506222,httparchive_wappalyzer_technologies/001-categorias-e-implies-por-tecnologia,0.0001
