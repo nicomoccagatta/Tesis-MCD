@@ -9,3 +9,5 @@ date,project,script,gb_dry_run,gb_billed,job_id
 2026-10-01,tesis-506222,httparchive_wappalyzer_technologies/001-categorias-e-implies-por-tecnologia,0.0001,0.01,bqjob_r3b1f5fe770c5a2e4_000001a0f9840b8a_1
 2026-10-01,tesis-506222,cross_source/005-cobertura-top10k-crux-vs-crawl-dic2025,4.6351,3.03,bqjob_r4cd85f430636c8e7_000001a0f9a254b2_1
 2026-10-01,tesis-506222,cross_source/004-panel-piloto-sitio-tecnologia-top10k-2025-desktop,234.8694,19.76,bqjob_r1171126681ea50ae_000001a0f9a2c748_1
+2026-10-01,tesis-506222,cross_source/005-cobertura-top10k-crux-vs-crawl-dic2025,3.9801,2.6665,tesis_20261001_203102_94633
+2026-10-01,tesis-506222,cross_source/006-costo-mes-completo-sin-rank-dic2025,18.854,6.1048,tesis_20261001_203122_95155

@@ -392,7 +392,7 @@
     </div>
     <div class="callout">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-      <div><div class="callout-label">Hallazgo de diseño</div><p style="font-size:17px">El rank viene en tramos (1k, 5k, 10k). Filtrar el top 10k <b>mes a mes</b> hace entrar y salir sitios según su popularidad: menos de la mitad está los 12 meses. En el panel definitivo la muestra se fija con un corte <b>anterior</b> a la ventana de estudio: fijarla dentro de la ventana también selecciona por un rank medido durante el estudio (el panel balanceado sobrerrepresenta el top 1k: 14,7% de sus sitios, contra 10,0% del crawl de dic-2025).</p></div>
+      <div><div class="callout-label">Hallazgo de diseño</div><p style="font-size:17px">El rank viene en tramos (1k, 5k, 10k). Filtrar el top 10k <b>mes a mes</b> hace entrar y salir sitios según su popularidad: de los 14.791 sitios que aparecen en el año, solo 3.832 (26%) están los 12 meses. En el panel definitivo la muestra se fija con un corte <b>anterior</b> a la ventana de estudio: fijarla dentro de la ventana también selecciona por un rank medido durante el estudio (el panel balanceado sobrerrepresenta el top 1k: 14,7% de sus sitios, contra 10,0% del crawl de dic-2025).</p></div>
     </div>
     <div class="source-line"><b>analisis/panel_piloto_scd2.py</b> &middot; salidas en <b>analisis/salidas/panel_piloto_scd2_{mobile,desktop}.json</b></div>
   </section>
@@ -405,18 +405,18 @@
     </p>
     <h2 class="slide-title">Por qué el panel tiene ~7.500 sitios por mes y no 10.000</h2>
     <div class="kpi-row" style="grid-template-columns: repeat(3, 1fr)">
-      <div class="kpi"><div class="kpi-label">Root pages con rank &le; 10.000 en el crawl</div><div class="kpi-value">7.725</div><div class="kpi-sub">Crawl móvil de dic-2025: es de donde sale el panel</div></div>
+      <div class="kpi"><div class="kpi-label">Root pages con rank &le; 10.000 en el crawl</div><div class="kpi-value">7.725</div><div class="kpi-sub">Crawl móvil de dic-2025; 7.540 entran al panel (185 no tienen ninguna tecnología detectada)</div></div>
       <div class="kpi"><div class="kpi-label">&hellip;que también son top 10k en CrUX dic-2025</div><div class="kpi-value">6.851</div><div class="kpi-sub">Las otras 874 vienen de la lista del mes anterior</div></div>
-      <div class="kpi"><div class="kpi-label">Top 10k de CrUX sin root page en el crawl</div><div class="kpi-value">2.312</div><div class="kpi-sub">De 10.000: no rastreados como página raíz ese mes</div></div>
+      <div class="kpi"><div class="kpi-label">Top 10k de CrUX ausente del crawl</div><div class="kpi-value">2.310</div><div class="kpi-sub">De 10.000: no aparecen en el crawl ese mes (solo 2 figuran únicamente como página secundaria)</div></div>
     </div>
     <div class="content">
       <ul class="points">
         <li><span class="bullet"></span><span><b>HTTP Archive arma el crawl del mes M con la lista de CrUX del mes M&minus;1.</b> El rank que trae cada root page es el de esa lista, por eso 874 de sus top 10k ya no lo son en CrUX de diciembre, y 837 del top 10k de diciembre figuran con otro rank.</span></li>
-        <li><span class="bullet"></span><span><b>No todo el top 10k termina como root page en el crawl:</b> sitios que fallan en la visita, redirigen a otro origen o solo quedan registrados como página secundaria.</span></li>
+        <li><span class="bullet"></span><span><b>Una parte del top 10k no está en el crawl de ese mes:</b> 2.310 sitios no aparecen ni como página raíz ni como secundaria (visita fallida, redirección a otro origen o fuera de la lista del mes anterior).</span></li>
         <li><span class="bullet"></span><span><b>Implicancia:</b> el universo del panel es la lista que efectivamente rastrea HTTP Archive. A escala completa el cruce ya está medido (87&ndash;92% de los root pages con dato de CrUX desde 2023).</span></li>
       </ul>
     </div>
-    <div class="source-line"><b>bigquery/cross_source/005-cobertura-top10k-crux-vs-crawl-dic2025</b> &middot; crawl móvil &middot; 3,0 GB facturados</div>
+    <div class="source-line"><b>bigquery/cross_source/005-cobertura-top10k-crux-vs-crawl-dic2025</b> &middot; crawl móvil &middot; 2,7 GB facturados</div>
   </section>
 
   <!-- 5. EVENTOS DE MIGRACION -->
@@ -468,7 +468,7 @@
       <div class="card">
         <span class="card-tag">Capa de interpretación</span>
         <h3>Dependencias internas del framework (npm)</h3>
-        <p>Lo que trae cada versión según su <code>package.json</code> (ej. <code>next@15.4</code> &rarr; <code>react</code>, <code>styled-jsx</code>, <code>@swc/helpers</code>). Disponible para toda versión publicada en <code>registry.npmjs.org</code>.</p>
+        <p>Lo que trae cada versión según su <code>package.json</code> (ej. <code>next@15.4</code> &rarr; <code>styled-jsx</code>, <code>@swc/helpers</code>, <code>postcss</code>; React va como <i>peer dependency</i>). Disponible para toda versión publicada en <code>registry.npmjs.org</code>.</p>
         <p><b>Es constante dentro de cada versión</b>: queda totalmente determinada por framework@versión, por lo que no aporta variación propia para identificar efectos.</p>
         <p>Uso: explicar por qué difieren dos versiones una vez observada la diferencia.</p>
       </div>
@@ -565,7 +565,7 @@
         <div class="legend-list" id="netLegend"></div>
         <div class="kpi" style="padding:12px 16px">
           <div class="kpi-label">Proyección</div>
-          <div class="kpi-sub" style="margin-top:0;font-size:13.5px">67 tecnologías &middot; 131 pares con lift &ge; 2 y &ge; 20 sitios en común, sin los 20 pares que Wappalyzer infiere por reglas <i>implies</i> (ej. Next.js &rarr; React) &middot; Louvain: 6 comunidades en 40 de 50 semillas, modularidad 0,69 &middot; exploratorio: en escritorio oscila entre 7 y 8</div>
+          <div class="kpi-sub" style="margin-top:0;font-size:13.5px">67 tecnologías &middot; 131 pares con lift &ge; 2 y &ge; 20 sitios en común, sin los 20 pares que Wappalyzer infiere por reglas <i>implies</i> (ej. Next.js &rarr; React) &middot; Louvain: 6 comunidades en 40 de 50 semillas, modularidad 0,69 &middot; exploratorio: en escritorio da entre 6 y 8 según la semilla</div>
         </div>
       </div>
     </div>
@@ -631,7 +631,7 @@
     <div class="content">
       <ul class="points">
         <li><span class="bullet"></span><span><b>Fijar la muestra con un corte anterior a la ventana</b> y seguir a esos sitios todo el período, independientemente de su rank posterior.</span></li>
-        <li><span class="bullet"></span><span><b>Medir el costo real del panel completo</b> con un mes sin filtro de rank (el filtro top 10k recortó ~92% de lo que estimaba el dry-run) y escalar a la ventana 2023&ndash;2026.</span></li>
+        <li><span class="bullet"></span><span><b>Escalar a la ventana 2023&ndash;2026:</b> un mes completo (15,7 M sitios, móvil) factura 6,1 GB, así que ambos clientes suman ~525 GB y entran en la cuota. El límite es el volumen: 256 M filas sitio &times; tecnología por mes, por lo que se filtra a las tecnologías del estudio y se agrega dentro de BigQuery.</span></li>
         <li><span class="bullet"></span><span><b>Dimensionar por potencia:</b> estimar cuántos eventos persistentes por par hacen falta para detectar efectos del orden de 40 ms.</span></li>
         <li><span class="bullet"></span><span><b>Definir el tratamiento</b> de jQuery&rarr;React: estricto (descarte 10&ndash;12%) o incluyendo a los que conservan jQuery (descarte 30&ndash;46%).</span></li>
         <li><span class="bullet"></span><span><b>Grafo mensual y por versión:</b> seguir los stacks en el tiempo y validar en Wayback Machine una muestra del recableado.</span></li>

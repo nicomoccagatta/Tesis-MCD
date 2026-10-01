@@ -1,4 +1,5 @@
--- Fecha: 2026-10-01
+-- Fecha: 2026-10-01 (corregida el mismo día: la categoría "solo como página no raíz" se medía
+--            con RTRIM(page), que nunca coincide con un origin para una URL no raíz; ahora usa root_page)
 -- Propósito: explicar por qué el panel piloto "top 10k" tiene ~7.500 sitios por mes y no
 --            10.000. Compara los origins del tramo rank <= 10000 de CrUX con los root pages
 --            del mismo tramo en el crawl móvil de HTTP Archive, para dic-2025, y clasifica
@@ -16,7 +17,7 @@ WITH crux AS (
 
 crawl AS (
   SELECT
-    RTRIM(page, '/') AS origin,
+    RTRIM(root_page, '/') AS origin,
     is_root_page,
     rank
   FROM `httparchive.crawl.pages`

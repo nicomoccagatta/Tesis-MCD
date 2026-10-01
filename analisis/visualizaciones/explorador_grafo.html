@@ -107,7 +107,7 @@
 
   <section id="tab-red" class="hidden">
     <div class="explain">
-      <b>Cómo leerlo.</b> Cada <b>círculo</b> es una tecnología; su tamaño es la cantidad de sitios que la usan. Una <b>línea</b> une dos tecnologías que aparecen juntas en los mismos sitios al menos el doble de lo esperable por azar (lift &ge; 2, con &ge; 20 sitios en común); se excluyen los pares que Wappalyzer infiere por reglas <i>implies</i> (ej. Next.js &rarr; React), porque no son adopción conjunta. Los <b>colores</b> son comunidades (stacks) que encuentra el algoritmo de Louvain; es exploratorio: el número de comunidades varía según la semilla (móvil: 6 en 40 de 50; escritorio: entre 7 y 8). Cada sitio se asigna al stack donde tiene más tecnologías, y el LCP del stack es la mediana del p75 de LCP de esos sitios.
+      <b>Cómo leerlo.</b> Cada <b>círculo</b> es una tecnología; su tamaño es la cantidad de sitios que la usan. Una <b>línea</b> une dos tecnologías que aparecen juntas en los mismos sitios al menos el doble de lo esperable por azar (lift &ge; 2, con &ge; 20 sitios en común); se excluyen los pares que Wappalyzer infiere por reglas <i>implies</i> (ej. Next.js &rarr; React), porque no son adopción conjunta. Los <b>colores</b> son comunidades (stacks) que encuentra el algoritmo de Louvain; es exploratorio: el número de comunidades varía según la semilla (móvil: 6 en 40 de 50 semillas; escritorio: entre 6 y 8). Cada sitio se asigna al stack donde tiene más tecnologías, y el LCP del stack es la mediana del p75 de LCP de esos sitios.
       Pasá el mouse por un nodo para ver sus datos; hacé clic para resaltar sus vecinos; rueda para zoom, arrastrar para mover; clic en un stack de la lista para aislarlo.
     </div>
     <div class="controls">
