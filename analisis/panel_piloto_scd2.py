@@ -107,8 +107,11 @@ con.execute(
 
 
 def eventos(nombre, antes, despues):
-    """Cuenta cambios de estado antes->después en meses consecutivos del panel balanceado:
-    crudos (un mes antes / un mes después) y persistentes (>= 3 meses de cada lado).
+    """Cuenta sitios con un cambio de estado antes->después en meses consecutivos del panel
+    balanceado: crudo (un mes antes / un mes después) y persistente (>= 3 meses de cada lado).
+    Un cambio persistente solo puede empezar entre el mes k y el mes (meses - k); los crudos
+    fuera de ese rango no se pueden verificar, así que el descarte atribuible a la regla de
+    persistencia se mide solo sobre los crudos verificables.
     Los persistentes quedan guardados en eventos_persistentes con su mes de cambio."""
     k = PERSISTENCIA_MESES
     con.execute(f"""
@@ -141,6 +144,9 @@ def eventos(nombre, antes, despues):
     SELECT
       '{nombre}' AS par,
       COUNT(DISTINCT origin) FILTER (WHERE antes_1 AND despues_1) AS sitios_cambio_crudo,
+      COUNT(DISTINCT origin) FILTER (
+        WHERE antes_1 AND despues_1 AND mes BETWEEN {k} AND {meses_totales - k}
+      ) AS sitios_cambio_crudo_verificable,
       COUNT(DISTINCT origin) FILTER (WHERE {persistente}) AS sitios_cambio_persistente
     FROM ventanas
     """).fetchone()
@@ -169,11 +175,18 @@ resultado = {
         {"tecnologia": t, "tramos": n, "tramos_un_mes_internos": r} for t, n, r in ruido
     ],
     "eventos": [
-        {"par": p, "crudos": c, "persistentes_3m": s} for p, c, s in pares
+        {
+            "par": p,
+            "sitios_crudo": c,
+            "sitios_crudo_verificable": v,
+            "sitios_persistente_3m": s,
+            "pct_descartado_verificable": round(100 * (1 - s / v)) if v else None,
+        }
+        for p, c, v, s in pares
     ],
 }
 
 SALIDA.parent.mkdir(parents=True, exist_ok=True)
-con.execute(f"COPY eventos_persistentes TO '{EVENTOS}' (FORMAT PARQUET)")
+con.execute(f"COPY (SELECT * FROM eventos_persistentes ORDER BY par, origin) TO '{EVENTOS}' (FORMAT PARQUET)")
 SALIDA.write_text(json.dumps(resultado, ensure_ascii=False, indent=2))
 print(json.dumps(resultado, ensure_ascii=False, indent=2))

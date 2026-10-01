@@ -41,23 +41,31 @@
   "eventos": [
     {
       "par": "jQuery→React",
-      "crudos": 31,
-      "persistentes_3m": 18
+      "sitios_crudo": 31,
+      "sitios_crudo_verificable": 20,
+      "sitios_persistente_3m": 18,
+      "pct_descartado_verificable": 10
     },
     {
       "par": "jQuery→React (conservando jQuery)",
-      "crudos": 38,
-      "persistentes_3m": 14
+      "sitios_crudo": 38,
+      "sitios_crudo_verificable": 20,
+      "sitios_persistente_3m": 14,
+      "pct_descartado_verificable": 30
     },
     {
       "par": "React→Next.js",
-      "crudos": 22,
-      "persistentes_3m": 14
+      "sitios_crudo": 22,
+      "sitios_crudo_verificable": 16,
+      "sitios_persistente_3m": 14,
+      "pct_descartado_verificable": 12
     },
     {
       "par": "Abandono de WordPress",
-      "crudos": 10,
-      "persistentes_3m": 4
+      "sitios_crudo": 10,
+      "sitios_crudo_verificable": 6,
+      "sitios_persistente_3m": 4,
+      "pct_descartado_verificable": 33
     }
   ]
 }

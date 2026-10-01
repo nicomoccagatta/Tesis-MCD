@@ -81,16 +81,34 @@ B.add_nodes_from(nodos_validos, bipartite=1)
 B.add_edges_from(aristas[["origin", "nodo"]].itertuples(index=False, name=None))
 
 # Proyección sobre tecnologías: peso = coocurrencia; se conservan pares con lift alto.
+# Se descartan los pares donde Wappalyzer infiere una tecnología a partir de la otra
+# (regla "implies", ej. Next.js -> React): su coocurrencia es mecánica, no adopción conjunta.
 proy = bipartite.weighted_projected_graph(B, list(nodos_validos))
 n_total = len(sitios)
+tecnologia_de = aristas.drop_duplicates("nodo").set_index("nodo")["technology"].to_dict()
+implica = {
+    t: set(i.split("; ")) if i else set()
+    for t, i in con.execute("SELECT technology, implies FROM cat").fetchall()
+}
+
+
+def por_implies(u, v):
+    tu, tv = tecnologia_de[u], tecnologia_de[v]
+    return tv in implica.get(tu, set()) or tu in implica.get(tv, set())
+
+
 # Nodos y aristas se agregan en orden fijo: Louvain y el layout dependen del orden de
 # inserción, y el de los sets de Python cambia entre corridas.
 pares_lift = []
+pares_implies = 0
 for u, v, d in proy.edges(data=True):
     u, v = sorted((u, v))
     co = d["weight"]
     lift = co * n_total / (soporte[u] * soporte[v])
     if co >= MIN_COOCURRENCIA and lift >= MIN_LIFT:
+        if por_implies(u, v):
+            pares_implies += 1
+            continue
         pares_lift.append((u, v, {"coocurrencia": co, "lift": round(lift, 2)}))
 red = nx.Graph()
 red.add_nodes_from(sorted({n for u, v, _ in pares_lift for n in (u, v)}))
@@ -98,6 +116,11 @@ red.add_edges_from(sorted(pares_lift, key=lambda e: (e[0], e[1])))
 
 comunidades = nx.community.louvain_communities(red, weight="lift", seed=SEMILLA)
 comunidad_de = {n: i for i, c in enumerate(comunidades) for n in c}
+# Louvain es estocástico: se reporta cuántas comunidades da con 50 semillas distintas.
+comunidades_por_semilla = {}
+for semilla in range(50):
+    k = len(nx.community.louvain_communities(red, weight="lift", seed=semilla))
+    comunidades_por_semilla[k] = comunidades_por_semilla.get(k, 0) + 1
 
 # Cada sitio se asigna al stack (comunidad) donde tiene más tecnologías.
 sitio_comunidad = (
@@ -231,16 +254,45 @@ GROUP BY ALL HAVING COUNT(DISTINCT origin) >= {MIN_SITIOS_NODO}
 ORDER BY nodo, sitios DESC
 """).fetchall()
 
+# Matriz versión mayor x librería: % de los sitios de cada framework@versión (>= 30 sitios)
+# que usa cada una de las librerías más frecuentes. Responde "librerías por versión".
+nodos_version = [n for n, *_ in versiones]
+libs_version = (
+    total_por_lib[~total_por_lib.index.str.contains("@")]
+    .sort_values(ascending=False).head(15).index
+)
+sitios_por_version = aristas_todas[aristas_todas["nodo"].isin(nodos_version)].groupby("nodo")["origin"].agg(set)
+sitios_por_lib = librerias[librerias["nodo"].isin(libs_version)].groupby("nodo")["origin"].agg(set)
+matriz_version = [
+    {
+        "version": v,
+        "libreria": lib,
+        "pct": round(100 * len(sitios_por_version[v] & sitios_por_lib[lib]) / len(sitios_por_version[v]), 1),
+        "lift": round(
+            len(sitios_por_version[v] & sitios_por_lib[lib]) * n_total
+            / (len(sitios_por_version[v]) * len(sitios_por_lib[lib])), 2
+        ),
+    }
+    for v in nodos_version if v in sitios_por_version.index
+    for lib in libs_version
+]
+
 # Recableado de aristas en las migraciones persistentes: se van / se quedan / llegan.
 # "antes" = librerías presentes los 3 meses previos al cambio; "después" = los 3 meses desde el cambio.
 # Las que llegan se separan en: framework nuevo (React, sus meta-frameworks y lo que estos
 # implican), ecosistema React (librerías que según Wappalyzer requieren React, o con lift >= 2
 # entre los sitios que ya usaban React en dic-2025) y propias del sitio.
-lift_react = {}
-sitios_react = set(aristas.loc[aristas["technology"] == "React", "origin"])
-for lib, total in total_por_lib.items():
-    co = librerias[(librerias["nodo"] == lib) & librerias["origin"].isin(sitios_react)]["origin"].nunique()
-    lift_react[lib] = co * n_total / (len(sitios_react) * total) if sitios_react else 0
+# El lift se calcula sobre todas las tecnologías del mes (no solo las de >= 30 sitios ni solo
+# las categorizadas como librería: Wappalyzer pone Emotion en "JavaScript frameworks").
+MIN_SITIOS_LIFT = 10
+sitios_react = set(aristas_todas.loc[aristas_todas["technology"] == "React", "origin"])
+por_tecnologia = aristas_todas.groupby("technology")["origin"].agg(set)
+n_sitios_todas = aristas_todas["origin"].nunique()
+lift_react = {
+    t: len(o & sitios_react) * n_sitios_todas / (len(sitios_react) * len(o))
+    for t, o in por_tecnologia.items()
+    if len(o) >= MIN_SITIOS_LIFT and sitios_react
+}
 
 meta_frameworks_react = set(con.execute("""
 SELECT technology FROM cat
@@ -298,8 +350,26 @@ def clase_llegada(tech):
 recableado["clase"] = recableado.apply(
     lambda r: clase_llegada(r["technology"]) if r["estado"] == "llega" else r["estado"], axis=1
 )
+# Para contar librerías por sitio se excluyen las tecnologías que definen la migración
+# (jQuery se va o se queda por definición; React y su capa de framework llegan por definición).
+definen_migracion = {"jQuery"} | framework_react
+sin_definitorias = recableado[~recableado["technology"].isin(definen_migracion)]
+n_sitios_rec = recableado["origin"].nunique()
+por_clase = sin_definitorias["clase"].value_counts()
+antes_n = por_clase.get("se_va", 0) + por_clase.get("se_queda", 0)
+despues_n = por_clase.get("se_queda", 0) + sum(
+    por_clase.get(c, 0) for c in ("llega_ecosistema_react", "llega_propia")
+)
 resumen_recableado = {
-    "sitios": int(recableado["origin"].nunique()),
+    "sitios": int(n_sitios_rec),
+    "excluidas_por_definir_la_migracion": sorted(definen_migracion & set(recableado["technology"])),
+    "librerias_por_sitio_sin_definitorias": {
+        "antes": round(antes_n / n_sitios_rec, 2),
+        "despues": round(despues_n / n_sitios_rec, 2),
+        **{c: round(int(por_clase.get(c, 0)) / n_sitios_rec, 2)
+           for c in ("se_va", "se_queda", "llega_ecosistema_react", "llega_propia")},
+        "pct_conservadas": round(100 * por_clase.get("se_queda", 0) / antes_n) if antes_n else None,
+    },
     "aristas_por_clase": recableado["clase"].value_counts().to_dict(),
     "ejemplos_por_clase": {
         c: (recableado.loc[recableado["clase"] == c, "technology"].value_counts()
@@ -326,7 +396,9 @@ resultado = {
     "proyeccion": {
         "nodos": red.number_of_nodes(),
         "aristas_lift_alto": red.number_of_edges(),
+        "pares_descartados_por_implies": pares_implies,
         "comunidades": len(comunidades),
+        "comunidades_por_semilla": dict(sorted(comunidades_por_semilla.items())),
         "modularidad": round(nx.community.modularity(red, comunidades, weight="lift"), 3),
         "aristas": [
             {"u": u, "v": v, **d} for u, v, d in sorted(
@@ -350,6 +422,7 @@ resultado = {
     "versiones": [
         {"nodo": n, "sitios": s, "lcp_mediana_ms": l} for n, s, l in versiones
     ],
+    "matriz_version_libreria": matriz_version,
     "recableado_jquery_react": resumen_recableado,
 }
 

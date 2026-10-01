@@ -1,11 +1,11 @@
-date,project,script,gb_scanned
-2026-08-23,tesis-506222,httparchive_crawl_pages/001-panel-root-pages-growth-2020-2026,11.6585
-2026-08-23,tesis-506222,chrome-ux-report_materialized_metrics_summary/001-lcp-inp-cls-semaforo-jul2026,0.6735
-2026-08-23,tesis-506222,chrome-ux-report_materialized_metrics_summary/002-verificar-unicidad-origin-jul2026,0.6707
-2026-09-04,tesis-506222,cross_source/001-migraciones-y-did-dos-periodos-jun2025-jun2026,29.3743
-2026-09-22,tesis-506222,cross_source/002-cobertura-cruce-httparchive-crux-2018-2026,34.2863
-2026-09-24,tesis-506222,httparchive_crawl_pages/002-ejemplos-migracion-jquery-react-top10k-2025-2026,117.1305
-2026-10-01,tesis-506222,cross_source/003-panel-piloto-sitio-tecnologia-top10k-2025,234.8694
-2026-10-01,tesis-506222,httparchive_wappalyzer_technologies/001-categorias-e-implies-por-tecnologia,0.0001
-2026-10-01,tesis-506222,cross_source/005-cobertura-top10k-crux-vs-crawl-dic2025,4.6351
-2026-10-01,tesis-506222,cross_source/004-panel-piloto-sitio-tecnologia-top10k-2025-desktop,234.8694
+date,project,script,gb_dry_run,gb_billed,job_id
+2026-08-23,tesis-506222,httparchive_crawl_pages/001-panel-root-pages-growth-2020-2026,11.6585,11.66,bqjob_r62606f5fd5fc3571_000001a0300cb580_1
+2026-08-23,tesis-506222,chrome-ux-report_materialized_metrics_summary/001-lcp-inp-cls-semaforo-jul2026,0.6735,0.67,bqjob_r5a863d99cf2e13f2_000001a03055f49e_1
+2026-08-23,tesis-506222,chrome-ux-report_materialized_metrics_summary/002-verificar-unicidad-origin-jul2026,0.6707,0.67,(sin job_id registrado)
+2026-09-04,tesis-506222,cross_source/001-migraciones-y-did-dos-periodos-jun2025-jun2026,29.3743,9.49,bqjob_r1de51260c92bc4fe_000001a06d7d3a51_1
+2026-09-22,tesis-506222,cross_source/002-cobertura-cruce-httparchive-crux-2018-2026,34.2863,20.55,bqjob_r17946b894a4e73a8_000001a0c9d74eee_1
+2026-09-24,tesis-506222,httparchive_crawl_pages/002-ejemplos-migracion-jquery-react-top10k-2025-2026,117.1305,0.02,bqjob_r14bc60d89028a533_000001a0d34ad189_1
+2026-10-01,tesis-506222,cross_source/003-panel-piloto-sitio-tecnologia-top10k-2025,234.8694,19.77,bqjob_r162b4f4f9438ca6f_000001a0f9755f66_1
+2026-10-01,tesis-506222,httparchive_wappalyzer_technologies/001-categorias-e-implies-por-tecnologia,0.0001,0.01,bqjob_r3b1f5fe770c5a2e4_000001a0f9840b8a_1
+2026-10-01,tesis-506222,cross_source/005-cobertura-top10k-crux-vs-crawl-dic2025,4.6351,3.03,bqjob_r4cd85f430636c8e7_000001a0f9a254b2_1
+2026-10-01,tesis-506222,cross_source/004-panel-piloto-sitio-tecnologia-top10k-2025-desktop,234.8694,19.76,bqjob_r1171126681ea50ae_000001a0f9a2c748_1

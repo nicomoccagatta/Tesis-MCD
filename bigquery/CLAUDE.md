@@ -94,7 +94,10 @@ millones de filas resumidas, no los crawls crudos.
 
 El script:
 1. Busca `httparchive_crawl_pages/001-nombre-descriptivo.sql` dentro de esta carpeta.
-2. Hace **dry-run** y muestra cuántos GB va a escanear.
+2. Hace **dry-run** y muestra cuántos GB estima escanear. **El dry-run no descuenta el
+   clustering** (`crawl.pages` está clusterizada por `client`, `is_root_page`, `rank`, `page`):
+   con filtros sobre esas columnas lo facturado puede ser mucho menor (ej. el panel piloto top 10k
+   de 2025 estimó 234,9 GB y facturó 19,8 GB). Sirve como cota superior, no como costo.
 3. Pide confirmación antes de ejecutar de verdad.
 4. Corre la query con un tope duro de bytes facturados
    (`MAX_BYTES_BILLED`, default 100 GB — se puede subir con
@@ -102,8 +105,10 @@ El script:
    una extracción más grande, pero pensalo dos veces).
 5. Exporta el resultado a `001-nombre-descriptivo.parquet` (vía CSV
    intermedio + DuckDB, que se borra al terminar).
-6. Anota en `usage-log.csv` la fecha, el script y los GB escaneados, y muestra
-   el acumulado del mes contra el free tier de 1024 GB.
+6. Corre la query con un `job_id` explícito y anota en `usage-log.csv` la fecha, el
+   script, el estimado del dry-run (`gb_dry_run`), lo **facturado por el job**
+   (`gb_billed`, leído de `bq show -j`) y el `job_id`. Muestra el acumulado facturado del
+   mes contra el free tier de 1024 GB.
 
 No correr `bq query` a mano para esto — usar siempre el script, así el ledger
 queda completo y nadie se olvida del dry-run o del tope de bytes.
@@ -123,6 +128,8 @@ duckdb -c "SELECT * FROM 'bigquery/**/*.parquet' LIMIT 20;"
 ## Ledger de cuota
 
 `usage-log.csv` es el historial de todo lo corrido (fecha, proyecto, script,
-GB escaneados). Antes de lanzar una extracción grande, sumar la columna
-`gb_scanned` del mes en curso y compararla contra 1024 GB (el free tier
-mensual). El script ya lo hace automáticamente al final de cada corrida.
+GB estimados por el dry-run, GB facturados, job). La cuota se mide con `gb_billed`:
+antes de lanzar una extracción grande, sumar esa columna del mes en curso y
+compararla contra 1024 GB (el free tier mensual). El script ya lo hace
+automáticamente al final de cada corrida. Las filas anteriores al 01/10/2026 se
+completaron con `totalBytesBilled` de la metadata de cada job.
