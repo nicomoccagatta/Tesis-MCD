@@ -1,21 +1,23 @@
 """Panel piloto top 10k 2025: dimensión SCD-2 de tecnología y eventos de migración.
 
-Entrada: bigquery/cross_source/003-panel-piloto-sitio-tecnologia-top10k-2025.parquet
-         (una fila por sitio x mes x tecnología detectada).
-Salida:  analisis/salidas/panel_piloto_scd2.json (números para el deck).
+Entrada: panel largo del cliente pedido (ver analisis/fuentes.py), una fila por
+         sitio x mes x tecnología detectada.
+Salidas: analisis/salidas/panel_piloto_scd2_<cliente>.json (números para el deck) y
+         analisis/salidas/eventos_persistentes_<cliente>.parquet.
 
-Uso: analisis/.venv/bin/python analisis/panel_piloto_scd2.py
+Uso: analisis/.venv/bin/python analisis/panel_piloto_scd2.py [mobile|desktop]
 """
 
 import json
-from pathlib import Path
 
 import duckdb
 
-RAIZ = Path(__file__).resolve().parent.parent
-PANEL = RAIZ / "bigquery/cross_source/003-panel-piloto-sitio-tecnologia-top10k-2025.parquet"
-SALIDA = RAIZ / "analisis/salidas/panel_piloto_scd2.json"
-EVENTOS = RAIZ / "analisis/salidas/eventos_persistentes.parquet"
+from fuentes import PANELES, SALIDAS, cliente_desde_argv
+
+CLIENTE = cliente_desde_argv()
+PANEL = PANELES[CLIENTE]
+SALIDA = SALIDAS / f"panel_piloto_scd2_{CLIENTE}.json"
+EVENTOS = SALIDAS / f"eventos_persistentes_{CLIENTE}.parquet"
 
 TECNOLOGIAS = ["jQuery", "React", "Vue.js", "Angular", "Next.js", "WordPress"]
 PERSISTENCIA_MESES = 3
@@ -156,6 +158,7 @@ pares = [
 ]
 
 resultado = {
+    "cliente": CLIENTE,
     "meses": meses_totales,
     "sitios_alguna_vez": cobertura[0],
     "sitios_balanceados": cobertura[1],

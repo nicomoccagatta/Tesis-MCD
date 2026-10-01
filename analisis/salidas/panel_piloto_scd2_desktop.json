@@ -1,0 +1,63 @@
+{
+  "cliente": "desktop",
+  "meses": 12,
+  "sitios_alguna_vez": 11275,
+  "sitios_balanceados": 3558,
+  "sitios_un_solo_mes": 2205,
+  "sitios_por_mes": 6398.0,
+  "pct_sitio_mes_con_lcp": 99.1,
+  "scd2_tramos": [
+    {
+      "tecnologia": "jQuery",
+      "tramos": 2032,
+      "tramos_un_mes_internos": 47
+    },
+    {
+      "tecnologia": "React",
+      "tramos": 903,
+      "tramos_un_mes_internos": 23
+    },
+    {
+      "tecnologia": "Vue.js",
+      "tramos": 451,
+      "tramos_un_mes_internos": 40
+    },
+    {
+      "tecnologia": "Next.js",
+      "tramos": 400,
+      "tramos_un_mes_internos": 5
+    },
+    {
+      "tecnologia": "WordPress",
+      "tramos": 196,
+      "tramos_un_mes_internos": 3
+    },
+    {
+      "tecnologia": "Angular",
+      "tramos": 78,
+      "tramos_un_mes_internos": 3
+    }
+  ],
+  "eventos": [
+    {
+      "par": "jQuery→React",
+      "crudos": 31,
+      "persistentes_3m": 18
+    },
+    {
+      "par": "jQuery→React (conservando jQuery)",
+      "crudos": 38,
+      "persistentes_3m": 14
+    },
+    {
+      "par": "React→Next.js",
+      "crudos": 22,
+      "persistentes_3m": 14
+    },
+    {
+      "par": "Abandono de WordPress",
+      "crudos": 10,
+      "persistentes_3m": 4
+    }
+  ]
+}

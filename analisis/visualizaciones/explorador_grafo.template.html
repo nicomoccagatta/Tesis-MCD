@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explorador del grafo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b1222;
+    --surface: #141f38;
+    --surface-2: #182544;
+    --border: #263657;
+    --text-primary: #eef2fb;
+    --text-secondary: #9aabc9;
+    --text-muted: #5f7093;
+    --accent: #22d3ee;
+    --font-display: 'Manrope', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  *{ box-sizing: border-box; }
+  body{ margin: 0; background: var(--bg); color: var(--text-primary); font-family: var(--font-display); }
+  header{ padding: 20px 24px 8px; display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; justify-content: space-between; }
+  h1{ margin: 0; font-size: 22px; }
+  .sub{ color: var(--text-secondary); font-size: 14px; margin-top: 4px; }
+  .seg{ display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .seg button{ background: var(--surface); color: var(--text-secondary); border: 0; padding: 8px 14px; font: 600 13px var(--font-display); cursor: pointer; }
+  .seg button.on{ background: var(--accent); color: #062029; }
+  .tabs{ display: flex; gap: 6px; padding: 0 24px; border-bottom: 1px solid var(--border); }
+  .tabs button{ background: none; border: 0; color: var(--text-secondary); padding: 12px 14px; font: 600 14px var(--font-display); cursor: pointer; border-bottom: 2px solid transparent; }
+  .tabs button.on{ color: var(--text-primary); border-bottom-color: var(--accent); }
+  main{ padding: 16px 24px 32px; }
+  .explain{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; font-size: 14px; line-height: 1.55; color: var(--text-secondary); margin-bottom: 14px; }
+  .explain b{ color: var(--text-primary); }
+  .controls{ display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 12px; font-size: 13px; color: var(--text-secondary); }
+  .controls select, .controls input{ background: var(--surface); color: var(--text-primary); border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font: 13px var(--font-display); }
+  .layout{ display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; }
+  @media (max-width: 900px){ .layout{ grid-template-columns: 1fr; } }
+  .panel{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; font-size: 13.5px; color: var(--text-secondary); align-self: start; }
+  .panel h3{ margin: 0 0 8px; font-size: 15px; color: var(--text-primary); }
+  .panel .row{ display: grid; grid-template-columns: 1fr 60px 44px; gap: 8px; align-items: center; padding: 3px 0; }
+  .panel .bar{ height: 6px; border-radius: 3px; background: var(--accent); }
+  .panel .num{ font-family: var(--font-mono); font-size: 12px; text-align: right; color: var(--text-primary); }
+  .scroll{ overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+  table.heat{ border-collapse: separate; border-spacing: 2px; font-size: 12px; }
+  table.heat th{ font-weight: 600; color: var(--text-secondary); padding: 4px 6px; white-space: nowrap; }
+  table.heat thead th{ height: 120px; vertical-align: bottom; }
+  table.heat thead th div{ writing-mode: vertical-rl; transform: rotate(180deg); text-align: left; }
+  table.heat tbody th{ text-align: right; cursor: pointer; }
+  table.heat tbody th .g{ color: var(--text-primary); font-size: 13px; }
+  table.heat tbody th .m{ font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+  table.heat tbody tr.sel th .g{ color: var(--accent); }
+  table.heat td{ width: 30px; min-width: 30px; height: 30px; border-radius: 4px; text-align: center; font-family: var(--font-mono); font-size: 10.5px; color: var(--text-primary); cursor: default; }
+  table.heat td.lift{ box-shadow: inset 0 0 0 2px var(--accent); }
+  .legend{ display: flex; gap: 18px; flex-wrap: wrap; align-items: center; font-size: 12.5px; color: var(--text-secondary); margin: 10px 0 0; }
+  .ramp{ display: inline-block; width: 140px; height: 10px; border-radius: 3px; background: linear-gradient(90deg, #1c2a48, #184f95, #3987e5, #9ec5f4); vertical-align: middle; }
+  .chip{ display: inline-block; width: 14px; height: 14px; border-radius: 3px; box-shadow: inset 0 0 0 2px var(--accent); vertical-align: middle; }
+  #tip{ position: fixed; pointer-events: none; background: #0b1222; border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font-size: 12.5px; color: var(--text-primary); display: none; z-index: 10; max-width: 300px; line-height: 1.45; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+  #tip .t{ font-weight: 700; margin-bottom: 2px; }
+  #tip .k{ color: var(--text-secondary); }
+  .net-wrap{ border: 1px solid var(--border); border-radius: 10px; background: var(--surface); position: relative; height: 640px; }
+  #net{ width: 100%; height: 100%; cursor: grab; display: block; }
+  #net.drag{ cursor: grabbing; }
+  .net-hint{ position: absolute; left: 12px; bottom: 10px; font-size: 12px; color: var(--text-muted); }
+  .stack-item{ display: grid; grid-template-columns: 12px 1fr auto; gap: 8px; align-items: center; padding: 5px 4px; border-radius: 6px; cursor: pointer; }
+  .stack-item:hover, .stack-item.on{ background: var(--surface-2); }
+  .stack-item i{ width: 12px; height: 12px; border-radius: 50%; }
+  .stack-item .num{ font-family: var(--font-mono); font-size: 11.5px; color: var(--text-primary); text-align: right; }
+  .hidden{ display: none; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Explorador del grafo sitio &harr; librería</h1>
+    <div class="sub">Top 10k de HTTP Archive &middot; diciembre 2025 &middot; tecnologías detectadas por Wappalyzer &middot; p75 de LCP de CrUX</div>
+  </div>
+  <div class="seg" id="cliente">
+    <button data-c="mobile" class="on">Móvil</button>
+    <button data-c="desktop">Escritorio</button>
+  </div>
+</header>
+<nav class="tabs">
+  <button data-t="heat" class="on">Frameworks &times; librerías</button>
+  <button data-t="red">Red de stacks</button>
+</nav>
+<main>
+  <section id="tab-heat">
+    <div class="explain">
+      <b>Cómo leerlo.</b> Cada <b>fila</b> es un grupo de sitios según su framework principal (un sitio con Next.js va a &ldquo;Next.js&rdquo; aunque también tenga React; &ldquo;Solo jQuery&rdquo; = jQuery sin ningún framework moderno; &ldquo;Otros&rdquo; = sin ninguno de estos frameworks). Cada <b>columna</b> es una librería. El número de la <b>celda</b> es el % de los sitios del grupo que usan esa librería. El <b>borde cian</b> marca lift &ge; 2: el grupo la usa al menos el doble que el promedio de todos los sitios.
+      El <b>LCP</b> de cada grupo es la mediana, entre los sitios del grupo, de su p75 de LCP en CrUX ese mes (la mitad de los sitios del grupo está por debajo de ese valor). Es descriptivo: no controla por tráfico, país ni tipo de sitio. Hacé clic en una fila para ver sus librerías más características.
+    </div>
+    <div class="controls">
+      <label>Librerías <select id="nLibs"><option value="15">15 más usadas</option><option value="30" selected>30 más usadas</option><option value="999">todas</option></select></label>
+      <label>Ordenar columnas <select id="orden"><option value="total">por uso total</option><option value="grupo">por lift del grupo elegido</option></select></label>
+    </div>
+    <div class="layout">
+      <div>
+        <div class="scroll"><table class="heat" id="heat"></table></div>
+        <div class="legend"><span>% de sitios del grupo</span><span class="ramp"></span><span>0% &rarr; 100%</span><span><span class="chip"></span> lift &ge; 2</span></div>
+      </div>
+      <div class="panel" id="detalleGrupo"></div>
+    </div>
+  </section>
+
+  <section id="tab-red" class="hidden">
+    <div class="explain">
+      <b>Cómo leerlo.</b> Cada <b>círculo</b> es una tecnología; su tamaño es la cantidad de sitios que la usan. Una <b>línea</b> une dos tecnologías que aparecen juntas en los mismos sitios al menos el doble de lo esperable por azar (lift &ge; 2, con &ge; 20 sitios en común). Los <b>colores</b> son comunidades (stacks) que encuentra el algoritmo de Louvain. Cada sitio se asigna al stack donde tiene más tecnologías, y el LCP del stack es la mediana del p75 de LCP de esos sitios.
+      Pasá el mouse por un nodo para ver sus datos; hacé clic para resaltar sus vecinos; rueda para zoom, arrastrar para mover; clic en un stack de la lista para aislarlo.
+    </div>
+    <div class="controls">
+      <label>Buscar tecnología <input id="buscar" list="techs" placeholder="ej. React Router"></label>
+      <datalist id="techs"></datalist>
+    </div>
+    <div class="layout">
+      <div class="net-wrap"><svg id="net"></svg><div class="net-hint">rueda: zoom &middot; arrastrar: mover &middot; doble clic: reiniciar</div></div>
+      <div class="panel"><h3>Stacks</h3><div id="stacks"></div><div id="detalleNodo" style="margin-top:14px"></div></div>
+    </div>
+  </section>
+</main>
+<div id="tip"></div>
+
+<script>
+const DATOS = __DATOS__;
+const COLORES = ["#3987e5", "#d95926", "#199e70", "#c98500", "#d55181", "#008300", "#9085e9", "#e66767"];
+const NS = "http://www.w3.org/2000/svg";
+const fmt = n => n.toLocaleString("es-AR");
+const pct = x => (x * 100).toLocaleString("es-AR", { maximumFractionDigits: 0 }) + "%";
+let cliente = "mobile", grupoSel = null, stackSel = null, nodoSel = null;
+
+const tip = document.getElementById("tip");
+function showTip(e, html){ tip.innerHTML = html; tip.style.display = "block"; moveTip(e); }
+function moveTip(e){
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  tip.style.left = Math.min(e.clientX + 14, innerWidth - w - 8) + "px";
+  tip.style.top = Math.min(e.clientY + 14, innerHeight - h - 8) + "px";
+}
+function hideTip(){ tip.style.display = "none"; }
+
+function rampa(v){
+  const stops = [[0, [28, 42, 72]], [0.25, [24, 79, 149]], [0.55, [57, 135, 229]], [1, [158, 197, 244]]];
+  for (let i = 1; i < stops.length; i++){
+    if (v <= stops[i][0]){
+      const [a, ca] = stops[i - 1], [b, cb] = stops[i], t = (v - a) / (b - a);
+      return "rgb(" + ca.map((c, k) => Math.round(c + (cb[k] - c) * t)).join(",") + ")";
+    }
+  }
+  return "rgb(158,197,244)";
+}
+
+/* ---------------- Frameworks x librerías ---------------- */
+function renderHeat(){
+  const d = DATOS[cliente];
+  const grupos = d.grupos_framework;
+  const n = +document.getElementById("nLibs").value;
+  const celda = {};
+  d.matriz_completa.forEach(m => { celda[m.grupo + "|" + m.libreria] = m; });
+  let libs = Object.keys(d.libreria_total_sitios_completo);
+  if (document.getElementById("orden").value === "grupo" && grupoSel){
+    libs.sort((a, b) => ((celda[grupoSel + "|" + b] || {}).lift || 0) - ((celda[grupoSel + "|" + a] || {}).lift || 0));
+  }
+  libs = libs.slice(0, n);
+  const t = document.getElementById("heat");
+  let html = "<thead><tr><th></th>" + libs.map(l => "<th><div>" + l + "</div></th>").join("") + "</tr></thead><tbody>";
+  grupos.forEach(g => {
+    html += "<tr data-g='" + g.grupo + "'" + (g.grupo === grupoSel ? " class='sel'" : "") + "><th><div class='g'>" + g.grupo + "</div><div class='m'>" + fmt(g.sitios) + " sitios · LCP " + fmt(g.lcp_mediana_ms) + " ms</div></th>";
+    libs.forEach(l => {
+      const c = celda[g.grupo + "|" + l];
+      const share = c ? c.sitios / g.sitios : 0;
+      const txt = share >= 0.01 ? Math.round(share * 100) : "";
+      html += "<td data-g='" + g.grupo + "' data-l='" + l + "' class='" + (c && c.lift >= 2 ? "lift" : "") + "' style='background:" + rampa(share) + (share > 0.55 ? ";color:#0b1222" : "") + "'>" + txt + "</td>";
+    });
+    html += "</tr>";
+  });
+  t.innerHTML = html + "</tbody>";
+  t.querySelectorAll("td").forEach(td => {
+    td.addEventListener("mousemove", e => {
+      const g = grupos.find(x => x.grupo === td.dataset.g), c = celda[td.dataset.g + "|" + td.dataset.l];
+      showTip(e, "<div class='t'>" + td.dataset.g + " · " + td.dataset.l + "</div>" +
+        (c ? "<div>" + fmt(c.sitios) + " de " + fmt(g.sitios) + " sitios (" + pct(c.sitios / g.sitios) + ")</div><div class='k'>lift " + c.lift.toLocaleString("es-AR") + (c.lift >= 2 ? " · el grupo la usa " + c.lift.toLocaleString("es-AR", {maximumFractionDigits: 1}) + " veces más que el promedio" : "") + "</div>"
+           : "<div class='k'>Ningún sitio del grupo (o menos de 30 en total)</div>"));
+    });
+    td.addEventListener("mouseleave", hideTip);
+  });
+  t.querySelectorAll("tbody th").forEach(th => th.addEventListener("click", () => {
+    grupoSel = th.parentElement.dataset.g; renderHeat();
+  }));
+  renderDetalleGrupo(celda);
+}
+
+function renderDetalleGrupo(celda){
+  const d = DATOS[cliente], box = document.getElementById("detalleGrupo");
+  if (!grupoSel){ box.innerHTML = "<h3>Elegí un grupo</h3>Hacé clic en el nombre de una fila para ver las librerías que ese grupo usa más que el promedio."; return; }
+  const g = d.grupos_framework.find(x => x.grupo === grupoSel);
+  if (!g){ grupoSel = null; return renderDetalleGrupo(celda); }
+  const filas = d.matriz_completa.filter(m => m.grupo === grupoSel && m.sitios >= 10).sort((a, b) => b.lift - a.lift).slice(0, 15);
+  const maxL = Math.max(...filas.map(f => f.lift), 1);
+  box.innerHTML = "<h3>" + g.grupo + "</h3><div style='margin-bottom:10px'>" + fmt(g.sitios) + " sitios · mediana p75 LCP " + fmt(g.lcp_mediana_ms) + " ms</div>" +
+    "<div class='row' style='color:var(--text-muted);font-size:11.5px'><span>Librería (≥10 sitios)</span><span class='num' style='color:var(--text-muted)'>lift</span><span class='num' style='color:var(--text-muted)'>%</span></div>" +
+    filas.map(f => "<div class='row'><span>" + f.libreria + "<div class='bar' style='width:" + (f.lift / maxL * 100) + "%;opacity:" + (f.lift >= 2 ? 1 : .35) + "'></div></span><span class='num'>" + f.lift.toLocaleString("es-AR") + "</span><span class='num'>" + pct(f.sitios / g.sitios) + "</span></div>").join("");
+}
+
+/* ---------------- Red de stacks ---------------- */
+const svg = document.getElementById("net");
+let vista = null;
+
+function nombreStack(s){ return s.tecnologias.slice(0, 3).join(" · "); }
+
+function renderRed(){
+  const d = DATOS[cliente];
+  const nodos = Object.entries(d.nodos).filter(([, v]) => v.xy).map(([k, v]) => ({ id: k, ...v }));
+  const pos = {}; nodos.forEach(n => pos[n.id] = n);
+  const colorDe = {}; d.stacks.forEach((s, i) => colorDe[s.id] = COLORES[i] || "#5f7093");
+  const vecinos = {};
+  d.proyeccion.aristas.forEach(e => {
+    (vecinos[e.u] = vecinos[e.u] || []).push({ id: e.v, lift: e.lift, co: e.coocurrencia });
+    (vecinos[e.v] = vecinos[e.v] || []).push({ id: e.u, lift: e.lift, co: e.coocurrencia });
+  });
+  const xs = nodos.map(n => n.xy[0]), ys = nodos.map(n => n.xy[1]);
+  const W = 1000, H = 700, pad = 50;
+  const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+  const px = v => pad + (v - minX) / (maxX - minX) * (W - 2 * pad);
+  const py = v => pad + (v - minY) / (maxY - minY) * (H - 2 * pad);
+  const maxS = Math.max(...nodos.map(n => n.sitios));
+  const radio = n => 4 + 18 * Math.sqrt(n.sitios / maxS);
+  vista = vista || { x: 0, y: 0, w: W, h: H };
+  svg.setAttribute("viewBox", [vista.x, vista.y, vista.w, vista.h].join(" "));
+  svg.innerHTML = "";
+  const activo = id => {
+    if (nodoSel) return id === nodoSel || (vecinos[nodoSel] || []).some(v => v.id === id);
+    if (stackSel !== null) return pos[id] && pos[id].comunidad === stackSel;
+    return true;
+  };
+  const gE = document.createElementNS(NS, "g"); svg.appendChild(gE);
+  d.proyeccion.aristas.forEach(e => {
+    if (!pos[e.u] || !pos[e.v]) return;
+    const on = nodoSel ? (e.u === nodoSel || e.v === nodoSel) : (activo(e.u) && activo(e.v));
+    const l = document.createElementNS(NS, "line");
+    l.setAttribute("x1", px(pos[e.u].xy[0])); l.setAttribute("y1", py(pos[e.u].xy[1]));
+    l.setAttribute("x2", px(pos[e.v].xy[0])); l.setAttribute("y2", py(pos[e.v].xy[1]));
+    l.setAttribute("stroke", on && nodoSel ? "#22d3ee" : "#5f7093");
+    l.setAttribute("stroke-opacity", on ? Math.min(.25 + e.lift / 30, .8) : .05);
+    l.setAttribute("stroke-width", on && nodoSel ? 1.6 : 1);
+    gE.appendChild(l);
+  });
+  const gN = document.createElementNS(NS, "g"); svg.appendChild(gN);
+  nodos.sort((a, b) => b.sitios - a.sitios).forEach(n => {
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("cx", px(n.xy[0])); c.setAttribute("cy", py(n.xy[1])); c.setAttribute("r", radio(n));
+    c.setAttribute("fill", colorDe[n.comunidad] || "#5f7093");
+    c.setAttribute("stroke", n.id === nodoSel ? "#ffffff" : "#141f38"); c.setAttribute("stroke-width", n.id === nodoSel ? 3 : 2);
+    c.setAttribute("opacity", activo(n.id) ? 1 : .15);
+    c.style.cursor = "pointer";
+    c.addEventListener("mousemove", e => {
+      const s = d.stacks.find(x => x.id === n.comunidad);
+      showTip(e, "<div class='t'>" + n.id + "</div><div>" + fmt(n.sitios) + " sitios</div><div class='k'>Stack: " + (s ? nombreStack(s) : "—") + "</div><div class='k'>" + (vecinos[n.id] || []).length + " tecnologías asociadas</div>");
+    });
+    c.addEventListener("mouseleave", hideTip);
+    c.addEventListener("click", ev => { ev.stopPropagation(); nodoSel = nodoSel === n.id ? null : n.id; renderRed(); });
+    gN.appendChild(c);
+  });
+  const gT = document.createElementNS(NS, "g"); svg.appendChild(gT);
+  nodos.forEach(n => {
+    const mostrar = nodoSel ? activo(n.id) : (n.sitios >= maxS * 0.12 || (stackSel !== null && n.comunidad === stackSel));
+    if (!mostrar) return;
+    const t = document.createElementNS(NS, "text");
+    t.setAttribute("x", px(n.xy[0]) + radio(n) + 4); t.setAttribute("y", py(n.xy[1]) + 4);
+    t.setAttribute("fill", "#eef2fb"); t.setAttribute("font-size", "13"); t.setAttribute("font-family", "JetBrains Mono, monospace");
+    t.setAttribute("paint-order", "stroke"); t.setAttribute("stroke", "#141f38"); t.setAttribute("stroke-width", "3");
+    t.style.pointerEvents = "none";
+    t.textContent = n.id; gT.appendChild(t);
+  });
+
+  const lista = document.getElementById("stacks");
+  lista.innerHTML = "<div class='stack-item' style='cursor:default;color:var(--text-muted);font-size:11.5px'><span></span><span>Stack · sitios asignados</span><span class='num' style='color:var(--text-muted)'>LCP med.</span></div>" +
+    d.stacks.map(s => "<div class='stack-item" + (s.id === stackSel ? " on" : "") + "' data-s='" + s.id + "'><i style='background:" + colorDe[s.id] + "'></i><span>" + nombreStack(s) + " <span style='color:var(--text-muted)'>· " + fmt(s.sitios_asignados) + "</span></span><span class='num'>" + (s.lcp_mediana_ms ? fmt(s.lcp_mediana_ms) + " ms" : "—") + "</span></div>").join("");
+  lista.querySelectorAll("[data-s]").forEach(el => el.addEventListener("click", () => {
+    const id = +el.dataset.s; stackSel = stackSel === id ? null : id; nodoSel = null; renderRed();
+  }));
+
+  const det = document.getElementById("detalleNodo");
+  if (nodoSel && pos[nodoSel]){
+    const vs = (vecinos[nodoSel] || []).slice().sort((a, b) => b.lift - a.lift);
+    det.innerHTML = "<h3>" + nodoSel + "</h3><div style='margin-bottom:8px'>" + fmt(pos[nodoSel].sitios) + " sitios. Se usa junto con:</div>" +
+      "<div class='row' style='color:var(--text-muted);font-size:11.5px'><span>Tecnología</span><span class='num' style='color:var(--text-muted)'>en común</span><span class='num' style='color:var(--text-muted)'>lift</span></div>" +
+      vs.map(v => "<div class='row'><span>" + v.id + "</span><span class='num'>" + fmt(v.co) + "</span><span class='num'>" + v.lift.toLocaleString("es-AR", {maximumFractionDigits: 1}) + "</span></div>").join("");
+  } else {
+    det.innerHTML = "";
+  }
+  document.getElementById("techs").innerHTML = nodos.map(n => "<option value='" + n.id + "'>").join("");
+}
+
+let arrastre = null;
+svg.addEventListener("wheel", e => {
+  e.preventDefault();
+  const r = svg.getBoundingClientRect();
+  const mx = vista.x + (e.clientX - r.left) / r.width * vista.w, my = vista.y + (e.clientY - r.top) / r.height * vista.h;
+  const f = e.deltaY > 0 ? 1.15 : 1 / 1.15;
+  vista = { x: mx - (mx - vista.x) * f, y: my - (my - vista.y) * f, w: vista.w * f, h: vista.h * f };
+  svg.setAttribute("viewBox", [vista.x, vista.y, vista.w, vista.h].join(" "));
+}, { passive: false });
+svg.addEventListener("mousedown", e => { arrastre = { x: e.clientX, y: e.clientY, v: { ...vista } }; svg.classList.add("drag"); });
+addEventListener("mousemove", e => {
+  if (!arrastre) return;
+  const r = svg.getBoundingClientRect();
+  vista = { ...arrastre.v, x: arrastre.v.x - (e.clientX - arrastre.x) / r.width * arrastre.v.w, y: arrastre.v.y - (e.clientY - arrastre.y) / r.height * arrastre.v.h };
+  svg.setAttribute("viewBox", [vista.x, vista.y, vista.w, vista.h].join(" "));
+});
+addEventListener("mouseup", () => { arrastre = null; svg.classList.remove("drag"); });
+svg.addEventListener("dblclick", () => { vista = null; nodoSel = null; stackSel = null; renderRed(); });
+svg.addEventListener("click", e => { if (e.target === svg && nodoSel){ nodoSel = null; renderRed(); } });
+document.getElementById("buscar").addEventListener("change", e => {
+  const v = e.target.value; if (DATOS[cliente].nodos[v] && DATOS[cliente].nodos[v].xy){ nodoSel = v; stackSel = null; renderRed(); }
+});
+
+/* ---------------- Controles generales ---------------- */
+document.querySelectorAll("#cliente button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll("#cliente button").forEach(x => x.classList.toggle("on", x === b));
+  cliente = b.dataset.c; nodoSel = null; stackSel = null; vista = null;
+  renderHeat(); renderRed();
+}));
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".tabs button").forEach(x => x.classList.toggle("on", x === b));
+  document.getElementById("tab-heat").classList.toggle("hidden", b.dataset.t !== "heat");
+  document.getElementById("tab-red").classList.toggle("hidden", b.dataset.t !== "red");
+}));
+document.getElementById("nLibs").addEventListener("change", renderHeat);
+document.getElementById("orden").addEventListener("change", renderHeat);
+renderHeat(); renderRed();
+</script>
+</body>
+</html>

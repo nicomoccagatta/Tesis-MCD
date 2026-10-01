@@ -7,3 +7,5 @@ date,project,script,gb_scanned
 2026-09-24,tesis-506222,httparchive_crawl_pages/002-ejemplos-migracion-jquery-react-top10k-2025-2026,117.1305
 2026-10-01,tesis-506222,cross_source/003-panel-piloto-sitio-tecnologia-top10k-2025,234.8694
 2026-10-01,tesis-506222,httparchive_wappalyzer_technologies/001-categorias-e-implies-por-tecnologia,0.0001
+2026-10-01,tesis-506222,cross_source/005-cobertura-top10k-crux-vs-crawl-dic2025,4.6351
+2026-10-01,tesis-506222,cross_source/004-panel-piloto-sitio-tecnologia-top10k-2025-desktop,234.8694

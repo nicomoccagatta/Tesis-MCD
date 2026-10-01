@@ -1,29 +1,29 @@
 """Grafo bipartito sitio <-> tecnología (frameworks y librerías de cliente), top 10k, dic-2025.
 
 Entradas:
-  bigquery/cross_source/003-panel-piloto-sitio-tecnologia-top10k-2025.parquet
+  panel largo del cliente pedido (ver analisis/fuentes.py)
   bigquery/httparchive_wappalyzer_technologies/001-categorias-e-implies-por-tecnologia.parquet
-  analisis/salidas/eventos_persistentes.parquet (de panel_piloto_scd2.py)
+  analisis/salidas/eventos_persistentes_<cliente>.parquet (de panel_piloto_scd2.py)
 Salida:
-  analisis/salidas/grafo_bipartito.json (datos de las figuras del deck)
+  analisis/salidas/grafo_bipartito_<cliente>.json (datos de las figuras del deck)
 
 Descriptivo: ninguna diferencia de LCP de este script es una estimación causal.
 
-Uso: analisis/.venv/bin/python analisis/grafo_bipartito.py
+Uso: analisis/.venv/bin/python analisis/grafo_bipartito.py [mobile|desktop]
 """
 
 import json
-from pathlib import Path
 
 import duckdb
 import networkx as nx
 from networkx.algorithms import bipartite
 
-RAIZ = Path(__file__).resolve().parent.parent
-PANEL = RAIZ / "bigquery/cross_source/003-panel-piloto-sitio-tecnologia-top10k-2025.parquet"
-CATEGORIAS = RAIZ / "bigquery/httparchive_wappalyzer_technologies/001-categorias-e-implies-por-tecnologia.parquet"
-EVENTOS = RAIZ / "analisis/salidas/eventos_persistentes.parquet"
-SALIDA = RAIZ / "analisis/salidas/grafo_bipartito.json"
+from fuentes import CATEGORIAS, PANELES, SALIDAS, cliente_desde_argv
+
+CLIENTE = cliente_desde_argv()
+PANEL = PANELES[CLIENTE]
+EVENTOS = SALIDAS / f"eventos_persistentes_{CLIENTE}.parquet"
+SALIDA = SALIDAS / f"grafo_bipartito_{CLIENTE}.json"
 
 MES = "2025-12-01"
 CATEGORIAS_LIBRERIA = ("JavaScript libraries", "UI frameworks")
@@ -192,6 +192,21 @@ matriz_grupo_libreria = [
     for (g, lib), n in matriz.items()
 ]
 
+# Matriz grupo x librería con todas las librerías con soporte mínimo (para el explorador interactivo).
+matriz_todas = (
+    librerias.assign(grupo=lambda df: df["origin"].map(grupo_sitio))
+    .groupby(["grupo", "nodo"])["origin"].nunique()
+)
+matriz_completa = [
+    {
+        "grupo": g,
+        "libreria": lib,
+        "sitios": int(n),
+        "lift": round(float(n * n_total / (sitios_por_grupo[g] * total_por_lib[lib])), 2),
+    }
+    for (g, lib), n in matriz_todas.items()
+]
+
 # Coordenadas de la red proyectada (para dibujarla como SVG en el deck), solo sobre el
 # componente conexo principal: un componente aislado estira el layout y aplasta al resto.
 principal = red.subgraph(max(nx.connected_components(red), key=len))
@@ -291,9 +306,14 @@ resumen_recableado = {
             .sort_index().sort_values(ascending=False, kind="stable").head(6).to_dict())
         for c in sorted(recableado["clase"].unique())
     },
+    "por_sitio": [
+        {"origin": o, **{c: sorted(g.loc[g["clase"] == c, "technology"]) for c in sorted(g["clase"].unique())}}
+        for o, g in recableado.sort_values(["origin", "technology"]).groupby("origin")
+    ],
 }
 
 resultado = {
+    "cliente": CLIENTE,
     "mes": MES,
     "sitios_mes": int(sitios_mes),
     "bipartito": {
@@ -320,6 +340,8 @@ resultado = {
               for n in nodos_validos},
     "libreria_total_sitios": {lib: int(total_por_lib[lib]) for lib in libs_figura},
     "matriz_grupo_libreria": matriz_grupo_libreria,
+    "matriz_completa": matriz_completa,
+    "libreria_total_sitios_completo": {lib: int(n) for lib, n in total_por_lib.sort_values(ascending=False).items()},
     "stacks": stacks,
     "grupos_framework": grupos,
     "cobertura_version": [
