@@ -94,7 +94,8 @@
     </div>
     <div class="controls">
       <label>Librerías <select id="nLibs"><option value="15">15 más usadas</option><option value="30" selected>30 más usadas</option><option value="999">todas</option></select></label>
-      <label>Ordenar columnas <select id="orden"><option value="total">por uso total</option><option value="grupo">por lift del grupo elegido</option></select></label>
+      <label>Ordenar columnas <select id="orden"><option value="total">por uso total (todos los sitios)</option><option value="grupo">por lift del grupo elegido</option></select></label>
+      <span id="ordenNota"></span>
     </div>
     <div class="layout">
       <div>
@@ -158,8 +159,15 @@ function renderHeat(){
   const celda = {};
   d.matriz_completa.forEach(m => { celda[m.grupo + "|" + m.libreria] = m; });
   let libs = Object.keys(d.libreria_total_sitios_completo);
-  if (document.getElementById("orden").value === "grupo" && grupoSel){
-    libs.sort((a, b) => ((celda[grupoSel + "|" + b] || {}).lift || 0) - ((celda[grupoSel + "|" + a] || {}).lift || 0));
+  const porGrupo = document.getElementById("orden").value === "grupo";
+  if (porGrupo && !grupoSel) grupoSel = grupos[0].grupo;
+  document.getElementById("ordenNota").textContent = porGrupo
+    ? "Columnas ordenadas por lift en " + grupoSel + ", entre librerías con ≥ 10 sitios del grupo (clic en otra fila para cambiar)"
+    : "";
+  if (porGrupo){
+    // Solo cuentan librerías con >= 10 sitios en el grupo: con menos, el lift es inestable.
+    const liftOrden = l => { const c = celda[grupoSel + "|" + l]; return c && c.sitios >= 10 ? c.lift : -1; };
+    libs.sort((a, b) => liftOrden(b) - liftOrden(a));
   }
   libs = libs.slice(0, n);
   const t = document.getElementById("heat");
