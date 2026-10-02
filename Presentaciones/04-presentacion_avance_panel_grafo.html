@@ -373,8 +373,8 @@
           <thead><tr><th>Cohorte top 10k de ene-2025</th><th>Móvil</th><th>Escritorio</th></tr></thead>
           <tbody>
             <tr><td>Sitios de la cohorte con tecnologías en al menos un mes</td><td class="mo">7.717</td><td class="mo">6.390</td></tr>
-            <tr><td>Con visita los 12 meses (panel balanceado)</td><td class="mo">5.648 (73%)</td><td class="mo">5.008 (78%)</td></tr>
-            <tr><td>Sitio-mes con la visita vacía (dato faltante)</td><td class="mo">10,6%</td><td class="mo">8,1%</td></tr>
+            <tr><td>Con tecnologías registradas los 12 meses (panel balanceado)</td><td class="mo">5.648 (73%)</td><td class="mo">5.008 (78%)</td></tr>
+            <tr><td>Sitio-mes sin tecnologías registradas (visita vacía o sin visita: dato faltante)</td><td class="mo">10,6%</td><td class="mo">8,1%</td></tr>
             <tr><td>Sitio-mes ya fuera del top 10k (feb&ndash;dic)</td><td class="mo">17,9%</td><td class="mo">15,7%</td></tr>
             <tr><td>Sitio-mes con p75 de LCP en CrUX</td><td class="mo">99,6%</td><td class="mo">99,4%</td></tr>
           </tbody>
@@ -636,7 +636,7 @@
     <h2 class="slide-title">Del piloto al panel completo</h2>
     <div class="content">
       <ul class="points">
-        <li><span class="bullet"></span><span><b>Cohorte fija en el panel completo:</b> elegir los sitios con el rank del mes anterior a la ventana y tratar los meses con visita vacía como dato faltante.</span></li>
+        <li><span class="bullet"></span><span><b>Cohorte fija en el panel completo:</b> elegir los sitios con el rank del mes anterior a la ventana y tratar los meses sin tecnologías registradas como dato faltante.</span></li>
         <li><span class="bullet"></span><span><b>Escalar a la ventana 2023&ndash;2026:</b> un mes completo (15,7 M sitios, móvil) factura 6,1 GB, así que ambos clientes suman ~525 GB y entran en la cuota. El límite es el volumen: 256 M filas sitio &times; tecnología por mes, por lo que se filtra a las tecnologías del estudio y se agrega dentro de BigQuery.</span></li>
         <li><span class="bullet"></span><span><b>Dimensionar por potencia:</b> estimar cuántos eventos persistentes por par hacen falta para detectar efectos del orden de 40 ms.</span></li>
         <li><span class="bullet"></span><span><b>Definir el tratamiento</b> de jQuery&rarr;React: estricto (descarte 5&ndash;9%) o incluyendo a los que conservan jQuery (descarte 35&ndash;47%).</span></li>
