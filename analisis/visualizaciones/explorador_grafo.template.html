@@ -75,7 +75,7 @@
 <header>
   <div>
     <h1>Explorador del grafo sitio &harr; librería</h1>
-    <div class="sub">Top 10k de HTTP Archive &middot; diciembre 2025 &middot; tecnologías detectadas por Wappalyzer &middot; p75 de LCP de CrUX</div>
+    <div class="sub">Cohorte fija: top 10k de HTTP Archive en enero 2025, observada en diciembre 2025 &middot; tecnologías detectadas por Wappalyzer &middot; p75 de LCP de CrUX</div>
   </div>
   <div class="seg" id="cliente">
     <button data-c="mobile" class="on">Móvil</button>
@@ -220,7 +220,8 @@ function renderRed(){
   const d = DATOS[cliente];
   const nodos = Object.entries(d.nodos).filter(([, v]) => v.xy).map(([k, v]) => ({ id: k, ...v }));
   const pos = {}; nodos.forEach(n => pos[n.id] = n);
-  const colorDe = {}; d.stacks.forEach((s, i) => colorDe[s.id] = COLORES[i] || "#5f7093");
+  // Igual que en el deck: los 7 stacks más grandes con color, el resto en gris.
+  const colorDe = {}; d.stacks.forEach((s, i) => colorDe[s.id] = i < 7 ? COLORES[i] : "#5f7093");
   const vecinos = {};
   d.proyeccion.aristas.forEach(e => {
     (vecinos[e.u] = vecinos[e.u] || []).push({ id: e.v, lift: e.lift, co: e.coocurrencia });

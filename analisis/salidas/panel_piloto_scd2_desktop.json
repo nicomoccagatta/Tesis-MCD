@@ -1,71 +1,74 @@
 {
   "cliente": "desktop",
   "meses": 12,
-  "sitios_alguna_vez": 11275,
-  "sitios_balanceados": 3558,
-  "sitios_un_solo_mes": 2205,
-  "sitios_por_mes": 6398.0,
-  "pct_sitio_mes_con_lcp": 99.1,
+  "sitios_cohorte": 6390,
+  "sitios_balanceados": 5008,
+  "sitios_faltan_1_o_2_meses": 584,
+  "sitios_faltan_3_o_mas_meses": 798,
+  "sitios_por_mes": 5870.0,
+  "pct_sitio_mes_con_lcp": 99.4,
+  "pct_sitio_mes_sin_visita": 8.1,
+  "pct_sitio_mes_fuera_top10k_feb_dic": 15.7,
   "scd2_tramos": [
     {
       "tecnologia": "jQuery",
-      "tramos": 2032,
-      "tramos_un_mes_internos": 47
+      "tramos": 2948,
+      "tramos_un_mes_internos": 60
     },
     {
       "tecnologia": "React",
-      "tramos": 903,
-      "tramos_un_mes_internos": 23
+      "tramos": 1250,
+      "tramos_un_mes_internos": 33
     },
     {
       "tecnologia": "Vue.js",
-      "tramos": 451,
-      "tramos_un_mes_internos": 40
+      "tramos": 635,
+      "tramos_un_mes_internos": 50
     },
     {
       "tecnologia": "Next.js",
-      "tramos": 400,
-      "tramos_un_mes_internos": 5
+      "tramos": 558,
+      "tramos_un_mes_internos": 6
     },
     {
       "tecnologia": "WordPress",
-      "tramos": 196,
+      "tramos": 337,
       "tramos_un_mes_internos": 3
     },
     {
       "tecnologia": "Angular",
-      "tramos": 78,
-      "tramos_un_mes_internos": 3
+      "tramos": 110,
+      "tramos_un_mes_internos": 4
     }
   ],
   "eventos": [
     {
       "par": "jQuery→React",
-      "sitios_crudo": 31,
-      "sitios_crudo_verificable": 20,
-      "sitios_persistente_3m": 18,
-      "pct_descartado_verificable": 10
+      "sitios_crudo": 59,
+      "sitios_crudo_verificable": 43,
+      "sitios_persistente_3m": 39,
+      "pct_descartado_verificable": 9
     },
     {
       "par": "jQuery→React (conservando jQuery)",
-      "sitios_crudo": 38,
-      "sitios_crudo_verificable": 20,
-      "sitios_persistente_3m": 14,
-      "pct_descartado_verificable": 30
+      "sitios_crudo": 52,
+      "sitios_crudo_verificable": 31,
+      "sitios_persistente_3m": 20,
+      "pct_descartado_verificable": 35
     },
     {
       "par": "React→Next.js",
-      "sitios_crudo": 22,
-      "sitios_crudo_verificable": 16,
-      "sitios_persistente_3m": 14,
-      "pct_descartado_verificable": 12
+      "sitios_crudo": 27,
+      "sitios_crudo_verificable": 19,
+      "sitios_persistente_3m": 17,
+      "pct_descartado_verificable": 11
     },
     {
       "par": "Abandono de WordPress",
-      "sitios_crudo": 10,
-      "sitios_crudo_verificable": 6,
-      "sitios_persistente_3m": 4,
-      "pct_descartado_verificable": 33
+      "sitios_crudo": 20,
+      "sitios_crudo_verificable": 12,
+      "sitios_persistente_3m": 9,
+      "pct_descartado_verificable": 25
     }
   ]
 }

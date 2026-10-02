@@ -1,7 +1,8 @@
 """Panel piloto top 10k 2025: dimensión SCD-2 de tecnología y eventos de migración.
 
 Entrada: panel largo del cliente pedido (ver analisis/fuentes.py), una fila por
-         sitio x mes x tecnología detectada.
+         sitio x mes x tecnología detectada, para la cohorte fija de enero 2025.
+         Un mes sin filas para un sitio es una visita fallida o vacía (dato faltante).
 Salidas: analisis/salidas/panel_piloto_scd2_<cliente>.json (números para el deck) y
          analisis/salidas/eventos_persistentes_<cliente>.parquet.
 
@@ -35,6 +36,7 @@ SELECT
   origin,
   date,
   datediff('month', DATE '2025-01-01', date) AS mes,
+  ANY_VALUE(rank) AS rank,
   ANY_VALUE(p75_lcp) AS p75_lcp,
   ANY_VALUE(p75_inp) AS p75_inp,
   ANY_VALUE(p75_cls) AS p75_cls,
@@ -48,11 +50,16 @@ meses_totales = con.execute("SELECT COUNT(DISTINCT mes) FROM panel").fetchone()[
 cobertura = con.execute(f"""
 WITH por_sitio AS (SELECT origin, COUNT(*) AS meses FROM panel GROUP BY origin)
 SELECT
-  (SELECT COUNT(*) FROM por_sitio)                                  AS sitios_alguna_vez,
+  (SELECT COUNT(*) FROM por_sitio)                                  AS sitios_cohorte,
   (SELECT COUNT(*) FROM por_sitio WHERE meses = {meses_totales})    AS sitios_balanceados,
-  (SELECT COUNT(*) FROM por_sitio WHERE meses = 1)                  AS sitios_un_solo_mes,
+  (SELECT COUNT(*) FROM por_sitio WHERE meses BETWEEN {meses_totales - 2} AND {meses_totales - 1}) AS sitios_faltan_1_o_2_meses,
+  (SELECT COUNT(*) FROM por_sitio WHERE meses < {meses_totales - 2}) AS sitios_faltan_3_o_mas_meses,
   (SELECT ROUND(AVG(n)) FROM (SELECT COUNT(*) AS n FROM panel GROUP BY mes)) AS sitios_por_mes,
-  (SELECT ROUND(100 * AVG((p75_lcp IS NOT NULL)::INT), 1) FROM panel) AS pct_sitio_mes_con_lcp
+  (SELECT ROUND(100 * AVG((p75_lcp IS NOT NULL)::INT), 1) FROM panel) AS pct_sitio_mes_con_lcp,
+  (SELECT ROUND(100 * (1 - COUNT(*) / ((SELECT COUNT(*) FROM por_sitio) * {meses_totales})), 1) FROM panel)
+                                                                     AS pct_sitio_mes_sin_visita,
+  (SELECT ROUND(100 * AVG((rank > 10000)::INT), 1) FROM panel WHERE mes > 0)
+                                                                     AS pct_sitio_mes_fuera_top10k
 """).fetchone()
 
 # SCD-2: tramos contiguos de presencia de cada tecnología en cada sitio,
@@ -166,11 +173,14 @@ pares = [
 resultado = {
     "cliente": CLIENTE,
     "meses": meses_totales,
-    "sitios_alguna_vez": cobertura[0],
+    "sitios_cohorte": cobertura[0],
     "sitios_balanceados": cobertura[1],
-    "sitios_un_solo_mes": cobertura[2],
-    "sitios_por_mes": cobertura[3],
-    "pct_sitio_mes_con_lcp": cobertura[4],
+    "sitios_faltan_1_o_2_meses": cobertura[2],
+    "sitios_faltan_3_o_mas_meses": cobertura[3],
+    "sitios_por_mes": cobertura[4],
+    "pct_sitio_mes_con_lcp": cobertura[5],
+    "pct_sitio_mes_sin_visita": cobertura[6],
+    "pct_sitio_mes_fuera_top10k_feb_dic": cobertura[7],
     "scd2_tramos": [
         {"tecnologia": t, "tramos": n, "tramos_un_mes_internos": r} for t, n, r in ruido
     ],

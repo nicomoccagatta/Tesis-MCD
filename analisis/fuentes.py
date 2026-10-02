@@ -7,9 +7,11 @@ RAIZ = Path(__file__).resolve().parent.parent
 SALIDAS = RAIZ / "analisis/salidas"
 CATEGORIAS = RAIZ / "bigquery/httparchive_wappalyzer_technologies/001-categorias-e-implies-por-tecnologia.parquet"
 
+# Cohorte fija: root pages con rank <= 10000 en enero 2025, seguidos los 12 meses de 2025
+# sin volver a filtrar por rank (cross_source/003 y 004 filtraban mes a mes y quedan como registro).
 PANELES = {
-    "mobile": RAIZ / "bigquery/cross_source/003-panel-piloto-sitio-tecnologia-top10k-2025.parquet",
-    "desktop": RAIZ / "bigquery/cross_source/004-panel-piloto-sitio-tecnologia-top10k-2025-desktop.parquet",
+    "mobile": RAIZ / "bigquery/cross_source/007-panel-cohorte-top10k-ene2025-2025.parquet",
+    "desktop": RAIZ / "bigquery/cross_source/008-panel-cohorte-top10k-ene2025-2025-desktop.parquet",
 }
 
 

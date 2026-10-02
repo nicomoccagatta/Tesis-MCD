@@ -12,3 +12,5 @@ date,project,script,gb_dry_run,gb_billed,job_id
 2026-10-01,tesis-506222,cross_source/005-cobertura-top10k-crux-vs-crawl-dic2025,3.9801,2.6665,tesis_20261001_203102_94633
 2026-10-01,tesis-506222,cross_source/006-costo-mes-completo-sin-rank-dic2025,18.854,6.1048,tesis_20261001_203122_95155
 2026-10-02,tesis-506222,httparchive_crawl_pages/003-root-pages-top10k-conteo-tecnologias-dic2025,33.0455,0.0105,tesis_20261002_010117_92117
+2026-10-02,tesis-506222,cross_source/008-panel-cohorte-top10k-ene2025-2025-desktop,234.8694,68.8925,tesis_20261002_010633_97594
+2026-10-02,tesis-506222,cross_source/007-panel-cohorte-top10k-ene2025-2025,234.8694,79.9172,tesis_20261002_010631_97495
