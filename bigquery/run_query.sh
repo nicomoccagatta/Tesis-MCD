@@ -27,7 +27,8 @@ echo "== Dry-run: estimando costo de $NAME.sql =="
 DRY_JSON=$(bq query --project_id="$PROJECT" --use_legacy_sql=false --dry_run --format=json < "$SQL_FILE")
 BYTES=$(python3 -c "import json,sys; print(json.load(sys.stdin)['statistics']['query']['totalBytesProcessed'])" <<< "$DRY_JSON")
 GB=$(python3 -c "print(round($BYTES/1e9, 4))")
-echo "Bytes a procesar: $BYTES  (~${GB} GB)"
+echo "Bytes a procesar según el dry-run: $BYTES  (~${GB} GB)"
+echo "(El dry-run no descuenta el clustering: lo facturado puede ser bastante menor. El ledger registra lo facturado.)"
 
 if [[ "$BYTES" -eq 0 ]]; then
   echo "Aviso: 0 bytes procesados según el dry-run. Puede ser una query trivial o (más probable) que falte el filtro de partición sobre 'date' y esté usando cache/metadata. Revisar antes de confirmar." >&2
@@ -40,8 +41,10 @@ if [[ "$CONFIRM" != "y" && "$CONFIRM" != "Y" ]]; then
 fi
 
 echo "== Ejecutando y exportando a CSV =="
+JOB_ID="tesis_$(date +%Y%m%d_%H%M%S)_$$"
 bq query \
   --project_id="$PROJECT" \
+  --job_id="$JOB_ID" \
   --use_legacy_sql=false \
   --format=csv \
   --max_rows=50000000 \
@@ -53,11 +56,15 @@ duckdb -c "COPY (SELECT * FROM read_csv_auto('$CSV_FILE')) TO '$PARQUET_FILE' (F
 rm -f "$CSV_FILE"
 
 echo "== Registrando uso en usage-log.csv =="
+BILLED=$(bq show --project_id="$PROJECT" --format=json -j "$JOB_ID" \
+  | python3 -c "import json,sys; print(json.load(sys.stdin)['statistics']['query']['totalBytesBilled'])")
+GB_BILLED=$(python3 -c "print(round($BILLED/1e9, 4))")
+echo "Bytes facturados por el job $JOB_ID: $BILLED  (~${GB_BILLED} GB)"
 DATE="$(date +%Y-%m-%d)"
 if [[ ! -f "$LEDGER" ]]; then
-  echo "date,project,script,gb_scanned" > "$LEDGER"
+  echo "date,project,script,gb_dry_run,gb_billed,job_id" > "$LEDGER"
 fi
-echo "$DATE,$PROJECT,$NAME,$GB" >> "$LEDGER"
+echo "$DATE,$PROJECT,$NAME,$GB,$GB_BILLED,$JOB_ID" >> "$LEDGER"
 
 echo "Listo: $PARQUET_FILE"
 
@@ -69,6 +76,6 @@ total = 0.0
 with open(ledger) as f:
     for row in csv.DictReader(f):
         if row["date"].startswith(month) and row["project"] == "tesis-506222":
-            total += float(row["gb_scanned"])
-print(f"Acumulado {month} en tesis-506222: {total:.2f} GB de 1024 GB (free tier)")
+            total += float(row["gb_billed"])
+print(f"Acumulado facturado {month} en tesis-506222: {total:.2f} GB de 1024 GB (free tier)")
 PYEOF

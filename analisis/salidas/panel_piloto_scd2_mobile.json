@@ -1,0 +1,81 @@
+{
+  "cliente": "mobile",
+  "meses": 12,
+  "sitios_cohorte": 7717,
+  "sitios_balanceados": 5648,
+  "sitios_faltan_1_o_2_meses": 791,
+  "sitios_faltan_3_o_mas_meses": 1278,
+  "sitios_por_mes": 6897.0,
+  "pct_sitio_mes_con_lcp": 99.6,
+  "pct_sitio_mes_sin_tecnologias": 10.6,
+  "relleno": {
+    "huecos_sitio_mes": 9843,
+    "rellenados_otro_cliente": 1479,
+    "rellenados_meses_vecinos": 277,
+    "siguen_faltando": 8087,
+    "sitios_balanceados_tras_relleno": 6370
+  },
+  "pct_sitio_mes_fuera_top10k_feb_dic": 17.9,
+  "scd2_tramos": [
+    {
+      "tecnologia": "jQuery",
+      "tramos": 3772,
+      "tramos_un_mes_internos": 79
+    },
+    {
+      "tecnologia": "React",
+      "tramos": 1476,
+      "tramos_un_mes_internos": 37
+    },
+    {
+      "tecnologia": "Vue.js",
+      "tramos": 724,
+      "tramos_un_mes_internos": 32
+    },
+    {
+      "tecnologia": "Next.js",
+      "tramos": 689,
+      "tramos_un_mes_internos": 8
+    },
+    {
+      "tecnologia": "WordPress",
+      "tramos": 585,
+      "tramos_un_mes_internos": 3
+    },
+    {
+      "tecnologia": "Angular",
+      "tramos": 165,
+      "tramos_un_mes_internos": 7
+    }
+  ],
+  "eventos": [
+    {
+      "par": "jQuery→React",
+      "sitios_crudo": 69,
+      "sitios_crudo_verificable": 51,
+      "sitios_persistente_3m": 48,
+      "pct_descartado_verificable": 6
+    },
+    {
+      "par": "jQuery→React (conservando jQuery)",
+      "sitios_crudo": 59,
+      "sitios_crudo_verificable": 42,
+      "sitios_persistente_3m": 24,
+      "pct_descartado_verificable": 43
+    },
+    {
+      "par": "React→Next.js",
+      "sitios_crudo": 36,
+      "sitios_crudo_verificable": 23,
+      "sitios_persistente_3m": 19,
+      "pct_descartado_verificable": 17
+    },
+    {
+      "par": "Abandono de WordPress",
+      "sitios_crudo": 36,
+      "sitios_crudo_verificable": 20,
+      "sitios_persistente_3m": 16,
+      "pct_descartado_verificable": 20
+    }
+  ]
+}

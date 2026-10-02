@@ -1,0 +1,6061 @@
+{
+  "cliente": "mobile",
+  "mes": "2025-12-01",
+  "sitios_mes": 6410,
+  "bipartito": {
+    "sitios_con_framework_o_libreria": 5764,
+    "nodos_tecnologia": 80,
+    "nodos_framework": 29,
+    "aristas": 19993,
+    "grado_medio_sitio": 3.47
+  },
+  "proyeccion": {
+    "nodos": 62,
+    "aristas_lift_alto": 97,
+    "pares_descartados_por_implies": 15,
+    "comunidades": 11,
+    "comunidades_por_semilla": {
+      "10": 12,
+      "11": 38
+    },
+    "modularidad": 0.677,
+    "aristas": [
+      {
+        "u": "lit-element",
+        "v": "lit-html",
+        "coocurrencia": 205,
+        "lift": 24.42
+      },
+      {
+        "u": "Next.js App Router",
+        "v": "React@?",
+        "coocurrencia": 201,
+        "lift": 5.2
+      },
+      {
+        "u": "React@?",
+        "v": "Tailwind CSS",
+        "coocurrencia": 183,
+        "lift": 2.41
+      },
+      {
+        "u": "Emotion",
+        "v": "React@?",
+        "coocurrencia": 169,
+        "lift": 3.89
+      },
+      {
+        "u": "jQuery Migrate",
+        "v": "jQuery UI",
+        "coocurrencia": 122,
+        "lift": 2.56
+      },
+      {
+        "u": "Bootstrap",
+        "v": "Moment.js",
+        "coocurrencia": 104,
+        "lift": 2.41
+      },
+      {
+        "u": "Bootstrap",
+        "v": "Slick",
+        "coocurrencia": 99,
+        "lift": 2.04
+      },
+      {
+        "u": "Next.js App Router",
+        "v": "Tailwind CSS",
+        "coocurrencia": 86,
+        "lift": 6.2
+      },
+      {
+        "u": "Loadable-Components",
+        "v": "React@?",
+        "coocurrencia": 81,
+        "lift": 2.98
+      },
+      {
+        "u": "Bootstrap",
+        "v": "Select2",
+        "coocurrencia": 80,
+        "lift": 2.38
+      },
+      {
+        "u": "Next.js@15",
+        "v": "Tailwind CSS",
+        "coocurrencia": 76,
+        "lift": 4.77
+      },
+      {
+        "u": "Radix UI",
+        "v": "React@?",
+        "coocurrencia": 76,
+        "lift": 4.61
+      },
+      {
+        "u": "Element UI",
+        "v": "Vue.js@?",
+        "coocurrencia": 73,
+        "lift": 10.89
+      },
+      {
+        "u": "Bootstrap",
+        "v": "OWL Carousel",
+        "coocurrencia": 71,
+        "lift": 2.65
+      },
+      {
+        "u": "Moment.js",
+        "v": "jQuery UI",
+        "coocurrencia": 71,
+        "lift": 3.17
+      },
+      {
+        "u": "Slick",
+        "v": "jQuery UI",
+        "coocurrencia": 67,
+        "lift": 2.66
+      },
+      {
+        "u": "Modernizr",
+        "v": "jQuery UI",
+        "coocurrencia": 65,
+        "lift": 3.27
+      },
+      {
+        "u": "Modernizr",
+        "v": "jQuery@1",
+        "coocurrencia": 64,
+        "lift": 2.39
+      },
+      {
+        "u": "Lodash",
+        "v": "Moment.js",
+        "coocurrencia": 59,
+        "lift": 3.08
+      },
+      {
+        "u": "Apollo",
+        "v": "React@?",
+        "coocurrencia": 58,
+        "lift": 3.79
+      },
+      {
+        "u": "Next.js@14",
+        "v": "Tailwind CSS",
+        "coocurrencia": 57,
+        "lift": 3.86
+      },
+      {
+        "u": "Radix UI",
+        "v": "Tailwind CSS",
+        "coocurrencia": 55,
+        "lift": 9.31
+      },
+      {
+        "u": "Slick",
+        "v": "jQuery Migrate",
+        "coocurrencia": 51,
+        "lift": 2.84
+      },
+      {
+        "u": "Emotion",
+        "v": "MUI",
+        "coocurrencia": 50,
+        "lift": 20.81
+      },
+      {
+        "u": "AMP",
+        "v": "Svelte",
+        "coocurrencia": 48,
+        "lift": 10.73
+      },
+      {
+        "u": "Emotion",
+        "v": "Lodash",
+        "coocurrencia": 48,
+        "lift": 2.3
+      },
+      {
+        "u": "Axios",
+        "v": "Bootstrap",
+        "coocurrencia": 47,
+        "lift": 2.01
+      },
+      {
+        "u": "Lodash",
+        "v": "Modernizr",
+        "coocurrencia": 46,
+        "lift": 2.7
+      },
+      {
+        "u": "Lodash",
+        "v": "styled-components",
+        "coocurrencia": 46,
+        "lift": 2.14
+      },
+      {
+        "u": "Backbone.js",
+        "v": "Lodash",
+        "coocurrencia": 45,
+        "lift": 5.15
+      },
+      {
+        "u": "Lodash",
+        "v": "Underscore.js",
+        "coocurrencia": 45,
+        "lift": 3.31
+      },
+      {
+        "u": "Next.js App Router",
+        "v": "Radix UI",
+        "coocurrencia": 45,
+        "lift": 14.93
+      },
+      {
+        "u": "RequireJS",
+        "v": "jQuery@1",
+        "coocurrencia": 43,
+        "lift": 2.3
+      },
+      {
+        "u": "Emotion",
+        "v": "Next.js@14",
+        "coocurrencia": 41,
+        "lift": 4.84
+      },
+      {
+        "u": "Emotion",
+        "v": "Tailwind CSS",
+        "coocurrencia": 41,
+        "lift": 2.63
+      },
+      {
+        "u": "Emotion",
+        "v": "Next.js@15",
+        "coocurrencia": 39,
+        "lift": 4.27
+      },
+      {
+        "u": "Hammer.js",
+        "v": "jQuery UI",
+        "coocurrencia": 39,
+        "lift": 2.08
+      },
+      {
+        "u": "Lodash",
+        "v": "Zone.js",
+        "coocurrencia": 39,
+        "lift": 3.14
+      },
+      {
+        "u": "MobX",
+        "v": "React@?",
+        "coocurrencia": 39,
+        "lift": 3.64
+      },
+      {
+        "u": "FancyBox",
+        "v": "LazySizes",
+        "coocurrencia": 38,
+        "lift": 2.21
+      },
+      {
+        "u": "FancyBox",
+        "v": "Select2",
+        "coocurrencia": 38,
+        "lift": 6.41
+      },
+      {
+        "u": "Lodash",
+        "v": "RequireJS",
+        "coocurrencia": 38,
+        "lift": 3.2
+      },
+      {
+        "u": "Underscore.js",
+        "v": "jQuery UI",
+        "coocurrencia": 38,
+        "lift": 2.39
+      },
+      {
+        "u": "Hammer.js",
+        "v": "Lodash",
+        "coocurrencia": 37,
+        "lift": 2.31
+      },
+      {
+        "u": "Modernizr",
+        "v": "jQuery Migrate",
+        "coocurrencia": 37,
+        "lift": 2.6
+      },
+      {
+        "u": "Bootstrap",
+        "v": "SweetAlert2",
+        "coocurrencia": 36,
+        "lift": 3.22
+      },
+      {
+        "u": "Next.js@14",
+        "v": "Radix UI",
+        "coocurrencia": 36,
+        "lift": 11.22
+      },
+      {
+        "u": "SoundManager",
+        "v": "web-vitals",
+        "coocurrencia": 36,
+        "lift": 21.93
+      },
+      {
+        "u": "Moment.js",
+        "v": "Underscore.js",
+        "coocurrencia": 34,
+        "lift": 6.37
+      },
+      {
+        "u": "Next.js@14",
+        "v": "styled-components",
+        "coocurrencia": 34,
+        "lift": 3.9
+      },
+      {
+        "u": "AOS",
+        "v": "Bootstrap",
+        "coocurrencia": 32,
+        "lift": 2.86
+      },
+      {
+        "u": "Bootstrap",
+        "v": "DataTables",
+        "coocurrencia": 32,
+        "lift": 3.22
+      },
+      {
+        "u": "Bootstrap",
+        "v": "toastr",
+        "coocurrencia": 31,
+        "lift": 3.48
+      },
+      {
+        "u": "Emotion",
+        "v": "Preact",
+        "coocurrencia": 31,
+        "lift": 2.38
+      },
+      {
+        "u": "Loadable-Components",
+        "v": "Lodash",
+        "coocurrencia": 31,
+        "lift": 2.37
+      },
+      {
+        "u": "Tippy.js",
+        "v": "jQuery@3",
+        "coocurrencia": 31,
+        "lift": 2.26
+      },
+      {
+        "u": "Boomerang",
+        "v": "React@18",
+        "coocurrencia": 30,
+        "lift": 7.46
+      },
+      {
+        "u": "Axios",
+        "v": "Lodash",
+        "coocurrencia": 28,
+        "lift": 2.69
+      },
+      {
+        "u": "Emotion",
+        "v": "Loadable-Components",
+        "coocurrencia": 28,
+        "lift": 5.01
+      },
+      {
+        "u": "Handlebars",
+        "v": "jQuery UI",
+        "coocurrencia": 28,
+        "lift": 3.94
+      },
+      {
+        "u": "Loadable-Components",
+        "v": "React Router",
+        "coocurrencia": 28,
+        "lift": 7.78
+      },
+      {
+        "u": "Next.js@15",
+        "v": "Radix UI",
+        "coocurrencia": 28,
+        "lift": 8.09
+      },
+      {
+        "u": "Boomerang",
+        "v": "styled-components",
+        "coocurrencia": 27,
+        "lift": 2.64
+      },
+      {
+        "u": "JSS",
+        "v": "React@?",
+        "coocurrencia": 27,
+        "lift": 4.41
+      },
+      {
+        "u": "Next.js@15",
+        "v": "styled-components",
+        "coocurrencia": 27,
+        "lift": 2.87
+      },
+      {
+        "u": "Nuxt.js",
+        "v": "Tailwind CSS",
+        "coocurrencia": 27,
+        "lift": 3.42
+      },
+      {
+        "u": "crypto-js",
+        "v": "jQuery UI",
+        "coocurrencia": 27,
+        "lift": 2.3
+      },
+      {
+        "u": "AngularJS",
+        "v": "Bootstrap",
+        "coocurrencia": 26,
+        "lift": 2.09
+      },
+      {
+        "u": "Axios",
+        "v": "Vue.js@2",
+        "coocurrencia": 26,
+        "lift": 13.96
+      },
+      {
+        "u": "Boomerang",
+        "v": "Emotion",
+        "coocurrencia": 26,
+        "lift": 2.62
+      },
+      {
+        "u": "Moment.js",
+        "v": "jQuery@2",
+        "coocurrencia": 26,
+        "lift": 2.47
+      },
+      {
+        "u": "Day.js",
+        "v": "jQuery@3",
+        "coocurrencia": 25,
+        "lift": 2.31
+      },
+      {
+        "u": "Animate.css",
+        "v": "Bootstrap",
+        "coocurrencia": 24,
+        "lift": 2.1
+      },
+      {
+        "u": "Modernizr",
+        "v": "Underscore.js",
+        "coocurrencia": 24,
+        "lift": 5.05
+      },
+      {
+        "u": "Modernizr",
+        "v": "jQuery@2",
+        "coocurrencia": 24,
+        "lift": 2.56
+      },
+      {
+        "u": "React Router",
+        "v": "styled-components",
+        "coocurrencia": 24,
+        "lift": 4.05
+      },
+      {
+        "u": "Backbone.js",
+        "v": "Moment.js",
+        "coocurrencia": 23,
+        "lift": 6.71
+      },
+      {
+        "u": "Emotion",
+        "v": "Next.js App Router",
+        "coocurrencia": 23,
+        "lift": 2.89
+      },
+      {
+        "u": "Hammer.js",
+        "v": "Mustache",
+        "coocurrencia": 23,
+        "lift": 9.77
+      },
+      {
+        "u": "Modernizr",
+        "v": "Moment.js",
+        "coocurrencia": 23,
+        "lift": 3.45
+      },
+      {
+        "u": "Moment.js",
+        "v": "Select2",
+        "coocurrencia": 23,
+        "lift": 3.93
+      },
+      {
+        "u": "OWL Carousel",
+        "v": "jQuery Migrate",
+        "coocurrencia": 23,
+        "lift": 2.32
+      },
+      {
+        "u": "Underscore.js",
+        "v": "jQuery Migrate",
+        "coocurrencia": 23,
+        "lift": 2.02
+      },
+      {
+        "u": "DataTables",
+        "v": "jQuery UI",
+        "coocurrencia": 22,
+        "lift": 4.26
+      },
+      {
+        "u": "GSAP",
+        "v": "Lodash",
+        "coocurrencia": 22,
+        "lift": 2.18
+      },
+      {
+        "u": "LazySizes",
+        "v": "Mustache",
+        "coocurrencia": 22,
+        "lift": 3.46
+      },
+      {
+        "u": "Adobe Client Data Layer",
+        "v": "Lodash",
+        "coocurrencia": 21,
+        "lift": 3.22
+      },
+      {
+        "u": "Alpine.js",
+        "v": "Tailwind CSS",
+        "coocurrencia": 21,
+        "lift": 4.43
+      },
+      {
+        "u": "Backbone.js",
+        "v": "jQuery UI",
+        "coocurrencia": 21,
+        "lift": 2.06
+      },
+      {
+        "u": "Lodash",
+        "v": "Vue.js@2",
+        "coocurrencia": 21,
+        "lift": 2.4
+      },
+      {
+        "u": "AngularJS",
+        "v": "jQuery UI",
+        "coocurrencia": 20,
+        "lift": 3.1
+      },
+      {
+        "u": "Backbone.js",
+        "v": "Modernizr",
+        "coocurrencia": 20,
+        "lift": 6.56
+      },
+      {
+        "u": "Emotion",
+        "v": "styled-components",
+        "coocurrencia": 20,
+        "lift": 2.17
+      },
+      {
+        "u": "Hammer.js",
+        "v": "Zone.js",
+        "coocurrencia": 20,
+        "lift": 4.91
+      },
+      {
+        "u": "Handlebars",
+        "v": "Moment.js",
+        "coocurrencia": 20,
+        "lift": 8.4
+      },
+      {
+        "u": "LazySizes",
+        "v": "Lightbox",
+        "coocurrencia": 20,
+        "lift": 2.34
+      },
+      {
+        "u": "RequireJS",
+        "v": "Underscore.js",
+        "coocurrencia": 20,
+        "lift": 6.04
+      }
+    ]
+  },
+  "nodos": {
+    "AMP": {
+      "sitios": 121,
+      "tipo": "framework",
+      "comunidad": 7,
+      "xy": null
+    },
+    "AOS": {
+      "sitios": 54,
+      "tipo": "libreria",
+      "comunidad": 0,
+      "xy": [
+        0.7125,
+        0.3156
+      ]
+    },
+    "Adobe Client Data Layer": {
+      "sitios": 71,
+      "tipo": "framework",
+      "comunidad": 4,
+      "xy": [
+        -0.162,
+        0.282
+      ]
+    },
+    "Alpine.js": {
+      "sitios": 69,
+      "tipo": "framework",
+      "comunidad": 5,
+      "xy": [
+        -0.7916,
+        -0.4074
+      ]
+    },
+    "AngularJS": {
+      "sitios": 60,
+      "tipo": "framework",
+      "comunidad": 0,
+      "xy": [
+        0.6368,
+        0.0255
+      ]
+    },
+    "Animate.css": {
+      "sitios": 55,
+      "tipo": "libreria",
+      "comunidad": 0,
+      "xy": [
+        0.6179,
+        0.3837
+      ]
+    },
+    "Apollo": {
+      "sitios": 80,
+      "tipo": "libreria",
+      "comunidad": 5,
+      "xy": [
+        -0.6766,
+        0.3536
+      ]
+    },
+    "Axios": {
+      "sitios": 113,
+      "tipo": "libreria",
+      "comunidad": 10,
+      "xy": [
+        0.2066,
+        0.1211
+      ]
+    },
+    "Backbone.js": {
+      "sitios": 95,
+      "tipo": "framework",
+      "comunidad": 4,
+      "xy": [
+        0.1222,
+        -0.0892
+      ]
+    },
+    "Boomerang": {
+      "sitios": 252,
+      "tipo": "libreria",
+      "comunidad": 2,
+      "xy": [
+        -0.3533,
+        -0.4402
+      ]
+    },
+    "Bootstrap": {
+      "sitios": 1195,
+      "tipo": "libreria",
+      "comunidad": 0,
+      "xy": [
+        0.5217,
+        0.1145
+      ]
+    },
+    "Clipboard.js": {
+      "sitios": 35,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "Closure Library": {
+      "sitios": 56,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "DataTables": {
+      "sitios": 48,
+      "tipo": "libreria",
+      "comunidad": 0,
+      "xy": [
+        0.649,
+        -0.0606
+      ]
+    },
+    "Day.js": {
+      "sitios": 30,
+      "tipo": "libreria",
+      "comunidad": 8,
+      "xy": null
+    },
+    "Element UI": {
+      "sitios": 88,
+      "tipo": "libreria",
+      "comunidad": 1,
+      "xy": null
+    },
+    "Emotion": {
+      "sitios": 227,
+      "tipo": "framework",
+      "comunidad": 2,
+      "xy": [
+        -0.353,
+        -0.1017
+      ]
+    },
+    "FancyBox": {
+      "sitios": 211,
+      "tipo": "libreria",
+      "comunidad": 3,
+      "xy": [
+        0.4174,
+        0.5785
+      ]
+    },
+    "FingerprintJS": {
+      "sitios": 91,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "Flickity": {
+      "sitios": 54,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "GSAP": {
+      "sitios": 110,
+      "tipo": "framework",
+      "comunidad": 4,
+      "xy": [
+        -0.1806,
+        0.1778
+      ]
+    },
+    "Glide.js": {
+      "sitios": 50,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "Hammer.js": {
+      "sitios": 174,
+      "tipo": "libreria",
+      "comunidad": 3,
+      "xy": [
+        0.1275,
+        0.183
+      ]
+    },
+    "Handlebars": {
+      "sitios": 66,
+      "tipo": "framework",
+      "comunidad": 4,
+      "xy": [
+        0.3908,
+        0.0912
+      ]
+    },
+    "JSS": {
+      "sitios": 32,
+      "tipo": "framework",
+      "comunidad": 5,
+      "xy": [
+        -0.7845,
+        0.2635
+      ]
+    },
+    "LazySizes": {
+      "sitios": 470,
+      "tipo": "libreria",
+      "comunidad": 3,
+      "xy": [
+        0.2374,
+        0.746
+      ]
+    },
+    "Lightbox": {
+      "sitios": 105,
+      "tipo": "libreria",
+      "comunidad": 3,
+      "xy": [
+        0.2643,
+        1.0
+      ]
+    },
+    "Loadable-Components": {
+      "sitios": 142,
+      "tipo": "libreria",
+      "comunidad": 2,
+      "xy": [
+        -0.2711,
+        -0.0195
+      ]
+    },
+    "Lodash": {
+      "sitios": 530,
+      "tipo": "libreria",
+      "comunidad": 4,
+      "xy": [
+        -0.0462,
+        -0.0188
+      ]
+    },
+    "Lozad.js": {
+      "sitios": 98,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "MUI": {
+      "sitios": 61,
+      "tipo": "libreria",
+      "comunidad": 2,
+      "xy": [
+        -0.4465,
+        0.1797
+      ]
+    },
+    "MobX": {
+      "sitios": 56,
+      "tipo": "libreria",
+      "comunidad": 5,
+      "xy": [
+        -0.8615,
+        0.1259
+      ]
+    },
+    "Modernizr": {
+      "sitios": 185,
+      "tipo": "libreria",
+      "comunidad": 4,
+      "xy": [
+        0.1807,
+        -0.2373
+      ]
+    },
+    "Moment.js": {
+      "sitios": 208,
+      "tipo": "libreria",
+      "comunidad": 4,
+      "xy": [
+        0.2501,
+        -0.0079
+      ]
+    },
+    "Mustache": {
+      "sitios": 78,
+      "tipo": "framework",
+      "comunidad": 3,
+      "xy": [
+        0.1082,
+        0.5196
+      ]
+    },
+    "Next.js App Router": {
+      "sitios": 202,
+      "tipo": "framework",
+      "comunidad": 5,
+      "xy": [
+        -0.5594,
+        -0.0227
+      ]
+    },
+    "Next.js@12": {
+      "sitios": 61,
+      "tipo": "framework",
+      "comunidad": null,
+      "xy": null
+    },
+    "Next.js@13": {
+      "sitios": 64,
+      "tipo": "framework",
+      "comunidad": null,
+      "xy": null
+    },
+    "Next.js@14": {
+      "sitios": 215,
+      "tipo": "framework",
+      "comunidad": 5,
+      "xy": [
+        -0.4991,
+        -0.1939
+      ]
+    },
+    "Next.js@15": {
+      "sitios": 232,
+      "tipo": "framework",
+      "comunidad": 5,
+      "xy": [
+        -0.513,
+        -0.2759
+      ]
+    },
+    "Nuxt.js": {
+      "sitios": 115,
+      "tipo": "framework",
+      "comunidad": 5,
+      "xy": [
+        -0.8962,
+        -0.2283
+      ]
+    },
+    "OWL Carousel": {
+      "sitios": 129,
+      "tipo": "libreria",
+      "comunidad": 0,
+      "xy": [
+        0.6936,
+        -0.1926
+      ]
+    },
+    "Preact": {
+      "sitios": 331,
+      "tipo": "libreria",
+      "comunidad": 2,
+      "xy": [
+        -0.4281,
+        -0.3846
+      ]
+    },
+    "PubSubJS": {
+      "sitios": 49,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "Radix UI": {
+      "sitios": 86,
+      "tipo": "libreria",
+      "comunidad": 5,
+      "xy": [
+        -0.7631,
+        -0.0947
+      ]
+    },
+    "React Router": {
+      "sitios": 146,
+      "tipo": "framework",
+      "comunidad": 2,
+      "xy": [
+        -0.2406,
+        -0.4023
+      ]
+    },
+    "React@17": {
+      "sitios": 30,
+      "tipo": "framework",
+      "comunidad": null,
+      "xy": null
+    },
+    "React@18": {
+      "sitios": 92,
+      "tipo": "framework",
+      "comunidad": 2,
+      "xy": [
+        -0.4374,
+        -0.7159
+      ]
+    },
+    "React@?": {
+      "sitios": 1104,
+      "tipo": "framework",
+      "comunidad": 5,
+      "xy": [
+        -0.5829,
+        0.0834
+      ]
+    },
+    "RequireJS": {
+      "sitios": 129,
+      "tipo": "framework",
+      "comunidad": 4,
+      "xy": [
+        0.0152,
+        -0.2998
+      ]
+    },
+    "Select2": {
+      "sitios": 162,
+      "tipo": "libreria",
+      "comunidad": 3,
+      "xy": [
+        0.3747,
+        0.2834
+      ]
+    },
+    "Slick": {
+      "sitios": 234,
+      "tipo": "libreria",
+      "comunidad": 0,
+      "xy": [
+        0.5879,
+        -0.1452
+      ]
+    },
+    "Socket.io": {
+      "sitios": 46,
+      "tipo": "framework",
+      "comunidad": null,
+      "xy": null
+    },
+    "SoundManager": {
+      "sitios": 38,
+      "tipo": "libreria",
+      "comunidad": 6,
+      "xy": null
+    },
+    "Splide": {
+      "sitios": 60,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "Stimulus": {
+      "sitios": 66,
+      "tipo": "framework",
+      "comunidad": null,
+      "xy": null
+    },
+    "Svelte": {
+      "sitios": 213,
+      "tipo": "framework",
+      "comunidad": 7,
+      "xy": null
+    },
+    "SweetAlert2": {
+      "sitios": 54,
+      "tipo": "libreria",
+      "comunidad": 0,
+      "xy": [
+        0.8289,
+        0.0668
+      ]
+    },
+    "Swiper": {
+      "sitios": 889,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "Tailwind CSS": {
+      "sitios": 396,
+      "tipo": "libreria",
+      "comunidad": 5,
+      "xy": [
+        -0.6321,
+        -0.1586
+      ]
+    },
+    "Tippy.js": {
+      "sitios": 38,
+      "tipo": "libreria",
+      "comunidad": 8,
+      "xy": null
+    },
+    "Underscore.js": {
+      "sitios": 148,
+      "tipo": "libreria",
+      "comunidad": 4,
+      "xy": [
+        0.165,
+        -0.1517
+      ]
+    },
+    "Vue.js@2": {
+      "sitios": 95,
+      "tipo": "framework",
+      "comunidad": 10,
+      "xy": [
+        0.0076,
+        0.165
+      ]
+    },
+    "Vue.js@?": {
+      "sitios": 439,
+      "tipo": "framework",
+      "comunidad": 1,
+      "xy": null
+    },
+    "ZURB Foundation": {
+      "sitios": 69,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "Zepto": {
+      "sitios": 44,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "Zone.js": {
+      "sitios": 135,
+      "tipo": "framework",
+      "comunidad": 3,
+      "xy": [
+        -0.0427,
+        0.2552
+      ]
+    },
+    "core-js": {
+      "sitios": 3111,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "crypto-js": {
+      "sitios": 109,
+      "tipo": "libreria",
+      "comunidad": 0,
+      "xy": [
+        0.5564,
+        -0.4095
+      ]
+    },
+    "jQuery Migrate": {
+      "sitios": 443,
+      "tipo": "libreria",
+      "comunidad": 0,
+      "xy": [
+        0.416,
+        -0.2826
+      ]
+    },
+    "jQuery UI": {
+      "sitios": 620,
+      "tipo": "libreria",
+      "comunidad": 0,
+      "xy": [
+        0.3819,
+        -0.1021
+      ]
+    },
+    "jQuery@1": {
+      "sitios": 836,
+      "tipo": "libreria",
+      "comunidad": 4,
+      "xy": [
+        0.1734,
+        -0.5162
+      ]
+    },
+    "jQuery@2": {
+      "sitios": 292,
+      "tipo": "libreria",
+      "comunidad": 4,
+      "xy": [
+        0.3258,
+        -0.3615
+      ]
+    },
+    "jQuery@3": {
+      "sitios": 2077,
+      "tipo": "libreria",
+      "comunidad": 8,
+      "xy": null
+    },
+    "jQuery@?": {
+      "sitios": 57,
+      "tipo": "libreria",
+      "comunidad": null,
+      "xy": null
+    },
+    "lit-element": {
+      "sitios": 205,
+      "tipo": "libreria",
+      "comunidad": 9,
+      "xy": null
+    },
+    "lit-html": {
+      "sitios": 236,
+      "tipo": "libreria",
+      "comunidad": 9,
+      "xy": null
+    },
+    "styled-components": {
+      "sitios": 234,
+      "tipo": "framework",
+      "comunidad": 2,
+      "xy": [
+        -0.2332,
+        -0.2055
+      ]
+    },
+    "toastr": {
+      "sitios": 43,
+      "tipo": "framework",
+      "comunidad": 0,
+      "xy": [
+        0.7853,
+        0.2112
+      ]
+    },
+    "web-vitals": {
+      "sitios": 249,
+      "tipo": "libreria",
+      "comunidad": 6,
+      "xy": null
+    }
+  },
+  "libreria_total_sitios": {
+    "core-js": 3111,
+    "Bootstrap": 1195,
+    "Swiper": 889,
+    "jQuery UI": 620,
+    "Lodash": 530,
+    "LazySizes": 470,
+    "jQuery Migrate": 443,
+    "Tailwind CSS": 396,
+    "Preact": 331,
+    "Boomerang": 252,
+    "web-vitals": 249,
+    "lit-html": 236
+  },
+  "matriz_grupo_libreria": [
+    {
+      "grupo": "Angular",
+      "libreria": "Boomerang",
+      "sitios": 14,
+      "lift": 2.58
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Bootstrap",
+      "sitios": 32,
+      "lift": 1.24
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "LazySizes",
+      "sitios": 6,
+      "lift": 0.59
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Lodash",
+      "sitios": 35,
+      "lift": 3.07
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Preact",
+      "sitios": 4,
+      "lift": 0.56
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Swiper",
+      "sitios": 34,
+      "lift": 1.78
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Tailwind CSS",
+      "sitios": 6,
+      "lift": 0.7
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "core-js",
+      "sitios": 75,
+      "lift": 1.12
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "jQuery Migrate",
+      "sitios": 4,
+      "lift": 0.42
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "jQuery UI",
+      "sitios": 6,
+      "lift": 0.45
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "lit-html",
+      "sitios": 12,
+      "lift": 2.36
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "web-vitals",
+      "sitios": 8,
+      "lift": 1.49
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Boomerang",
+      "sitios": 42,
+      "lift": 1.52
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Bootstrap",
+      "sitios": 49,
+      "lift": 0.37
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "LazySizes",
+      "sitios": 15,
+      "lift": 0.29
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Lodash",
+      "sitios": 80,
+      "lift": 1.38
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Preact",
+      "sitios": 50,
+      "lift": 1.38
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Swiper",
+      "sitios": 102,
+      "lift": 1.05
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Tailwind CSS",
+      "sitios": 161,
+      "lift": 3.71
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "core-js",
+      "sitios": 389,
+      "lift": 1.14
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "lit-html",
+      "sitios": 30,
+      "lift": 1.16
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "web-vitals",
+      "sitios": 29,
+      "lift": 1.06
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Boomerang",
+      "sitios": 3,
+      "lift": 0.6
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Bootstrap",
+      "sitios": 7,
+      "lift": 0.29
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "LazySizes",
+      "sitios": 5,
+      "lift": 0.53
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Lodash",
+      "sitios": 13,
+      "lift": 1.23
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Preact",
+      "sitios": 9,
+      "lift": 1.36
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Swiper",
+      "sitios": 29,
+      "lift": 1.64
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Tailwind CSS",
+      "sitios": 27,
+      "lift": 3.42
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "core-js",
+      "sitios": 81,
+      "lift": 1.31
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "jQuery UI",
+      "sitios": 3,
+      "lift": 0.24
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "lit-html",
+      "sitios": 3,
+      "lift": 0.64
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "web-vitals",
+      "sitios": 6,
+      "lift": 1.21
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Boomerang",
+      "sitios": 36,
+      "lift": 0.72
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Bootstrap",
+      "sitios": 123,
+      "lift": 0.52
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "LazySizes",
+      "sitios": 74,
+      "lift": 0.79
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Lodash",
+      "sitios": 70,
+      "lift": 0.67
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Preact",
+      "sitios": 93,
+      "lift": 1.42
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Swiper",
+      "sitios": 123,
+      "lift": 0.7
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Tailwind CSS",
+      "sitios": 113,
+      "lift": 1.44
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "core-js",
+      "sitios": 698,
+      "lift": 1.13
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "lit-html",
+      "sitios": 70,
+      "lift": 1.5
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "web-vitals",
+      "sitios": 91,
+      "lift": 1.84
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Boomerang",
+      "sitios": 69,
+      "lift": 2.49
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Bootstrap",
+      "sitios": 94,
+      "lift": 0.72
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "LazySizes",
+      "sitios": 40,
+      "lift": 0.77
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Lodash",
+      "sitios": 132,
+      "lift": 2.27
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Preact",
+      "sitios": 42,
+      "lift": 1.16
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Swiper",
+      "sitios": 80,
+      "lift": 0.82
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Tailwind CSS",
+      "sitios": 36,
+      "lift": 0.83
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "core-js",
+      "sitios": 467,
+      "lift": 1.37
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "jQuery Migrate",
+      "sitios": 21,
+      "lift": 0.43
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "jQuery UI",
+      "sitios": 43,
+      "lift": 0.63
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "lit-html",
+      "sitios": 52,
+      "lift": 2.01
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "web-vitals",
+      "sitios": 34,
+      "lift": 1.24
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Boomerang",
+      "sitios": 65,
+      "lift": 0.54
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Bootstrap",
+      "sitios": 812,
+      "lift": 1.43
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "LazySizes",
+      "sitios": 296,
+      "lift": 1.33
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Lodash",
+      "sitios": 150,
+      "lift": 0.6
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Preact",
+      "sitios": 117,
+      "lift": 0.74
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Swiper",
+      "sitios": 407,
+      "lift": 0.96
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Tailwind CSS",
+      "sitios": 36,
+      "lift": 0.19
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "core-js",
+      "sitios": 1113,
+      "lift": 0.75
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "jQuery Migrate",
+      "sitios": 409,
+      "lift": 1.95
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "jQuery UI",
+      "sitios": 534,
+      "lift": 1.81
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "lit-html",
+      "sitios": 50,
+      "lift": 0.45
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "web-vitals",
+      "sitios": 68,
+      "lift": 0.58
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Boomerang",
+      "sitios": 23,
+      "lift": 1.27
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Bootstrap",
+      "sitios": 78,
+      "lift": 0.91
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "LazySizes",
+      "sitios": 34,
+      "lift": 1.01
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Lodash",
+      "sitios": 50,
+      "lift": 1.32
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Preact",
+      "sitios": 16,
+      "lift": 0.67
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Swiper",
+      "sitios": 114,
+      "lift": 1.79
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Tailwind CSS",
+      "sitios": 17,
+      "lift": 0.6
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "core-js",
+      "sitios": 288,
+      "lift": 1.29
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "jQuery Migrate",
+      "sitios": 9,
+      "lift": 0.28
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "jQuery UI",
+      "sitios": 34,
+      "lift": 0.77
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "lit-html",
+      "sitios": 19,
+      "lift": 1.12
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "web-vitals",
+      "sitios": 13,
+      "lift": 0.73
+    }
+  ],
+  "matriz_completa": [
+    {
+      "grupo": "Angular",
+      "libreria": "Apollo",
+      "sitios": 2,
+      "lift": 1.16
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Boomerang",
+      "sitios": 14,
+      "lift": 2.58
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Bootstrap",
+      "sitios": 32,
+      "lift": 1.24
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Closure Library",
+      "sitios": 1,
+      "lift": 0.83
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Day.js",
+      "sitios": 1,
+      "lift": 1.55
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "FingerprintJS",
+      "sitios": 2,
+      "lift": 1.02
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Flickity",
+      "sitios": 2,
+      "lift": 1.72
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Hammer.js",
+      "sitios": 16,
+      "lift": 4.27
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "LazySizes",
+      "sitios": 6,
+      "lift": 0.59
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Lodash",
+      "sitios": 35,
+      "lift": 3.07
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "MobX",
+      "sitios": 1,
+      "lift": 0.83
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Modernizr",
+      "sitios": 6,
+      "lift": 1.51
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Moment.js",
+      "sitios": 5,
+      "lift": 1.12
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Preact",
+      "sitios": 4,
+      "lift": 0.56
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "PubSubJS",
+      "sitios": 1,
+      "lift": 0.95
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Select2",
+      "sitios": 3,
+      "lift": 0.86
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Slick",
+      "sitios": 5,
+      "lift": 0.99
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Splide",
+      "sitios": 2,
+      "lift": 1.55
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Swiper",
+      "sitios": 34,
+      "lift": 1.78
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Tailwind CSS",
+      "sitios": 6,
+      "lift": 0.7
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Tippy.js",
+      "sitios": 1,
+      "lift": 1.22
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "Underscore.js",
+      "sitios": 4,
+      "lift": 1.26
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "ZURB Foundation",
+      "sitios": 2,
+      "lift": 1.35
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "core-js",
+      "sitios": 75,
+      "lift": 1.12
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "crypto-js",
+      "sitios": 8,
+      "lift": 3.41
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "jQuery Migrate",
+      "sitios": 4,
+      "lift": 0.42
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "jQuery UI",
+      "sitios": 6,
+      "lift": 0.45
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "jQuery@1",
+      "sitios": 4,
+      "lift": 0.22
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "jQuery@2",
+      "sitios": 15,
+      "lift": 2.39
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "jQuery@3",
+      "sitios": 41,
+      "lift": 0.92
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "jQuery@?",
+      "sitios": 1,
+      "lift": 0.82
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "lit-element",
+      "sitios": 11,
+      "lift": 2.49
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "lit-html",
+      "sitios": 12,
+      "lift": 2.36
+    },
+    {
+      "grupo": "Angular",
+      "libreria": "web-vitals",
+      "sitios": 8,
+      "lift": 1.49
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "AOS",
+      "sitios": 1,
+      "lift": 0.17
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Animate.css",
+      "sitios": 3,
+      "lift": 0.5
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Apollo",
+      "sitios": 34,
+      "lift": 3.88
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Axios",
+      "sitios": 2,
+      "lift": 0.16
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Boomerang",
+      "sitios": 42,
+      "lift": 1.52
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Bootstrap",
+      "sitios": 49,
+      "lift": 0.37
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Clipboard.js",
+      "sitios": 3,
+      "lift": 0.78
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Closure Library",
+      "sitios": 2,
+      "lift": 0.33
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Element UI",
+      "sitios": 2,
+      "lift": 0.21
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "FingerprintJS",
+      "sitios": 11,
+      "lift": 1.1
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Glide.js",
+      "sitios": 9,
+      "lift": 1.64
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Hammer.js",
+      "sitios": 1,
+      "lift": 0.05
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "LazySizes",
+      "sitios": 15,
+      "lift": 0.29
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Lightbox",
+      "sitios": 6,
+      "lift": 0.52
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Lodash",
+      "sitios": 80,
+      "lift": 1.38
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Lozad.js",
+      "sitios": 2,
+      "lift": 0.19
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "MUI",
+      "sitios": 39,
+      "lift": 5.84
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "MobX",
+      "sitios": 17,
+      "lift": 2.77
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "OWL Carousel",
+      "sitios": 1,
+      "lift": 0.07
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Preact",
+      "sitios": 50,
+      "lift": 1.38
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "PubSubJS",
+      "sitios": 3,
+      "lift": 0.56
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Radix UI",
+      "sitios": 73,
+      "lift": 7.75
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Slick",
+      "sitios": 2,
+      "lift": 0.08
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Splide",
+      "sitios": 1,
+      "lift": 0.15
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Swiper",
+      "sitios": 102,
+      "lift": 1.05
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Tailwind CSS",
+      "sitios": 161,
+      "lift": 3.71
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "Underscore.js",
+      "sitios": 4,
+      "lift": 0.25
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "core-js",
+      "sitios": 389,
+      "lift": 1.14
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "crypto-js",
+      "sitios": 5,
+      "lift": 0.42
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "jQuery@1",
+      "sitios": 4,
+      "lift": 0.04
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "jQuery@2",
+      "sitios": 5,
+      "lift": 0.16
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "jQuery@3",
+      "sitios": 29,
+      "lift": 0.13
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "jQuery@?",
+      "sitios": 2,
+      "lift": 0.32
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "lit-element",
+      "sitios": 24,
+      "lift": 1.07
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "lit-html",
+      "sitios": 30,
+      "lift": 1.16
+    },
+    {
+      "grupo": "Next.js",
+      "libreria": "web-vitals",
+      "sitios": 29,
+      "lift": 1.06
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Apollo",
+      "sitios": 6,
+      "lift": 3.76
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Boomerang",
+      "sitios": 3,
+      "lift": 0.6
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Bootstrap",
+      "sitios": 7,
+      "lift": 0.29
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Clipboard.js",
+      "sitios": 1,
+      "lift": 1.43
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Element UI",
+      "sitios": 15,
+      "lift": 8.54
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "FancyBox",
+      "sitios": 1,
+      "lift": 0.24
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Glide.js",
+      "sitios": 3,
+      "lift": 3.01
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Hammer.js",
+      "sitios": 6,
+      "lift": 1.73
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "LazySizes",
+      "sitios": 5,
+      "lift": 0.53
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Lightbox",
+      "sitios": 1,
+      "lift": 0.48
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Lodash",
+      "sitios": 13,
+      "lift": 1.23
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Lozad.js",
+      "sitios": 1,
+      "lift": 0.51
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Preact",
+      "sitios": 9,
+      "lift": 1.36
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Slick",
+      "sitios": 1,
+      "lift": 0.21
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Splide",
+      "sitios": 1,
+      "lift": 0.84
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Swiper",
+      "sitios": 29,
+      "lift": 1.64
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Tailwind CSS",
+      "sitios": 27,
+      "lift": 3.42
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Tippy.js",
+      "sitios": 1,
+      "lift": 1.32
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "Underscore.js",
+      "sitios": 4,
+      "lift": 1.35
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "core-js",
+      "sitios": 81,
+      "lift": 1.31
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "crypto-js",
+      "sitios": 1,
+      "lift": 0.46
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "jQuery UI",
+      "sitios": 3,
+      "lift": 0.24
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "jQuery@1",
+      "sitios": 4,
+      "lift": 0.24
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "jQuery@3",
+      "sitios": 10,
+      "lift": 0.24
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "lit-element",
+      "sitios": 3,
+      "lift": 0.73
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "lit-html",
+      "sitios": 3,
+      "lift": 0.64
+    },
+    {
+      "grupo": "Nuxt.js",
+      "libreria": "web-vitals",
+      "sitios": 6,
+      "lift": 1.21
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "AOS",
+      "sitios": 11,
+      "lift": 1.03
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Animate.css",
+      "sitios": 5,
+      "lift": 0.46
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Apollo",
+      "sitios": 4,
+      "lift": 0.25
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Axios",
+      "sitios": 22,
+      "lift": 0.98
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Boomerang",
+      "sitios": 36,
+      "lift": 0.72
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Bootstrap",
+      "sitios": 123,
+      "lift": 0.52
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Clipboard.js",
+      "sitios": 1,
+      "lift": 0.14
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Closure Library",
+      "sitios": 24,
+      "lift": 2.16
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Day.js",
+      "sitios": 2,
+      "lift": 0.34
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "FingerprintJS",
+      "sitios": 23,
+      "lift": 1.27
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Flickity",
+      "sitios": 9,
+      "lift": 0.84
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Glide.js",
+      "sitios": 15,
+      "lift": 1.51
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Hammer.js",
+      "sitios": 18,
+      "lift": 0.52
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "LazySizes",
+      "sitios": 74,
+      "lift": 0.79
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Lightbox",
+      "sitios": 24,
+      "lift": 1.15
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Loadable-Components",
+      "sitios": 50,
+      "lift": 1.78
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Lodash",
+      "sitios": 70,
+      "lift": 0.67
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Lozad.js",
+      "sitios": 13,
+      "lift": 0.67
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "MobX",
+      "sitios": 10,
+      "lift": 0.9
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Modernizr",
+      "sitios": 6,
+      "lift": 0.16
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Moment.js",
+      "sitios": 8,
+      "lift": 0.19
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Preact",
+      "sitios": 93,
+      "lift": 1.42
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "PubSubJS",
+      "sitios": 13,
+      "lift": 1.34
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Radix UI",
+      "sitios": 5,
+      "lift": 0.29
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "SoundManager",
+      "sitios": 36,
+      "lift": 4.78
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Splide",
+      "sitios": 17,
+      "lift": 1.43
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "SweetAlert2",
+      "sitios": 4,
+      "lift": 0.37
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Swiper",
+      "sitios": 123,
+      "lift": 0.7
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Tailwind CSS",
+      "sitios": 113,
+      "lift": 1.44
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Tippy.js",
+      "sitios": 1,
+      "lift": 0.13
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Underscore.js",
+      "sitios": 16,
+      "lift": 0.55
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "ZURB Foundation",
+      "sitios": 5,
+      "lift": 0.37
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "Zepto",
+      "sitios": 20,
+      "lift": 2.29
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "core-js",
+      "sitios": 698,
+      "lift": 1.13
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "crypto-js",
+      "sitios": 11,
+      "lift": 0.51
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "lit-element",
+      "sitios": 59,
+      "lift": 1.45
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "lit-html",
+      "sitios": 70,
+      "lift": 1.5
+    },
+    {
+      "grupo": "Otros",
+      "libreria": "web-vitals",
+      "sitios": 91,
+      "lift": 1.84
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "AOS",
+      "sitios": 2,
+      "lift": 0.34
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Animate.css",
+      "sitios": 9,
+      "lift": 1.49
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Apollo",
+      "sitios": 28,
+      "lift": 3.19
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Axios",
+      "sitios": 14,
+      "lift": 1.13
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Boomerang",
+      "sitios": 69,
+      "lift": 2.49
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Bootstrap",
+      "sitios": 94,
+      "lift": 0.72
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Clipboard.js",
+      "sitios": 2,
+      "lift": 0.52
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Closure Library",
+      "sitios": 3,
+      "lift": 0.49
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "DataTables",
+      "sitios": 1,
+      "lift": 0.19
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Day.js",
+      "sitios": 4,
+      "lift": 1.21
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Element UI",
+      "sitios": 3,
+      "lift": 0.31
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "FancyBox",
+      "sitios": 8,
+      "lift": 0.35
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "FingerprintJS",
+      "sitios": 8,
+      "lift": 0.8
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Flickity",
+      "sitios": 3,
+      "lift": 0.51
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Glide.js",
+      "sitios": 2,
+      "lift": 0.36
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Hammer.js",
+      "sitios": 25,
+      "lift": 1.31
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "LazySizes",
+      "sitios": 40,
+      "lift": 0.77
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Lightbox",
+      "sitios": 11,
+      "lift": 0.95
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Loadable-Components",
+      "sitios": 90,
+      "lift": 5.77
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Lodash",
+      "sitios": 132,
+      "lift": 2.27
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Lozad.js",
+      "sitios": 5,
+      "lift": 0.46
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "MUI",
+      "sitios": 22,
+      "lift": 3.28
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "MobX",
+      "sitios": 26,
+      "lift": 4.23
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Modernizr",
+      "sitios": 21,
+      "lift": 1.03
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Moment.js",
+      "sitios": 29,
+      "lift": 1.27
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "OWL Carousel",
+      "sitios": 4,
+      "lift": 0.28
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Preact",
+      "sitios": 42,
+      "lift": 1.16
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "PubSubJS",
+      "sitios": 13,
+      "lift": 2.42
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Radix UI",
+      "sitios": 7,
+      "lift": 0.74
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Select2",
+      "sitios": 8,
+      "lift": 0.45
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Slick",
+      "sitios": 8,
+      "lift": 0.31
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Splide",
+      "sitios": 1,
+      "lift": 0.15
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "SweetAlert2",
+      "sitios": 5,
+      "lift": 0.84
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Swiper",
+      "sitios": 80,
+      "lift": 0.82
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Tailwind CSS",
+      "sitios": 36,
+      "lift": 0.83
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Tippy.js",
+      "sitios": 13,
+      "lift": 3.12
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Underscore.js",
+      "sitios": 17,
+      "lift": 1.05
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "ZURB Foundation",
+      "sitios": 7,
+      "lift": 0.92
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "Zepto",
+      "sitios": 8,
+      "lift": 1.66
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "core-js",
+      "sitios": 467,
+      "lift": 1.37
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "crypto-js",
+      "sitios": 15,
+      "lift": 1.25
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "jQuery Migrate",
+      "sitios": 21,
+      "lift": 0.43
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "jQuery UI",
+      "sitios": 43,
+      "lift": 0.63
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "jQuery@1",
+      "sitios": 52,
+      "lift": 0.57
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "jQuery@2",
+      "sitios": 18,
+      "lift": 0.56
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "jQuery@3",
+      "sitios": 138,
+      "lift": 0.61
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "jQuery@?",
+      "sitios": 4,
+      "lift": 0.64
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "lit-element",
+      "sitios": 45,
+      "lift": 2.0
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "lit-html",
+      "sitios": 52,
+      "lift": 2.01
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "libreria": "web-vitals",
+      "sitios": 34,
+      "lift": 1.24
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "AOS",
+      "sitios": 32,
+      "lift": 1.25
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Animate.css",
+      "sitios": 30,
+      "lift": 1.15
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Apollo",
+      "sitios": 3,
+      "lift": 0.08
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Axios",
+      "sitios": 32,
+      "lift": 0.6
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Boomerang",
+      "sitios": 65,
+      "lift": 0.54
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Bootstrap",
+      "sitios": 812,
+      "lift": 1.43
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Clipboard.js",
+      "sitios": 26,
+      "lift": 1.56
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Closure Library",
+      "sitios": 25,
+      "lift": 0.94
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "DataTables",
+      "sitios": 43,
+      "lift": 1.89
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Day.js",
+      "sitios": 17,
+      "lift": 1.19
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "FancyBox",
+      "sitios": 191,
+      "lift": 1.91
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "FingerprintJS",
+      "sitios": 42,
+      "lift": 0.97
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Flickity",
+      "sitios": 33,
+      "lift": 1.29
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Glide.js",
+      "sitios": 16,
+      "lift": 0.67
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Hammer.js",
+      "sitios": 86,
+      "lift": 1.04
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "LazySizes",
+      "sitios": 296,
+      "lift": 1.33
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Lightbox",
+      "sitios": 60,
+      "lift": 1.2
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Loadable-Components",
+      "sitios": 2,
+      "lift": 0.03
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Lodash",
+      "sitios": 150,
+      "lift": 0.6
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Lozad.js",
+      "sitios": 64,
+      "lift": 1.38
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "MobX",
+      "sitios": 2,
+      "lift": 0.08
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Modernizr",
+      "sitios": 140,
+      "lift": 1.59
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Moment.js",
+      "sitios": 143,
+      "lift": 1.45
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "OWL Carousel",
+      "sitios": 118,
+      "lift": 1.93
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Preact",
+      "sitios": 117,
+      "lift": 0.74
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "PubSubJS",
+      "sitios": 7,
+      "lift": 0.3
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Radix UI",
+      "sitios": 1,
+      "lift": 0.02
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Select2",
+      "sitios": 138,
+      "lift": 1.79
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Slick",
+      "sitios": 205,
+      "lift": 1.85
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "SoundManager",
+      "sitios": 1,
+      "lift": 0.06
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Splide",
+      "sitios": 34,
+      "lift": 1.19
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "SweetAlert2",
+      "sitios": 42,
+      "lift": 1.64
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Swiper",
+      "sitios": 407,
+      "lift": 0.96
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Tailwind CSS",
+      "sitios": 36,
+      "lift": 0.19
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Tippy.js",
+      "sitios": 18,
+      "lift": 1.0
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Underscore.js",
+      "sitios": 96,
+      "lift": 1.37
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "ZURB Foundation",
+      "sitios": 46,
+      "lift": 1.4
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "Zepto",
+      "sitios": 14,
+      "lift": 0.67
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "core-js",
+      "sitios": 1113,
+      "lift": 0.75
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "crypto-js",
+      "sitios": 54,
+      "lift": 1.04
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "jQuery Migrate",
+      "sitios": 409,
+      "lift": 1.95
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "jQuery UI",
+      "sitios": 534,
+      "lift": 1.81
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "jQuery@1",
+      "sitios": 744,
+      "lift": 1.87
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "jQuery@2",
+      "sitios": 228,
+      "lift": 1.64
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "jQuery@3",
+      "sitios": 1712,
+      "lift": 1.74
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "jQuery@?",
+      "sitios": 48,
+      "lift": 1.77
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "lit-element",
+      "sitios": 46,
+      "lift": 0.47
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "lit-html",
+      "sitios": 50,
+      "lift": 0.45
+    },
+    {
+      "grupo": "Solo jQuery",
+      "libreria": "web-vitals",
+      "sitios": 68,
+      "lift": 0.58
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "AOS",
+      "sitios": 8,
+      "lift": 2.07
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Animate.css",
+      "sitios": 8,
+      "lift": 2.03
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Apollo",
+      "sitios": 3,
+      "lift": 0.52
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Axios",
+      "sitios": 43,
+      "lift": 5.31
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Boomerang",
+      "sitios": 23,
+      "lift": 1.27
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Bootstrap",
+      "sitios": 78,
+      "lift": 0.91
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Clipboard.js",
+      "sitios": 2,
+      "lift": 0.8
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Closure Library",
+      "sitios": 1,
+      "lift": 0.25
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "DataTables",
+      "sitios": 4,
+      "lift": 1.16
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Day.js",
+      "sitios": 6,
+      "lift": 2.79
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Element UI",
+      "sitios": 68,
+      "lift": 10.78
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "FancyBox",
+      "sitios": 11,
+      "lift": 0.73
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "FingerprintJS",
+      "sitios": 5,
+      "lift": 0.77
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Flickity",
+      "sitios": 7,
+      "lift": 1.81
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Glide.js",
+      "sitios": 5,
+      "lift": 1.4
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Hammer.js",
+      "sitios": 22,
+      "lift": 1.76
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "LazySizes",
+      "sitios": 34,
+      "lift": 1.01
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Lightbox",
+      "sitios": 3,
+      "lift": 0.4
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Lodash",
+      "sitios": 50,
+      "lift": 1.32
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Lozad.js",
+      "sitios": 13,
+      "lift": 1.85
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Modernizr",
+      "sitios": 12,
+      "lift": 0.91
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Moment.js",
+      "sitios": 23,
+      "lift": 1.54
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "OWL Carousel",
+      "sitios": 6,
+      "lift": 0.65
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Preact",
+      "sitios": 16,
+      "lift": 0.67
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "PubSubJS",
+      "sitios": 12,
+      "lift": 3.42
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Select2",
+      "sitios": 13,
+      "lift": 1.12
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Slick",
+      "sitios": 13,
+      "lift": 0.78
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "SoundManager",
+      "sitios": 1,
+      "lift": 0.37
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Splide",
+      "sitios": 4,
+      "lift": 0.93
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "SweetAlert2",
+      "sitios": 3,
+      "lift": 0.78
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Swiper",
+      "sitios": 114,
+      "lift": 1.79
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Tailwind CSS",
+      "sitios": 17,
+      "lift": 0.6
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Tippy.js",
+      "sitios": 4,
+      "lift": 1.47
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Underscore.js",
+      "sitios": 7,
+      "lift": 0.66
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "ZURB Foundation",
+      "sitios": 9,
+      "lift": 1.82
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "Zepto",
+      "sitios": 2,
+      "lift": 0.63
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "core-js",
+      "sitios": 288,
+      "lift": 1.29
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "crypto-js",
+      "sitios": 15,
+      "lift": 1.92
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "jQuery Migrate",
+      "sitios": 9,
+      "lift": 0.28
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "jQuery UI",
+      "sitios": 34,
+      "lift": 0.77
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "jQuery@1",
+      "sitios": 28,
+      "lift": 0.47
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "jQuery@2",
+      "sitios": 26,
+      "lift": 1.24
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "jQuery@3",
+      "sitios": 147,
+      "lift": 0.99
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "jQuery@?",
+      "sitios": 2,
+      "lift": 0.49
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "lit-element",
+      "sitios": 17,
+      "lift": 1.16
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "lit-html",
+      "sitios": 19,
+      "lift": 1.12
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "libreria": "web-vitals",
+      "sitios": 13,
+      "lift": 0.73
+    }
+  ],
+  "libreria_total_sitios_completo": {
+    "core-js": 3111,
+    "jQuery@3": 2077,
+    "Bootstrap": 1195,
+    "Swiper": 889,
+    "jQuery@1": 836,
+    "jQuery UI": 620,
+    "Lodash": 530,
+    "LazySizes": 470,
+    "jQuery Migrate": 443,
+    "Tailwind CSS": 396,
+    "Preact": 331,
+    "jQuery@2": 292,
+    "Boomerang": 252,
+    "web-vitals": 249,
+    "lit-html": 236,
+    "Slick": 234,
+    "FancyBox": 211,
+    "Moment.js": 208,
+    "lit-element": 205,
+    "Modernizr": 185,
+    "Hammer.js": 174,
+    "Select2": 162,
+    "Underscore.js": 148,
+    "Loadable-Components": 142,
+    "OWL Carousel": 129,
+    "Axios": 113,
+    "crypto-js": 109,
+    "Lightbox": 105,
+    "Lozad.js": 98,
+    "FingerprintJS": 91,
+    "Element UI": 88,
+    "Radix UI": 86,
+    "Apollo": 80,
+    "ZURB Foundation": 69,
+    "MUI": 61,
+    "Splide": 60,
+    "jQuery@?": 57,
+    "Closure Library": 56,
+    "MobX": 56,
+    "Animate.css": 55,
+    "Flickity": 54,
+    "SweetAlert2": 54,
+    "AOS": 54,
+    "Glide.js": 50,
+    "PubSubJS": 49,
+    "DataTables": 48,
+    "Zepto": 44,
+    "Tippy.js": 38,
+    "SoundManager": 38,
+    "Clipboard.js": 35,
+    "Day.js": 30
+  },
+  "stacks": [
+    {
+      "id": 0,
+      "tecnologias": [
+        "Bootstrap",
+        "jQuery UI",
+        "jQuery Migrate",
+        "Slick",
+        "OWL Carousel",
+        "crypto-js",
+        "AngularJS",
+        "Animate.css",
+        "SweetAlert2",
+        "AOS",
+        "DataTables",
+        "toastr"
+      ],
+      "sitios_asignados": 1742,
+      "lcp_mediana_ms": 1600
+    },
+    {
+      "id": 5,
+      "tecnologias": [
+        "React@?",
+        "Tailwind CSS",
+        "Next.js@15",
+        "Next.js@14",
+        "Next.js App Router",
+        "Nuxt.js",
+        "Radix UI",
+        "Apollo",
+        "Alpine.js",
+        "MobX",
+        "JSS"
+      ],
+      "sitios_asignados": 824,
+      "lcp_mediana_ms": 2000
+    },
+    {
+      "id": 4,
+      "tecnologias": [
+        "jQuery@1",
+        "Lodash",
+        "jQuery@2",
+        "Moment.js",
+        "Modernizr",
+        "Underscore.js",
+        "RequireJS",
+        "GSAP",
+        "Backbone.js",
+        "Adobe Client Data Layer",
+        "Handlebars"
+      ],
+      "sitios_asignados": 770,
+      "lcp_mediana_ms": 1700
+    },
+    {
+      "id": 2,
+      "tecnologias": [
+        "Preact",
+        "Boomerang",
+        "styled-components",
+        "Emotion",
+        "React Router",
+        "Loadable-Components",
+        "React@18",
+        "MUI"
+      ],
+      "sitios_asignados": 568,
+      "lcp_mediana_ms": 2100
+    },
+    {
+      "id": 3,
+      "tecnologias": [
+        "LazySizes",
+        "FancyBox",
+        "Hammer.js",
+        "Select2",
+        "Zone.js",
+        "Lightbox",
+        "Mustache"
+      ],
+      "sitios_asignados": 453,
+      "lcp_mediana_ms": 1700
+    },
+    {
+      "id": 8,
+      "tecnologias": [
+        "jQuery@3",
+        "Tippy.js",
+        "Day.js"
+      ],
+      "sitios_asignados": 425,
+      "lcp_mediana_ms": 1400
+    },
+    {
+      "id": 1,
+      "tecnologias": [
+        "Vue.js@?",
+        "Element UI"
+      ],
+      "sitios_asignados": 311,
+      "lcp_mediana_ms": 2000
+    },
+    {
+      "id": 9,
+      "tecnologias": [
+        "lit-html",
+        "lit-element"
+      ],
+      "sitios_asignados": 128,
+      "lcp_mediana_ms": 2100
+    },
+    {
+      "id": 7,
+      "tecnologias": [
+        "Svelte",
+        "AMP"
+      ],
+      "sitios_asignados": 97,
+      "lcp_mediana_ms": 1600
+    },
+    {
+      "id": 6,
+      "tecnologias": [
+        "web-vitals",
+        "SoundManager"
+      ],
+      "sitios_asignados": 65,
+      "lcp_mediana_ms": 1500
+    },
+    {
+      "id": 10,
+      "tecnologias": [
+        "Axios",
+        "Vue.js@2"
+      ],
+      "sitios_asignados": 17,
+      "lcp_mediana_ms": 2000
+    }
+  ],
+  "grupos_framework": [
+    {
+      "grupo": "Solo jQuery",
+      "sitios": 2736,
+      "lcp_mediana_ms": 1500,
+      "librerias_top": [
+        {
+          "libreria": "jQuery@3",
+          "sitios": 1712,
+          "lift": 1.74
+        },
+        {
+          "libreria": "core-js",
+          "sitios": 1113,
+          "lift": 0.75
+        },
+        {
+          "libreria": "Bootstrap",
+          "sitios": 812,
+          "lift": 1.43
+        },
+        {
+          "libreria": "jQuery@1",
+          "sitios": 744,
+          "lift": 1.87
+        },
+        {
+          "libreria": "jQuery UI",
+          "sitios": 534,
+          "lift": 1.81
+        },
+        {
+          "libreria": "jQuery Migrate",
+          "sitios": 409,
+          "lift": 1.95
+        },
+        {
+          "libreria": "Swiper",
+          "sitios": 407,
+          "lift": 0.96
+        },
+        {
+          "libreria": "LazySizes",
+          "sitios": 296,
+          "lift": 1.33
+        }
+      ]
+    },
+    {
+      "grupo": "Otros",
+      "sitios": 1143,
+      "lcp_mediana_ms": 1600,
+      "librerias_top": [
+        {
+          "libreria": "core-js",
+          "sitios": 698,
+          "lift": 1.13
+        },
+        {
+          "libreria": "Bootstrap",
+          "sitios": 123,
+          "lift": 0.52
+        },
+        {
+          "libreria": "Swiper",
+          "sitios": 123,
+          "lift": 0.7
+        },
+        {
+          "libreria": "Tailwind CSS",
+          "sitios": 113,
+          "lift": 1.44
+        },
+        {
+          "libreria": "Preact",
+          "sitios": 93,
+          "lift": 1.42
+        },
+        {
+          "libreria": "web-vitals",
+          "sitios": 91,
+          "lift": 1.84
+        },
+        {
+          "libreria": "LazySizes",
+          "sitios": 74,
+          "lift": 0.79
+        },
+        {
+          "libreria": "Lodash",
+          "sitios": 70,
+          "lift": 0.67
+        }
+      ]
+    },
+    {
+      "grupo": "React (sin Next.js)",
+      "sitios": 633,
+      "lcp_mediana_ms": 2300,
+      "librerias_top": [
+        {
+          "libreria": "core-js",
+          "sitios": 467,
+          "lift": 1.37
+        },
+        {
+          "libreria": "jQuery@3",
+          "sitios": 138,
+          "lift": 0.61
+        },
+        {
+          "libreria": "Lodash",
+          "sitios": 132,
+          "lift": 2.27
+        },
+        {
+          "libreria": "Bootstrap",
+          "sitios": 94,
+          "lift": 0.72
+        },
+        {
+          "libreria": "Loadable-Components",
+          "sitios": 90,
+          "lift": 5.77
+        },
+        {
+          "libreria": "Swiper",
+          "sitios": 80,
+          "lift": 0.82
+        },
+        {
+          "libreria": "Boomerang",
+          "sitios": 69,
+          "lift": 2.49
+        },
+        {
+          "libreria": "lit-html",
+          "sitios": 52,
+          "lift": 2.01
+        }
+      ]
+    },
+    {
+      "grupo": "Next.js",
+      "sitios": 631,
+      "lcp_mediana_ms": 2100,
+      "librerias_top": [
+        {
+          "libreria": "core-js",
+          "sitios": 389,
+          "lift": 1.14
+        },
+        {
+          "libreria": "Tailwind CSS",
+          "sitios": 161,
+          "lift": 3.71
+        },
+        {
+          "libreria": "Swiper",
+          "sitios": 102,
+          "lift": 1.05
+        },
+        {
+          "libreria": "Lodash",
+          "sitios": 80,
+          "lift": 1.38
+        },
+        {
+          "libreria": "Radix UI",
+          "sitios": 73,
+          "lift": 7.75
+        },
+        {
+          "libreria": "Preact",
+          "sitios": 50,
+          "lift": 1.38
+        },
+        {
+          "libreria": "Bootstrap",
+          "sitios": 49,
+          "lift": 0.37
+        },
+        {
+          "libreria": "Boomerang",
+          "sitios": 42,
+          "lift": 1.52
+        }
+      ]
+    },
+    {
+      "grupo": "Vue.js (sin Nuxt)",
+      "sitios": 413,
+      "lcp_mediana_ms": 1900,
+      "librerias_top": [
+        {
+          "libreria": "core-js",
+          "sitios": 288,
+          "lift": 1.29
+        },
+        {
+          "libreria": "jQuery@3",
+          "sitios": 147,
+          "lift": 0.99
+        },
+        {
+          "libreria": "Swiper",
+          "sitios": 114,
+          "lift": 1.79
+        },
+        {
+          "libreria": "Bootstrap",
+          "sitios": 78,
+          "lift": 0.91
+        },
+        {
+          "libreria": "Element UI",
+          "sitios": 68,
+          "lift": 10.78
+        },
+        {
+          "libreria": "Lodash",
+          "sitios": 50,
+          "lift": 1.32
+        },
+        {
+          "libreria": "Axios",
+          "sitios": 43,
+          "lift": 5.31
+        },
+        {
+          "libreria": "LazySizes",
+          "sitios": 34,
+          "lift": 1.01
+        }
+      ]
+    },
+    {
+      "grupo": "Angular",
+      "sitios": 124,
+      "lcp_mediana_ms": 3500,
+      "librerias_top": [
+        {
+          "libreria": "core-js",
+          "sitios": 75,
+          "lift": 1.12
+        },
+        {
+          "libreria": "jQuery@3",
+          "sitios": 41,
+          "lift": 0.92
+        },
+        {
+          "libreria": "Lodash",
+          "sitios": 35,
+          "lift": 3.07
+        },
+        {
+          "libreria": "Swiper",
+          "sitios": 34,
+          "lift": 1.78
+        },
+        {
+          "libreria": "Bootstrap",
+          "sitios": 32,
+          "lift": 1.24
+        },
+        {
+          "libreria": "Hammer.js",
+          "sitios": 16,
+          "lift": 4.27
+        },
+        {
+          "libreria": "jQuery@2",
+          "sitios": 15,
+          "lift": 2.39
+        },
+        {
+          "libreria": "Boomerang",
+          "sitios": 14,
+          "lift": 2.58
+        }
+      ]
+    },
+    {
+      "grupo": "Nuxt.js",
+      "sitios": 115,
+      "lcp_mediana_ms": 2000,
+      "librerias_top": [
+        {
+          "libreria": "core-js",
+          "sitios": 81,
+          "lift": 1.31
+        },
+        {
+          "libreria": "Swiper",
+          "sitios": 29,
+          "lift": 1.64
+        },
+        {
+          "libreria": "Tailwind CSS",
+          "sitios": 27,
+          "lift": 3.42
+        },
+        {
+          "libreria": "Element UI",
+          "sitios": 15,
+          "lift": 8.54
+        },
+        {
+          "libreria": "Lodash",
+          "sitios": 13,
+          "lift": 1.23
+        },
+        {
+          "libreria": "jQuery@3",
+          "sitios": 10,
+          "lift": 0.24
+        }
+      ]
+    }
+  ],
+  "cobertura_version": [
+    {
+      "framework": "jQuery",
+      "sitios": 3267,
+      "pct_con_version": 98.3
+    },
+    {
+      "framework": "React",
+      "sitios": 1264,
+      "pct_con_version": 12.7
+    },
+    {
+      "framework": "Next.js",
+      "sitios": 631,
+      "pct_con_version": 98.1
+    },
+    {
+      "framework": "Vue.js",
+      "sitios": 566,
+      "pct_con_version": 22.4
+    },
+    {
+      "framework": "Angular",
+      "sitios": 143,
+      "pct_con_version": 81.1
+    }
+  ],
+  "versiones": [
+    {
+      "nodo": "Next.js@12",
+      "sitios": 61,
+      "lcp_mediana_ms": 2400
+    },
+    {
+      "nodo": "Next.js@13",
+      "sitios": 64,
+      "lcp_mediana_ms": 2250
+    },
+    {
+      "nodo": "Next.js@14",
+      "sitios": 215,
+      "lcp_mediana_ms": 2200
+    },
+    {
+      "nodo": "Next.js@15",
+      "sitios": 232,
+      "lcp_mediana_ms": 1900
+    },
+    {
+      "nodo": "React@17",
+      "sitios": 30,
+      "lcp_mediana_ms": 2000
+    },
+    {
+      "nodo": "React@18",
+      "sitios": 92,
+      "lcp_mediana_ms": 2000
+    },
+    {
+      "nodo": "Vue.js@2",
+      "sitios": 95,
+      "lcp_mediana_ms": 1900
+    },
+    {
+      "nodo": "jQuery@1",
+      "sitios": 836,
+      "lcp_mediana_ms": 1600
+    },
+    {
+      "nodo": "jQuery@2",
+      "sitios": 292,
+      "lcp_mediana_ms": 1600
+    },
+    {
+      "nodo": "jQuery@3",
+      "sitios": 2077,
+      "lcp_mediana_ms": 1600
+    }
+  ],
+  "matriz_version_libreria": [
+    {
+      "version": "Next.js@12",
+      "libreria": "core-js",
+      "pct": 65.6,
+      "lift": 1.21
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "Bootstrap",
+      "pct": 1.6,
+      "lift": 0.08
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "Swiper",
+      "pct": 21.3,
+      "lift": 1.38
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "jQuery UI",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "Lodash",
+      "pct": 29.5,
+      "lift": 3.21
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "LazySizes",
+      "pct": 3.3,
+      "lift": 0.4
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "jQuery Migrate",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "Tailwind CSS",
+      "pct": 8.2,
+      "lift": 1.19
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "Preact",
+      "pct": 16.4,
+      "lift": 2.85
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "Boomerang",
+      "pct": 4.9,
+      "lift": 1.12
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "web-vitals",
+      "pct": 4.9,
+      "lift": 1.14
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "lit-html",
+      "pct": 3.3,
+      "lift": 0.8
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "Slick",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "FancyBox",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@12",
+      "libreria": "Moment.js",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "core-js",
+      "pct": 59.4,
+      "lift": 1.1
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "Bootstrap",
+      "pct": 7.8,
+      "lift": 0.38
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "Swiper",
+      "pct": 21.9,
+      "lift": 1.42
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "jQuery UI",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "Lodash",
+      "pct": 9.4,
+      "lift": 1.02
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "LazySizes",
+      "pct": 9.4,
+      "lift": 1.15
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "jQuery Migrate",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "Tailwind CSS",
+      "pct": 17.2,
+      "lift": 2.5
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "Preact",
+      "pct": 1.6,
+      "lift": 0.27
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "Boomerang",
+      "pct": 12.5,
+      "lift": 2.86
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "web-vitals",
+      "pct": 4.7,
+      "lift": 1.09
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "lit-html",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "Slick",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "FancyBox",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@13",
+      "libreria": "Moment.js",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "core-js",
+      "pct": 60.5,
+      "lift": 1.12
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "Bootstrap",
+      "pct": 6.5,
+      "lift": 0.31
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "Swiper",
+      "pct": 18.6,
+      "lift": 1.21
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "jQuery UI",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "Lodash",
+      "pct": 13.0,
+      "lift": 1.42
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "LazySizes",
+      "pct": 0.9,
+      "lift": 0.11
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "jQuery Migrate",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "Tailwind CSS",
+      "pct": 26.5,
+      "lift": 3.86
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "Preact",
+      "pct": 4.2,
+      "lift": 0.73
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "Boomerang",
+      "pct": 7.9,
+      "lift": 1.81
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "web-vitals",
+      "pct": 5.1,
+      "lift": 1.18
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "lit-html",
+      "pct": 8.4,
+      "lift": 2.04
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "Slick",
+      "pct": 0.5,
+      "lift": 0.11
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "FancyBox",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@14",
+      "libreria": "Moment.js",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "core-js",
+      "pct": 61.2,
+      "lift": 1.13
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "Bootstrap",
+      "pct": 11.2,
+      "lift": 0.54
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "Swiper",
+      "pct": 12.9,
+      "lift": 0.84
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "jQuery UI",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "Lodash",
+      "pct": 7.8,
+      "lift": 0.84
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "LazySizes",
+      "pct": 1.3,
+      "lift": 0.16
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "jQuery Migrate",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "Tailwind CSS",
+      "pct": 32.8,
+      "lift": 4.77
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "Preact",
+      "pct": 11.2,
+      "lift": 1.95
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "Boomerang",
+      "pct": 3.9,
+      "lift": 0.89
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "web-vitals",
+      "pct": 4.7,
+      "lift": 1.1
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "lit-html",
+      "pct": 3.4,
+      "lift": 0.84
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "Slick",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "FancyBox",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "Next.js@15",
+      "libreria": "Moment.js",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "React@17",
+      "libreria": "core-js",
+      "pct": 83.3,
+      "lift": 1.54
+    },
+    {
+      "version": "React@17",
+      "libreria": "Bootstrap",
+      "pct": 23.3,
+      "lift": 1.13
+    },
+    {
+      "version": "React@17",
+      "libreria": "Swiper",
+      "pct": 23.3,
+      "lift": 1.51
+    },
+    {
+      "version": "React@17",
+      "libreria": "jQuery UI",
+      "pct": 3.3,
+      "lift": 0.31
+    },
+    {
+      "version": "React@17",
+      "libreria": "Lodash",
+      "pct": 40.0,
+      "lift": 4.35
+    },
+    {
+      "version": "React@17",
+      "libreria": "LazySizes",
+      "pct": 10.0,
+      "lift": 1.23
+    },
+    {
+      "version": "React@17",
+      "libreria": "jQuery Migrate",
+      "pct": 10.0,
+      "lift": 1.3
+    },
+    {
+      "version": "React@17",
+      "libreria": "Tailwind CSS",
+      "pct": 6.7,
+      "lift": 0.97
+    },
+    {
+      "version": "React@17",
+      "libreria": "Preact",
+      "pct": 26.7,
+      "lift": 4.64
+    },
+    {
+      "version": "React@17",
+      "libreria": "Boomerang",
+      "pct": 3.3,
+      "lift": 0.76
+    },
+    {
+      "version": "React@17",
+      "libreria": "web-vitals",
+      "pct": 6.7,
+      "lift": 1.54
+    },
+    {
+      "version": "React@17",
+      "libreria": "lit-html",
+      "pct": 6.7,
+      "lift": 1.63
+    },
+    {
+      "version": "React@17",
+      "libreria": "Slick",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "React@17",
+      "libreria": "FancyBox",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "React@17",
+      "libreria": "Moment.js",
+      "pct": 10.0,
+      "lift": 2.77
+    },
+    {
+      "version": "React@18",
+      "libreria": "core-js",
+      "pct": 73.9,
+      "lift": 1.37
+    },
+    {
+      "version": "React@18",
+      "libreria": "Bootstrap",
+      "pct": 9.8,
+      "lift": 0.47
+    },
+    {
+      "version": "React@18",
+      "libreria": "Swiper",
+      "pct": 15.2,
+      "lift": 0.99
+    },
+    {
+      "version": "React@18",
+      "libreria": "jQuery UI",
+      "pct": 8.7,
+      "lift": 0.81
+    },
+    {
+      "version": "React@18",
+      "libreria": "Lodash",
+      "pct": 13.0,
+      "lift": 1.42
+    },
+    {
+      "version": "React@18",
+      "libreria": "LazySizes",
+      "pct": 2.2,
+      "lift": 0.27
+    },
+    {
+      "version": "React@18",
+      "libreria": "jQuery Migrate",
+      "pct": 4.3,
+      "lift": 0.57
+    },
+    {
+      "version": "React@18",
+      "libreria": "Tailwind CSS",
+      "pct": 10.9,
+      "lift": 1.58
+    },
+    {
+      "version": "React@18",
+      "libreria": "Preact",
+      "pct": 4.3,
+      "lift": 0.76
+    },
+    {
+      "version": "React@18",
+      "libreria": "Boomerang",
+      "pct": 32.6,
+      "lift": 7.46
+    },
+    {
+      "version": "React@18",
+      "libreria": "web-vitals",
+      "pct": 5.4,
+      "lift": 1.26
+    },
+    {
+      "version": "React@18",
+      "libreria": "lit-html",
+      "pct": 18.5,
+      "lift": 4.51
+    },
+    {
+      "version": "React@18",
+      "libreria": "Slick",
+      "pct": 1.1,
+      "lift": 0.27
+    },
+    {
+      "version": "React@18",
+      "libreria": "FancyBox",
+      "pct": 0.0,
+      "lift": 0.0
+    },
+    {
+      "version": "React@18",
+      "libreria": "Moment.js",
+      "pct": 5.4,
+      "lift": 1.51
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "core-js",
+      "pct": 65.3,
+      "lift": 1.21
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "Bootstrap",
+      "pct": 37.9,
+      "lift": 1.83
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "Swiper",
+      "pct": 23.2,
+      "lift": 1.5
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "jQuery UI",
+      "pct": 11.6,
+      "lift": 1.08
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "Lodash",
+      "pct": 22.1,
+      "lift": 2.4
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "LazySizes",
+      "pct": 4.2,
+      "lift": 0.52
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "jQuery Migrate",
+      "pct": 4.2,
+      "lift": 0.55
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "Tailwind CSS",
+      "pct": 1.1,
+      "lift": 0.15
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "Preact",
+      "pct": 4.2,
+      "lift": 0.73
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "Boomerang",
+      "pct": 2.1,
+      "lift": 0.48
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "web-vitals",
+      "pct": 1.1,
+      "lift": 0.24
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "lit-html",
+      "pct": 4.2,
+      "lift": 1.03
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "Slick",
+      "pct": 3.2,
+      "lift": 0.78
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "FancyBox",
+      "pct": 4.2,
+      "lift": 1.15
+    },
+    {
+      "version": "Vue.js@2",
+      "libreria": "Moment.js",
+      "pct": 14.7,
+      "lift": 4.08
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "core-js",
+      "pct": 41.1,
+      "lift": 0.76
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "Bootstrap",
+      "pct": 25.4,
+      "lift": 1.22
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "Swiper",
+      "pct": 12.4,
+      "lift": 0.81
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "jQuery UI",
+      "pct": 22.0,
+      "lift": 2.05
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "Lodash",
+      "pct": 6.8,
+      "lift": 0.74
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "LazySizes",
+      "pct": 8.3,
+      "lift": 1.01
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "jQuery Migrate",
+      "pct": 9.0,
+      "lift": 1.17
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "Tailwind CSS",
+      "pct": 1.0,
+      "lift": 0.14
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "Preact",
+      "pct": 2.9,
+      "lift": 0.5
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "Boomerang",
+      "pct": 3.1,
+      "lift": 0.71
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "web-vitals",
+      "pct": 0.8,
+      "lift": 0.19
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "lit-html",
+      "pct": 2.4,
+      "lift": 0.58
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "Slick",
+      "pct": 7.9,
+      "lift": 1.94
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "FancyBox",
+      "pct": 10.8,
+      "lift": 2.94
+    },
+    {
+      "version": "jQuery@1",
+      "libreria": "Moment.js",
+      "pct": 5.4,
+      "lift": 1.49
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "core-js",
+      "pct": 42.1,
+      "lift": 0.78
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "Bootstrap",
+      "pct": 27.7,
+      "lift": 1.34
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "Swiper",
+      "pct": 20.5,
+      "lift": 1.33
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "jQuery UI",
+      "pct": 18.8,
+      "lift": 1.75
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "Lodash",
+      "pct": 16.1,
+      "lift": 1.75
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "LazySizes",
+      "pct": 11.0,
+      "lift": 1.34
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "jQuery Migrate",
+      "pct": 7.2,
+      "lift": 0.94
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "Tailwind CSS",
+      "pct": 1.7,
+      "lift": 0.25
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "Preact",
+      "pct": 5.1,
+      "lift": 0.89
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "Boomerang",
+      "pct": 1.7,
+      "lift": 0.39
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "web-vitals",
+      "pct": 2.7,
+      "lift": 0.63
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "lit-html",
+      "pct": 2.4,
+      "lift": 0.59
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "Slick",
+      "pct": 4.5,
+      "lift": 1.1
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "FancyBox",
+      "pct": 3.4,
+      "lift": 0.94
+    },
+    {
+      "version": "jQuery@2",
+      "libreria": "Moment.js",
+      "pct": 8.9,
+      "lift": 2.47
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "core-js",
+      "pct": 48.7,
+      "lift": 0.9
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "Bootstrap",
+      "pct": 31.9,
+      "lift": 1.54
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "Swiper",
+      "pct": 18.2,
+      "lift": 1.18
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "jQuery UI",
+      "pct": 18.0,
+      "lift": 1.67
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "Lodash",
+      "pct": 8.5,
+      "lift": 0.92
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "LazySizes",
+      "pct": 11.7,
+      "lift": 1.44
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "jQuery Migrate",
+      "pct": 16.5,
+      "lift": 2.14
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "Tailwind CSS",
+      "pct": 2.0,
+      "lift": 0.29
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "Preact",
+      "pct": 5.1,
+      "lift": 0.89
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "Boomerang",
+      "pct": 4.0,
+      "lift": 0.93
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "web-vitals",
+      "pct": 3.3,
+      "lift": 0.76
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "lit-html",
+      "pct": 3.0,
+      "lift": 0.74
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "Slick",
+      "pct": 7.4,
+      "lift": 1.81
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "FancyBox",
+      "pct": 5.1,
+      "lift": 1.39
+    },
+    {
+      "version": "jQuery@3",
+      "libreria": "Moment.js",
+      "pct": 5.8,
+      "lift": 1.6
+    }
+  ],
+  "recableado_jquery_react": {
+    "sitios": 63,
+    "excluidas_por_definir_la_migracion": [
+      "Next.js",
+      "Next.js App Router",
+      "React",
+      "jQuery"
+    ],
+    "librerias_por_sitio_sin_definitorias": {
+      "antes": 3.37,
+      "despues": 2.92,
+      "se_va": 1.73,
+      "se_queda": 1.63,
+      "llega_ecosistema_react": 0.9,
+      "llega_propia": 0.38,
+      "pct_conservadas": 49
+    },
+    "aristas_por_clase": {
+      "se_va": 151,
+      "se_queda": 124,
+      "llega_framework": 116,
+      "llega_ecosistema_react": 57,
+      "llega_propia": 24
+    },
+    "ejemplos_por_clase": {
+      "llega_ecosistema_react": {
+        "Tailwind CSS": 11,
+        "Emotion": 9,
+        "React Router": 8,
+        "styled-components": 8,
+        "Radix UI": 5,
+        "Loadable-Components": 4
+      },
+      "llega_framework": {
+        "React": 63,
+        "Next.js": 32,
+        "Next.js App Router": 21
+      },
+      "llega_propia": {
+        "Lodash": 5,
+        "Preact": 4,
+        "core-js": 3,
+        "Swiper": 2,
+        "Adobe Client Data Layer": 1,
+        "Angular": 1
+      },
+      "se_queda": {
+        "core-js": 32,
+        "jQuery": 21,
+        "Boomerang": 8,
+        "Bootstrap": 8,
+        "Swiper": 6,
+        "GSAP": 3
+      },
+      "se_va": {
+        "jQuery": 42,
+        "LazySizes": 11,
+        "Bootstrap": 10,
+        "jQuery UI": 10,
+        "Swiper": 8,
+        "core-js": 7
+      }
+    },
+    "por_sitio": [
+      {
+        "origin": "https://allabout.co.jp",
+        "llega_ecosistema_react": [
+          "Emotion"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "llega_propia": [
+          "LazySizes"
+        ],
+        "se_queda": [
+          "Boomerang"
+        ],
+        "se_va": [
+          "Hammer.js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://apteka.103.by",
+        "llega_ecosistema_react": [
+          "styled-components"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "Lodash",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://biznes.interia.pl",
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://books.rakuten.co.jp",
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Moment.js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://cnnportugal.iol.pt",
+        "llega_ecosistema_react": [
+          "React Router"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Closure Library",
+          "Preact",
+          "core-js",
+          "jQuery",
+          "web-vitals"
+        ]
+      },
+      {
+        "origin": "https://crosset.onward.co.jp",
+        "llega_ecosistema_react": [
+          "styled-components"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Bootstrap",
+          "LazySizes",
+          "Svelte",
+          "Swiper",
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://de.pandora.net",
+        "llega_ecosistema_react": [
+          "Chakra UI",
+          "Emotion",
+          "Loadable-Components"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "Flickity",
+          "LazySizes",
+          "Swiper",
+          "jQuery",
+          "lit-element",
+          "lit-html"
+        ]
+      },
+      {
+        "origin": "https://esaj.tjsp.jus.br",
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://freemeteo.gr",
+        "llega_ecosistema_react": [
+          "Emotion",
+          "MUI",
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "Hammer.js",
+          "Moment.js",
+          "jQuery",
+          "jQuery UI"
+        ]
+      },
+      {
+        "origin": "https://hentaihaven.xxx",
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "jQuery",
+          "jQuery Migrate"
+        ]
+      },
+      {
+        "origin": "https://id.soccerway.com",
+        "llega_ecosistema_react": [
+          "React Router",
+          "styled-components"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "Modernizr",
+          "Moment.js",
+          "Prototype",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://loto.lt",
+        "llega_ecosistema_react": [
+          "styled-components"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Animate.css",
+          "Axios",
+          "Bootstrap",
+          "Lodash",
+          "Modernizr",
+          "Slick",
+          "Vue.js",
+          "core-js",
+          "jQuery"
+        ],
+        "se_va": [
+          "Swiper"
+        ]
+      },
+      {
+        "origin": "https://m.21cineplex.com",
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "llega_propia": [
+          "Lodash",
+          "Swiper",
+          "core-js"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://member.uhc.com",
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "llega_propia": [
+          "Adobe Client Data Layer"
+        ],
+        "se_va": [
+          "AngularJS",
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://mobile.yoox.com",
+        "llega_ecosistema_react": [
+          "Emotion",
+          "MUI"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "se_queda": [
+          "Boomerang",
+          "core-js"
+        ],
+        "se_va": [
+          "jQuery",
+          "jQuery Migrate",
+          "jQuery UI"
+        ]
+      },
+      {
+        "origin": "https://paryajpam.com",
+        "llega_ecosistema_react": [
+          "React Router",
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_va": [
+          "Slick",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://pointmall.aeon.co.jp",
+        "llega_ecosistema_react": [
+          "React Router",
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Swiper"
+        ],
+        "se_va": [
+          "Clipboard.js",
+          "LazySizes",
+          "Vue.js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://polki.pl",
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "llega_propia": [
+          "core-js"
+        ],
+        "se_va": [
+          "Hammer.js",
+          "LazySizes",
+          "ZURB Foundation",
+          "jQuery",
+          "jQuery UI"
+        ]
+      },
+      {
+        "origin": "https://shop.mattel.com",
+        "llega_framework": [
+          "React"
+        ],
+        "llega_propia": [
+          "Preact"
+        ],
+        "se_queda": [
+          "Flickity",
+          "LazySizes",
+          "core-js"
+        ],
+        "se_va": [
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://townwork.net",
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://uk.pandora.net",
+        "llega_ecosistema_react": [
+          "Chakra UI",
+          "Emotion",
+          "Loadable-Components"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Swiper",
+          "core-js"
+        ],
+        "se_va": [
+          "Flickity",
+          "LazySizes",
+          "jQuery",
+          "lit-element",
+          "lit-html"
+        ]
+      },
+      {
+        "origin": "https://upstox.com",
+        "llega_ecosistema_react": [
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "OWL Carousel",
+          "Slick",
+          "jQuery",
+          "jQuery Migrate"
+        ]
+      },
+      {
+        "origin": "https://us.pandora.net",
+        "llega_ecosistema_react": [
+          "Emotion",
+          "Loadable-Components"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_va": [
+          "Flickity",
+          "LazySizes",
+          "Swiper",
+          "core-js",
+          "jQuery",
+          "lit-element",
+          "lit-html"
+        ]
+      },
+      {
+        "origin": "https://users.nexusmods.com",
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Bootstrap",
+          "jQuery"
+        ],
+        "se_va": [
+          "libphonenumber"
+        ]
+      },
+      {
+        "origin": "https://worldstarhiphop.com",
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_queda": [
+          "jQuery"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "LazySizes",
+          "core-js",
+          "jQuery Migrate"
+        ]
+      },
+      {
+        "origin": "https://www.ambitionbox.com",
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "se_queda": [
+          "Boomerang",
+          "core-js"
+        ],
+        "se_va": [
+          "Nuxt.js",
+          "Twitter typeahead.js",
+          "Vue.js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.americanexpress.com",
+        "llega_framework": [
+          "React"
+        ],
+        "llega_propia": [
+          "Immutable.js",
+          "Lodash"
+        ],
+        "se_queda": [
+          "Emotion",
+          "core-js"
+        ],
+        "se_va": [
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.asianetnews.com",
+        "llega_framework": [
+          "React"
+        ],
+        "se_va": [
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.businesstoday.in",
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_queda": [
+          "Boomerang",
+          "Swiper"
+        ],
+        "se_va": [
+          "LazySizes",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.cas.sk",
+        "llega_ecosistema_react": [
+          "Emotion"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "llega_propia": [
+          "Lodash"
+        ],
+        "se_va": [
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.chase.com",
+        "llega_ecosistema_react": [
+          "styled-components"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "llega_propia": [
+          "core-js"
+        ],
+        "se_queda": [
+          "Boomerang"
+        ],
+        "se_va": [
+          "Lodash",
+          "RequireJS",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.chemistwarehouse.com.au",
+        "llega_ecosistema_react": [
+          "Radix UI",
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "llega_propia": [
+          "Preact"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "Hammer.js",
+          "jQuery",
+          "jQuery UI",
+          "prettyPhoto"
+        ]
+      },
+      {
+        "origin": "https://www.creativefabrica.com",
+        "llega_ecosistema_react": [
+          "Radix UI"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "LazySizes",
+          "Moment.js",
+          "jQuery",
+          "jQuery Migrate"
+        ]
+      },
+      {
+        "origin": "https://www.crhoy.com",
+        "llega_ecosistema_react": [
+          "Keen-Slider"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "llega_propia": [
+          "lit-element",
+          "lit-html"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "Hammer.js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.diariodenavarra.es",
+        "llega_framework": [
+          "React"
+        ],
+        "llega_propia": [
+          "Preact"
+        ],
+        "se_queda": [
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.dollargeneral.com",
+        "llega_ecosistema_react": [
+          "React Router"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Adobe Client Data Layer",
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.einfachbacken.de",
+        "llega_ecosistema_react": [
+          "Apollo",
+          "Radix UI",
+          "Tailwind CSS",
+          "shadcn/ui"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_queda": [
+          "Bootstrap",
+          "core-js"
+        ],
+        "se_va": [
+          "Swiper",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.elnacional.cat",
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.felissimo.co.jp",
+        "llega_ecosistema_react": [
+          "styled-components"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "PubSubJS",
+          "Swiper",
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.finishline.com",
+        "llega_ecosistema_react": [
+          "Apollo",
+          "Radix UI",
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "llega_propia": [
+          "Angular",
+          "Zone.js"
+        ],
+        "se_queda": [
+          "Boomerang",
+          "core-js"
+        ],
+        "se_va": [
+          "Lodash",
+          "Moment.js",
+          "Svelte",
+          "ZURB Foundation",
+          "jQuery",
+          "jQuery UI"
+        ]
+      },
+      {
+        "origin": "https://www.halfords.com",
+        "llega_ecosistema_react": [
+          "Emotion",
+          "Keen-Slider",
+          "Loadable-Components"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "Hammer.js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.houseoffraser.co.uk",
+        "llega_ecosistema_react": [
+          "Radix UI"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "Handlebars",
+          "Swiper",
+          "jQuery",
+          "jQuery Migrate",
+          "jQuery UI",
+          "web-vitals"
+        ]
+      },
+      {
+        "origin": "https://www.immobilienscout24.de",
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "Swiper",
+          "jQuery",
+          "jQuery UI"
+        ]
+      },
+      {
+        "origin": "https://www.indiapost.gov.in",
+        "llega_ecosistema_react": [
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "Animate.css",
+          "Bootstrap",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.johnpyeauctions.co.uk",
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Bootstrap",
+          "RxJS",
+          "core-js",
+          "jQuery",
+          "jQuery UI"
+        ]
+      },
+      {
+        "origin": "https://www.karkkainen.com",
+        "llega_ecosistema_react": [
+          "Emotion",
+          "MUI"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "llega_propia": [
+          "Lodash"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "Preact",
+          "jQuery",
+          "jQuery UI"
+        ]
+      },
+      {
+        "origin": "https://www.kobo.com",
+        "llega_ecosistema_react": [
+          "Tailwind CSS",
+          "styled-components"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "DataTables",
+          "Knockout.js",
+          "Modernizr",
+          "jQuery",
+          "jQuery Migrate",
+          "web-vitals"
+        ]
+      },
+      {
+        "origin": "https://www.libas.in",
+        "llega_ecosistema_react": [
+          "React Router"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "llega_propia": [
+          "ClientJS"
+        ],
+        "se_queda": [
+          "AOS",
+          "Flickity",
+          "PhotoSwipe",
+          "Svelte",
+          "Vue.js",
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.liberoquotidiano.it",
+        "llega_ecosistema_react": [
+          "Headless UI"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "Glide.js",
+          "Preact",
+          "Slick",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.newsweek.com",
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "Swiper",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.npci.org.in",
+        "llega_ecosistema_react": [
+          "React Router"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Boomerang"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "Lightbox",
+          "OWL Carousel",
+          "core-js",
+          "jQuery",
+          "jQuery UI"
+        ]
+      },
+      {
+        "origin": "https://www.ntvspor.net",
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "AMP",
+          "LazySizes",
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.purolator.com",
+        "llega_framework": [
+          "React"
+        ],
+        "llega_propia": [
+          "Lodash"
+        ],
+        "se_queda": [
+          "Bootstrap",
+          "jQuery",
+          "lit-html"
+        ]
+      },
+      {
+        "origin": "https://www.shop-shimamura.com",
+        "llega_ecosistema_react": [
+          "styled-components"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Bootstrap",
+          "FancyBox",
+          "GSAP",
+          "Lodash",
+          "Slick",
+          "Swiper",
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.skroutz.gr",
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Stimulus",
+          "ZURB Foundation",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.sports.fr",
+        "llega_framework": [
+          "React"
+        ],
+        "llega_propia": [
+          "Preact"
+        ],
+        "se_queda": [
+          "jQuery",
+          "jQuery Migrate"
+        ]
+      },
+      {
+        "origin": "https://www.stiripesurse.ro",
+        "llega_ecosistema_react": [
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.svenskaspel.se",
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Angular",
+          "GSAP",
+          "Handlebars",
+          "Lodash",
+          "Modernizr",
+          "Socket.io",
+          "Zone.js",
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.tsn.ca",
+        "llega_framework": [
+          "React"
+        ],
+        "llega_propia": [
+          "Bootstrap"
+        ],
+        "se_queda": [
+          "Vue.js",
+          "core-js"
+        ],
+        "se_va": [
+          "Boomerang",
+          "Lodash",
+          "Swiper",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.tvsmotor.com",
+        "llega_ecosistema_react": [
+          "Ant Design"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "llega_propia": [
+          "Swiper"
+        ],
+        "se_queda": [
+          "Bootstrap",
+          "LazySizes",
+          "Select2",
+          "Slick",
+          "core-js",
+          "jQuery",
+          "jQuery UI",
+          "web-vitals"
+        ],
+        "se_va": [
+          "Boomerang"
+        ]
+      },
+      {
+        "origin": "https://www.ups.com",
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Boomerang",
+          "core-js",
+          "jQuery",
+          "lit-element",
+          "lit-html"
+        ]
+      },
+      {
+        "origin": "https://www.vi.nl",
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "llega_propia": [
+          "GSAP"
+        ],
+        "se_va": [
+          "LazySizes",
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.wheeloffortune.com",
+        "llega_ecosistema_react": [
+          "React Router",
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "GSAP",
+          "core-js",
+          "jQuery"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "LazySizes",
+          "Slick",
+          "jQuery UI"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,922 @@
+<title>Panel piloto y grafo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --stage-bg: #070c16;
+    --slide: #0f172a;
+    --surface: #141f38;
+    --surface-2: #182544;
+    --border: #263657;
+    --border-soft: #1c2a48;
+    --text-primary: #eef2fb;
+    --text-secondary: #9aabc9;
+    --text-muted: #5f7093;
+    --accent: #22d3ee;
+    --accent-soft: rgba(34,211,238,.14);
+    --status-event: #fbbf24;
+    --status-good: #34d399;
+    --status-warn: #fbbf24;
+    --status-bad: #fb7185;
+    --font-display: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html,body{ height: 100%; }
+
+  body{
+    margin: 0;
+    background: var(--stage-bg);
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .deck{
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    max-height: 787.5px;
+    aspect-ratio: 16/9;
+    position: relative;
+    margin: auto;
+  }
+
+  .slide{
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(1100px 620px at 84% -10%, rgba(34,211,238,.09), transparent 60%),
+      var(--slide);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 4.2% 5% 3.4%;
+    display: none;
+    flex-direction: column;
+    gap: 1.8%;
+    box-shadow: 0 40px 90px -40px rgba(0,0,0,.75);
+    overflow: hidden;
+  }
+  .slide.is-active{ display: flex; }
+
+  .slide::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(var(--border-soft) 1px, transparent 1px);
+    background-size: 100% 60px;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.45), transparent 50%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,.45), transparent 50%);
+    pointer-events: none;
+  }
+
+  .kicker{
+    font-family: var(--font-mono);
+    font-size: 16px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    position: relative; z-index: 1;
+  }
+  .kicker svg{ width: 19px; height: 19px; flex-shrink: 0; }
+
+  h1{ margin: 0; font-weight: 800; letter-spacing: -.01em; text-wrap: balance; color: var(--text-primary); position: relative; z-index: 1; }
+  h2.slide-title{ font-size: 34px; margin-bottom: 2px; }
+
+  .content{ flex: 1; min-height: 0; position: relative; z-index: 1; display: flex; flex-direction: column; gap: 18px; justify-content: center; }
+
+  ul.points{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  ul.points li{ display: flex; gap: 14px; align-items: flex-start; font-size: 20px; line-height: 1.48; color: var(--text-secondary); }
+  ul.points li b{ color: var(--text-primary); font-weight: 700; }
+  ul.points li .bullet{ flex-shrink: 0; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); margin-top: 9px; box-shadow: 0 0 0 3px var(--accent-soft); }
+
+  .callout{
+    margin-top: 4px;
+    border: 1px solid rgba(251,191,36,.35);
+    background: rgba(251,191,36,.08);
+    border-radius: 12px;
+    padding: 16px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .callout svg{ width: 23px; height: 23px; color: var(--status-event); flex-shrink: 0; margin-top: 2px; }
+  .callout .callout-label{ font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--status-event); margin-bottom: 4px; }
+  .callout p{ margin: 0; font-size: 20px; color: var(--text-primary); line-height: 1.4; }
+
+  .source-line{ font-family: var(--font-mono); font-size: 13.5px; color: var(--text-muted); position: relative; z-index: 1; line-height: 1.5; }
+  .source-line b{ color: var(--text-secondary); font-weight: 600; }
+
+  .foot{ display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); position: relative; z-index: 1; }
+  .foot .badge{ font-family: var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+
+  .meta-row{ display: flex; flex-wrap: wrap; row-gap: 10px; column-gap: 40px; font-family: var(--font-mono); font-size: 15px; color: var(--text-secondary); }
+  .meta-row div{ white-space: nowrap; }
+  .meta-row b{ color: var(--text-primary); font-weight: 600; font-family: var(--font-display); }
+
+  /* ---- Cover ---- */
+  .cover{ justify-content: center; align-items: flex-start; }
+  .cover h1{ font-size: 40px; max-width: 22ch; line-height: 1.18; }
+  .cover .subtitle{ font-size: 20px; color: var(--text-secondary); margin: 14px 0 0; max-width: 46ch; }
+  .cover .meta-row{ margin-top: auto; }
+  .cover-mark{ position: absolute; right: 5%; bottom: 6%; display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-family: var(--font-mono); font-size: 13px; }
+  .cover-mark svg{ width: 17px; height: 17px; color: var(--accent); }
+
+  /* ---- Closing ---- */
+  .closing{ justify-content: center; align-items: center; text-align: center; }
+  .closing .big{ font-size: 56px; margin: 0; }
+  .closing .sub{ font-size: 22px; color: var(--text-secondary); margin: 14px 0 0; }
+  .closing .meta-row{ justify-content: center; margin-top: 44px; }
+
+  /* ---- KPI row ---- */
+  .kpi-row{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .kpi{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; }
+  .kpi .kpi-label{ font-size: 12.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
+  .kpi .kpi-value{ font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--text-primary); }
+  .kpi .kpi-sub{ font-size: 12.5px; color: var(--text-secondary); margin-top: 6px; line-height: 1.4; }
+
+  /* ---- Kick-off pipeline (reused for panel design) ---- */
+  .kickoff-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 34px; flex: 1; min-height: 0; }
+  .pipeline{ display: flex; flex-direction: column; justify-content: space-around; position: relative; padding-left: 28px; }
+  .pipeline-track{ position: absolute; left: 12px; top: 14px; bottom: 14px; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--border)); opacity: .55; overflow: hidden; }
+  .pipeline-track::after{ content:""; position:absolute; inset:0; background: linear-gradient(to bottom, transparent, var(--accent) 40%, transparent 70%); background-size: 100% 200%; animation: flow 3.2s linear infinite; }
+  @keyframes flow{ 0%{ background-position: 0 -200%; } 100%{ background-position: 0 200%; } }
+  .node{ position: relative; display: flex; gap: 13px; align-items: flex-start; }
+  .node-dot{ position: absolute; left: -28px; top: 1px; width: 25px; height: 25px; border-radius: 50%; background: var(--surface-2); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
+  .node-dot svg{ width: 13px; height: 13px; }
+  .node.is-active .node-dot{ border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); color: var(--slide); background: var(--accent); }
+  .node-index{ font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); letter-spacing: .06em; }
+  .node-title{ font-size: 17px; font-weight: 700; margin: 2px 0 3px; color: var(--text-primary); }
+  .node-desc{ font-size: 13.5px; color: var(--text-secondary); line-height: 1.45; max-width: 32ch; }
+  .node.is-active .node-title{ color: var(--accent); }
+
+
+  /* ---- Data table (evidencia / variables) ---- */
+  .table-wrap{ flex: 1; min-height: 0; overflow: auto; border: 1px solid var(--border); border-radius: 10px; }
+  table.cron{ width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  table.cron thead th{ text-align: left; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); background: var(--surface-2); padding: 7px 14px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border-soft); position: sticky; top: 0; }
+  table.cron thead th:last-child{ border-right: none; }
+  table.cron tbody td{ padding: 6px 14px; border-top: 1px solid var(--border); border-right: 1px solid var(--border-soft); color: var(--text-secondary); vertical-align: top; }
+  table.cron tbody td:last-child{ border-right: none; }
+  table.cron tbody tr:hover{ background: rgba(34,211,238,.05); }
+  table.cron td.wk, table.cron td.mo{ font-family: var(--font-mono); color: var(--text-primary); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  table.cron td.deliv{ color: var(--accent); font-weight: 600; }
+  table.cron tbody tr.row-done{ background: rgba(52,211,153,.10); }
+  table.cron tbody tr.row-done td{ color: var(--text-primary); }
+  table.cron tbody tr.row-done td.wk{ color: var(--status-good); }
+  table.cron tbody tr.row-done td.deliv{ color: var(--status-good); }
+  table.cron.fill{ height: 100%; }
+  table.cron.fill tbody td{ vertical-align: middle; }
+  table.cron code{ font-family: var(--font-mono); font-size: 12.5px; color: var(--text-primary); }
+
+
+  /* ---- Nav chrome (screen only) ---- */
+  .nav{ position: fixed; left: 0; right: 0; bottom: 18px; display: flex; align-items: center; justify-content: center; gap: 14px; z-index: 10; font-family: var(--font-mono); }
+  .nav button{ appearance: none; border: 1px solid var(--border); background: var(--surface); color: var(--text-primary); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color .15s, background .15s; }
+  .nav button:hover{ border-color: var(--accent); background: var(--surface-2); }
+  .nav button svg{ width: 17px; height: 17px; }
+  .nav .counter{ color: var(--text-muted); font-size: 13px; min-width: 56px; text-align: center; }
+  .progress{ position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); z-index: 10; transition: width .25s ease; box-shadow: 0 0 12px rgba(34,211,238,.6); }
+
+  @media (prefers-reduced-motion: reduce){
+    .pipeline-track::after{ animation: none; }
+    .progress{ transition: none; }
+  }
+
+  /* ================= PRINT (PDF export) ================= */
+  @media print{
+    @page{ size: 13.333in 7.5in; margin: 0; }
+    html,body{ height: auto; overflow: visible; background: var(--slide); }
+    body{ display: block; padding: 0; }
+    .nav, .progress{ display: none !important; }
+    .deck{ all: unset; display: block; width: auto; }
+    .slide{
+      display: flex !important;
+      position: relative;
+      inset: auto;
+      width: 13.333in;
+      height: 7.5in;
+      border-radius: 0;
+      box-shadow: none;
+      page-break-after: always;
+      break-after: page;
+      padding: 0.5in 0.6in 0.42in;
+    }
+    .slide:last-child{ page-break-after: auto; break-after: auto; }
+  }
+
+  /* ---- Cronograma: hito en curso ---- */
+  table.cron tbody tr.row-progress{ background: rgba(251,191,36,.10); }
+  table.cron tbody tr.row-progress td{ color: var(--text-primary); }
+  table.cron tbody tr.row-progress td.wk{ color: var(--status-warn); }
+  table.cron tbody tr.row-progress td.deliv{ color: var(--status-warn); }
+  table.cron tbody tr.row-extra{ background: repeating-linear-gradient(135deg, rgba(254,240,138,.10) 0 10px, rgba(254,240,138,.04) 10px 20px); }
+  table.cron tbody tr.row-extra td{ color: var(--text-primary); border-top: 1px dashed rgba(254,240,138,.55); border-bottom: 1px dashed rgba(254,240,138,.55); }
+  table.cron tbody tr.row-extra td.wk, table.cron tbody tr.row-extra td.deliv{ color: #fef08a; }
+
+  /* ---- Tarjetas de dos columnas ---- */
+  .two-col{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1; min-height: 0; }
+  .card{ background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 22px 26px; display: flex; flex-direction: column; gap: 16px; }
+  .card.is-chosen{ border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-soft) inset; }
+  .card h3{ margin: 0; font-size: 19px; color: var(--text-primary); }
+  .card .card-tag{ font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
+  .card.is-chosen .card-tag{ color: var(--accent); }
+  .card p{ margin: 0; font-size: 18.5px; line-height: 1.5; color: var(--text-secondary); }
+  .card p b{ color: var(--text-primary); }
+  .card code{ font-family: var(--font-mono); font-size: 13.5px; color: var(--text-primary); }
+
+  /* ---- Figuras SVG ---- */
+  .fig-card{ background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px 8px; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  .fig-card svg{ width: 100%; flex: 1; min-height: 0; height: 0; overflow: visible; }
+  .fig-label-strong{ font-family: var(--font-display); font-size: 15px; font-weight: 700; fill: var(--text-primary); }
+  .fig-note{ font-family: var(--font-mono); font-size: 12.5px; fill: var(--text-muted); }
+  .net-edge{ stroke: var(--text-muted); }
+  .net-node{ stroke: var(--surface); stroke-width: 2; }
+  .net-label{ font-family: var(--font-mono); font-size: 12px; fill: var(--text-primary); paint-order: stroke; stroke: var(--surface); stroke-width: 3px; }
+  .legend-list{ display: flex; flex-direction: column; gap: 7px; font-size: 13.5px; color: var(--text-secondary); }
+  .legend-list .li{ display: grid; grid-template-columns: 12px 1fr auto auto; gap: 10px; align-items: center; }
+  .legend-list .li i{ width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+  .legend-list .li .num{ font-family: var(--font-mono); font-size: 12.5px; color: var(--text-primary); text-align: right; }
+  .legend-list .li-head{ font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); }
+  .net-grid{ display: grid; grid-template-columns: 1.55fr 1fr; gap: 18px; flex: 1; min-height: 0; }
+  .net-side{ display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+  .key-row{ display: flex; gap: 20px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 12.5px; color: var(--text-secondary); }
+  .key-row span{ display: inline-flex; align-items: center; gap: 7px; }
+  .key-row i{ width: 16px; height: 6px; border-radius: 2px; display: inline-block; }
+  .rec-grid{ display: grid; grid-template-columns: 1.25fr 1fr; gap: 18px; flex: 1; min-height: 0; }
+  .heat-wrap{ flex: 1; min-height: 0; display: flex; align-items: center; }
+  table.heat{ width: 100%; border-collapse: separate; border-spacing: 3px; }
+  table.heat thead th{ font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--text-secondary); text-align: center; padding: 0 2px 6px; vertical-align: bottom; line-height: 1.2; }
+  table.heat tbody th{ text-align: right; padding-right: 12px; white-space: nowrap; }
+  table.heat tbody th .g{ font-size: 15px; font-weight: 700; color: var(--text-primary); }
+  table.heat tbody th .m{ font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); }
+  table.heat td{ height: 40px; border-radius: 5px; text-align: center; font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--text-primary); }
+  table.heat td.lift{ box-shadow: inset 0 0 0 2.5px var(--accent); }
+  .tl{ display: grid; grid-template-columns: 210px repeat(8, 1fr) 230px; gap: 4px; align-items: center; font-size: 14px; }
+  .tl .lbl{ color: var(--text-primary); font-weight: 700; }
+  .tl .lbl small{ display: block; font-weight: 400; color: var(--text-muted); font-size: 12px; }
+  .tl .m{ font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); text-align: center; }
+  .tl .c{ height: 30px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 12px; font-weight: 600; }
+  .tl .c.jq{ background: rgba(217,89,38,.30); color: #ffd2bf; }
+  .tl .c.re{ background: rgba(57,135,229,.35); color: #d4e6fb; }
+  .tl .c.cut{ box-shadow: -3px 0 0 0 var(--accent); }
+  .tl .res{ font-size: 13.5px; color: var(--text-secondary); padding-left: 10px; }
+  .tl .res b{ color: var(--text-primary); }
+  .chart-caption{ font-size: 14px; color: var(--text-secondary); font-weight: 600; margin-bottom: 6px; }
+  .ej-grid{ display: grid; grid-template-columns: 1fr 1.2fr; gap: 18px; flex: 1; align-content: center; }
+  .ej-col h4{ margin: 0 0 10px; font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); }
+  .ej-chip{ display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-primary); padding: 2px 0; }
+  .ej-chip i{ width: 11px; height: 11px; border-radius: 3px; flex-shrink: 0; }
+  .ej-chip span{ font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); margin-left: auto; }
+  .key-row i.lift-key{ width: 14px; height: 14px; border-radius: 3px; background: transparent; box-shadow: inset 0 0 0 2px var(--accent); }
+
+  /* ---- PDF: la grilla decorativa usa mask-image, que Vista Previa (Quartz) dibuja como
+     líneas horizontales sueltas; en la exportación se omite ---- */
+  @media print{
+    .slide::before{ display: none; }
+  }
+</style>
+
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+  <!-- 1. CARATULA -->
+  <section class="slide cover is-active">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+      Taller de Tesis I &middot; ITBA &middot; Reunión de avance
+    </p>
+    <h1>Panel piloto y grafo bipartito sitio &harr; librería</h1>
+    <p class="subtitle">Inicio de la construcción del panel e investigación de las librerías asociadas a cada versión de framework</p>
+    <div class="meta-row">
+      <div><b>Alumno:</b> Moccagatta, Nicolás &middot; Leg. 106396</div>
+      <div><b>Director:</b> Ariel Olaf Salgado Corrado</div>
+      <div><b>Co-Director:</b> Carlos Sarraute</div>
+      <div><b>Fecha:</b> 2 de octubre de 2026</div>
+    </div>
+    <div class="cover-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Semanas 5&ndash;10 de 48
+    </div>
+  </section>
+
+  <!-- 2. CRONOGRAMA -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 3 14 9-14 9V3Z"/></svg>
+      Cronograma de actividades
+    </p>
+    <div class="table-wrap">
+      <table class="cron">
+        <colgroup><col style="width:8%"><col style="width:15%"><col style="width:53%"><col style="width:24%"></colgroup>
+        <thead><tr><th>Semana</th><th>Fechas</th><th>Tareas</th><th>Entregable</th></tr></thead>
+        <tbody>
+          <tr class="row-done"><td class="wk">1&ndash;4</td><td>31/08&ndash;25/09/2026</td><td>Revisión final de literatura, diseño técnico del panel y relevamiento de cobertura del cruce entre fuentes</td><td class="deliv">Cerrado</td></tr>
+          <tr class="row-progress"><td class="wk">5&ndash;10</td><td>28/09&ndash;06/11/2026</td><td>Construcción del panel HTTP Archive + CrUX (pipeline SQL, dimensión SCD-2 de tecnología)</td><td class="deliv">En curso</td></tr>
+          <tr class="row-extra"><td class="wk">Adicional</td><td>24/09&ndash;02/10/2026</td><td>Pedido de la reunión del 24/09: librerías asociadas a cada versión de framework y grafo bipartito sitio &harr; librería</td><td class="deliv">Exploración inicial</td></tr>
+          <tr><td class="wk">11&ndash;16</td><td>09/11&ndash;18/12/2026</td><td>Detección de eventos de migración y validación manual de una muestra contra Wayback Machine</td><td class="deliv">Catálogo de eventos validado</td></tr>
+          <tr><td class="wk">17&ndash;24</td><td>21/12/2026&ndash;12/02/2027</td><td>Selección de pares tecnológicos y armado del grupo de control por puntaje de propensión</td><td class="deliv">Diseño cuasi-experimental</td></tr>
+          <tr><td class="wk">25&ndash;28</td><td>15/02&ndash;12/03/2027</td><td>Verificación del supuesto de tendencias paralelas y ajustes al emparejamiento</td><td class="deliv">Validación de supuestos</td></tr>
+          <tr><td class="wk">29&ndash;34</td><td>15/03&ndash;23/04/2027</td><td>Estimación DiD escalonado (Callaway y Sant'Anna) sobre jQuery&rarr;React, con TWFE como referencia</td><td class="deliv">Resultados H1 y H3</td></tr>
+          <tr><td class="wk">35&ndash;38</td><td>26/04&ndash;21/05/2027</td><td>Extensión a los pares restantes y réplica con el estimador de Sun y Abraham</td><td class="deliv">Análisis de robustez</td></tr>
+          <tr><td class="wk">39&ndash;42</td><td>24/05&ndash;18/06/2027</td><td>Heterogeneidad de efectos con bosques aleatorios causales</td><td class="deliv">CATE por covariables</td></tr>
+          <tr><td class="wk">43&ndash;48</td><td>21/06&ndash;30/07/2027</td><td>Redacción final de la tesis y preparación de la defensa</td><td class="deliv">Tesis finalizada</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="foot"><span class="badge">Verde: cerrado &middot; Amarillo: en curso &middot; Rayado amarillo claro: adicional al plan</span><span class="badge">Moccagatta, N. &middot; Leg. 106396</span></div>
+  </section>
+
+  <!-- 3. TAREAS DE LA REUNION ANTERIOR -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Tareas de la reunión del 24/09
+    </p>
+    <h2 class="slide-title">Dos tareas, un mismo conjunto de datos</h2>
+    <div class="content">
+      <ul class="points">
+        <li><span class="bullet"></span><span><b>Empezar la construcción del panel.</b> Panel piloto sitio &times; mes sobre una cohorte fija (el top 10k de enero 2025, seguido todo el año): dimensión SCD-2 de tecnología y detección de eventos con persistencia &ge;3 meses.</span></li>
+        <li><span class="bullet"></span><span><b>Investigar las librerías asociadas a cada versión de los frameworks</b> y evaluar si un grafo bipartito permite estudiar su impacto en la performance web.</span></li>
+        <li><span class="bullet"></span><span><b>Una sola extracción alimenta las dos tareas:</b> cada fila es un sitio, un mes y una tecnología detectada por Wappalyzer, con el p75 de LCP, INP y CLS del sitio en ese dispositivo ese mismo mes. Pivoteada da el panel; leída como lista de aristas da el grafo bipartito.</span></li>
+      </ul>
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-label">Filas sitio &times; mes &times; tecnología</div><div class="kpi-value">2.865.586</div><div class="kpi-sub">Cohorte top 10k de ene-2025, ene&ndash;dic 2025 &middot; 1.502.705 móvil + 1.362.881 escritorio</div></div>
+        <div class="kpi"><div class="kpi-label">Tecnologías distintas</div><div class="kpi-value">1.505 / 1.470</div><div class="kpi-sub">Móvil / escritorio &middot; 18,2 / 19,3 por sitio y mes</div></div>
+        <div class="kpi"><div class="kpi-label">Facturado en BigQuery</div><div class="kpi-value">148,8 GB</div><div class="kpi-sub">79,9 GB móvil + 68,9 GB escritorio (el año completo) &middot; ~15% de la cuota gratuita mensual</div></div>
+      </div>
+    </div>
+    <div class="source-line"><b>bigquery/cross_source/007</b> (móvil) y <b>008</b> (escritorio) &middot; categorías de Wappalyzer: <b>bigquery/httparchive_wappalyzer_technologies/001</b></div>
+  </section>
+
+  <!-- 4. PANEL PILOTO -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
+      01 &middot; Panel piloto
+    </p>
+    <h2 class="slide-title">Cohorte fija: el top 10k de enero 2025, seguido todo el año</h2>
+    <div class="two-col">
+      <div class="table-wrap">
+        <table class="cron fill">
+          <colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup>
+          <thead><tr><th>Cohorte top 10k de ene-2025</th><th>Móvil</th><th>Escritorio</th></tr></thead>
+          <tbody>
+            <tr><td>Sitios en el panel</td><td class="mo">7.717</td><td class="mo">6.390</td></tr>
+            <tr><td>Sitio-mes sin tecnologías registradas (dato faltante)</td><td class="mo">9.843 (10,6%)</td><td class="mo">6.244 (8,1%)</td></tr>
+            <tr><td>&hellip;rellenados con la otra versión o los meses vecinos</td><td class="mo">1.756</td><td class="mo">1.120</td></tr>
+            <tr><td>Con datos los 12 meses (panel balanceado)</td><td class="mo">6.370 (83%)</td><td class="mo">5.532 (87%)</td></tr>
+            <tr><td>Sitio-mes ya fuera del top 10k (feb&ndash;dic)</td><td class="mo">17,9%</td><td class="mo">15,7%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pipeline">
+        <div class="pipeline-track"></div>
+        <div class="node">
+          <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/></svg></span>
+          <div><div class="node-index">01</div><div class="node-title">Extracción por cliente</div><div class="node-desc">Crawl móvil &harr; CrUX <code>phone</code>; crawl escritorio &harr; CrUX <code>desktop</code>. HTTP Archive visita cada sitio con los dos perfiles y CrUX mide cada dispositivo por separado.</div></div>
+        </div>
+        <div class="node">
+          <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg></span>
+          <div><div class="node-index">02</div><div class="node-title">Panel origen &times; mes</div><div class="node-desc">Flags por tecnología + versión mayor + p75 de LCP, INP y CLS</div></div>
+        </div>
+        <div class="node is-active">
+          <span class="node-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span>
+          <div><div class="node-index">03</div><div class="node-title">SCD-2 y eventos</div><div class="node-desc">Tramos de vigencia por tecnología; cambios que persisten &ge;3 meses</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+      <div><div class="callout-label">Por qué cohorte fija</div><p style="font-size:17px">El rank viene en tramos (1k, 5k, 10k). Si se filtra el top 10k <b>mes a mes</b>, un sitio que baja de tramo desaparece del panel aunque siga existiendo: solo el 26% quedaba los 12 meses. Con la cohorte fija se sigue a los mismos sitios aunque cambie su popularidad (el 17,9% de los sitio-mes ya no es top 10k). El rank de enero viene de la lista de CrUX de diciembre 2024, anterior a la ventana.</p></div>
+    </div>
+    <div class="source-line"><b>Relleno:</b> si en un mes falta el dato, se usa la otra versión del mismo sitio (celular &harr; computadora: los 6 frameworks del panel coinciden en el 98&ndash;100% de los casos con datos en ambas) o, si falta un solo mes, el estado idéntico del mes anterior y el siguiente &middot; <b>analisis/panel_piloto_scd2.py</b></div>
+  </section>
+
+  <!-- 4b. POR QUE NO 10.000 -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      01 &middot; Panel piloto &middot; cobertura del top 10k
+    </p>
+    <h2 class="slide-title">De dónde salen los 7.717 sitios del panel</h2>
+    <div class="kpi-row" style="grid-template-columns: repeat(3, 1fr)">
+      <div class="kpi"><div class="kpi-label">Top 10k del crawl de enero 2025</div><div class="kpi-value">7.760</div><div class="kpi-sub">Páginas principales, crawl de celular</div></div>
+      <div class="kpi"><div class="kpi-label">Menos: sin datos en todo 2025</div><div class="kpi-value">&minus; 43</div><div class="kpi-sub">Ninguna tecnología registrada en ningún mes</div></div>
+      <div class="kpi"><div class="kpi-label">Sitios en el panel</div><div class="kpi-value">= 7.717</div><div class="kpi-sub">Se los sigue los 12 meses de 2025</div></div>
+    </div>
+    <div class="content">
+      <ul class="points">
+        <li><span class="bullet"></span><span><b>Por qué no son 10.000:</b> CrUX y HTTP Archive no cubren exactamente los mismos sitios. De los 10.000 del top de CrUX de enero, 7.825 (78,3%) están en el crawl, dentro del 76&ndash;84% medido para todos los orígenes de CrUX desde 2023 (relevamiento del hito 1&ndash;4).</span></li>
+        <li><span class="bullet"></span><span><b>HTTP Archive arma el crawl del mes M con la lista de CrUX del mes M&minus;1:</b> por eso 906 de los presentes figuran con otro rank, y 841 de las root pages top 10k del crawl no son top 10k en CrUX de enero.</span></li>
+        <li><span class="bullet"></span><span><b>Implicancia:</b> el universo del panel es la lista que efectivamente rastrea HTTP Archive, y un mes sin tecnologías registradas es dato faltante, no un abandono de tecnologías.</span></li>
+      </ul>
+    </div>
+    <div class="source-line"><b>bigquery/cross_source/009</b> y <b>httparchive_crawl_pages/004</b> &middot; crawl móvil, ene-2025 &middot; M&minus;1: HTTP Archive empieza el crawl cuando se publica CrUX el segundo martes del mes (httparchive.org/docs/guides/release-cycle) y CrUX publica en ese momento los datos del mes anterior (developer.chrome.com/docs/crux/bigquery)</div>
+  </section>
+
+  <!-- 5. EVENTOS DE MIGRACION -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+      01 &middot; Panel piloto &middot; detección de eventos
+    </p>
+    <h2 class="slide-title">Cambio crudo vs. cambio persistente</h2>
+    <div class="tl">
+      <div></div><div class="m">ene</div><div class="m">feb</div><div class="m">mar</div><div class="m">abr</div><div class="m">may</div><div class="m">jun</div><div class="m">jul</div><div class="m">ago</div><div></div>
+      <div class="lbl">Sitio A<small>cambio persistente</small></div>
+      <div class="c jq">jQuery</div><div class="c jq">jQuery</div><div class="c jq">jQuery</div><div class="c re cut">React</div><div class="c re">React</div><div class="c re">React</div><div class="c re">React</div><div class="c re">React</div>
+      <div class="res"><b>Cuenta</b> como migración: 3 meses antes y 3 después</div>
+      <div class="lbl">Sitio B<small>solo cambio crudo</small></div>
+      <div class="c jq">jQuery</div><div class="c jq">jQuery</div><div class="c jq">jQuery</div><div class="c re cut">React</div><div class="c jq">jQuery</div><div class="c jq">jQuery</div><div class="c jq">jQuery</div><div class="c jq">jQuery</div>
+      <div class="res"><b>Se descarta:</b> React aparece un solo mes y no se sostiene</div>
+    </div>
+    <div class="table-wrap">
+      <table class="cron fill">
+        <colgroup><col style="width:30%"><col style="width:35%"><col style="width:35%"></colgroup>
+        <thead><tr><th>Par de migración (panel balanceado)</th><th>Móvil &middot; sitios con cambio crudo verificable &rarr; persistente</th><th>Escritorio &middot; ídem</th></tr></thead>
+        <tbody>
+          <tr><td>jQuery &rarr; React (sin jQuery después)</td><td class="mo">51 &rarr; 48 &middot; descarta 6%</td><td class="mo">51 &rarr; 46 &middot; descarta 10%</td></tr>
+          <tr><td>jQuery &rarr; React (conservando jQuery)</td><td class="mo" style="color:var(--status-warn)">42 &rarr; 24 &middot; descarta 43%</td><td class="mo" style="color:var(--status-warn)">36 &rarr; 22 &middot; descarta 39%</td></tr>
+          <tr><td>React &rarr; Next.js</td><td class="mo">23 &rarr; 19 &middot; descarta 17%</td><td class="mo">21 &rarr; 18 &middot; descarta 14%</td></tr>
+          <tr><td>Abandono de WordPress</td><td class="mo">20 &rarr; 16 &middot; descarta 20%</td><td class="mo">12 &rarr; 9 &middot; descarta 25%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="source-line"><b>Verificable</b> = cambio crudo entre abril y octubre, el único rango con 3 meses de cada lado dentro de 2025 (los crudos de los bordes no se pueden confirmar ni descartar) &middot; la variante que conserva jQuery es la más ruidosa: insumo para definir el tratamiento</div>
+  </section>
+
+  <!-- 6. QUE CAPA DE LIBRERIAS -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
+      02 &middot; Librerías por versión de framework
+    </p>
+    <h2 class="slide-title">Qué capa de librerías se estudia</h2>
+    <div class="two-col">
+      <div class="card is-chosen">
+        <span class="card-tag">Capa elegida &middot; variable del análisis</span>
+        <h3>Librerías detectables en el HTML (Wappalyzer)</h3>
+        <p>Lo que cada sitio <b>efectivamente entrega al navegador</b>: Lodash, Swiper, Tailwind, React Router&hellip; Se observa sitio por sitio y mes a mes en HTTP Archive, y se cruza con CrUX.</p>
+        <p><b>Varía entre sitios con el mismo framework</b>: los 85 sitios con React 18 y alguna librería usan 54 combinaciones distintas (cohorte, dic-2025). Esa variación es la que permite estudiar el impacto de las librerías.</p>
+        <p>Límite: solo registra lo que coincide con las reglas de detección de Wappalyzer.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">Capa de interpretación</span>
+        <h3>Dependencias internas del framework (npm)</h3>
+        <p>Lo que trae cada versión según su <code>package.json</code> (ej. <code>next@15.4</code> &rarr; <code>styled-jsx</code>, <code>@swc/helpers</code>, <code>postcss</code>; React va como <i>peer dependency</i>). Disponible para toda versión publicada en <code>registry.npmjs.org</code>.</p>
+        <p><b>Es fija para cada versión publicada</b> (ej. 15.4.0): todos los sitios con esa versión exacta comparten las mismas dependencias, por lo que no aportan variación propia entre ellos.</p>
+        <p>Uso: explicar por qué difieren dos versiones una vez observada la diferencia.</p>
+      </div>
+    </div>
+    <div class="source-line">Wappalyzer además declara relaciones <b>implies</b> entre tecnologías (Next.js &rarr; React): permiten separar lo que trae el framework de lo que agrega cada sitio</div>
+  </section>
+
+  <!-- 7. VERSION DETECTADA -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
+      02 &middot; Librerías por versión de framework
+    </p>
+    <h2 class="slide-title">La versión se detecta bien en jQuery, Next.js y Angular; casi nunca en React y Vue</h2>
+    <div class="two-col">
+      <div class="table-wrap">
+        <table class="cron fill">
+          <colgroup><col style="width:40%"><col style="width:30%"><col style="width:30%"></colgroup>
+          <thead><tr><th>Framework</th><th>Sitios</th><th>Con versión</th></tr></thead>
+          <tbody>
+            <tr><td>jQuery</td><td class="mo">3.267</td><td class="mo">98,3%</td></tr>
+            <tr><td>React</td><td class="mo">1.264</td><td class="mo" style="color:var(--status-warn)">12,7%</td></tr>
+            <tr><td>Next.js</td><td class="mo">631</td><td class="mo">98,1%</td></tr>
+            <tr><td>Vue.js</td><td class="mo">566</td><td class="mo" style="color:var(--status-warn)">22,4%</td></tr>
+            <tr><td>Angular</td><td class="mo">143</td><td class="mo">81,1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table class="cron fill">
+          <colgroup><col style="width:40%"><col style="width:25%"><col style="width:35%"></colgroup>
+          <thead><tr><th>Versión mayor (&ge;30 sitios)</th><th>Sitios</th><th>Mediana p75 LCP</th></tr></thead>
+          <tbody>
+            <tr><td>jQuery 1 / 2 / 3</td><td class="mo">836 / 292 / 2.077</td><td class="mo">1.600 ms en las tres</td></tr>
+            <tr><td>Next.js 12 / 13</td><td class="mo">61 / 64</td><td class="mo">2.400 / 2.250 ms</td></tr>
+            <tr><td>Next.js 14 / 15</td><td class="mo">215 / 232</td><td class="mo">2.200 / 1.900 ms</td></tr>
+            <tr><td>React 17 / 18</td><td class="mo">30 / 92</td><td class="mo">2.000 / 2.000 ms</td></tr>
+            <tr><td>Vue.js 2</td><td class="mo">95</td><td class="mo">1.900 ms</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+      <div><div class="callout-label">Implicancia</div><p style="font-size:18px">Wappalyzer detecta la versión de React y Vue en pocos sitios (13% y 22%); la causa no está verificada. Para esos frameworks el nodo del grafo es el framework sin versión. La versión de Next.js sí se detecta en el 98% de sus sitios.</p></div>
+    </div>
+    <div class="source-line">Cohorte fija, crawl móvil, dic-2025 (en escritorio la cobertura es casi igual: React 13,3%, Vue 23,3%) &middot; medianas descriptivas, sin control por tráfico, país ni tipo de sitio</div>
+  </section>
+
+  <!-- 7b. VERSION x LIBRERIA -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
+      02 &middot; Librerías por versión de framework
+    </p>
+    <h2 class="slide-title">Cada versión mayor arrastra un conjunto de librerías distinto</h2>
+    <div class="heat-wrap"><table class="heat" id="heatVersion"></table></div>
+    <div class="key-row">
+      <span>Celda = % de los sitios con esa versión que usan la librería</span>
+      <span><i style="background:linear-gradient(90deg,#1c2a48,#184f95,#3987e5,#9ec5f4);width:60px"></i>0% &rarr; 100%</span>
+      <span><i class="lift-key"></i>lift &ge; 2</span>
+    </div>
+    <div class="source-line">Versiones con &ge; 30 sitios y versión detectada (jQuery y Next.js: 98%) &middot; React y Vue quedan fuera: la versión se detecta en 13% y 22% de sus sitios &middot; cohorte fija, crawl móvil, dic-2025</div>
+  </section>
+
+  <!-- 8. GRAFO BIPARTITO -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 6h10M7 6l10 6M7 18l10-6M7 18h10"/></svg>
+      03 &middot; Grafo bipartito sitio &harr; librería
+    </p>
+    <h2 class="slide-title">Cada framework convive con un conjunto distinto de librerías</h2>
+    <div class="heat-wrap"><table class="heat" id="heatDeck"></table></div>
+    <div class="key-row">
+      <span>Celda = % de los sitios del grupo que usan la librería</span>
+      <span><i style="background:linear-gradient(90deg,#1c2a48,#184f95,#3987e5,#9ec5f4);width:60px"></i>0% &rarr; 100%</span>
+      <span><i class="lift-key"></i>borde cian: lift &ge; 2 (el grupo la usa al menos el doble que el promedio)</span>
+    </div>
+    <div class="source-line">Fila = sitios agrupados por su framework principal (Next.js antes que React; &ldquo;Solo jQuery&rdquo; = jQuery sin framework moderno) &middot; LCP del grupo = mediana, entre sus sitios, del p75 de LCP en CrUX &middot; <b>descriptivo:</b> compara sitios distintos, así que la diferencia de LCP entre grupos no se puede atribuir al framework; por eso el diseño empareja &middot; cohorte fija, crawl móvil, dic-2025 &middot; interactivo: <b>analisis/visualizaciones/explorador_grafo.html</b></div>
+  </section>
+
+  <!-- 9. PROYECCION: STACKS -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v4M12 11l-6 6M12 11l6 6"/></svg>
+      03 &middot; Proyección sobre tecnologías
+    </p>
+    <h2 class="slide-title">La proyección del grafo separa stacks reconocibles (exploratorio)</h2>
+    <div class="net-grid">
+      <div class="fig-card">
+        <svg id="netChart" viewBox="0 0 760 430" role="img" aria-label="Red de tecnologías que se usan juntas, coloreada por comunidad"></svg>
+      </div>
+      <div class="net-side">
+        <div class="legend-list" id="netLegend"></div>
+        <div class="kpi" style="padding:12px 16px">
+          <div class="kpi-label">Proyección</div>
+          <div class="kpi-sub" style="margin-top:0;font-size:13.5px">62 tecnologías &middot; 97 pares con lift &ge; 2 y &ge; 20 sitios en común, sin los 15 pares que Wappalyzer infiere por reglas <i>implies</i> (ej. Next.js &rarr; React) &middot; Louvain: 11 comunidades en 38 de 50 semillas (10 en el resto), modularidad 0,68 &middot; en escritorio: 9 en 50 de 50 &middot; se muestran las 7 más grandes</div>
+        </div>
+      </div>
+    </div>
+    <div class="source-line">Nodo = tecnología (tamaño &prop; sitios) &middot; línea = pares usados juntos más del doble de lo esperable &middot; LCP del stack = mediana del p75 de los sitios asignados &middot; cohorte fija, crawl móvil, dic-2025 &middot; interactivo y escritorio: <b>analisis/visualizaciones/explorador_grafo.html</b></div>
+  </section>
+
+  <!-- 10. RECABLEADO EN MIGRACIONES -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+      03 &middot; Migraciones vistas en el grafo
+    </p>
+    <h2 class="slide-title">Migrar a React conserva la mitad de las librerías previas</h2>
+    <div class="rec-grid">
+      <div class="fig-card">
+        <div class="chart-caption">Librerías JS detectadas por Wappalyzer, promedio por sitio (63 sitios que migraron, con los 6 meses observados; sin jQuery, React ni Next.js). En total Wappalyzer detecta 24,9 tecnologías por sitio: el resto son analytics, publicidad, CDN, etc.</div>
+        <svg id="recChart" viewBox="0 0 640 240" role="img" aria-label="Librerías por sitio antes y después de migrar de jQuery a React"></svg>
+      </div>
+      <div class="fig-card">
+        <div class="chart-caption">Ejemplo: www.chase.com (migró en 2025; azul = framework, no se cuenta)</div>
+        <div class="ej-grid" id="ejemplo"></div>
+      </div>
+    </div>
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
+      <div><div class="callout-label">Cómo se clasifica cada librería que llega</div><p style="font-size:17px">jQuery, React y Next.js no se cuentan porque definen la migración (React llega en los 63 sitios por construcción). El resto: el sitio tenía 3,4 librerías y queda con 2,9; conserva el 49%. <b>Ecosistema React:</b> requieren React (MUI, React Router) o los sitios con React las usan al menos el doble que el resto (ej. Emotion). <b>Propias:</b> sin relación con React.</p></div>
+    </div>
+    <div class="source-line">Antes = librerías presentes los 3 meses previos al cambio &middot; después = presentes los 3 meses desde el cambio &middot; ambas variantes de jQuery&rarr;React, crawl móvil</div>
+  </section>
+
+  <!-- 11. ENCAJE EN EL DISEÑO CAUSAL -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+      04 &middot; Cómo encaja en el diseño causal
+    </p>
+    <h2 class="slide-title">El grafo aporta covariables previas y ejes de heterogeneidad</h2>
+    <div class="two-col">
+      <div class="card">
+        <span class="card-tag">Usos</span>
+        <p><b>Tratamiento:</b> el efecto estimado es el de migrar tal como lo hacen los sitios, con el paquete de librerías que cambia junto con el framework (efecto total).</p>
+        <p><b>Covariables previas:</b> el stack del sitio antes del evento entra al emparejamiento por puntaje de propensión.</p>
+        <p><b>Heterogeneidad:</b> el stack de origen, medido antes del evento, como eje de los bosques causales (H2).</p>
+        <p><b>Mecanismos (descriptivo):</b> qué librerías se van, se quedan o llegan; la proporción conservada se mide después del evento, así que no entra como covariable.</p>
+      </div>
+      <div class="card">
+        <span class="card-tag">Restricciones y limitaciones</span>
+        <p><b>Todo lo medido después del evento es posterior al tratamiento</b> (librerías que llegan, proporción conservada): controlar o estratificar por eso sesga la estimación (<i>bad control</i>).</p>
+        <p><b>Versión no observable</b> para la mayoría de los sitios con React y Vue.</p>
+        <p><b>Potencia:</b> con 46&ndash;72 sitios tratados el efecto mínimo detectable en LCP va de ~60 ms (escritorio) a ~150 ms (móvil, más variable); el DiD exploratorio sugería ~40 ms. Hacen falta de cientos a cerca de mil eventos por par: eso define la escala del panel.</p>
+      </div>
+    </div>
+    <div class="source-line">Scripts de terceros (analytics, publicidad, tag managers) quedan fuera de esta capa; pueden incorporarse como capa adicional del grafo</div>
+  </section>
+
+  <!-- 12. PROXIMOS PASOS -->
+  <section class="slide">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      Próximos pasos &middot; semanas 5&ndash;10
+    </p>
+    <h2 class="slide-title">Del piloto al panel completo</h2>
+    <div class="content">
+      <ul class="points">
+        <li><span class="bullet"></span><span><b>Cohorte fija en el panel completo:</b> elegir los sitios con el rank del mes anterior a la ventana y tratar los meses sin tecnologías registradas como dato faltante.</span></li>
+        <li><span class="bullet"></span><span><b>Escalar a la ventana 2023&ndash;2026:</b> un mes completo (15,7 M sitios, móvil) factura 6,1 GB, así que ambos clientes suman ~525 GB y entran en la cuota. El límite es el volumen: 256 M filas sitio &times; tecnología por mes, por lo que se filtra a las tecnologías del estudio y se agrega dentro de BigQuery.</span></li>
+        <li><span class="bullet"></span><span><b>Dimensionar por potencia:</b> estimar cuántos eventos persistentes por par hacen falta para detectar efectos del orden de 40 ms.</span></li>
+        <li><span class="bullet"></span><span><b>Definir el tratamiento</b> de jQuery&rarr;React: estricto (descarte 6&ndash;10%) o incluyendo a los que conservan jQuery (descarte 39&ndash;43%).</span></li>
+        <li><span class="bullet"></span><span><b>Grafo mensual y por versión:</b> seguir los stacks en el tiempo y validar en Wayback Machine una muestra del recableado.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 13. CIERRE -->
+  <section class="slide closing">
+    <p class="kicker">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Cierre
+    </p>
+    <h1 class="big">Gracias</h1>
+    <p class="sub">&iquest;Preguntas?</p>
+    <div class="meta-row">
+      <div><b>Alumno:</b> Moccagatta, Nicolás &middot; Leg. 106396</div>
+      <div><b>Director:</b> Ariel Olaf Salgado Corrado</div>
+      <div><b>Co-Director:</b> Carlos Sarraute</div>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prevBtn" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+  </button>
+  <span class="counter" id="counter">1 / 15</span>
+  <button id="nextBtn" aria-label="Siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var counter = document.getElementById('counter');
+  var progress = document.getElementById('progress');
+  var idx = 0;
+
+  function render(){
+    slides.forEach(function(s, i){ s.classList.toggle('is-active', i === idx); });
+    counter.textContent = (idx + 1) + ' / ' + slides.length;
+    progress.style.width = (((idx + 1) / slides.length) * 100) + '%';
+  }
+  function go(delta){
+    idx = Math.max(0, Math.min(slides.length - 1, idx + delta));
+    render();
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', function(){ go(-1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ go(1); });
+
+  window.addEventListener('keydown', function(e){
+    if (['ArrowRight','ArrowDown','PageDown',' '].indexOf(e.key) !== -1){ e.preventDefault(); go(1); }
+    if (['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key) !== -1){ e.preventDefault(); go(-1); }
+    if (e.key === 'Home'){ idx = 0; render(); }
+    if (e.key === 'End'){ idx = slides.length - 1; render(); }
+  });
+
+  var touchStartX = null;
+  document.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if (touchStartX === null) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    touchStartX = null;
+  }, {passive:true});
+
+  render();
+})();
+</script>
+
+<script>
+(function(){
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent, text){
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function fmt(n){ return n.toLocaleString("es-AR"); }
+
+  /* Datos: analisis/salidas/grafo_bipartito_mobile.json (dic-2025, top 10k, crawl móvil) */
+  var GRUPOS = [["Solo jQuery", 2736, 1500], ["Otros", 1143, 1600], ["React (sin Next.js)", 633, 2300], ["Next.js", 631, 2100], ["Vue.js (sin Nuxt)", 413, 1900], ["Angular", 124, 3500], ["Nuxt.js", 115, 2000]];
+  var LIBS = {"core-js": 3111, "Bootstrap": 1195, "Swiper": 889, "jQuery UI": 620, "Lodash": 530, "LazySizes": 470, "jQuery Migrate": 443, "Tailwind CSS": 396, "Preact": 331, "Boomerang": 252, "web-vitals": 249, "lit-html": 236};
+  var MATRIZ = [["Angular", "Boomerang", 14, 2.58], ["Angular", "Bootstrap", 32, 1.24], ["Angular", "LazySizes", 6, 0.59], ["Angular", "Lodash", 35, 3.07], ["Angular", "Preact", 4, 0.56], ["Angular", "Swiper", 34, 1.78], ["Angular", "Tailwind CSS", 6, 0.7], ["Angular", "core-js", 75, 1.12], ["Angular", "jQuery Migrate", 4, 0.42], ["Angular", "jQuery UI", 6, 0.45], ["Angular", "lit-html", 12, 2.36], ["Angular", "web-vitals", 8, 1.49], ["Next.js", "Boomerang", 42, 1.52], ["Next.js", "Bootstrap", 49, 0.37], ["Next.js", "LazySizes", 15, 0.29], ["Next.js", "Lodash", 80, 1.38], ["Next.js", "Preact", 50, 1.38], ["Next.js", "Swiper", 102, 1.05], ["Next.js", "Tailwind CSS", 161, 3.71], ["Next.js", "core-js", 389, 1.14], ["Next.js", "lit-html", 30, 1.16], ["Next.js", "web-vitals", 29, 1.06], ["Nuxt.js", "Boomerang", 3, 0.6], ["Nuxt.js", "Bootstrap", 7, 0.29], ["Nuxt.js", "LazySizes", 5, 0.53], ["Nuxt.js", "Lodash", 13, 1.23], ["Nuxt.js", "Preact", 9, 1.36], ["Nuxt.js", "Swiper", 29, 1.64], ["Nuxt.js", "Tailwind CSS", 27, 3.42], ["Nuxt.js", "core-js", 81, 1.31], ["Nuxt.js", "jQuery UI", 3, 0.24], ["Nuxt.js", "lit-html", 3, 0.64], ["Nuxt.js", "web-vitals", 6, 1.21], ["Otros", "Boomerang", 36, 0.72], ["Otros", "Bootstrap", 123, 0.52], ["Otros", "LazySizes", 74, 0.79], ["Otros", "Lodash", 70, 0.67], ["Otros", "Preact", 93, 1.42], ["Otros", "Swiper", 123, 0.7], ["Otros", "Tailwind CSS", 113, 1.44], ["Otros", "core-js", 698, 1.13], ["Otros", "lit-html", 70, 1.5], ["Otros", "web-vitals", 91, 1.84], ["React (sin Next.js)", "Boomerang", 69, 2.49], ["React (sin Next.js)", "Bootstrap", 94, 0.72], ["React (sin Next.js)", "LazySizes", 40, 0.77], ["React (sin Next.js)", "Lodash", 132, 2.27], ["React (sin Next.js)", "Preact", 42, 1.16], ["React (sin Next.js)", "Swiper", 80, 0.82], ["React (sin Next.js)", "Tailwind CSS", 36, 0.83], ["React (sin Next.js)", "core-js", 467, 1.37], ["React (sin Next.js)", "jQuery Migrate", 21, 0.43], ["React (sin Next.js)", "jQuery UI", 43, 0.63], ["React (sin Next.js)", "lit-html", 52, 2.01], ["React (sin Next.js)", "web-vitals", 34, 1.24], ["Solo jQuery", "Boomerang", 65, 0.54], ["Solo jQuery", "Bootstrap", 812, 1.43], ["Solo jQuery", "LazySizes", 296, 1.33], ["Solo jQuery", "Lodash", 150, 0.6], ["Solo jQuery", "Preact", 117, 0.74], ["Solo jQuery", "Swiper", 407, 0.96], ["Solo jQuery", "Tailwind CSS", 36, 0.19], ["Solo jQuery", "core-js", 1113, 0.75], ["Solo jQuery", "jQuery Migrate", 409, 1.95], ["Solo jQuery", "jQuery UI", 534, 1.81], ["Solo jQuery", "lit-html", 50, 0.45], ["Solo jQuery", "web-vitals", 68, 0.58], ["Vue.js (sin Nuxt)", "Boomerang", 23, 1.27], ["Vue.js (sin Nuxt)", "Bootstrap", 78, 0.91], ["Vue.js (sin Nuxt)", "LazySizes", 34, 1.01], ["Vue.js (sin Nuxt)", "Lodash", 50, 1.32], ["Vue.js (sin Nuxt)", "Preact", 16, 0.67], ["Vue.js (sin Nuxt)", "Swiper", 114, 1.79], ["Vue.js (sin Nuxt)", "Tailwind CSS", 17, 0.6], ["Vue.js (sin Nuxt)", "core-js", 288, 1.29], ["Vue.js (sin Nuxt)", "jQuery Migrate", 9, 0.28], ["Vue.js (sin Nuxt)", "jQuery UI", 34, 0.77], ["Vue.js (sin Nuxt)", "lit-html", 19, 1.12], ["Vue.js (sin Nuxt)", "web-vitals", 13, 0.73]];
+  var NODOS = [["AOS", 54, 0, [0.7125, 0.3156]], ["Adobe Client Data Layer", 71, 4, [-0.162, 0.282]], ["Alpine.js", 69, 5, [-0.7916, -0.4074]], ["AngularJS", 60, 0, [0.6368, 0.0255]], ["Animate.css", 55, 0, [0.6179, 0.3837]], ["Apollo", 80, 5, [-0.6766, 0.3536]], ["Axios", 113, 10, [0.2066, 0.1211]], ["Backbone.js", 95, 4, [0.1222, -0.0892]], ["Boomerang", 252, 2, [-0.3533, -0.4402]], ["Bootstrap", 1195, 0, [0.5217, 0.1145]], ["DataTables", 48, 0, [0.649, -0.0606]], ["Emotion", 227, 2, [-0.353, -0.1017]], ["FancyBox", 211, 3, [0.4174, 0.5785]], ["GSAP", 110, 4, [-0.1806, 0.1778]], ["Hammer.js", 174, 3, [0.1275, 0.183]], ["Handlebars", 66, 4, [0.3908, 0.0912]], ["JSS", 32, 5, [-0.7845, 0.2635]], ["LazySizes", 470, 3, [0.2374, 0.746]], ["Lightbox", 105, 3, [0.2643, 1.0]], ["Loadable-Components", 142, 2, [-0.2711, -0.0195]], ["Lodash", 530, 4, [-0.0462, -0.0188]], ["MUI", 61, 2, [-0.4465, 0.1797]], ["MobX", 56, 5, [-0.8615, 0.1259]], ["Modernizr", 185, 4, [0.1807, -0.2373]], ["Moment.js", 208, 4, [0.2501, -0.0079]], ["Mustache", 78, 3, [0.1082, 0.5196]], ["Next.js App Router", 202, 5, [-0.5594, -0.0227]], ["Next.js@14", 215, 5, [-0.4991, -0.1939]], ["Next.js@15", 232, 5, [-0.513, -0.2759]], ["Nuxt.js", 115, 5, [-0.8962, -0.2283]], ["OWL Carousel", 129, 0, [0.6936, -0.1926]], ["Preact", 331, 2, [-0.4281, -0.3846]], ["Radix UI", 86, 5, [-0.7631, -0.0947]], ["React Router", 146, 2, [-0.2406, -0.4023]], ["React@18", 92, 2, [-0.4374, -0.7159]], ["React@?", 1104, 5, [-0.5829, 0.0834]], ["RequireJS", 129, 4, [0.0152, -0.2998]], ["Select2", 162, 3, [0.3747, 0.2834]], ["Slick", 234, 0, [0.5879, -0.1452]], ["SweetAlert2", 54, 0, [0.8289, 0.0668]], ["Tailwind CSS", 396, 5, [-0.6321, -0.1586]], ["Underscore.js", 148, 4, [0.165, -0.1517]], ["Vue.js@2", 95, 10, [0.0076, 0.165]], ["Zone.js", 135, 3, [-0.0427, 0.2552]], ["crypto-js", 109, 0, [0.5564, -0.4095]], ["jQuery Migrate", 443, 0, [0.416, -0.2826]], ["jQuery UI", 620, 0, [0.3819, -0.1021]], ["jQuery@1", 836, 4, [0.1734, -0.5162]], ["jQuery@2", 292, 4, [0.3258, -0.3615]], ["styled-components", 234, 2, [-0.2332, -0.2055]], ["toastr", 43, 0, [0.7853, 0.2112]]];
+  var ARISTAS = [["lit-element", "lit-html", 24.42], ["Next.js App Router", "React@?", 5.2], ["React@?", "Tailwind CSS", 2.41], ["Emotion", "React@?", 3.89], ["jQuery Migrate", "jQuery UI", 2.56], ["Bootstrap", "Moment.js", 2.41], ["Bootstrap", "Slick", 2.04], ["Next.js App Router", "Tailwind CSS", 6.2], ["Loadable-Components", "React@?", 2.98], ["Bootstrap", "Select2", 2.38], ["Next.js@15", "Tailwind CSS", 4.77], ["Radix UI", "React@?", 4.61], ["Element UI", "Vue.js@?", 10.89], ["Bootstrap", "OWL Carousel", 2.65], ["Moment.js", "jQuery UI", 3.17], ["Slick", "jQuery UI", 2.66], ["Modernizr", "jQuery UI", 3.27], ["Modernizr", "jQuery@1", 2.39], ["Lodash", "Moment.js", 3.08], ["Apollo", "React@?", 3.79], ["Next.js@14", "Tailwind CSS", 3.86], ["Radix UI", "Tailwind CSS", 9.31], ["Slick", "jQuery Migrate", 2.84], ["Emotion", "MUI", 20.81], ["AMP", "Svelte", 10.73], ["Emotion", "Lodash", 2.3], ["Axios", "Bootstrap", 2.01], ["Lodash", "Modernizr", 2.7], ["Lodash", "styled-components", 2.14], ["Backbone.js", "Lodash", 5.15], ["Lodash", "Underscore.js", 3.31], ["Next.js App Router", "Radix UI", 14.93], ["RequireJS", "jQuery@1", 2.3], ["Emotion", "Next.js@14", 4.84], ["Emotion", "Tailwind CSS", 2.63], ["Emotion", "Next.js@15", 4.27], ["Hammer.js", "jQuery UI", 2.08], ["Lodash", "Zone.js", 3.14], ["MobX", "React@?", 3.64], ["FancyBox", "LazySizes", 2.21], ["FancyBox", "Select2", 6.41], ["Lodash", "RequireJS", 3.2], ["Underscore.js", "jQuery UI", 2.39], ["Hammer.js", "Lodash", 2.31], ["Modernizr", "jQuery Migrate", 2.6], ["Bootstrap", "SweetAlert2", 3.22], ["Next.js@14", "Radix UI", 11.22], ["SoundManager", "web-vitals", 21.93], ["Moment.js", "Underscore.js", 6.37], ["Next.js@14", "styled-components", 3.9], ["AOS", "Bootstrap", 2.86], ["Bootstrap", "DataTables", 3.22], ["Bootstrap", "toastr", 3.48], ["Emotion", "Preact", 2.38], ["Loadable-Components", "Lodash", 2.37], ["Tippy.js", "jQuery@3", 2.26], ["Boomerang", "React@18", 7.46], ["Axios", "Lodash", 2.69], ["Emotion", "Loadable-Components", 5.01], ["Handlebars", "jQuery UI", 3.94], ["Loadable-Components", "React Router", 7.78], ["Next.js@15", "Radix UI", 8.09], ["Boomerang", "styled-components", 2.64], ["JSS", "React@?", 4.41], ["Next.js@15", "styled-components", 2.87], ["Nuxt.js", "Tailwind CSS", 3.42], ["crypto-js", "jQuery UI", 2.3], ["AngularJS", "Bootstrap", 2.09], ["Axios", "Vue.js@2", 13.96], ["Boomerang", "Emotion", 2.62], ["Moment.js", "jQuery@2", 2.47], ["Day.js", "jQuery@3", 2.31], ["Animate.css", "Bootstrap", 2.1], ["Modernizr", "Underscore.js", 5.05], ["Modernizr", "jQuery@2", 2.56], ["React Router", "styled-components", 4.05], ["Backbone.js", "Moment.js", 6.71], ["Emotion", "Next.js App Router", 2.89], ["Hammer.js", "Mustache", 9.77], ["Modernizr", "Moment.js", 3.45], ["Moment.js", "Select2", 3.93], ["OWL Carousel", "jQuery Migrate", 2.32], ["Underscore.js", "jQuery Migrate", 2.02], ["DataTables", "jQuery UI", 4.26], ["GSAP", "Lodash", 2.18], ["LazySizes", "Mustache", 3.46], ["Adobe Client Data Layer", "Lodash", 3.22], ["Alpine.js", "Tailwind CSS", 4.43], ["Backbone.js", "jQuery UI", 2.06], ["Lodash", "Vue.js@2", 2.4], ["AngularJS", "jQuery UI", 3.1], ["Backbone.js", "Modernizr", 6.56], ["Emotion", "styled-components", 2.17], ["Hammer.js", "Zone.js", 4.91], ["Handlebars", "Moment.js", 8.4], ["LazySizes", "Lightbox", 2.34], ["RequireJS", "Underscore.js", 6.04]];
+  var STACKS = [[0, 1742, 1600, ["Bootstrap", "jQuery UI", "jQuery Migrate", "Slick", "OWL Carousel", "crypto-js", "AngularJS", "Animate.css", "AOS", "SweetAlert2", "DataTables", "toastr"]], [5, 824, 2000, ["React@?", "Tailwind CSS", "Next.js@15", "Next.js@14", "Next.js App Router", "Nuxt.js", "Radix UI", "Apollo", "Alpine.js", "MobX", "JSS"]], [4, 770, 1700, ["jQuery@1", "Lodash", "jQuery@2", "Moment.js", "Modernizr", "Underscore.js", "RequireJS", "GSAP", "Backbone.js", "Adobe Client Data Layer", "Handlebars"]], [2, 568, 2100, ["Preact", "Boomerang", "styled-components", "Emotion", "React Router", "Loadable-Components", "React@18", "MUI"]], [3, 453, 1700, ["LazySizes", "FancyBox", "Hammer.js", "Select2", "Zone.js", "Lightbox", "Mustache"]], [8, 425, 1400, ["jQuery@3", "Tippy.js", "Day.js"]], [1, 311, 2000, ["Vue.js@?", "Element UI"]], [9, 128, 2100, ["lit-html", "lit-element"]], [7, 97, 1600, ["Svelte", "AMP"]], [6, 65, 1500, ["web-vitals", "SoundManager"]], [10, 17, 2000, ["Axios", "Vue.js@2"]]];
+  var REC = {"sitios": 63, "excluidas_por_definir_la_migracion": ["Next.js", "Next.js App Router", "React", "jQuery"], "librerias_por_sitio_sin_definitorias": {"antes": 3.37, "despues": 2.92, "se_va": 1.73, "se_queda": 1.63, "llega_ecosistema_react": 0.9, "llega_propia": 0.38, "pct_conservadas": 49}, "aristas_por_clase": {"se_va": 151, "se_queda": 124, "llega_framework": 116, "llega_ecosistema_react": 57, "llega_propia": 24}, "ejemplos_por_clase": {"llega_ecosistema_react": {"Tailwind CSS": 11, "Emotion": 9, "React Router": 8, "styled-components": 8, "Radix UI": 5, "Loadable-Components": 4}, "llega_framework": {"React": 63, "Next.js": 32, "Next.js App Router": 21}, "llega_propia": {"Lodash": 5, "Preact": 4, "core-js": 3, "Swiper": 2, "Adobe Client Data Layer": 1, "Angular": 1}, "se_queda": {"core-js": 32, "jQuery": 21, "Boomerang": 8, "Bootstrap": 8, "Swiper": 6, "GSAP": 3}, "se_va": {"jQuery": 42, "LazySizes": 11, "Bootstrap": 10, "jQuery UI": 10, "Swiper": 8, "core-js": 7}}, "por_sitio": [{"origin": "https://allabout.co.jp", "llega_ecosistema_react": ["Emotion"], "llega_framework": ["Next.js", "React"], "llega_propia": ["LazySizes"], "se_queda": ["Boomerang"], "se_va": ["Hammer.js", "jQuery"]}, {"origin": "https://apteka.103.by", "llega_ecosistema_react": ["styled-components"], "llega_framework": ["Next.js", "React"], "se_queda": ["core-js"], "se_va": ["Lodash", "jQuery"]}, {"origin": "https://biznes.interia.pl", "llega_framework": ["Next.js", "React"], "se_queda": ["core-js"], "se_va": ["jQuery"]}, {"origin": "https://books.rakuten.co.jp", "llega_framework": ["React"], "se_queda": ["Moment.js", "jQuery"]}, {"origin": "https://cnnportugal.iol.pt", "llega_ecosistema_react": ["React Router"], "llega_framework": ["React"], "se_queda": ["Closure Library", "Preact", "core-js", "jQuery", "web-vitals"]}, {"origin": "https://crosset.onward.co.jp", "llega_ecosistema_react": ["styled-components"], "llega_framework": ["React"], "se_queda": ["Bootstrap", "LazySizes", "Svelte", "Swiper", "core-js", "jQuery"]}, {"origin": "https://de.pandora.net", "llega_ecosistema_react": ["Chakra UI", "Emotion", "Loadable-Components"], "llega_framework": ["React"], "se_queda": ["core-js"], "se_va": ["Flickity", "LazySizes", "Swiper", "jQuery", "lit-element", "lit-html"]}, {"origin": "https://esaj.tjsp.jus.br", "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_va": ["jQuery"]}, {"origin": "https://freemeteo.gr", "llega_ecosistema_react": ["Emotion", "MUI", "Tailwind CSS"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_va": ["Hammer.js", "Moment.js", "jQuery", "jQuery UI"]}, {"origin": "https://hentaihaven.xxx", "llega_framework": ["React"], "se_queda": ["jQuery", "jQuery Migrate"]}, {"origin": "https://id.soccerway.com", "llega_ecosistema_react": ["React Router", "styled-components"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_va": ["Modernizr", "Moment.js", "Prototype", "jQuery"]}, {"origin": "https://loto.lt", "llega_ecosistema_react": ["styled-components"], "llega_framework": ["React"], "se_queda": ["Animate.css", "Axios", "Bootstrap", "Lodash", "Modernizr", "Slick", "Vue.js", "core-js", "jQuery"], "se_va": ["Swiper"]}, {"origin": "https://m.21cineplex.com", "llega_framework": ["Next.js", "Next.js App Router", "React"], "llega_propia": ["Lodash", "Swiper", "core-js"], "se_va": ["Bootstrap", "jQuery"]}, {"origin": "https://member.uhc.com", "llega_framework": ["Next.js", "React"], "llega_propia": ["Adobe Client Data Layer"], "se_va": ["AngularJS", "core-js", "jQuery"]}, {"origin": "https://mobile.yoox.com", "llega_ecosistema_react": ["Emotion", "MUI"], "llega_framework": ["Next.js", "React"], "se_queda": ["Boomerang", "core-js"], "se_va": ["jQuery", "jQuery Migrate", "jQuery UI"]}, {"origin": "https://paryajpam.com", "llega_ecosistema_react": ["React Router", "Tailwind CSS"], "llega_framework": ["React"], "se_va": ["Slick", "jQuery"]}, {"origin": "https://pointmall.aeon.co.jp", "llega_ecosistema_react": ["React Router", "Tailwind CSS"], "llega_framework": ["React"], "se_queda": ["Swiper"], "se_va": ["Clipboard.js", "LazySizes", "Vue.js", "jQuery"]}, {"origin": "https://polki.pl", "llega_framework": ["Next.js", "React"], "llega_propia": ["core-js"], "se_va": ["Hammer.js", "LazySizes", "ZURB Foundation", "jQuery", "jQuery UI"]}, {"origin": "https://shop.mattel.com", "llega_framework": ["React"], "llega_propia": ["Preact"], "se_queda": ["Flickity", "LazySizes", "core-js"], "se_va": ["jQuery"]}, {"origin": "https://townwork.net", "llega_framework": ["Next.js", "React"], "se_queda": ["core-js"], "se_va": ["jQuery"]}, {"origin": "https://uk.pandora.net", "llega_ecosistema_react": ["Chakra UI", "Emotion", "Loadable-Components"], "llega_framework": ["React"], "se_queda": ["Swiper", "core-js"], "se_va": ["Flickity", "LazySizes", "jQuery", "lit-element", "lit-html"]}, {"origin": "https://upstox.com", "llega_ecosistema_react": ["Tailwind CSS"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_queda": ["core-js"], "se_va": ["Bootstrap", "OWL Carousel", "Slick", "jQuery", "jQuery Migrate"]}, {"origin": "https://us.pandora.net", "llega_ecosistema_react": ["Emotion", "Loadable-Components"], "llega_framework": ["React"], "se_va": ["Flickity", "LazySizes", "Swiper", "core-js", "jQuery", "lit-element", "lit-html"]}, {"origin": "https://users.nexusmods.com", "llega_framework": ["React"], "se_queda": ["Bootstrap", "jQuery"], "se_va": ["libphonenumber"]}, {"origin": "https://worldstarhiphop.com", "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_queda": ["jQuery"], "se_va": ["Bootstrap", "LazySizes", "core-js", "jQuery Migrate"]}, {"origin": "https://www.ambitionbox.com", "llega_framework": ["Next.js", "React"], "se_queda": ["Boomerang", "core-js"], "se_va": ["Nuxt.js", "Twitter typeahead.js", "Vue.js", "jQuery"]}, {"origin": "https://www.americanexpress.com", "llega_framework": ["React"], "llega_propia": ["Immutable.js", "Lodash"], "se_queda": ["Emotion", "core-js"], "se_va": ["jQuery"]}, {"origin": "https://www.asianetnews.com", "llega_framework": ["React"], "se_va": ["core-js", "jQuery"]}, {"origin": "https://www.businesstoday.in", "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_queda": ["Boomerang", "Swiper"], "se_va": ["LazySizes", "jQuery"]}, {"origin": "https://www.cas.sk", "llega_ecosistema_react": ["Emotion"], "llega_framework": ["Next.js", "React"], "llega_propia": ["Lodash"], "se_va": ["jQuery"]}, {"origin": "https://www.chase.com", "llega_ecosistema_react": ["styled-components"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "llega_propia": ["core-js"], "se_queda": ["Boomerang"], "se_va": ["Lodash", "RequireJS", "jQuery"]}, {"origin": "https://www.chemistwarehouse.com.au", "llega_ecosistema_react": ["Radix UI", "Tailwind CSS"], "llega_framework": ["Next.js", "React"], "llega_propia": ["Preact"], "se_queda": ["core-js"], "se_va": ["Bootstrap", "Hammer.js", "jQuery", "jQuery UI", "prettyPhoto"]}, {"origin": "https://www.creativefabrica.com", "llega_ecosistema_react": ["Radix UI"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_queda": ["core-js"], "se_va": ["Bootstrap", "LazySizes", "Moment.js", "jQuery", "jQuery Migrate"]}, {"origin": "https://www.crhoy.com", "llega_ecosistema_react": ["Keen-Slider"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "llega_propia": ["lit-element", "lit-html"], "se_queda": ["core-js"], "se_va": ["Bootstrap", "Hammer.js", "jQuery"]}, {"origin": "https://www.diariodenavarra.es", "llega_framework": ["React"], "llega_propia": ["Preact"], "se_queda": ["jQuery"]}, {"origin": "https://www.dollargeneral.com", "llega_ecosistema_react": ["React Router"], "llega_framework": ["React"], "se_queda": ["Adobe Client Data Layer", "core-js", "jQuery"]}, {"origin": "https://www.einfachbacken.de", "llega_ecosistema_react": ["Apollo", "Radix UI", "Tailwind CSS", "shadcn/ui"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_queda": ["Bootstrap", "core-js"], "se_va": ["Swiper", "jQuery"]}, {"origin": "https://www.elnacional.cat", "llega_framework": ["React"], "se_queda": ["core-js", "jQuery"]}, {"origin": "https://www.felissimo.co.jp", "llega_ecosistema_react": ["styled-components"], "llega_framework": ["React"], "se_queda": ["PubSubJS", "Swiper", "core-js", "jQuery"]}, {"origin": "https://www.finishline.com", "llega_ecosistema_react": ["Apollo", "Radix UI", "Tailwind CSS"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "llega_propia": ["Angular", "Zone.js"], "se_queda": ["Boomerang", "core-js"], "se_va": ["Lodash", "Moment.js", "Svelte", "ZURB Foundation", "jQuery", "jQuery UI"]}, {"origin": "https://www.halfords.com", "llega_ecosistema_react": ["Emotion", "Keen-Slider", "Loadable-Components"], "llega_framework": ["React"], "se_queda": ["core-js"], "se_va": ["Hammer.js", "jQuery"]}, {"origin": "https://www.houseoffraser.co.uk", "llega_ecosistema_react": ["Radix UI"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_va": ["Handlebars", "Swiper", "jQuery", "jQuery Migrate", "jQuery UI", "web-vitals"]}, {"origin": "https://www.immobilienscout24.de", "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_queda": ["core-js"], "se_va": ["Swiper", "jQuery", "jQuery UI"]}, {"origin": "https://www.indiapost.gov.in", "llega_ecosistema_react": ["Tailwind CSS"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_va": ["Animate.css", "Bootstrap", "jQuery"]}, {"origin": "https://www.johnpyeauctions.co.uk", "llega_framework": ["React"], "se_queda": ["Bootstrap", "RxJS", "core-js", "jQuery", "jQuery UI"]}, {"origin": "https://www.karkkainen.com", "llega_ecosistema_react": ["Emotion", "MUI"], "llega_framework": ["Next.js", "React"], "llega_propia": ["Lodash"], "se_va": ["Bootstrap", "Preact", "jQuery", "jQuery UI"]}, {"origin": "https://www.kobo.com", "llega_ecosistema_react": ["Tailwind CSS", "styled-components"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_va": ["DataTables", "Knockout.js", "Modernizr", "jQuery", "jQuery Migrate", "web-vitals"]}, {"origin": "https://www.libas.in", "llega_ecosistema_react": ["React Router"], "llega_framework": ["React"], "llega_propia": ["ClientJS"], "se_queda": ["AOS", "Flickity", "PhotoSwipe", "Svelte", "Vue.js", "core-js", "jQuery"]}, {"origin": "https://www.liberoquotidiano.it", "llega_ecosistema_react": ["Headless UI"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_va": ["Glide.js", "Preact", "Slick", "jQuery"]}, {"origin": "https://www.newsweek.com", "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_queda": ["core-js"], "se_va": ["Swiper", "jQuery"]}, {"origin": "https://www.npci.org.in", "llega_ecosistema_react": ["React Router"], "llega_framework": ["React"], "se_queda": ["Boomerang"], "se_va": ["Bootstrap", "Lightbox", "OWL Carousel", "core-js", "jQuery", "jQuery UI"]}, {"origin": "https://www.ntvspor.net", "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_va": ["AMP", "LazySizes", "core-js", "jQuery"]}, {"origin": "https://www.purolator.com", "llega_framework": ["React"], "llega_propia": ["Lodash"], "se_queda": ["Bootstrap", "jQuery", "lit-html"]}, {"origin": "https://www.shop-shimamura.com", "llega_ecosistema_react": ["styled-components"], "llega_framework": ["React"], "se_queda": ["Bootstrap", "FancyBox", "GSAP", "Lodash", "Slick", "Swiper", "core-js", "jQuery"]}, {"origin": "https://www.skroutz.gr", "llega_framework": ["React"], "se_queda": ["Stimulus", "ZURB Foundation", "jQuery"]}, {"origin": "https://www.sports.fr", "llega_framework": ["React"], "llega_propia": ["Preact"], "se_queda": ["jQuery", "jQuery Migrate"]}, {"origin": "https://www.stiripesurse.ro", "llega_ecosistema_react": ["Tailwind CSS"], "llega_framework": ["Next.js", "Next.js App Router", "React"], "se_va": ["jQuery"]}, {"origin": "https://www.svenskaspel.se", "llega_framework": ["React"], "se_queda": ["Angular", "GSAP", "Handlebars", "Lodash", "Modernizr", "Socket.io", "Zone.js", "core-js", "jQuery"]}, {"origin": "https://www.tsn.ca", "llega_framework": ["React"], "llega_propia": ["Bootstrap"], "se_queda": ["Vue.js", "core-js"], "se_va": ["Boomerang", "Lodash", "Swiper", "jQuery"]}, {"origin": "https://www.tvsmotor.com", "llega_ecosistema_react": ["Ant Design"], "llega_framework": ["React"], "llega_propia": ["Swiper"], "se_queda": ["Bootstrap", "LazySizes", "Select2", "Slick", "core-js", "jQuery", "jQuery UI", "web-vitals"], "se_va": ["Boomerang"]}, {"origin": "https://www.ups.com", "llega_framework": ["React"], "se_queda": ["Boomerang", "core-js", "jQuery", "lit-element", "lit-html"]}, {"origin": "https://www.vi.nl", "llega_framework": ["Next.js", "Next.js App Router", "React"], "llega_propia": ["GSAP"], "se_va": ["LazySizes", "core-js", "jQuery"]}, {"origin": "https://www.wheeloffortune.com", "llega_ecosistema_react": ["React Router", "Tailwind CSS"], "llega_framework": ["React"], "se_queda": ["GSAP", "core-js", "jQuery"], "se_va": ["Bootstrap", "LazySizes", "Slick", "jQuery UI"]}]};
+  var VERS = {"filas": [["Next.js@12", 61, 2400], ["Next.js@13", 64, 2250], ["Next.js@14", 215, 2200], ["Next.js@15", 232, 1900], ["jQuery@1", 836, 1600], ["jQuery@2", 292, 1600], ["jQuery@3", 2077, 1600]], "libs": ["Tailwind CSS", "Lodash", "Swiper", "Bootstrap", "jQuery UI", "jQuery Migrate", "Moment.js", "Preact", "Boomerang", "core-js"], "celdas": [["Next.js@12", "core-js", 65.6, 1.21], ["Next.js@12", "Bootstrap", 1.6, 0.08], ["Next.js@12", "Swiper", 21.3, 1.38], ["Next.js@12", "jQuery UI", 0.0, 0.0], ["Next.js@12", "Lodash", 29.5, 3.21], ["Next.js@12", "LazySizes", 3.3, 0.4], ["Next.js@12", "jQuery Migrate", 0.0, 0.0], ["Next.js@12", "Tailwind CSS", 8.2, 1.19], ["Next.js@12", "Preact", 16.4, 2.85], ["Next.js@12", "Boomerang", 4.9, 1.12], ["Next.js@12", "web-vitals", 4.9, 1.14], ["Next.js@12", "lit-html", 3.3, 0.8], ["Next.js@12", "Slick", 0.0, 0.0], ["Next.js@12", "FancyBox", 0.0, 0.0], ["Next.js@12", "Moment.js", 0.0, 0.0], ["Next.js@13", "core-js", 59.4, 1.1], ["Next.js@13", "Bootstrap", 7.8, 0.38], ["Next.js@13", "Swiper", 21.9, 1.42], ["Next.js@13", "jQuery UI", 0.0, 0.0], ["Next.js@13", "Lodash", 9.4, 1.02], ["Next.js@13", "LazySizes", 9.4, 1.15], ["Next.js@13", "jQuery Migrate", 0.0, 0.0], ["Next.js@13", "Tailwind CSS", 17.2, 2.5], ["Next.js@13", "Preact", 1.6, 0.27], ["Next.js@13", "Boomerang", 12.5, 2.86], ["Next.js@13", "web-vitals", 4.7, 1.09], ["Next.js@13", "lit-html", 0.0, 0.0], ["Next.js@13", "Slick", 0.0, 0.0], ["Next.js@13", "FancyBox", 0.0, 0.0], ["Next.js@13", "Moment.js", 0.0, 0.0], ["Next.js@14", "core-js", 60.5, 1.12], ["Next.js@14", "Bootstrap", 6.5, 0.31], ["Next.js@14", "Swiper", 18.6, 1.21], ["Next.js@14", "jQuery UI", 0.0, 0.0], ["Next.js@14", "Lodash", 13.0, 1.42], ["Next.js@14", "LazySizes", 0.9, 0.11], ["Next.js@14", "jQuery Migrate", 0.0, 0.0], ["Next.js@14", "Tailwind CSS", 26.5, 3.86], ["Next.js@14", "Preact", 4.2, 0.73], ["Next.js@14", "Boomerang", 7.9, 1.81], ["Next.js@14", "web-vitals", 5.1, 1.18], ["Next.js@14", "lit-html", 8.4, 2.04], ["Next.js@14", "Slick", 0.5, 0.11], ["Next.js@14", "FancyBox", 0.0, 0.0], ["Next.js@14", "Moment.js", 0.0, 0.0], ["Next.js@15", "core-js", 61.2, 1.13], ["Next.js@15", "Bootstrap", 11.2, 0.54], ["Next.js@15", "Swiper", 12.9, 0.84], ["Next.js@15", "jQuery UI", 0.0, 0.0], ["Next.js@15", "Lodash", 7.8, 0.84], ["Next.js@15", "LazySizes", 1.3, 0.16], ["Next.js@15", "jQuery Migrate", 0.0, 0.0], ["Next.js@15", "Tailwind CSS", 32.8, 4.77], ["Next.js@15", "Preact", 11.2, 1.95], ["Next.js@15", "Boomerang", 3.9, 0.89], ["Next.js@15", "web-vitals", 4.7, 1.1], ["Next.js@15", "lit-html", 3.4, 0.84], ["Next.js@15", "Slick", 0.0, 0.0], ["Next.js@15", "FancyBox", 0.0, 0.0], ["Next.js@15", "Moment.js", 0.0, 0.0], ["React@17", "core-js", 83.3, 1.54], ["React@17", "Bootstrap", 23.3, 1.13], ["React@17", "Swiper", 23.3, 1.51], ["React@17", "jQuery UI", 3.3, 0.31], ["React@17", "Lodash", 40.0, 4.35], ["React@17", "LazySizes", 10.0, 1.23], ["React@17", "jQuery Migrate", 10.0, 1.3], ["React@17", "Tailwind CSS", 6.7, 0.97], ["React@17", "Preact", 26.7, 4.64], ["React@17", "Boomerang", 3.3, 0.76], ["React@17", "web-vitals", 6.7, 1.54], ["React@17", "lit-html", 6.7, 1.63], ["React@17", "Slick", 0.0, 0.0], ["React@17", "FancyBox", 0.0, 0.0], ["React@17", "Moment.js", 10.0, 2.77], ["React@18", "core-js", 73.9, 1.37], ["React@18", "Bootstrap", 9.8, 0.47], ["React@18", "Swiper", 15.2, 0.99], ["React@18", "jQuery UI", 8.7, 0.81], ["React@18", "Lodash", 13.0, 1.42], ["React@18", "LazySizes", 2.2, 0.27], ["React@18", "jQuery Migrate", 4.3, 0.57], ["React@18", "Tailwind CSS", 10.9, 1.58], ["React@18", "Preact", 4.3, 0.76], ["React@18", "Boomerang", 32.6, 7.46], ["React@18", "web-vitals", 5.4, 1.26], ["React@18", "lit-html", 18.5, 4.51], ["React@18", "Slick", 1.1, 0.27], ["React@18", "FancyBox", 0.0, 0.0], ["React@18", "Moment.js", 5.4, 1.51], ["Vue.js@2", "core-js", 65.3, 1.21], ["Vue.js@2", "Bootstrap", 37.9, 1.83], ["Vue.js@2", "Swiper", 23.2, 1.5], ["Vue.js@2", "jQuery UI", 11.6, 1.08], ["Vue.js@2", "Lodash", 22.1, 2.4], ["Vue.js@2", "LazySizes", 4.2, 0.52], ["Vue.js@2", "jQuery Migrate", 4.2, 0.55], ["Vue.js@2", "Tailwind CSS", 1.1, 0.15], ["Vue.js@2", "Preact", 4.2, 0.73], ["Vue.js@2", "Boomerang", 2.1, 0.48], ["Vue.js@2", "web-vitals", 1.1, 0.24], ["Vue.js@2", "lit-html", 4.2, 1.03], ["Vue.js@2", "Slick", 3.2, 0.78], ["Vue.js@2", "FancyBox", 4.2, 1.15], ["Vue.js@2", "Moment.js", 14.7, 4.08], ["jQuery@1", "core-js", 41.1, 0.76], ["jQuery@1", "Bootstrap", 25.4, 1.22], ["jQuery@1", "Swiper", 12.4, 0.81], ["jQuery@1", "jQuery UI", 22.0, 2.05], ["jQuery@1", "Lodash", 6.8, 0.74], ["jQuery@1", "LazySizes", 8.3, 1.01], ["jQuery@1", "jQuery Migrate", 9.0, 1.17], ["jQuery@1", "Tailwind CSS", 1.0, 0.14], ["jQuery@1", "Preact", 2.9, 0.5], ["jQuery@1", "Boomerang", 3.1, 0.71], ["jQuery@1", "web-vitals", 0.8, 0.19], ["jQuery@1", "lit-html", 2.4, 0.58], ["jQuery@1", "Slick", 7.9, 1.94], ["jQuery@1", "FancyBox", 10.8, 2.94], ["jQuery@1", "Moment.js", 5.4, 1.49], ["jQuery@2", "core-js", 42.1, 0.78], ["jQuery@2", "Bootstrap", 27.7, 1.34], ["jQuery@2", "Swiper", 20.5, 1.33], ["jQuery@2", "jQuery UI", 18.8, 1.75], ["jQuery@2", "Lodash", 16.1, 1.75], ["jQuery@2", "LazySizes", 11.0, 1.34], ["jQuery@2", "jQuery Migrate", 7.2, 0.94], ["jQuery@2", "Tailwind CSS", 1.7, 0.25], ["jQuery@2", "Preact", 5.1, 0.89], ["jQuery@2", "Boomerang", 1.7, 0.39], ["jQuery@2", "web-vitals", 2.7, 0.63], ["jQuery@2", "lit-html", 2.4, 0.59], ["jQuery@2", "Slick", 4.5, 1.1], ["jQuery@2", "FancyBox", 3.4, 0.94], ["jQuery@2", "Moment.js", 8.9, 2.47], ["jQuery@3", "core-js", 48.7, 0.9], ["jQuery@3", "Bootstrap", 31.9, 1.54], ["jQuery@3", "Swiper", 18.2, 1.18], ["jQuery@3", "jQuery UI", 18.0, 1.67], ["jQuery@3", "Lodash", 8.5, 0.92], ["jQuery@3", "LazySizes", 11.7, 1.44], ["jQuery@3", "jQuery Migrate", 16.5, 2.14], ["jQuery@3", "Tailwind CSS", 2.0, 0.29], ["jQuery@3", "Preact", 5.1, 0.89], ["jQuery@3", "Boomerang", 4.0, 0.93], ["jQuery@3", "web-vitals", 3.3, 0.76], ["jQuery@3", "lit-html", 3.0, 0.74], ["jQuery@3", "Slick", 7.4, 1.81], ["jQuery@3", "FancyBox", 5.1, 1.39], ["jQuery@3", "Moment.js", 5.8, 1.6]]};
+
+  /* ---------- Figura 1: matriz grupo de sitios x librería ---------- */
+  (function(){
+    var t = document.getElementById("heatDeck");
+    var libs = Object.keys(LIBS);
+    var celda = {};
+    MATRIZ.forEach(function(m){ celda[m[0] + "|" + m[1]] = m; });
+    function rampa(v){
+      var stops = [[0, [28, 42, 72]], [0.25, [24, 79, 149]], [0.55, [57, 135, 229]], [1, [158, 197, 244]]];
+      for (var i = 1; i < stops.length; i++){
+        if (v <= stops[i][0]){
+          var a = stops[i - 1], b = stops[i], k = (v - a[0]) / (b[0] - a[0]);
+          return "rgb(" + a[1].map(function(c, j){ return Math.round(c + (b[1][j] - c) * k); }).join(",") + ")";
+        }
+      }
+      return "rgb(158,197,244)";
+    }
+    var html = "<thead><tr><th></th>" + libs.map(function(l){ return "<th>" + l + "</th>"; }).join("") + "</tr></thead><tbody>";
+    GRUPOS.forEach(function(g){
+      html += "<tr><th><div class='g'>" + g[0] + "</div><div class='m'>" + fmt(g[1]) + " sitios · LCP " + fmt(g[2]) + " ms</div></th>";
+      libs.forEach(function(l){
+        var c = celda[g[0] + "|" + l], share = c ? c[2] / g[1] : 0;
+        html += "<td class='" + (c && c[3] >= 2 ? "lift" : "") + "' style='background:" + rampa(share) + (share > 0.55 ? ";color:#0b1222" : "") + "'>" +
+          (share >= 0.01 ? Math.round(share * 100) : "") + "</td>";
+      });
+      html += "</tr>";
+    });
+    t.innerHTML = html + "</tbody>";
+  })();
+
+  /* ---------- Figura 1b: matriz versión mayor x librería ---------- */
+  (function(){
+    var t = document.getElementById("heatVersion");
+    var filas = VERS.filas, libs = VERS.libs, celda = {};
+    VERS.celdas.forEach(function(c){ celda[c[0] + "|" + c[1]] = c; });
+    function rampa(v){
+      var stops = [[0, [28, 42, 72]], [0.25, [24, 79, 149]], [0.55, [57, 135, 229]], [1, [158, 197, 244]]];
+      for (var i = 1; i < stops.length; i++){
+        if (v <= stops[i][0]){
+          var a = stops[i - 1], b = stops[i], k = (v - a[0]) / (b[0] - a[0]);
+          return "rgb(" + a[1].map(function(c, j){ return Math.round(c + (b[1][j] - c) * k); }).join(",") + ")";
+        }
+      }
+      return "rgb(158,197,244)";
+    }
+    var html = "<thead><tr><th></th>" + libs.map(function(l){ return "<th>" + l + "</th>"; }).join("") + "</tr></thead><tbody>";
+    filas.forEach(function(f){
+      html += "<tr><th><div class='g'>" + f[0].replace("@", " ") + "</div><div class='m'>" + fmt(f[1]) + " sitios · LCP " + fmt(f[2]) + " ms</div></th>";
+      libs.forEach(function(l){
+        var c = celda[f[0] + "|" + l], share = c ? c[2] / 100 : 0;
+        html += "<td class='" + (c && c[3] >= 2 ? "lift" : "") + "' style='background:" + rampa(share) + (share > 0.55 ? ";color:#0b1222" : "") + "'>" +
+          (c && c[2] >= 1 ? Math.round(c[2]) : "") + "</td>";
+      });
+      html += "</tr>";
+    });
+    t.innerHTML = html + "</tbody>";
+  })();
+
+  /* ---------- Figura 2: red proyectada sobre tecnologías ---------- */
+  var COLORES = ["#3987e5", "#d95926", "#199e70", "#c98500", "#d55181", "#008300", "#9085e9", "#e66767"];
+  // Los 7 stacks más grandes llevan color y nombre; el resto se agrupa como "Otros" en gris.
+  var VISIBLES = 7, GRIS = "#5f7093";
+  var NOMBRES = {
+    0: "jQuery + Bootstrap, jQuery UI, carruseles",
+    5: "React / Next.js + Tailwind",
+    4: "Legacy: jQuery 1–2, Lodash, Moment",
+    2: "React SPA: styled-components, Emotion, MUI",
+    3: "Plugins de UI: LazySizes, FancyBox, Select2",
+    8: "jQuery 3 + Tippy, Day.js",
+    1: "Vue.js + Element UI"
+  };
+  var colorDe = {};
+  STACKS.forEach(function(s, i){ colorDe[s[0]] = i < VISIBLES ? COLORES[i] : GRIS; });
+
+  (function(){
+    var svg = document.getElementById("netChart");
+    var W = 760, H = 430, pad = 28;
+    var xs = NODOS.map(function(n){ return n[3][0]; }), ys = NODOS.map(function(n){ return n[3][1]; });
+    var minX = Math.min.apply(null, xs), maxX = Math.max.apply(null, xs);
+    var minY = Math.min.apply(null, ys), maxY = Math.max.apply(null, ys);
+    function px(v){ return pad + (v - minX) / (maxX - minX) * (W - 2 * pad); }
+    function py(v){ return pad + (v - minY) / (maxY - minY) * (H - 2 * pad); }
+    var pos = {};
+    NODOS.forEach(function(n){ pos[n[0]] = [px(n[3][0]), py(n[3][1])]; });
+    var gE = el("g", {}, svg);
+    ARISTAS.forEach(function(e){
+      if (!pos[e[0]] || !pos[e[1]]) return;
+      el("line", { x1: pos[e[0]][0], y1: pos[e[0]][1], x2: pos[e[1]][0], y2: pos[e[1]][1],
+        "class": "net-edge", "stroke-opacity": Math.min(.15 + e[2] / 40, .5), "stroke-width": 1 }, gE);
+    });
+    var gN = el("g", {}, svg);
+    var maxS = Math.max.apply(null, NODOS.map(function(n){ return n[1]; }));
+    NODOS.slice().sort(function(a, b){ return b[1] - a[1]; }).forEach(function(n){
+      var r = 4 + 14 * Math.sqrt(n[1] / maxS);
+      var c = el("circle", { cx: pos[n[0]][0], cy: pos[n[0]][1], r: r, fill: colorDe[n[2]] || "var(--text-muted)", "class": "net-node" }, gN);
+      el("title", {}, c, n[0] + " · " + fmt(n[1]) + " sitios");
+    });
+    var cajas = [];
+    function choca(b){
+      return cajas.some(function(c){ return b.x < c.x + c.w && c.x < b.x + b.w && b.y < c.y + c.h && c.y < b.y + b.h; });
+    }
+    STACKS.forEach(function(s){
+      s[3].filter(function(t){ return pos[t]; }).slice(0, 2).forEach(function(t){
+        var n = NODOS.filter(function(x){ return x[0] === t; })[0];
+        var r = 4 + 14 * Math.sqrt(n[1] / maxS);
+        var w = t.length * 7.4, h = 14;
+        var izquierda = pos[t][0] + r + 4 + w > W;
+        var b = { x: izquierda ? pos[t][0] - r - 4 - w : pos[t][0] + r + 4, y: pos[t][1] - 10, w: w, h: h };
+        if (choca(b)) return;
+        cajas.push(b);
+        el("text", { x: izquierda ? pos[t][0] - r - 4 : b.x, y: pos[t][1] + 4,
+          "text-anchor": izquierda ? "end" : "start", "class": "net-label" }, svg, t);
+      });
+    });
+
+    var legend = document.getElementById("netLegend");
+    var head = document.createElement("div");
+    head.className = "li li-head";
+    head.innerHTML = "<span></span><span>Stack (comunidad)</span><span class='num'>Sitios</span><span class='num'>LCP med.</span>";
+    legend.appendChild(head);
+    STACKS.slice(0, VISIBLES).forEach(function(s){
+      var row = document.createElement("div");
+      row.className = "li";
+      row.innerHTML = "<i style='background:" + colorDe[s[0]] + "'></i><span>" + NOMBRES[s[0]] + "</span>" +
+        "<span class='num'>" + fmt(s[1]) + "</span><span class='num'>" + fmt(s[2]) + " ms</span>";
+      legend.appendChild(row);
+    });
+    var otros = STACKS.slice(VISIBLES);
+    if (otros.length){
+      var row = document.createElement("div");
+      row.className = "li";
+      row.innerHTML = "<i style='background:" + GRIS + "'></i><span>Otros (" + otros.length + " stacks chicos)</span>" +
+        "<span class='num'>" + fmt(otros.reduce(function(a, s){ return a + s[1]; }, 0)) + "</span><span class='num'></span>";
+      legend.appendChild(row);
+    }
+  })();
+
+  /* ---------- Figura 3: librerías por sitio antes y después de jQuery -> React ---------- */
+  (function(){
+    var svg = document.getElementById("recChart");
+    var L = REC.librerias_por_sitio_sin_definitorias;
+    var CL = {
+      se_va: ["Se van", "#d95926"], se_queda: ["Se quedan", "#5f7093"],
+      llega_framework: ["Llegan: framework", "#3987e5"],
+      llega_ecosistema_react: ["Llegan: ecosistema React", "#199e70"], llega_propia: ["Llegan: propias", "#9085e9"]
+    };
+    var antes = ["se_va", "se_queda"], despues = ["se_queda", "llega_ecosistema_react", "llega_propia"];
+    var maxT = 4, x0 = 100, wMax = 500, barH = 44;
+    function X(v){ return x0 + v / maxT * wMax; }
+    for (var v = 0; v <= maxT; v++){
+      el("line", { x1: X(v), x2: X(v), y1: 10, y2: 170, stroke: "var(--border-soft)" }, svg);
+      el("text", { x: X(v), y: 186, "text-anchor": "middle", "class": "fig-note" }, svg, v);
+    }
+    function barra(claves, y, titulo){
+      el("text", { x: x0 - 14, y: y + barH / 2 + 5, "text-anchor": "end", "class": "fig-label-strong" }, svg, titulo);
+      var acc = 0;
+      claves.forEach(function(k){
+        var val = L[k], x = X(acc), w = X(acc + val) - x;
+        var r = el("rect", { x: x, y: y, width: Math.max(w - 2, 1), height: barH, rx: 4, fill: CL[k][1] }, svg);
+        el("title", {}, r, CL[k][0] + ": " + val.toFixed(2).replace(".", ",") + " por sitio");
+        if (w > 34) el("text", { x: x + w / 2 - 1, y: y + barH / 2 + 5, "text-anchor": "middle", "class": "fig-label-strong", style: "fill:#fff" }, svg, val.toFixed(1).replace(".", ","));
+        acc += val;
+      });
+      el("text", { x: X(acc) + 8, y: y + barH / 2 + 5, "class": "fig-note" }, svg, "= " + acc.toFixed(1).replace(".", ","));
+    }
+    barra(antes, 20, "Antes");
+    barra(despues, 110, "Después");
+    ["se_va", "se_queda", "llega_ecosistema_react", "llega_propia"].forEach(function(k, i){
+      var lx = 20 + (i % 2) * 260, ly = 206 + Math.floor(i / 2) * 20;
+      el("rect", { x: lx, y: ly, width: 10, height: 10, rx: 2, fill: CL[k][1] }, svg);
+      el("text", { x: lx + 15, y: ly + 9, "class": "fig-note" }, svg, CL[k][0]);
+    });
+
+    var ej = REC.por_sitio.filter(function(s){ return s.origin === "https://www.chase.com"; })[0];
+    var caja = document.getElementById("ejemplo");
+    function chips(lista){
+      return lista.map(function(par){
+        return "<div class='ej-chip'><i style='background:" + CL[par[1]][1] + "'></i>" + par[0] + "<span>" + CL[par[1]][0].replace("Llegan: ", "") + "</span></div>";
+      }).join("");
+    }
+    var pre = [], post = [];
+    ["se_va", "se_queda"].forEach(function(k){ (ej[k] || []).forEach(function(t){ pre.push([t, k]); }); });
+    ["se_queda", "llega_framework", "llega_ecosistema_react", "llega_propia"].forEach(function(k){ (ej[k] || []).forEach(function(t){ post.push([t, k]); }); });
+    caja.innerHTML = "<div class='ej-col'><h4>Antes</h4>" + chips(pre) + "</div><div class='ej-col'><h4>Después</h4>" + chips(post) + "</div>";
+  })();
+})();
+</script>

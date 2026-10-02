@@ -38,3 +38,7 @@ skills-lock.json
 *.tmp
 *.bak
 ~$*
+
+# Entorno virtual del análisis local
+analisis/.venv/
+__pycache__/
