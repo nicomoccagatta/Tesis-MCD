@@ -15,3 +15,5 @@ date,project,script,gb_dry_run,gb_billed,job_id
 2026-10-02,tesis-506222,cross_source/008-panel-cohorte-top10k-ene2025-2025-desktop,234.8694,68.8925,tesis_20261002_010633_97594
 2026-10-02,tesis-506222,cross_source/007-panel-cohorte-top10k-ene2025-2025,234.8694,79.9172,tesis_20261002_010631_97495
 2026-10-02,tesis-506222,httparchive_wappalyzer_technologies/002-reglas-de-deteccion-por-tecnologia,0.0004,0.0105,tesis_20261002_021021_56355
+2026-10-02,tesis-506222,cross_source/009-cobertura-top10k-crux-vs-crawl-ene2025,3.9333,2.7085,tesis_20261002_022718_71791
+2026-10-02,tesis-506222,httparchive_crawl_pages/004-root-pages-top10k-conteo-tecnologias-ene2025,30.9483,0.0105,tesis_20261002_022743_72335

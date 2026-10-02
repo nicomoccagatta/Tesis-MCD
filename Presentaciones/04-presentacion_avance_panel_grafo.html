@@ -372,7 +372,7 @@
           <colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup>
           <thead><tr><th>Cohorte top 10k de ene-2025</th><th>Móvil</th><th>Escritorio</th></tr></thead>
           <tbody>
-            <tr><td>Sitios en la cohorte</td><td class="mo">7.717</td><td class="mo">6.390</td></tr>
+            <tr><td>Sitios de la cohorte con tecnologías en al menos un mes</td><td class="mo">7.717</td><td class="mo">6.390</td></tr>
             <tr><td>Con visita los 12 meses (panel balanceado)</td><td class="mo">5.648 (73%)</td><td class="mo">5.008 (78%)</td></tr>
             <tr><td>Sitio-mes con la visita vacía (dato faltante)</td><td class="mo">10,6%</td><td class="mo">8,1%</td></tr>
             <tr><td>Sitio-mes ya fuera del top 10k (feb&ndash;dic)</td><td class="mo">17,9%</td><td class="mo">15,7%</td></tr>
@@ -409,20 +409,20 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       01 &middot; Panel piloto &middot; cobertura del top 10k
     </p>
-    <h2 class="slide-title">Por qué el top 10k del crawl tiene ~7.700 sitios y no 10.000</h2>
+    <h2 class="slide-title">De dónde salen los 7.717 sitios de la cohorte (enero 2025)</h2>
     <div class="kpi-row" style="grid-template-columns: repeat(3, 1fr)">
-      <div class="kpi"><div class="kpi-label">Root pages con rank &le; 10.000 en el crawl</div><div class="kpi-value">7.725</div><div class="kpi-sub">Crawl móvil de dic-2025 (en ene-2025: la cohorte de 7.717). 185 tuvieron la visita vacía ese mes; 137 de ellas sí muestran tecnologías otros meses</div></div>
-      <div class="kpi"><div class="kpi-label">&hellip;que también son top 10k en CrUX dic-2025</div><div class="kpi-value">6.851</div><div class="kpi-sub">Las otras 874 vienen de la lista del mes anterior</div></div>
-      <div class="kpi"><div class="kpi-label">Top 10k de CrUX ausente del crawl</div><div class="kpi-value">2.310</div><div class="kpi-sub">De 10.000: no aparecen en el crawl ese mes (solo 2 figuran únicamente como página secundaria)</div></div>
+      <div class="kpi"><div class="kpi-label">Root pages con rank &le; 10.000 en el crawl de enero</div><div class="kpi-value">7.760</div><div class="kpi-sub">La lista de la cohorte (crawl móvil, sin duplicados)</div></div>
+      <div class="kpi"><div class="kpi-label">&hellip;con tecnologías en enero</div><div class="kpi-value">7.525</div><div class="kpi-sub">235 tuvieron la visita vacía en enero</div></div>
+      <div class="kpi"><div class="kpi-label">&hellip;con tecnologías en al menos un mes de 2025</div><div class="kpi-value">7.717</div><div class="kpi-sub">De las 235 vacías en enero, 192 tienen datos otros meses; 43 ninguno</div></div>
     </div>
     <div class="content">
       <ul class="points">
-        <li><span class="bullet"></span><span><b>HTTP Archive arma el crawl del mes M con la lista de CrUX del mes M&minus;1.</b> El rank que trae cada root page es el de esa lista, por eso 874 de sus top 10k ya no lo son en CrUX de diciembre, y 837 del top 10k de diciembre figuran con otro rank.</span></li>
-        <li><span class="bullet"></span><span><b>CrUX y HTTP Archive no cubren exactamente los mismos sitios:</b> el 76,9% del top 10k de CrUX aparece en el crawl de diciembre, dentro del 76&ndash;84% medido para todos los orígenes de CrUX desde 2023 (relevamiento del hito 1&ndash;4).</span></li>
-        <li><span class="bullet"></span><span><b>Implicancia:</b> el universo del panel es la lista que efectivamente rastrea HTTP Archive, y un mes con la visita vacía es dato faltante, no un abandono de tecnologías. A escala completa el cruce ya está medido (87&ndash;92% de los root pages con dato de CrUX desde 2023).</span></li>
+        <li><span class="bullet"></span><span><b>Por qué no son 10.000:</b> CrUX y HTTP Archive no cubren exactamente los mismos sitios. De los 10.000 del top de CrUX de enero, 7.825 (78,3%) están en el crawl, dentro del 76&ndash;84% medido para todos los orígenes de CrUX desde 2023 (relevamiento del hito 1&ndash;4).</span></li>
+        <li><span class="bullet"></span><span><b>HTTP Archive arma el crawl del mes M con la lista de CrUX del mes M&minus;1:</b> por eso 906 de los presentes figuran con otro rank, y 841 de las root pages top 10k del crawl no son top 10k en CrUX de enero.</span></li>
+        <li><span class="bullet"></span><span><b>Implicancia:</b> el universo del panel es la lista que efectivamente rastrea HTTP Archive, y un mes con la visita vacía es dato faltante, no un abandono de tecnologías.</span></li>
       </ul>
     </div>
-    <div class="source-line"><b>bigquery/cross_source/005</b> y <b>httparchive_crawl_pages/003</b> &middot; crawl móvil &middot; M&minus;1: HTTP Archive empieza el crawl cuando se publica CrUX el segundo martes del mes (httparchive.org/docs/guides/release-cycle) y CrUX publica en ese momento los datos del mes anterior (developer.chrome.com/docs/crux/bigquery)</div>
+    <div class="source-line"><b>bigquery/cross_source/009</b> y <b>httparchive_crawl_pages/004</b> &middot; crawl móvil, ene-2025 &middot; M&minus;1: HTTP Archive empieza el crawl cuando se publica CrUX el segundo martes del mes (httparchive.org/docs/guides/release-cycle) y CrUX publica en ese momento los datos del mes anterior (developer.chrome.com/docs/crux/bigquery)</div>
   </section>
 
   <!-- 5. EVENTOS DE MIGRACION -->
