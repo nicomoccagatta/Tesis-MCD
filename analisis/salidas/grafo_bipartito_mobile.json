@@ -3482,8 +3482,8 @@
         "crypto-js",
         "AngularJS",
         "Animate.css",
-        "AOS",
         "SweetAlert2",
+        "AOS",
         "DataTables",
         "toastr"
       ],
@@ -4914,7 +4914,7 @@
     }
   ],
   "recableado_jquery_react": {
-    "sitios": 53,
+    "sitios": 63,
     "excluidas_por_definir_la_migracion": [
       "Next.js",
       "Next.js App Router",
@@ -4922,58 +4922,58 @@
       "jQuery"
     ],
     "librerias_por_sitio_sin_definitorias": {
-      "antes": 3.38,
+      "antes": 3.37,
       "despues": 2.92,
-      "se_va": 1.7,
-      "se_queda": 1.68,
-      "llega_ecosistema_react": 0.89,
-      "llega_propia": 0.36,
-      "pct_conservadas": 50
+      "se_va": 1.73,
+      "se_queda": 1.63,
+      "llega_ecosistema_react": 0.9,
+      "llega_propia": 0.38,
+      "pct_conservadas": 49
     },
     "aristas_por_clase": {
-      "se_va": 125,
-      "se_queda": 107,
-      "llega_framework": 96,
-      "llega_ecosistema_react": 47,
-      "llega_propia": 19
+      "se_va": 151,
+      "se_queda": 124,
+      "llega_framework": 116,
+      "llega_ecosistema_react": 57,
+      "llega_propia": 24
     },
     "ejemplos_por_clase": {
       "llega_ecosistema_react": {
-        "Emotion": 8,
+        "Tailwind CSS": 11,
+        "Emotion": 9,
         "React Router": 8,
-        "Tailwind CSS": 8,
-        "styled-components": 6,
-        "Loadable-Components": 4,
-        "MUI": 3
+        "styled-components": 8,
+        "Radix UI": 5,
+        "Loadable-Components": 4
       },
       "llega_framework": {
-        "React": 53,
-        "Next.js": 26,
-        "Next.js App Router": 17
+        "React": 63,
+        "Next.js": 32,
+        "Next.js App Router": 21
       },
       "llega_propia": {
-        "Lodash": 4,
+        "Lodash": 5,
+        "Preact": 4,
         "core-js": 3,
-        "Preact": 2,
         "Swiper": 2,
         "Adobe Client Data Layer": 1,
-        "Bootstrap": 1
+        "Angular": 1
       },
       "se_queda": {
-        "core-js": 27,
-        "jQuery": 18,
-        "Boomerang": 7,
-        "Bootstrap": 7,
-        "Swiper": 4,
+        "core-js": 32,
+        "jQuery": 21,
+        "Boomerang": 8,
+        "Bootstrap": 8,
+        "Swiper": 6,
         "GSAP": 3
       },
       "se_va": {
-        "jQuery": 35,
-        "LazySizes": 10,
+        "jQuery": 42,
+        "LazySizes": 11,
+        "Bootstrap": 10,
+        "jQuery UI": 10,
         "Swiper": 8,
-        "jQuery UI": 8,
-        "Bootstrap": 7,
-        "Hammer.js": 5
+        "core-js": 7
       }
     },
     "por_sitio": [
@@ -5051,6 +5051,23 @@
           "core-js",
           "jQuery",
           "web-vitals"
+        ]
+      },
+      {
+        "origin": "https://crosset.onward.co.jp",
+        "llega_ecosistema_react": [
+          "styled-components"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Bootstrap",
+          "LazySizes",
+          "Svelte",
+          "Swiper",
+          "core-js",
+          "jQuery"
         ]
       },
       {
@@ -5259,6 +5276,23 @@
         ]
       },
       {
+        "origin": "https://shop.mattel.com",
+        "llega_framework": [
+          "React"
+        ],
+        "llega_propia": [
+          "Preact"
+        ],
+        "se_queda": [
+          "Flickity",
+          "LazySizes",
+          "core-js"
+        ],
+        "se_va": [
+          "jQuery"
+        ]
+      },
+      {
         "origin": "https://townwork.net",
         "llega_framework": [
           "Next.js",
@@ -5347,6 +5381,23 @@
         ]
       },
       {
+        "origin": "https://worldstarhiphop.com",
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_queda": [
+          "jQuery"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "LazySizes",
+          "core-js",
+          "jQuery Migrate"
+        ]
+      },
+      {
         "origin": "https://www.ambitionbox.com",
         "llega_framework": [
           "Next.js",
@@ -5381,6 +5432,16 @@
         ]
       },
       {
+        "origin": "https://www.asianetnews.com",
+        "llega_framework": [
+          "React"
+        ],
+        "se_va": [
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
         "origin": "https://www.businesstoday.in",
         "llega_framework": [
           "Next.js",
@@ -5393,6 +5454,22 @@
         ],
         "se_va": [
           "LazySizes",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.cas.sk",
+        "llega_ecosistema_react": [
+          "Emotion"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "llega_propia": [
+          "Lodash"
+        ],
+        "se_va": [
           "jQuery"
         ]
       },
@@ -5416,6 +5493,30 @@
           "Lodash",
           "RequireJS",
           "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.chemistwarehouse.com.au",
+        "llega_ecosistema_react": [
+          "Radix UI",
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "llega_propia": [
+          "Preact"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "Hammer.js",
+          "jQuery",
+          "jQuery UI",
+          "prettyPhoto"
         ]
       },
       {
@@ -5521,6 +5622,50 @@
         ]
       },
       {
+        "origin": "https://www.felissimo.co.jp",
+        "llega_ecosistema_react": [
+          "styled-components"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "PubSubJS",
+          "Swiper",
+          "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.finishline.com",
+        "llega_ecosistema_react": [
+          "Apollo",
+          "Radix UI",
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "llega_propia": [
+          "Angular",
+          "Zone.js"
+        ],
+        "se_queda": [
+          "Boomerang",
+          "core-js"
+        ],
+        "se_va": [
+          "Lodash",
+          "Moment.js",
+          "Svelte",
+          "ZURB Foundation",
+          "jQuery",
+          "jQuery UI"
+        ]
+      },
+      {
         "origin": "https://www.halfords.com",
         "llega_ecosistema_react": [
           "Emotion",
@@ -5571,6 +5716,22 @@
           "Swiper",
           "jQuery",
           "jQuery UI"
+        ]
+      },
+      {
+        "origin": "https://www.indiapost.gov.in",
+        "llega_ecosistema_react": [
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "Animate.css",
+          "Bootstrap",
+          "jQuery"
         ]
       },
       {
@@ -5644,6 +5805,23 @@
           "Svelte",
           "Vue.js",
           "core-js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://www.liberoquotidiano.it",
+        "llega_ecosistema_react": [
+          "Headless UI"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "Glide.js",
+          "Preact",
+          "Slick",
           "jQuery"
         ]
       },

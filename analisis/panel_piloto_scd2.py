@@ -1,8 +1,17 @@
 """Panel piloto top 10k 2025: dimensión SCD-2 de tecnología y eventos de migración.
 
 Entrada: panel largo del cliente pedido (ver analisis/fuentes.py), una fila por
-         sitio x mes x tecnología detectada, para la cohorte fija de enero 2025.
-         Un mes sin filas para un sitio es una visita fallida o vacía (dato faltante).
+         sitio x mes x tecnología detectada, para la cohorte fija de enero 2025, y el
+         panel del otro cliente (móvil <-> escritorio) para rellenar huecos.
+         Un sitio-mes sin filas no tiene tecnologías registradas: la extracción no
+         distingue una visita con la lista de Wappalyzer vacía de un mes sin visita.
+
+Relleno de huecos (cada sitio-mes queda marcado en la columna `origen`):
+  1. otro_cliente: si el otro cliente tiene datos ese sitio-mes, se copian sus flags
+     (las 6 tecnologías del panel coinciden entre móvil y escritorio en 98,2-100% de los
+     sitio-mes con datos en ambos). Sin p75 (la extracción no trae CrUX de esos meses).
+  2. meses_vecinos: hueco de un solo mes con el mismo estado de las 6 tecnologías el mes
+     anterior y el siguiente; se copia ese estado.
 Salidas: analisis/salidas/panel_piloto_scd2_<cliente>.json (números para el deck) y
          analisis/salidas/eventos_persistentes_<cliente>.parquet.
 
@@ -17,6 +26,7 @@ from fuentes import PANELES, SALIDAS, cliente_desde_argv
 
 CLIENTE = cliente_desde_argv()
 PANEL = PANELES[CLIENTE]
+OTRO_CLIENTE = "desktop" if CLIENTE == "mobile" else "mobile"
 SALIDA = SALIDAS / f"panel_piloto_scd2_{CLIENTE}.json"
 EVENTOS = SALIDAS / f"eventos_persistentes_{CLIENTE}.parquet"
 
@@ -25,6 +35,7 @@ PERSISTENCIA_MESES = 3
 
 con = duckdb.connect()
 con.execute(f"CREATE VIEW largo AS SELECT * FROM '{PANEL}'")
+con.execute(f"CREATE VIEW largo_otro AS SELECT * FROM '{PANELES[OTRO_CLIENTE]}'")
 
 # Panel origen x mes: una fila por sitio-mes observado, con flags por tecnología.
 flags = ",\n".join(
@@ -57,13 +68,47 @@ SELECT
   (SELECT ROUND(AVG(n)) FROM (SELECT COUNT(*) AS n FROM panel GROUP BY mes)) AS sitios_por_mes,
   (SELECT ROUND(100 * AVG((p75_lcp IS NOT NULL)::INT), 1) FROM panel) AS pct_sitio_mes_con_lcp,
   (SELECT ROUND(100 * (1 - COUNT(*) / ((SELECT COUNT(*) FROM por_sitio) * {meses_totales})), 1) FROM panel)
-                                                                     AS pct_sitio_mes_sin_visita,
+                                                                     AS pct_sitio_mes_sin_tecnologias,
   (SELECT ROUND(100 * AVG((rank > 10000)::INT), 1) FROM panel WHERE mes > 0)
                                                                      AS pct_sitio_mes_fuera_top10k
 """).fetchone()
 
+# Relleno de huecos. Las columnas de flags se copian tal cual; rank y p75 quedan vacíos.
+lista_flags = ", ".join(f'"{t}"' for t in TECNOLOGIAS)
+con.execute("ALTER TABLE panel ADD COLUMN origen VARCHAR DEFAULT 'observado'")
+con.execute(f"""
+CREATE TABLE huecos AS
+SELECT s.origin, m.mes
+FROM (SELECT DISTINCT origin FROM panel) AS s CROSS JOIN range({meses_totales}) AS m(mes)
+EXCEPT SELECT origin, mes FROM panel
+""")
+huecos_iniciales = con.execute("SELECT COUNT(*) FROM huecos").fetchone()[0]
+con.execute(f"""
+INSERT INTO panel (origin, date, mes, {lista_flags}, origen)
+SELECT o.origin, o.date, h.mes, {", ".join(f'o."{t}"' for t in TECNOLOGIAS)}, 'otro_cliente'
+FROM huecos AS h
+JOIN (SELECT origin, date, datediff('month', DATE '2025-01-01', date) AS mes, {flags}
+      FROM largo_otro GROUP BY origin, date) AS o
+  ON o.origin = h.origin AND o.mes = h.mes
+""")
+estado = " AND ".join(f'a."{t}" = b."{t}"' for t in TECNOLOGIAS)
+con.execute(f"""
+INSERT INTO panel (origin, date, mes, {lista_flags}, origen)
+SELECT h.origin, DATE '2025-01-01' + INTERVAL (h.mes) MONTH, h.mes,
+       {", ".join(f'a."{t}"' for t in TECNOLOGIAS)}, 'meses_vecinos'
+FROM huecos AS h
+JOIN panel AS a ON a.origin = h.origin AND a.mes = h.mes - 1
+JOIN panel AS b ON b.origin = h.origin AND b.mes = h.mes + 1
+WHERE (h.origin, h.mes) NOT IN (SELECT origin, mes FROM panel)
+  AND {estado}
+""")
+relleno = dict(con.execute("SELECT origen, COUNT(*) FROM panel GROUP BY origen").fetchall())
+balanceados_tras_relleno = con.execute(f"""
+SELECT COUNT(*) FROM (SELECT origin FROM panel GROUP BY origin HAVING COUNT(*) = {meses_totales})
+""").fetchone()[0]
+
 # SCD-2: tramos contiguos de presencia de cada tecnología en cada sitio,
-# solo sobre sitios observados los 12 meses (sin huecos de observación).
+# solo sobre sitios con dato (observado o rellenado) los 12 meses.
 con.execute(f"""
 CREATE TABLE balanceado AS
 SELECT * FROM panel
@@ -179,7 +224,14 @@ resultado = {
     "sitios_faltan_3_o_mas_meses": cobertura[3],
     "sitios_por_mes": cobertura[4],
     "pct_sitio_mes_con_lcp": cobertura[5],
-    "pct_sitio_mes_sin_visita": cobertura[6],
+    "pct_sitio_mes_sin_tecnologias": cobertura[6],
+    "relleno": {
+        "huecos_sitio_mes": huecos_iniciales,
+        "rellenados_otro_cliente": relleno.get("otro_cliente", 0),
+        "rellenados_meses_vecinos": relleno.get("meses_vecinos", 0),
+        "siguen_faltando": huecos_iniciales - relleno.get("otro_cliente", 0) - relleno.get("meses_vecinos", 0),
+        "sitios_balanceados_tras_relleno": balanceados_tras_relleno,
+    },
     "pct_sitio_mes_fuera_top10k_feb_dic": cobertura[7],
     "scd2_tramos": [
         {"tecnologia": t, "tramos": n, "tramos_un_mes_internos": r} for t, n, r in ruido

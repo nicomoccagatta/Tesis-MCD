@@ -3565,8 +3565,8 @@
         "Preact",
         "Boomerang",
         "Emotion",
-        "Loadable-Components",
         "React Router",
+        "Loadable-Components",
         "React@18",
         "MUI"
       ],
@@ -4920,7 +4920,7 @@
     }
   ],
   "recableado_jquery_react": {
-    "sitios": 59,
+    "sitios": 65,
     "excluidas_por_definir_la_migracion": [
       "Next.js",
       "Next.js App Router",
@@ -4928,37 +4928,37 @@
       "jQuery"
     ],
     "librerias_por_sitio_sin_definitorias": {
-      "antes": 3.41,
-      "despues": 2.95,
-      "se_va": 1.61,
-      "se_queda": 1.8,
-      "llega_ecosistema_react": 0.83,
-      "llega_propia": 0.32,
-      "pct_conservadas": 53
+      "antes": 3.49,
+      "despues": 2.97,
+      "se_va": 1.75,
+      "se_queda": 1.74,
+      "llega_ecosistema_react": 0.88,
+      "llega_propia": 0.35,
+      "pct_conservadas": 50
     },
     "aristas_por_clase": {
-      "se_va": 134,
-      "se_queda": 126,
-      "llega_framework": 113,
-      "llega_ecosistema_react": 49,
-      "llega_propia": 19
+      "se_va": 157,
+      "se_queda": 135,
+      "llega_framework": 127,
+      "llega_ecosistema_react": 57,
+      "llega_propia": 23
     },
     "ejemplos_por_clase": {
       "llega_ecosistema_react": {
-        "Tailwind CSS": 10,
+        "Tailwind CSS": 13,
         "styled-components": 9,
-        "Emotion": 7,
-        "React Router": 6,
-        "Loadable-Components": 3,
-        "Radix UI": 3
+        "Emotion": 8,
+        "React Router": 7,
+        "Radix UI": 4,
+        "Loadable-Components": 3
       },
       "llega_framework": {
-        "React": 59,
-        "Next.js": 32,
-        "Next.js App Router": 22
+        "React": 65,
+        "Next.js": 37,
+        "Next.js App Router": 25
       },
       "llega_propia": {
-        "Lodash": 3,
+        "Lodash": 4,
         "GSAP": 2,
         "Preact": 2,
         "Swiper": 2,
@@ -4966,20 +4966,20 @@
         "Adobe Client Data Layer": 1
       },
       "se_queda": {
-        "core-js": 36,
-        "jQuery": 20,
+        "core-js": 39,
+        "jQuery": 22,
+        "Boomerang": 7,
         "Bootstrap": 7,
         "Swiper": 7,
-        "Boomerang": 6,
         "Slick": 4
       },
       "se_va": {
-        "jQuery": 39,
-        "Bootstrap": 10,
+        "jQuery": 43,
+        "Bootstrap": 13,
+        "jQuery UI": 10,
         "LazySizes": 9,
-        "core-js": 8,
-        "jQuery UI": 8,
-        "Lodash": 6
+        "core-js": 9,
+        "Lodash": 7
       }
     },
     "por_sitio": [
@@ -5031,6 +5031,44 @@
         ],
         "se_va": [
           "jQuery"
+        ]
+      },
+      {
+        "origin": "https://cinepolis.com",
+        "llega_ecosistema_react": [
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "llega_propia": [
+          "PubSubJS"
+        ],
+        "se_queda": [
+          "core-js"
+        ],
+        "se_va": [
+          "Hammer.js",
+          "Selectize",
+          "Underscore.js",
+          "jQuery"
+        ]
+      },
+      {
+        "origin": "https://cnnportugal.iol.pt",
+        "llega_ecosistema_react": [
+          "React Router"
+        ],
+        "llega_framework": [
+          "React"
+        ],
+        "se_queda": [
+          "Closure Library",
+          "Preact",
+          "core-js",
+          "jQuery",
+          "web-vitals"
         ]
       },
       {
@@ -5355,6 +5393,25 @@
         ]
       },
       {
+        "origin": "https://worldstarhiphop.com",
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_queda": [
+          "jQuery"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "FancyBox",
+          "Hammer.js",
+          "Moment.js",
+          "core-js",
+          "jQuery Migrate"
+        ]
+      },
+      {
         "origin": "https://www.ambitionbox.com",
         "llega_framework": [
           "Next.js",
@@ -5659,6 +5716,35 @@
         ]
       },
       {
+        "origin": "https://www.finishline.com",
+        "llega_ecosistema_react": [
+          "Apollo",
+          "Radix UI",
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "llega_propia": [
+          "Angular",
+          "Zone.js"
+        ],
+        "se_queda": [
+          "Boomerang",
+          "core-js"
+        ],
+        "se_va": [
+          "Lodash",
+          "Moment.js",
+          "Svelte",
+          "ZURB Foundation",
+          "jQuery",
+          "jQuery UI"
+        ]
+      },
+      {
         "origin": "https://www.foot01.com",
         "llega_framework": [
           "Next.js",
@@ -5725,6 +5811,22 @@
         ]
       },
       {
+        "origin": "https://www.indiapost.gov.in",
+        "llega_ecosistema_react": [
+          "Tailwind CSS"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "Next.js App Router",
+          "React"
+        ],
+        "se_va": [
+          "Animate.css",
+          "Bootstrap",
+          "jQuery"
+        ]
+      },
+      {
         "origin": "https://www.johnpyeauctions.co.uk",
         "llega_framework": [
           "React"
@@ -5733,6 +5835,26 @@
           "Bootstrap",
           "RxJS",
           "core-js",
+          "jQuery",
+          "jQuery UI"
+        ]
+      },
+      {
+        "origin": "https://www.karkkainen.com",
+        "llega_ecosistema_react": [
+          "Emotion",
+          "MUI"
+        ],
+        "llega_framework": [
+          "Next.js",
+          "React"
+        ],
+        "llega_propia": [
+          "Lodash"
+        ],
+        "se_va": [
+          "Bootstrap",
+          "Preact",
           "jQuery",
           "jQuery UI"
         ]

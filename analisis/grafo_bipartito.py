@@ -277,7 +277,8 @@ matriz_version = [
     for lib in libs_version
 ]
 
-# Recableado de aristas en las migraciones persistentes: se van / se quedan / llegan.
+# Recableado de aristas en las migraciones persistentes: se van / se quedan / llegan
+# (solo eventos con los 6 meses de la ventana observados).
 # "antes" = librerías presentes los 3 meses previos al cambio; "después" = los 3 meses desde el cambio.
 # Las que llegan se separan en: framework nuevo (React, sus meta-frameworks y lo que estos
 # implican), ecosistema React (librerías que según Wappalyzer requieren React, o con lift >= 2
@@ -309,8 +310,13 @@ SELECT technology FROM cat WHERE list_contains(string_split(implies, '; '), 'Rea
 
 recableado = con.execute(f"""
 WITH ev AS (
-  SELECT origin, mes_evento FROM '{EVENTOS}'
-  WHERE par IN ('jQuery→React', 'jQuery→React (conservando jQuery)')
+  -- Solo eventos con los 6 meses (3 antes, 3 después) observados en el crawl: los meses
+  -- rellenados en el panel copian frameworks, no la lista de librerías.
+  SELECT e.origin, e.mes_evento FROM '{EVENTOS}' AS e
+  WHERE e.par IN ('jQuery→React', 'jQuery→React (conservando jQuery)')
+    AND (SELECT COUNT(DISTINCT l.date) FROM largo AS l
+         WHERE l.origin = e.origin
+           AND datediff('month', DATE '2025-01-01', l.date) BETWEEN e.mes_evento - 3 AND e.mes_evento + 2) = 6
 ),
 lib AS (
   SELECT l.origin, datediff('month', DATE '2025-01-01', l.date) AS mes, l.technology

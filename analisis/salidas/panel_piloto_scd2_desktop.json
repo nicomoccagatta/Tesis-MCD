@@ -7,65 +7,72 @@
   "sitios_faltan_3_o_mas_meses": 798,
   "sitios_por_mes": 5870.0,
   "pct_sitio_mes_con_lcp": 99.4,
-  "pct_sitio_mes_sin_visita": 8.1,
+  "pct_sitio_mes_sin_tecnologias": 8.1,
+  "relleno": {
+    "huecos_sitio_mes": 6244,
+    "rellenados_otro_cliente": 911,
+    "rellenados_meses_vecinos": 209,
+    "siguen_faltando": 5124,
+    "sitios_balanceados_tras_relleno": 5532
+  },
   "pct_sitio_mes_fuera_top10k_feb_dic": 15.7,
   "scd2_tramos": [
     {
       "tecnologia": "jQuery",
-      "tramos": 2948,
-      "tramos_un_mes_internos": 60
+      "tramos": 3292,
+      "tramos_un_mes_internos": 70
     },
     {
       "tecnologia": "React",
-      "tramos": 1250,
-      "tramos_un_mes_internos": 33
+      "tramos": 1412,
+      "tramos_un_mes_internos": 37
     },
     {
       "tecnologia": "Vue.js",
-      "tramos": 635,
-      "tramos_un_mes_internos": 50
+      "tramos": 682,
+      "tramos_un_mes_internos": 53
     },
     {
       "tecnologia": "Next.js",
-      "tramos": 558,
-      "tramos_un_mes_internos": 6
+      "tramos": 630,
+      "tramos_un_mes_internos": 7
     },
     {
       "tecnologia": "WordPress",
-      "tramos": 337,
+      "tramos": 395,
       "tramos_un_mes_internos": 3
     },
     {
       "tecnologia": "Angular",
-      "tramos": 110,
-      "tramos_un_mes_internos": 4
+      "tramos": 119,
+      "tramos_un_mes_internos": 5
     }
   ],
   "eventos": [
     {
       "par": "jQuery→React",
-      "sitios_crudo": 59,
-      "sitios_crudo_verificable": 43,
-      "sitios_persistente_3m": 39,
-      "pct_descartado_verificable": 9
+      "sitios_crudo": 71,
+      "sitios_crudo_verificable": 51,
+      "sitios_persistente_3m": 46,
+      "pct_descartado_verificable": 10
     },
     {
       "par": "jQuery→React (conservando jQuery)",
-      "sitios_crudo": 52,
-      "sitios_crudo_verificable": 31,
-      "sitios_persistente_3m": 20,
-      "pct_descartado_verificable": 35
+      "sitios_crudo": 58,
+      "sitios_crudo_verificable": 36,
+      "sitios_persistente_3m": 22,
+      "pct_descartado_verificable": 39
     },
     {
       "par": "React→Next.js",
-      "sitios_crudo": 27,
-      "sitios_crudo_verificable": 19,
-      "sitios_persistente_3m": 17,
-      "pct_descartado_verificable": 11
+      "sitios_crudo": 30,
+      "sitios_crudo_verificable": 21,
+      "sitios_persistente_3m": 18,
+      "pct_descartado_verificable": 14
     },
     {
       "par": "Abandono de WordPress",
-      "sitios_crudo": 20,
+      "sitios_crudo": 25,
       "sitios_crudo_verificable": 12,
       "sitios_persistente_3m": 9,
       "pct_descartado_verificable": 25
