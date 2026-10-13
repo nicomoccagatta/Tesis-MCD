@@ -29,3 +29,14 @@ TECNOLOGIAS_FRONTEND = {
     "Polymer": "Otros", "SolidJS": "Otros", "SolidStart": "Otros", "TanStack Start": "Otros",
     "Fresh": "Otros", "Elm": "Otros", "Eleventy": "Otros",
 }
+
+# Campos de la custom metric "aurora" de HTTP Archive (custom_metrics.other.aurora) que completan la
+# detección de Wappalyzer: presencia y versión de cada framework que aurora mide. La versión de React
+# sale del hook de React DevTools (último renderer registrado): solo las versiones mayores 16-19 son de
+# react-dom; otra versión indica otro renderer (ej. @react-three/fiber 9.x) y React con versión desconocida.
+AURORA_CAMPOS = {
+    "React": "aurora_react", "Next.js": "aurora_next", "Nuxt.js": "aurora_nuxt",
+    "Angular": "aurora_angular", "Svelte": "aurora_svelte",
+}
+AURORA_VERSION_VUE = "aurora_nuxt_vue"  # versión de Vue que usa Nuxt: completa la de Vue.js
+REACT_DOM_MAYORES = range(16, 20)

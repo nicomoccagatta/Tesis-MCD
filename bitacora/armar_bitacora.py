@@ -105,6 +105,7 @@ datos = {
     "panel_piloto": {c: salida(f"panel_piloto_scd2_{c}.json") for c in CLIENTES},
     "grafo": grafo,
     "cambios_frontend": {c: salida(f"cambios_frontend_{c}.json") for c in CLIENTES},
+    "cambios_frontend_aurora": {c: salida(f"cambios_frontend_{c}_aurora.json") for c in CLIENTES},
     "auditoria_wappalyzer": salida("auditoria_wappalyzer_frontend.json"),
     "react_muestra_10k": parquet("httparchive_sample_data_pages_10k/001-react-aurora-vs-wappalyzer"),
     "validacion_aurora_en_vivo": salida("validacion_aurora_en_vivo.json"),

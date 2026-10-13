@@ -13,6 +13,12 @@ PANELES = {
     "mobile": RAIZ / "bigquery/cross_source/007-panel-cohorte-top10k-ene2025-2025.parquet",
     "desktop": RAIZ / "bigquery/cross_source/008-panel-cohorte-top10k-ene2025-2025-desktop.parquet",
 }
+# Custom metric "aurora" de HTTP Archive para las páginas de la cohorte con rank <= 50000, ambos clientes:
+# dic-2025 (006) y ene-nov 2025 (007).
+AURORA_2025 = [
+    RAIZ / "bigquery/httparchive_crawl_pages/006-aurora-cohorte-top10k-dic2025.parquet",
+    RAIZ / "bigquery/httparchive_crawl_pages/007-aurora-cohorte-top10k-ene-nov2025.parquet",
+]
 # Lista de la cohorte con su rank de enero 2025 (crawl móvil), incluidos los sitios sin tecnologías ese mes.
 COHORTE_ENERO = RAIZ / "bigquery/httparchive_crawl_pages/004-root-pages-top10k-conteo-tecnologias-ene2025.parquet"
 

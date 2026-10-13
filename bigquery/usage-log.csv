@@ -19,3 +19,7 @@ date,project,script,gb_dry_run,gb_billed,job_id
 2026-10-02,tesis-506222,httparchive_crawl_pages/004-root-pages-top10k-conteo-tecnologias-ene2025,30.9483,0.0105,tesis_20261002_022743_72335
 2026-10-13,tesis-506222,httparchive_sample_data_pages_10k/001-react-aurora-vs-wappalyzer,1.5231,1.4061,tesis_20261013_164138_93942
 2026-10-13,tesis-506222,httparchive_sample_data_pages_10k/002-react-aurora-vs-wappalyzer-por-pagina,0.8912,0.821,tesis_20261013_164814_2047
+2026-10-13,tesis-506222,consola-usuario/aurora-id-soccerway-dic2025-react-version,1940.1951,0.758,job_hAZsM5yRDAVeruRijTDnBEtVvBzm
+2026-10-13,tesis-506222,consola-usuario/aurora-id-soccerway-dic2025-custom-metrics-other,1940.1951,0.929,job_88cmEHZIGoeatCL37gHNGMxOrhCp
+2026-10-13,tesis-506222,httparchive_crawl_pages/006-aurora-cohorte-top10k-dic2025,1970.0859,3.3974,tesis_20261013_173203_53071
+2026-10-13,tesis-506222,httparchive_crawl_pages/007-aurora-cohorte-top10k-ene-nov2025,21326.3502,40.1793,tesis_20261013_173459_56575
