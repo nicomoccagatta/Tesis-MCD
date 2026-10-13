@@ -260,6 +260,7 @@
         <li><b>Tratamiento jQuery→React:</b> estricto (jQuery desaparece; descarte por persistencia 6–10%) o incluyendo a los sitios que conservan jQuery (descarte 39–43%). Ver <a href="#panel">Panel piloto</a>.</li>
         <li><b>Scripts de terceros en el grafo:</b> si analytics, publicidad y tag managers entran como segunda capa. Ver <a href="#grafo">Grafo</a>.</li>
         <li><b>Remix y React Router v7:</b> desde que Remix pasó a publicarse como React Router v7, Wappalyzer lo registra solo como React Router, sin distinguir el modo framework del uso como librería de ruteo. Ver <a href="#wappalyzer">Auditoría de Wappalyzer</a>.</li>
+        <li><b>Detección de React 18:</b> los sitios con React empaquetado que usan <code>createRoot</code>/<code>hydrateRoot</code> no activan la regla de React (caso Netflix). Afecta los eventos "sale React" y deja fuera del tratamiento a sitios React no detectados. Ver <a href="#wappalyzer">Auditoría de Wappalyzer</a>.</li>
         <li><b>Cambios de reglas de Wappalyzer dentro de 2023–2026</b> (React Router 15/10/2024, Next.js App Router 12/12/2023, WordPress 05/01/2026, jQuery 22/09/2026, entre otros): cómo tratarlos al detectar eventos en el panel completo. Ver <a href="#wappalyzer">Auditoría de Wappalyzer</a>.</li>
       </ul>
 
@@ -283,6 +284,7 @@
         <li><b>13/10/2026.</b> Auditoría de la detección de frameworks frontend en Wappalyzer: SvelteKit y Remix se detectan; no aparecían en los análisis por los filtros del panel (6 tecnologías fijas) y del grafo (≥30 sitios por nodo, filtro por categoría).</li>
         <li><b>13/10/2026.</b> Lista de 45 tecnologías frontend en 7 familias (por la relación <code>implies</code> de Wappalyzer). Cuenta como cambio la entrada o salida de una tecnología y el cambio de versión mayor.</li>
         <li><b>13/10/2026.</b> Vista de cambios sitio por sitio en 2025, sin regla de persistencia: 1.900 sitios en móvil y 1.677 en escritorio. Filtros por tecnologías presentes y por cambios sostenidos, y orden por la variación de LCP, INP o CLS alrededor de cada cambio para encontrar ejemplos.</li>
+        <li><b>13/10/2026.</b> Detección de React: netflix.com pierde React en octubre de 2025 por pasar de <code>render</code> a <code>hydrateRoot</code> (React 18), que la regla de Wappalyzer no reconoce; 54 cambios sostenidos "sale React" en móvil quedan sin validar.</li>
         <li><b>13/10/2026.</b> El formato de entrega pasa de presentaciones a esta bitácora.</li>
       </ul>
 
@@ -332,6 +334,11 @@
       <p>"What we planned to release as Remix v3 is now going to be released as React Router v7" (remix.run/blog/merging-remix-and-react-router, 15/05/2024). La regla de Remix busca la variable <code>__remixContext</code>; la de React Router, <code>__reactRouterVersion</code>, que el paquete define al cargarse en el navegador (<code>packages/react-router/lib/dom/lib.tsx</code>) y que Wappalyzer lee también en los sitios que pasaron de Remix a React Router 7 (tabla). El modo framework define además <code>window.__reactRouterContext</code>, que ninguna regla del catálogo usa.</p>
       <div class="tabla-wrap" id="t-remix"></div>
       <p class="nota">Que React Router v7 deje de definir <code>__remixContext</code> es consistente con estos datos, pero no se verificó en el código. Identificar el modo framework de React Router v7 requiere el HTML de la página, no la lista de tecnologías.</p>
+      <h4>React 18 sin <code>_reactRootContainer</code>: el caso Netflix</h4>
+      <p>La regla de React del fork detecta React solo por la variable global <code>React</code> (de ahí sale la versión), la propiedad <code>_reactRootContainer</code> en un <code>div</code> hijo de <code>body</code>, atributos <code>data-react…</code> en el HTML, elementos con id <code>react-root</code>/<code>react-…</code>, el meta de create-react-app o scripts llamados <code>react*.js</code>. En React 18.2, <code>_reactRootContainer</code> lo asigna únicamente la API anterior (<code>ReactDOM.render</code>/<code>hydrate</code>, <code>ReactDOMLegacy.js</code>); <code>createRoot</code>/<code>hydrateRoot</code> marcan el contenedor con <code>__reactContainer$</code> + una clave aleatoria (<code>ReactDOMRoot.js</code>, <code>ReactDOMComponentTree.js</code>). Un sitio con React empaquetado que usa la API nueva no activa ninguna regla, salvo que lo detecte un framework que implique React (Next.js, Remix, Gatsby, React Router…).</p>
+      <p><b>www.netflix.com</b> figura con React de enero a septiembre de 2025 y sin React desde octubre, en móvil y en escritorio; el 13/10/2026 React DevTools muestra <code>react-dom@18.3.1</code> en el sitio. En las capturas de Wayback, el bundle de la app (<code>nmhpFrameworkClient.*.js</code>) trae React 18.2.0 tanto el 20/09/2025 como el 15/10/2025. El de septiembre solo tiene un <code>LegacyAdapter</code> que monta la app con <code>render</code> (API anterior); el de octubre agrega un <code>AsyncAdapter</code> con <code>hydrateRoot</code>. El HTML estático no tiene ninguna otra marca de la regla en ninguno de los dos meses. Es consistente con una pérdida de detección por cambio de API, no con un abandono de React; qué adaptador usa la página en tiempo de ejecución no se verificó.</p>
+      <p>En la cohorte 2025 hay 213 cambios en móvil (185 en escritorio) donde sale React, de los cuales 54 (55) son sostenidos (ej. auto.ru, booth.pm, cadenaser.com, cottonon.com, developer.mozilla.org). Cada uno puede ser un abandono real o una pérdida de detección: no están validados. La regla también explica la baja detección de versión de React (13% en dic-2025): la versión solo se lee de la global <code>React.version</code> o del nombre de un script <code>react-x.y.z.js</code>.</p>
+
       <h4>Cambios de reglas desde dic-2022 (rama principal del fork)</h4>
       <div class="tabla-wrap" id="t-reglas"></div>
       <p class="nota">Fecha del commit que entra a la rama principal. No está verificado que el crawl de cada mes use la versión vigente en ese momento. En 2025 no hay cambios de reglas para estas tecnologías.</p>
@@ -365,7 +372,7 @@
       <p class="nota">Tramo de un mes interno = la tecnología aparece o desaparece un solo mes entre dos meses con el estado contrario; es consistente con ruido de detección.</p>
       <h4>Versión detectada por Wappalyzer (dic-2025, móvil)</h4>
       <div class="tabla-wrap" id="t-version"></div>
-      <p class="nota">La causa de la baja detección de versión en React y Vue no está verificada.</p>
+      <p class="nota">Nota del 13/10/2026: para React, la regla de Wappalyzer solo lee la versión de la global <code>React.version</code> o del nombre de un script <code>react-x.y.z.js</code> (ver entrega 5, auditoría). Para Vue la causa no se verificó.</p>
       <h4>Potencia</h4>
       <p>Estimación con la varianza de los controles (cálculo presentado en esta entrega, no versionado como script): con 46–72 tratados, el efecto mínimo detectable en LCP va de ~60 ms (escritorio) a ~150 ms (móvil); detectar ~40 ms requiere de ~150 (escritorio) a ~900 (móvil) eventos por par.</p>
 
