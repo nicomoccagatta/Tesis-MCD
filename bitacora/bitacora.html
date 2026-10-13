@@ -169,6 +169,9 @@
   .celda .banda span{ flex: 1; border-radius: 2px; }
   .celda .delta{ font-family: var(--font-mono); font-size: .84em; font-weight: 600; line-height: 1.5; color: var(--accent); max-height: 3em; overflow: hidden; }
   .celda .delta span{ display: inline-block; white-space: nowrap; background: rgba(34,211,238,.14); border-radius: .3em; padding: 0 .35em; margin-right: .2em; }
+  .celda.destacado{ box-shadow: 0 0 0 2px var(--accent), 0 0 14px rgba(34,211,238,.35); }
+  .sitio .meta.delta-meta{ color: var(--accent); font-weight: 600; }
+  .controles input[type=checkbox]{ accent-color: var(--accent); margin: 0; }
   .celda .techs{ font-weight: 700; font-size: 1em; line-height: 1.22; color: var(--text-primary); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.44em; }
   .celda .metricas{ display: grid; grid-template-columns: repeat(3, 1fr); gap: .25em; margin-top: auto; }
   .metrica{ background: rgba(11,18,34,.72); border-radius: .35em; padding: .15em .1em .2em; text-align: center; border-top: .22em solid var(--st, var(--text-muted)); }
@@ -279,7 +282,7 @@
       <ul>
         <li><b>13/10/2026.</b> Auditoría de la detección de frameworks frontend en Wappalyzer: SvelteKit y Remix se detectan; no aparecían en los análisis por los filtros del panel (6 tecnologías fijas) y del grafo (≥30 sitios por nodo, filtro por categoría).</li>
         <li><b>13/10/2026.</b> Lista de 45 tecnologías frontend en 7 familias (por la relación <code>implies</code> de Wappalyzer). Cuenta como cambio la entrada o salida de una tecnología y el cambio de versión mayor.</li>
-        <li><b>13/10/2026.</b> Vista de cambios sitio por sitio en 2025, sin regla de persistencia: 1.900 sitios en móvil y 1.677 en escritorio.</li>
+        <li><b>13/10/2026.</b> Vista de cambios sitio por sitio en 2025, sin regla de persistencia: 1.900 sitios en móvil y 1.677 en escritorio. Filtros por tecnologías presentes y por cambios sostenidos, y orden por la variación de LCP, INP o CLS alrededor de cada cambio para encontrar ejemplos.</li>
         <li><b>13/10/2026.</b> El formato de entrega pasa de presentaciones a esta bitácora.</li>
       </ul>
 
@@ -305,11 +308,14 @@
         </details>
         <span class="chips" id="c-tec-chips"></span>
         <label>Tipo <select id="c-tipo"><option value="todos">Todos los cambios</option><option value="tecnologia">Entra o sale una tecnología</option><option value="version">Solo cambio de versión</option></select></label>
-        <label>Orden <select id="c-orden"><option value="rank">Rank de enero</option><option value="cambios">Más cambios</option><option value="alfa">Alfabético</option></select></label>
+        <label><input type="checkbox" id="c-sostenidos"> Solo cambios sostenidos</label>
+        <label>Orden <select id="c-orden"><option value="rank">Rank de enero</option><option value="cambios">Más cambios</option><option value="alfa">Alfabético</option>
+          <optgroup label="Métrica alrededor del cambio"><option value="lcp-mejora">Mayor mejora de LCP</option><option value="lcp-empeora">Mayor empeoramiento de LCP</option><option value="inp-mejora">Mayor mejora de INP</option><option value="inp-empeora">Mayor empeoramiento de INP</option><option value="cls-mejora">Mayor mejora de CLS</option><option value="cls-empeora">Mayor empeoramiento de CLS</option></optgroup></select></label>
         <label>Zoom <input type="range" id="c-zoom" min="0.6" max="1.8" step="0.1" value="1"></label>
         <span class="contador" id="c-contador"></span>
       </div>
       <div class="grilla-wrap" id="wrap-cambios"><div class="grilla" id="grilla"></div></div>
+      <p class="nota"><b>Δ alrededor de un cambio:</b> mediana de hasta 3 meses observados desde el cambio menos la mediana de hasta 3 meses observados antes, sin cruzar otro cambio (hacen falta al menos 2 meses con dato de cada lado). Un cambio es <b>sostenido</b> si tiene 3 meses observados de cada lado sin otro cambio. Al ordenar por una métrica, cada sitio se ubica por su cambio con mayor mejora o empeoramiento, que queda resaltado en la grilla. Es una comparación antes/después del propio sitio, sin grupo de control: sirve para encontrar ejemplos, no para estimar efectos (incluye estacionalidad y tendencias generales).</p>
       <p class="nota">"Tecnologías presentes" deja los sitios que tienen todas las tecnologías elegidas en algún mes de 2025, no necesariamente el mismo (ej. WordPress + Next.js incluye a los que pasaron de uno al otro y a los que tuvieron ambos a la vez); el número de cada opción es la cantidad de sitios con cambios que la tienen. Clic en un dominio para verlo ampliado con la evolución de cada métrica. Las métricas solo existen en los meses con tecnologías registradas: la extracción trae CrUX únicamente para esos sitio-mes. Familia = framework al que lleva la relación <code>implies</code> de Wappalyzer (ej. Remix → React); Angular agrupa Angular y AngularJS. La celda toma el color de su framework principal y la banda superior muestra todas las familias presentes.</p>
       <h3>Qué tecnologías entran y salen</h3>
       <div class="tabla-wrap" id="t-entran-salen"></div>
@@ -946,7 +952,7 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
   const grilla = document.getElementById("grilla");
   const LOTE = 40;
 
-  function celdaHTML(D, s, i) {
+  function celdaHTML(D, s, i, destacar = null) {
     const mes = s.meses[i];
     if (!mes) return `<div class="celda sin-datos" data-i="${i}">sin datos</div>`;
     const [ie, lcp, inp, cls] = mes;
@@ -957,18 +963,19 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
     const delta = cambio ? `<div class="delta">${diferencial(D, s, cambio).map(d => `<span>${esc(d)}</span>`).join(" ")}</div>` : "";
     const banda = familias.length ? familias.map(f => `<span style="background:${colorFam(f)}"></span>`).join("") : `<span style="background:var(--f-vacio)"></span>`;
     const techs = estado.length ? estado.map(etiqueta).join(" · ") : "sin tecnología frontend";
-    return `<div class="celda${estado.length ? "" : " vacio"}${cambio ? " cambio" : ""}" data-i="${i}" style="${principal ? "--fam:" + colorFam(principal) : ""}">` +
+    return `<div class="celda${estado.length ? "" : " vacio"}${cambio ? " cambio" : ""}${i === destacar ? " destacado" : ""}" data-i="${i}" style="${principal ? "--fam:" + colorFam(principal) : ""}">` +
       `<div class="banda">${banda}</div>${delta}<div class="techs">${esc(techs)}</div><div class="metricas">` +
       `<div class="metrica ${estadoCls("lcp", lcp)}"><b>LCP</b><span>${fmtLcp(lcp)}</span></div>` +
       `<div class="metrica ${estadoCls("cls", cls)}"><b>CLS</b><span>${fmtCls(cls)}</span></div>` +
       `<div class="metrica ${estadoCls("inp", inp)}"><b>INP</b><span>${fmtInp(inp)}</span></div></div></div>`;
   }
   const tramo = r => r == null ? "sin rank" : "top " + (r >= 1000 ? num(r / 1000) + "k" : num(r));
-  function filaHTML(D, s, idx) {
+  function filaHTML(D, s, idx, clave, metrica) {
     const dominio = s.origin.replace(/^https?:\/\//, "");
     return `<div class="sitio"><button class="dom" data-idx="${idx}" title="${esc(s.origin)}">${esc(dominio)}</button>` +
-      `<span class="meta">${tramo(s.rank_enero)} · ${s.cambios.length} ${s.cambios.length === 1 ? "cambio" : "cambios"}</span></div>` +
-      s.meses.map((_, i) => celdaHTML(D, s, i)).join("");
+      `<span class="meta">${tramo(s.rank_enero)} · ${s.cambios.length} ${s.cambios.length === 1 ? "cambio" : "cambios"}</span>` +
+      (clave ? `<span class="meta delta-meta">${metrica.toUpperCase()} ${fmtDelta(metrica, clave.delta[metrica])} · ${MESES_CORTOS[clave.c.mes]}</span>` : "") + `</div>` +
+      s.meses.map((_, i) => celdaHTML(D, s, i, clave ? clave.c.mes : null)).join("");
   }
   const encabezado = () => `<div class="hsitio">Sitio</div>` + C.mobile.meses.map(m => `<div class="hmes">${MESES_CORTOS[+m.slice(5) - 1]}</div>`).join("");
 
@@ -981,7 +988,11 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
     let h = titulo + `<div>${estado.length ? esc(estado.map(etiqueta).join(", ")) : "Sin tecnología frontend detectada"}</div>` +
       `<div class="m">LCP ${lcp == null ? "sin dato" : num(lcp) + " ms (" + estadoTxt[estadoCls("lcp", lcp)] + ")"} · CLS ${cls == null ? "sin dato" : num(cls, 2) + " (" + estadoTxt[estadoCls("cls", cls)] + ")"} · INP ${inp == null ? "sin dato" : num(inp) + " ms (" + estadoTxt[estadoCls("inp", inp)] + ")"}</div>`;
     const c = s.cambios.find(c => c.mes === i);
-    if (c) h += `<div style="margin-top:4px;color:var(--accent)">${esc(textoCambio(D, s, c))}</div>`;
+    if (c) {
+      const x = metricasCambios(D, s).find(x => x.c === c);
+      h += `<div style="margin-top:4px;color:var(--accent)">${esc(textoCambio(D, s, c))}</div>` +
+        `<div class="m">Δ ${textoDeltas(x)} (${x.sostenido ? "sostenido" : "no sostenido"})</div>`;
+    }
     return h;
   }
   // Diferencial de un cambio respecto del mes observado anterior: "+ Astro", "− Remix", "React Router 6→7".
@@ -993,13 +1004,42 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
   }
   const textoCambio = (D, s, c) => diferencial(D, s, c).join(" · ");
 
+  // Métricas alrededor de cada cambio: mediana de hasta 3 meses observados desde el cambio menos la de hasta
+  // 3 meses observados antes, sin cruzar otro cambio. Sostenido = 3 meses observados de cada lado.
+  const cacheMetricas = {};
+  const mediana = v => { const o = [...v].sort((a, b) => a - b), k = o.length >> 1; return o.length % 2 ? o[k] : (o[k - 1] + o[k]) / 2; };
+  function metricasCambios(D, s) {
+    const cache = (cacheMetricas[cliente] ??= new Map());
+    if (!cache.has(s)) {
+      const obs = s.meses.map((m, i) => m ? i : -1).filter(i => i >= 0);
+      const pos = s.cambios.map(c => obs.indexOf(c.mes));
+      cache.set(s, s.cambios.map((c, k) => {
+        const p = pos[k], previo = k > 0 ? pos[k - 1] : 0, siguiente = k < pos.length - 1 ? pos[k + 1] : obs.length;
+        const antes = obs.slice(Math.max(p - 3, previo), p), despues = obs.slice(p, Math.min(p + 3, siguiente));
+        const delta = {};
+        [["lcp", 1], ["inp", 2], ["cls", 3]].forEach(([m, ix]) => {
+          const a = antes.map(i => s.meses[i][ix]).filter(v => v != null), b = despues.map(i => s.meses[i][ix]).filter(v => v != null);
+          delta[m] = a.length >= 2 && b.length >= 2 ? mediana(b) - mediana(a) : null;
+        });
+        return { c, sostenido: antes.length === 3 && despues.length === 3, delta };
+      }));
+    }
+    return cache.get(s);
+  }
+  const signo = v => v > 0 ? "+" : v < 0 ? "−" : "±";
+  const fmtDelta = (m, v) => v == null ? "sin dato" :
+    m === "lcp" ? signo(v) + num(Math.abs(v) / 1000, 1) + " s" : m === "inp" ? signo(v) + num(Math.abs(v)) + " ms" : signo(v) + num(Math.abs(v), 2);
+  const textoDeltas = x => ["lcp", "inp", "cls"].map(m => `${m.toUpperCase()} ${fmtDelta(m, x.delta[m])}`).join(" · ");
+
   function aplicar() {
     const D = C[cliente];
     const q = document.getElementById("c-buscar").value.trim().toLowerCase();
     const presentes = tecnologiasPresentes(D);
     const tipo = document.getElementById("c-tipo").value;
     const orden = document.getElementById("c-orden").value;
+    const soloSostenidos = document.getElementById("c-sostenidos").checked;
     filtrados = D.sitios.map((s, idx) => ({ s, idx })).filter(({ s }) => {
+      if (soloSostenidos && !metricasCambios(D, s).some(x => x.sostenido)) return false;
       if (q && !s.origin.toLowerCase().includes(q)) return false;
       const deTecnologia = s.cambios.some(c => c.entran.length || c.salen.length);
       if (tipo === "tecnologia" && !deTecnologia) return false;
@@ -1011,6 +1051,17 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
     if (orden === "rank") filtrados.sort((a, b) => (a.s.rank_enero ?? 1e9) - (b.s.rank_enero ?? 1e9) || dom(a.s).localeCompare(dom(b.s)));
     if (orden === "cambios") filtrados.sort((a, b) => b.s.cambios.length - a.s.cambios.length || dom(a.s).localeCompare(dom(b.s)));
     if (orden === "alfa") filtrados.sort((a, b) => dom(a.s).localeCompare(dom(b.s)));
+    if (orden.includes("-")) {
+      // Cada sitio se ordena por su cambio con mayor mejora (o empeoramiento) de la métrica elegida.
+      const [metrica, sentido] = orden.split("-"), mejor = (a, b) => sentido === "mejora" ? b < a : b > a;
+      filtrados.forEach(f => {
+        const xs = metricasCambios(D, f.s).filter(x => x.delta[metrica] != null && (!soloSostenidos || x.sostenido));
+        f.clave = xs.length ? xs.reduce((a, b) => mejor(a.delta[metrica], b.delta[metrica]) ? b : a) : null;
+        f.metrica = metrica;
+      });
+      filtrados.sort((a, b) => (a.clave == null) - (b.clave == null) ||
+        (a.clave && b.clave ? (sentido === "mejora" ? 1 : -1) * (a.clave.delta[metrica] - b.clave.delta[metrica]) : 0) || dom(a.s).localeCompare(dom(b.s)));
+    }
     document.getElementById("c-contador").textContent = `${num(filtrados.length)} de ${num(D.sitios.length)} sitios con cambios · cohorte ${num(D.resumen.sitios_cohorte)}`;
     grilla.innerHTML = encabezado();
     document.getElementById("wrap-cambios").scrollTop = 0;
@@ -1020,7 +1071,7 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
   function dibujarLote() {
     const D = C[cliente];
     grilla.querySelector(".cargando")?.remove();
-    const html = filtrados.slice(dibujados, dibujados + LOTE).map(({ s, idx }) => filaHTML(D, s, idx)).join("");
+    const html = filtrados.slice(dibujados, dibujados + LOTE).map(({ s, idx, clave, metrica }) => filaHTML(D, s, idx, clave, metrica)).join("");
     dibujados = Math.min(filtrados.length, dibujados + LOTE);
     grilla.insertAdjacentHTML("beforeend", html + (dibujados < filtrados.length ? `<div class="cargando">Cargando más sitios…</div>` : ""));
     const centinela = grilla.querySelector(".cargando");
@@ -1062,6 +1113,7 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
     resumen(); aplicar();
   }));
   ["c-buscar", "c-tipo", "c-orden"].forEach(id => document.getElementById(id).addEventListener("input", aplicar));
+  document.getElementById("c-sostenidos").addEventListener("change", aplicar);
   document.getElementById("c-tec-buscar").addEventListener("input", dibujarOpciones);
   document.getElementById("c-tec-lista").addEventListener("change", e => {
     const t = e.target.value;
@@ -1121,8 +1173,8 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
         umbrales: [{ v: conf[k].u[0], color: "#0ca30c", t: "bueno ≤ " + conf[k].fmt(conf[k].u[0]) }, { v: conf[k].u[1], color: "#d03b3b", t: "malo > " + conf[k].fmt(conf[k].u[1]) }],
       });
     });
-    document.getElementById("m-cambios").innerHTML = s.cambios.map(c =>
-      `<li><b>${MESES_CORTOS[c.mes]}</b>: ${esc(textoCambio(D, s, c))}</li>`).join("");
+    document.getElementById("m-cambios").innerHTML = metricasCambios(D, s).map(x =>
+      `<li><b>${MESES_CORTOS[x.c.mes]}</b>: ${esc(textoCambio(D, s, x.c))} — Δ ${textoDeltas(x)} <span class="nota">(${x.sostenido ? "sostenido" : "no sostenido"})</span></li>`).join("");
     modal.classList.add("abierto");
     document.body.style.overflow = "hidden";
   }
