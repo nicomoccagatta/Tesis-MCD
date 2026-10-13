@@ -1109,6 +1109,9 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
   const fijas = secciones.filter(s => s.hasAttribute("data-fijo"));
   const fechadas = secciones.filter(s => s.dataset.actualizado);
   const fechas = [...new Set(fechadas.map(s => s.dataset.actualizado))].sort().reverse();
+  // La página sigue el mismo orden que el índice: fijas primero, después por fecha (más reciente arriba).
+  const orden = [...fijas, ...fechas.flatMap(f => fechadas.filter(s => s.dataset.actualizado === f))];
+  orden.forEach(s => s.parentElement.appendChild(s));
   const link = s => `<a href="#${s.id}">${esc(s.dataset.titulo)}</a>`;
   document.getElementById("indice-links").innerHTML = fijas.map(link).join("") + fechas.map(f =>
     `<div class="grupo">${fecha(f)}</div>` + fechadas.filter(s => s.dataset.actualizado === f).map(link).join("")).join("");
