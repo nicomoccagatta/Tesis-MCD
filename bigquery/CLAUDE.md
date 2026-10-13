@@ -113,6 +113,18 @@ El script:
 No correr `bq query` a mano para esto — usar siempre el script, así el ledger
 queda completo y nadie se olvida del dry-run o del tope de bytes.
 
+## Límites verificados del Sandbox con tablas clusterizadas
+
+Verificado el 13/10/2026 con `custom_metrics.other` de `crawl.pages` (~2 TB por mes según el
+dry-run): tanto `MAX_BYTES_BILLED` como la cuota gratuita del Sandbox se comparan contra la
+**estimación del dry-run**, que no descuenta el clustering, antes de ejecutar. Si la estimación
+supera el tope, la query falla con "Query exceeded limit for bytes billed"; si supera la cuota
+restante del mes, falla con "Quota exceeded: Your project exceeded quota for free query bytes
+scanned". En ambos casos no se factura nada, pero no hay forma de leer desde el Sandbox una
+columna cuya partición mensual estima más que la cuota, por más filtros de clustering que tenga
+la query. Para probar sobre esas columnas está `httparchive.sample_data.pages_10k` (un mes,
+~30 GB en total).
+
 ## Cómo consultar los `.parquet` ya bajados (sin límites, local)
 
 ```bash
