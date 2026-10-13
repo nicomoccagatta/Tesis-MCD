@@ -13,6 +13,8 @@ PANELES = {
     "mobile": RAIZ / "bigquery/cross_source/007-panel-cohorte-top10k-ene2025-2025.parquet",
     "desktop": RAIZ / "bigquery/cross_source/008-panel-cohorte-top10k-ene2025-2025-desktop.parquet",
 }
+# Lista de la cohorte con su rank de enero 2025 (crawl móvil), incluidos los sitios sin tecnologías ese mes.
+COHORTE_ENERO = RAIZ / "bigquery/httparchive_crawl_pages/004-root-pages-top10k-conteo-tecnologias-ene2025.parquet"
 
 
 def cliente_desde_argv():

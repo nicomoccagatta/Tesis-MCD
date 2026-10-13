@@ -1,0 +1,1672 @@
+{
+ "catalogo_commit": "4052404a7",
+ "catalogo_fecha": "2026-10-03",
+ "historial_desde": "2022-12-01",
+ "state_of_js_2025": [
+  {
+   "nombre": "React",
+   "seccion": "Front-end frameworks",
+   "wappalyzer": "React",
+   "nota": null
+  },
+  {
+   "nombre": "Vue.js",
+   "seccion": "Front-end frameworks",
+   "wappalyzer": "Vue.js",
+   "nota": null
+  },
+  {
+   "nombre": "Angular",
+   "seccion": "Front-end frameworks",
+   "wappalyzer": "Angular",
+   "nota": null
+  },
+  {
+   "nombre": "Preact",
+   "seccion": "Front-end frameworks",
+   "wappalyzer": "Preact",
+   "nota": null
+  },
+  {
+   "nombre": "Svelte",
+   "seccion": "Front-end frameworks",
+   "wappalyzer": "Svelte",
+   "nota": null
+  },
+  {
+   "nombre": "Alpine.js",
+   "seccion": "Front-end frameworks",
+   "wappalyzer": "Alpine.js",
+   "nota": null
+  },
+  {
+   "nombre": "Lit",
+   "seccion": "Front-end frameworks",
+   "wappalyzer": "lit-html",
+   "nota": null
+  },
+  {
+   "nombre": "Solid",
+   "seccion": "Front-end frameworks",
+   "wappalyzer": "SolidJS",
+   "nota": null
+  },
+  {
+   "nombre": "Qwik",
+   "seccion": "Front-end frameworks",
+   "wappalyzer": "Qwik",
+   "nota": null
+  },
+  {
+   "nombre": "Stencil",
+   "seccion": "Front-end frameworks",
+   "wappalyzer": "Stencil",
+   "nota": null
+  },
+  {
+   "nombre": "HTMX",
+   "seccion": "Front-end frameworks",
+   "wappalyzer": "Htmx",
+   "nota": null
+  },
+  {
+   "nombre": "Astro",
+   "seccion": "Front-end frameworks (otros)",
+   "wappalyzer": "Astro",
+   "nota": null
+  },
+  {
+   "nombre": "Ember",
+   "seccion": "Front-end frameworks (otros)",
+   "wappalyzer": "Ember.js",
+   "nota": null
+  },
+  {
+   "nombre": "Ripple",
+   "seccion": "Front-end frameworks (otros)",
+   "wappalyzer": null,
+   "nota": "El catálogo tiene una tecnología llamada Ripple, pero es otro producto (frontend de Single Digital Presence, sobre Nuxt y Vue)."
+  },
+  {
+   "nombre": "TanStack Start",
+   "seccion": "Front-end frameworks (otros)",
+   "wappalyzer": "TanStack Start",
+   "nota": null
+  },
+  {
+   "nombre": "Elm",
+   "seccion": "Front-end frameworks (otros)",
+   "wappalyzer": "Elm",
+   "nota": null
+  },
+  {
+   "nombre": "Nuxt",
+   "seccion": "Front-end frameworks (otros)",
+   "wappalyzer": "Nuxt.js",
+   "nota": null
+  },
+  {
+   "nombre": "Remix",
+   "seccion": "Front-end frameworks (otros)",
+   "wappalyzer": "Remix",
+   "nota": null
+  },
+  {
+   "nombre": "Next.js",
+   "seccion": "Front-end frameworks (otros)",
+   "wappalyzer": "Next.js",
+   "nota": null
+  },
+  {
+   "nombre": "Aurelia",
+   "seccion": "Front-end frameworks (otros)",
+   "wappalyzer": "Aurelia",
+   "nota": null
+  },
+  {
+   "nombre": "jQuery",
+   "seccion": "Front-end frameworks (otros)",
+   "wappalyzer": "jQuery",
+   "nota": null
+  },
+  {
+   "nombre": "Gatsby",
+   "seccion": "Meta-frameworks",
+   "wappalyzer": "Gatsby",
+   "nota": null
+  },
+  {
+   "nombre": "SvelteKit",
+   "seccion": "Meta-frameworks",
+   "wappalyzer": "SvelteKit",
+   "nota": null
+  },
+  {
+   "nombre": "Docusaurus",
+   "seccion": "Meta-frameworks",
+   "wappalyzer": "Docusaurus",
+   "nota": null
+  },
+  {
+   "nombre": "SolidStart",
+   "seccion": "Meta-frameworks",
+   "wappalyzer": "SolidStart",
+   "nota": null
+  },
+  {
+   "nombre": "Deno Fresh",
+   "seccion": "Meta-frameworks",
+   "wappalyzer": "Fresh",
+   "nota": null
+  },
+  {
+   "nombre": "Analog",
+   "seccion": "Meta-frameworks",
+   "wappalyzer": null,
+   "nota": null
+  },
+  {
+   "nombre": "Quasar",
+   "seccion": "Meta-frameworks",
+   "wappalyzer": "Quasar",
+   "nota": null
+  },
+  {
+   "nombre": "TanStack Router",
+   "seccion": "Meta-frameworks (otros)",
+   "wappalyzer": null,
+   "nota": null
+  },
+  {
+   "nombre": "React Router",
+   "seccion": "Meta-frameworks (otros)",
+   "wappalyzer": "React Router",
+   "nota": null
+  },
+  {
+   "nombre": "Meteor",
+   "seccion": "Meta-frameworks (otros)",
+   "wappalyzer": "Meteor",
+   "nota": null
+  },
+  {
+   "nombre": "Vike",
+   "seccion": "Meta-frameworks (otros)",
+   "wappalyzer": null,
+   "nota": null
+  },
+  {
+   "nombre": "Expo",
+   "seccion": "Meta-frameworks (otros)",
+   "wappalyzer": null,
+   "nota": null
+  },
+  {
+   "nombre": "inertiajs",
+   "seccion": "Meta-frameworks (otros)",
+   "wappalyzer": "Inertia.js",
+   "nota": null
+  },
+  {
+   "nombre": "Eleventy",
+   "seccion": "Meta-frameworks (otros)",
+   "wappalyzer": "Eleventy",
+   "nota": null
+  },
+  {
+   "nombre": "Redwood SDK",
+   "seccion": "Meta-frameworks (otros)",
+   "wappalyzer": null,
+   "nota": "El catálogo tiene RedwoodJS (regla: div#redwood-app); no está verificado si detecta Redwood SDK."
+  }
+ ],
+ "tecnologias": [
+  {
+   "tecnologia": "Alpine.js",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "scriptSrc",
+    "html"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 89,
+     "dic_2025": 69
+    },
+    "desktop": {
+     "algun_mes_2025": 83,
+     "dic_2025": 67
+    }
+   }
+  },
+  {
+   "tecnologia": "Angular",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Angular",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [
+    "TypeScript"
+   ],
+   "tipos_de_regla": [
+    "js",
+    "dom"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 195,
+     "dic_2025": 143
+    },
+    "desktop": {
+     "algun_mes_2025": 136,
+     "dic_2025": 106
+    }
+   }
+  },
+  {
+   "tecnologia": "AngularJS",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Angular",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "scriptSrc",
+    "html"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 86,
+     "dic_2025": 60
+    },
+    "desktop": {
+     "algun_mes_2025": 87,
+     "dic_2025": 62
+    }
+   }
+  },
+  {
+   "tecnologia": "Astro",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "Static site generator",
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "dom",
+    "meta"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 34,
+     "dic_2025": 27
+    },
+    "desktop": {
+     "algun_mes_2025": 27,
+     "dic_2025": 26
+    }
+   }
+  },
+  {
+   "tecnologia": "Aurelia",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "dom",
+    "scriptSrc"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 1,
+     "dic_2025": 0
+    },
+    "desktop": {
+     "algun_mes_2025": 1,
+     "dic_2025": 0
+    }
+   }
+  },
+  {
+   "tecnologia": "Backbone.js",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [
+    "Underscore.js"
+   ],
+   "tipos_de_regla": [
+    "js",
+    "scriptSrc"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 141,
+     "dic_2025": 95
+    },
+    "desktop": {
+     "algun_mes_2025": 119,
+     "dic_2025": 87
+    }
+   }
+  },
+  {
+   "tecnologia": "Docusaurus",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "React",
+   "categorias": [
+    "Documentation",
+    "Static site generator"
+   ],
+   "implies": [
+    "React",
+    "Webpack"
+   ],
+   "tipos_de_regla": [
+    "js",
+    "meta"
+   ],
+   "sitios": {}
+  },
+  {
+   "tecnologia": "Eleventy",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "Static site generator"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "meta"
+   ],
+   "sitios": {}
+  },
+  {
+   "tecnologia": "Elm",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "Programming languages",
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {}
+  },
+  {
+   "tecnologia": "Ember.js",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "scripts"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 3,
+     "dic_2025": 1
+    },
+    "desktop": {
+     "algun_mes_2025": 3,
+     "dic_2025": 1
+    }
+   }
+  },
+  {
+   "tecnologia": "Fresh",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "Web frameworks",
+    "Web servers"
+   ],
+   "implies": [
+    "Deno",
+    "Preact"
+   ],
+   "tipos_de_regla": [
+    "dom"
+   ],
+   "sitios": {}
+  },
+  {
+   "tecnologia": "Gatsby",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "React",
+   "categorias": [
+    "Static site generator",
+    "JavaScript frameworks"
+   ],
+   "implies": [
+    "React",
+    "Webpack"
+   ],
+   "tipos_de_regla": [
+    "dom",
+    "meta"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 12,
+     "dic_2025": 7
+    },
+    "desktop": {
+     "algun_mes_2025": 12,
+     "dic_2025": 7
+    }
+   }
+  },
+  {
+   "tecnologia": "Gridsome",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Vue",
+   "categorias": [
+    "Static site generator"
+   ],
+   "implies": [
+    "Vue.js"
+   ],
+   "tipos_de_regla": [
+    "meta"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 1,
+     "dic_2025": 1
+    },
+    "desktop": {
+     "algun_mes_2025": 1,
+     "dic_2025": 1
+    }
+   }
+  },
+  {
+   "tecnologia": "Htmx",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript libraries"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "dom",
+    "scriptSrc"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 34,
+     "dic_2025": 27
+    },
+    "desktop": {
+     "algun_mes_2025": 30,
+     "dic_2025": 25
+    }
+   }
+  },
+  {
+   "tecnologia": "Hydrogen",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "React",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [
+    "Shopify",
+    "React",
+    "Vite"
+   ],
+   "tipos_de_regla": [
+    "headers"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 1,
+     "dic_2025": 1
+    },
+    "desktop": {
+     "algun_mes_2025": 1,
+     "dic_2025": 1
+    }
+   }
+  },
+  {
+   "tecnologia": "Inertia.js",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "dom",
+    "headers"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 7,
+     "dic_2025": 5
+    },
+    "desktop": {
+     "algun_mes_2025": 6,
+     "dic_2025": 5
+    }
+   }
+  },
+  {
+   "tecnologia": "Knockout.js",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 24,
+     "dic_2025": 18
+    },
+    "desktop": {
+     "algun_mes_2025": 24,
+     "dic_2025": 18
+    }
+   }
+  },
+  {
+   "tecnologia": "Meteor",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks",
+    "Web frameworks"
+   ],
+   "implies": [
+    "MongoDB",
+    "Node.js"
+   ],
+   "tipos_de_regla": [
+    "js",
+    "html"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 1,
+     "dic_2025": 1
+    },
+    "desktop": {
+     "algun_mes_2025": 1,
+     "dic_2025": 1
+    }
+   }
+  },
+  {
+   "tecnologia": "Next.js",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "React",
+   "categorias": [
+    "JavaScript frameworks",
+    "Web frameworks"
+   ],
+   "implies": [
+    "React",
+    "Webpack",
+    "Node.js"
+   ],
+   "tipos_de_regla": [
+    "js",
+    "headers"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 774,
+     "dic_2025": 631
+    },
+    "desktop": {
+     "algun_mes_2025": 686,
+     "dic_2025": 595
+    }
+   }
+  },
+  {
+   "tecnologia": "Next.js App Router",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "React",
+   "categorias": [
+    "JavaScript frameworks",
+    "Web servers"
+   ],
+   "implies": [
+    "Next.js"
+   ],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 242,
+     "dic_2025": 202
+    },
+    "desktop": {
+     "algun_mes_2025": 223,
+     "dic_2025": 195
+    }
+   }
+  },
+  {
+   "tecnologia": "Next.js Page Router SSG",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "React",
+   "categorias": [
+    "Static site generator"
+   ],
+   "implies": [
+    "Next.js"
+   ],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {}
+  },
+  {
+   "tecnologia": "Next.js Page Router SSR",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "React",
+   "categorias": [
+    "Web servers"
+   ],
+   "implies": [
+    "Next.js"
+   ],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {}
+  },
+  {
+   "tecnologia": "Nuxt.js",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Vue",
+   "categorias": [
+    "JavaScript frameworks",
+    "Web frameworks",
+    "Web servers",
+    "Static site generator"
+   ],
+   "implies": [
+    "Vue.js",
+    "Node.js"
+   ],
+   "tipos_de_regla": [
+    "js",
+    "scriptSrc",
+    "html"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 140,
+     "dic_2025": 115
+    },
+    "desktop": {
+     "algun_mes_2025": 122,
+     "dic_2025": 105
+    }
+   }
+  },
+  {
+   "tecnologia": "Polymer",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "scriptSrc",
+    "html"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 2,
+     "dic_2025": 2
+    },
+    "desktop": {
+     "algun_mes_2025": 3,
+     "dic_2025": 3
+    }
+   }
+  },
+  {
+   "tecnologia": "Preact",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript libraries"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "dom"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 546,
+     "dic_2025": 331
+    },
+    "desktop": {
+     "algun_mes_2025": 453,
+     "dic_2025": 288
+    }
+   }
+  },
+  {
+   "tecnologia": "Quasar",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "dom"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 2,
+     "dic_2025": 2
+    },
+    "desktop": {
+     "algun_mes_2025": 2,
+     "dic_2025": 2
+    }
+   }
+  },
+  {
+   "tecnologia": "Qwik",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "Web frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "dom"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 10,
+     "dic_2025": 9
+    },
+    "desktop": {
+     "algun_mes_2025": 10,
+     "dic_2025": 9
+    }
+   }
+  },
+  {
+   "tecnologia": "React",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "React",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "dom",
+    "scriptSrc",
+    "html",
+    "meta"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 1639,
+     "dic_2025": 1264
+    },
+    "desktop": {
+     "algun_mes_2025": 1504,
+     "dic_2025": 1244
+    }
+   }
+  },
+  {
+   "tecnologia": "React Router",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "React",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [
+    "React"
+   ],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 186,
+     "dic_2025": 146
+    },
+    "desktop": {
+     "algun_mes_2025": 175,
+     "dic_2025": 144
+    }
+   }
+  },
+  {
+   "tecnologia": "RedwoodJS",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "React",
+   "categorias": [
+    "JavaScript frameworks",
+    "Web frameworks"
+   ],
+   "implies": [
+    "React",
+    "GraphQL",
+    "TypeScript"
+   ],
+   "tipos_de_regla": [
+    "dom"
+   ],
+   "sitios": {}
+  },
+  {
+   "tecnologia": "Remix",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "React",
+   "categorias": [
+    "Web frameworks",
+    "Web servers"
+   ],
+   "implies": [
+    "React",
+    "React Router"
+   ],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 16,
+     "dic_2025": 10
+    },
+    "desktop": {
+     "algun_mes_2025": 15,
+     "dic_2025": 10
+    }
+   }
+  },
+  {
+   "tecnologia": "Sapper",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Svelte",
+   "categorias": [
+    "Web frameworks"
+   ],
+   "implies": [
+    "Svelte",
+    "Node.js"
+   ],
+   "tipos_de_regla": [
+    "js",
+    "html"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 1,
+     "dic_2025": 1
+    },
+    "desktop": {
+     "algun_mes_2025": 1,
+     "dic_2025": 1
+    }
+   }
+  },
+  {
+   "tecnologia": "SolidJS",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {}
+  },
+  {
+   "tecnologia": "SolidStart",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "Web frameworks",
+    "Web servers"
+   ],
+   "implies": [
+    "SolidJS"
+   ],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {}
+  },
+  {
+   "tecnologia": "Stencil",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "Web frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "dom"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 3,
+     "dic_2025": 1
+    },
+    "desktop": {
+     "algun_mes_2025": 3,
+     "dic_2025": 2
+    }
+   }
+  },
+  {
+   "tecnologia": "Stimulus",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "html"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 82,
+     "dic_2025": 66
+    },
+    "desktop": {
+     "algun_mes_2025": 70,
+     "dic_2025": 59
+    }
+   }
+  },
+  {
+   "tecnologia": "Svelte",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Svelte",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "dom"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 293,
+     "dic_2025": 213
+    },
+    "desktop": {
+     "algun_mes_2025": 251,
+     "dic_2025": 185
+    }
+   }
+  },
+  {
+   "tecnologia": "SvelteKit",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Svelte",
+   "categorias": [
+    "UI frameworks"
+   ],
+   "implies": [
+    "Svelte",
+    "Node.js",
+    "Vite"
+   ],
+   "tipos_de_regla": [
+    "dom",
+    "meta"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 23,
+     "dic_2025": 17
+    },
+    "desktop": {
+     "algun_mes_2025": 21,
+     "dic_2025": 15
+    }
+   }
+  },
+  {
+   "tecnologia": "TanStack Start",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript frameworks",
+    "Web frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {}
+  },
+  {
+   "tecnologia": "VitePress",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Vue",
+   "categorias": [
+    "Static site generator"
+   ],
+   "implies": [
+    "Vue.js",
+    "Vite"
+   ],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {}
+  },
+  {
+   "tecnologia": "Vue.js",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Vue",
+   "categorias": [
+    "JavaScript frameworks"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "dom",
+    "scriptSrc",
+    "html",
+    "css"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 727,
+     "dic_2025": 566
+    },
+    "desktop": {
+     "algun_mes_2025": 641,
+     "dic_2025": 527
+    }
+   }
+  },
+  {
+   "tecnologia": "WordPress",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "WordPress",
+   "categorias": [
+    "CMS",
+    "Blogs"
+   ],
+   "implies": [
+    "PHP",
+    "MySQL"
+   ],
+   "tipos_de_regla": [
+    "js",
+    "scriptSrc",
+    "html",
+    "meta",
+    "headers"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 791,
+     "dic_2025": 560
+    },
+    "desktop": {
+     "algun_mes_2025": 520,
+     "dic_2025": 372
+    }
+   }
+  },
+  {
+   "tecnologia": "jQuery",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "jQuery",
+   "categorias": [
+    "JavaScript libraries"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js",
+    "scriptSrc"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 4367,
+     "dic_2025": 3267
+    },
+    "desktop": {
+     "algun_mes_2025": 3659,
+     "dic_2025": 2895
+    }
+   }
+  },
+  {
+   "tecnologia": "lit-element",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript libraries"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 283,
+     "dic_2025": 205
+    },
+    "desktop": {
+     "algun_mes_2025": 274,
+     "dic_2025": 215
+    }
+   }
+  },
+  {
+   "tecnologia": "lit-html",
+   "en_catalogo": true,
+   "en_lista_frontend": true,
+   "familia": "Otros",
+   "categorias": [
+    "JavaScript libraries"
+   ],
+   "implies": [],
+   "tipos_de_regla": [
+    "js"
+   ],
+   "sitios": {
+    "mobile": {
+     "algun_mes_2025": 317,
+     "dic_2025": 236
+    },
+    "desktop": {
+     "algun_mes_2025": 322,
+     "dic_2025": 258
+    }
+   }
+  }
+ ],
+ "cambios_de_reglas": [
+  {
+   "fecha": "2023-01-16",
+   "commit": "8c9f76cd2",
+   "tecnologia": "SolidJS",
+   "tipo": "agregada",
+   "campos": [
+    "cats",
+    "js"
+   ],
+   "mensaje": "Merge pull request #7279 from ysm-dev/solidjs"
+  },
+  {
+   "fecha": "2023-01-16",
+   "commit": "2f6891b03",
+   "tecnologia": "SolidStart",
+   "tipo": "agregada",
+   "campos": [
+    "cats",
+    "implies",
+    "js"
+   ],
+   "mensaje": "Merge pull request #7280 from ysm-dev/solidstart"
+  },
+  {
+   "fecha": "2023-01-16",
+   "commit": "d4bb59721",
+   "tecnologia": "VitePress",
+   "tipo": "agregada",
+   "campos": [
+    "cats",
+    "implies",
+    "js"
+   ],
+   "mensaje": "Merge pull request #7287 from ysm-dev/vitepress"
+  },
+  {
+   "fecha": "2023-01-27",
+   "commit": "e1f4b2895",
+   "tecnologia": "Docusaurus",
+   "tipo": "cambia",
+   "campos": [
+    "js",
+    "meta"
+   ],
+   "mensaje": "Merge pull request #7368 from nurbek91/Docusaurus"
+  },
+  {
+   "fecha": "2023-02-09",
+   "commit": "8dcd32ff5",
+   "tecnologia": "Astro",
+   "tipo": "cambia",
+   "campos": [
+    "dom"
+   ],
+   "mensaje": "Merge pull request #7414 from nurbek91/astro_2"
+  },
+  {
+   "fecha": "2023-02-27",
+   "commit": "4f5607680",
+   "tecnologia": "Next.js",
+   "tipo": "cambia",
+   "campos": [
+    "cats"
+   ],
+   "mensaje": "Update Next.js categories"
+  },
+  {
+   "fecha": "2023-03-15",
+   "commit": "1bc3b9f3c",
+   "tecnologia": "Inertia.js",
+   "tipo": "cambia",
+   "campos": [
+    "headers"
+   ],
+   "mensaje": "Merge pull request #7524 from osbre/feat/improve-inertia-js-detection"
+  },
+  {
+   "fecha": "2023-04-10",
+   "commit": "c58e3292a",
+   "tecnologia": "Stencil",
+   "tipo": "cambia",
+   "campos": [
+    "js"
+   ],
+   "mensaje": "Merge pull request #7605 from nurbek91/stenciljs"
+  },
+  {
+   "fecha": "2023-06-13",
+   "commit": "8e519e292",
+   "tecnologia": "Astro",
+   "tipo": "cambia",
+   "campos": [
+    "dom"
+   ],
+   "mensaje": "Merge pull request #7722 from nurbek91/astro3"
+  },
+  {
+   "fecha": "2023-07-27",
+   "commit": "96039fc67",
+   "tecnologia": "SolidStart",
+   "tipo": "cambia",
+   "campos": [
+    "js"
+   ],
+   "mensaje": "Merge pull request #7818 from ysm-dev/solidstart-false-detection"
+  },
+  {
+   "fecha": "2023-07-27",
+   "commit": "dde7bf9db",
+   "tecnologia": "SvelteKit",
+   "tipo": "cambia",
+   "campos": [
+    "dom",
+    "meta"
+   ],
+   "mensaje": "Update SvelteKit detection"
+  },
+  {
+   "fecha": "2023-08-09",
+   "commit": "e36e940a5",
+   "tecnologia": "Nuxt.js",
+   "tipo": "cambia",
+   "campos": [
+    "js"
+   ],
+   "mensaje": "Merge pull request #7906 from Atinux/master"
+  },
+  {
+   "fecha": "2023-08-18",
+   "commit": "13c98aa04",
+   "tecnologia": "SvelteKit",
+   "tipo": "cambia",
+   "campos": [
+    "dom"
+   ],
+   "mensaje": "Merge pull request #7925 from ceopeo/sveltekit"
+  },
+  {
+   "fecha": "2023-12-12",
+   "commit": "05e1e311b",
+   "tecnologia": "Next.js App Router",
+   "tipo": "agregada",
+   "campos": [
+    "cats",
+    "implies",
+    "js",
+    "requires"
+   ],
+   "mensaje": "Merge pull request #6 from HTTPArchive/measure-nextjs-app-router-separately"
+  },
+  {
+   "fecha": "2024-01-08",
+   "commit": "db8cf0c3e",
+   "tecnologia": "Next.js",
+   "tipo": "cambia",
+   "campos": [
+    "cats"
+   ],
+   "mensaje": "Merge pull request #7 from HTTPArchive/more-next-detections"
+  },
+  {
+   "fecha": "2024-01-08",
+   "commit": "db8cf0c3e",
+   "tecnologia": "Next.js App Router",
+   "tipo": "cambia",
+   "campos": [
+    "cats"
+   ],
+   "mensaje": "Merge pull request #7 from HTTPArchive/more-next-detections"
+  },
+  {
+   "fecha": "2024-01-08",
+   "commit": "db8cf0c3e",
+   "tecnologia": "Next.js Page Router SSG",
+   "tipo": "agregada",
+   "campos": [
+    "cats",
+    "implies",
+    "js",
+    "requires"
+   ],
+   "mensaje": "Merge pull request #7 from HTTPArchive/more-next-detections"
+  },
+  {
+   "fecha": "2024-01-08",
+   "commit": "db8cf0c3e",
+   "tecnologia": "Next.js Page Router SSR",
+   "tipo": "agregada",
+   "campos": [
+    "cats",
+    "implies",
+    "js",
+    "requires"
+   ],
+   "mensaje": "Merge pull request #7 from HTTPArchive/more-next-detections"
+  },
+  {
+   "fecha": "2024-02-02",
+   "commit": "5e8d4898f",
+   "tecnologia": "Svelte",
+   "tipo": "cambia",
+   "campos": [
+    "js"
+   ],
+   "mensaje": "Merge pull request #14 from kara/svelte"
+  },
+  {
+   "fecha": "2024-04-01",
+   "commit": "407575261",
+   "tecnologia": "Hydrogen",
+   "tipo": "cambia",
+   "campos": [
+    "headers"
+   ],
+   "mensaje": "Merge pull request #20 from rockeynebhwani/main"
+  },
+  {
+   "fecha": "2024-08-28",
+   "commit": "dc1fae63e",
+   "tecnologia": "Hydrogen",
+   "tipo": "cambia",
+   "campos": [
+    "headers"
+   ],
+   "mensaje": "Merge pull request #62 from krzksz/hydrogen-detection"
+  },
+  {
+   "fecha": "2024-08-29",
+   "commit": "5f612fe74",
+   "tecnologia": "Hydrogen",
+   "tipo": "cambia",
+   "campos": [
+    "headers"
+   ],
+   "mensaje": "Merge pull request #63 from krzksz/hydrogen-detection"
+  },
+  {
+   "fecha": "2024-10-15",
+   "commit": "f7d05085d",
+   "tecnologia": "React Router",
+   "tipo": "cambia",
+   "campos": [
+    "js",
+    "scriptSrc"
+   ],
+   "mensaje": "Merge pull request #69 from brookslybrand/react-router-detection"
+  },
+  {
+   "fecha": "2024-10-15",
+   "commit": "f7d05085d",
+   "tecnologia": "Remix",
+   "tipo": "cambia",
+   "campos": [
+    "implies"
+   ],
+   "mensaje": "Merge pull request #69 from brookslybrand/react-router-detection"
+  },
+  {
+   "fecha": "2026-01-05",
+   "commit": "c6e329e26",
+   "tecnologia": "WordPress",
+   "tipo": "cambia",
+   "campos": [
+    "html"
+   ],
+   "mensaje": "Merge pull request #231 from HTTPArchive/wordpress-update"
+  },
+  {
+   "fecha": "2026-07-21",
+   "commit": "6b34fb69f",
+   "tecnologia": "TanStack Start",
+   "tipo": "agregada",
+   "campos": [
+    "cats",
+    "js"
+   ],
+   "mensaje": "Add Support for TansStack Start (#329)"
+  },
+  {
+   "fecha": "2026-09-22",
+   "commit": "8d21109d3",
+   "tecnologia": "jQuery",
+   "tipo": "cambia",
+   "campos": [
+    "scriptSrc"
+   ],
+   "mensaje": "Fix jQuery version false positive from plugin URLs (#369)"
+  }
+ ],
+ "remix_enero_a_diciembre_mobile": [
+  {
+   "origin": "https://chatgpt.com",
+   "remix_dic": false,
+   "react_router_ene": "6",
+   "react_router_dic": "7.9.2",
+   "observado_dic": true
+  },
+  {
+   "origin": "https://shop.app",
+   "remix_dic": false,
+   "react_router_ene": "6",
+   "react_router_dic": null,
+   "observado_dic": false
+  },
+  {
+   "origin": "https://www.bol.com",
+   "remix_dic": false,
+   "react_router_ene": "6",
+   "react_router_dic": null,
+   "observado_dic": false
+  },
+  {
+   "origin": "https://www.fortnite.com",
+   "remix_dic": false,
+   "react_router_ene": null,
+   "react_router_dic": "7.9.5",
+   "observado_dic": true
+  },
+  {
+   "origin": "https://www.shopify.com",
+   "remix_dic": false,
+   "react_router_ene": "6",
+   "react_router_dic": "7.6.1",
+   "observado_dic": true
+  },
+  {
+   "origin": "https://maxroll.gg",
+   "remix_dic": true,
+   "react_router_ene": "6",
+   "react_router_dic": "6",
+   "observado_dic": true
+  },
+  {
+   "origin": "https://sporza.be",
+   "remix_dic": true,
+   "react_router_ene": "6",
+   "react_router_dic": "6",
+   "observado_dic": true
+  },
+  {
+   "origin": "https://www.bankbazaar.com",
+   "remix_dic": true,
+   "react_router_ene": "6",
+   "react_router_dic": "6",
+   "observado_dic": true
+  },
+  {
+   "origin": "https://www.cargurus.com",
+   "remix_dic": true,
+   "react_router_ene": "6",
+   "react_router_dic": "6",
+   "observado_dic": true
+  },
+  {
+   "origin": "https://www.churchofjesuschrist.org",
+   "remix_dic": true,
+   "react_router_ene": null,
+   "react_router_dic": null,
+   "observado_dic": true
+  },
+  {
+   "origin": "https://www.debenhams.com",
+   "remix_dic": true,
+   "react_router_ene": null,
+   "react_router_dic": null,
+   "observado_dic": true
+  },
+  {
+   "origin": "https://www.draftkings.com",
+   "remix_dic": true,
+   "react_router_ene": null,
+   "react_router_dic": null,
+   "observado_dic": true
+  },
+  {
+   "origin": "https://www.fashionnova.com",
+   "remix_dic": true,
+   "react_router_ene": "6",
+   "react_router_dic": "6",
+   "observado_dic": true
+  },
+  {
+   "origin": "https://www.lemon8-app.com",
+   "remix_dic": true,
+   "react_router_ene": "6",
+   "react_router_dic": "6",
+   "observado_dic": true
+  },
+  {
+   "origin": "https://www.wattpad.com",
+   "remix_dic": true,
+   "react_router_ene": null,
+   "react_router_dic": "6",
+   "observado_dic": true
+  }
+ ]
+}
