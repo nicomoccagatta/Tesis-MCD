@@ -136,6 +136,23 @@
   .seg-btn button{ background: var(--surface); color: var(--text-secondary); border: 0; padding: 6px 12px; font: 600 13px var(--font-display); cursor: pointer; }
   .seg-btn button.on{ background: var(--accent); color: #0b1222; }
   .contador{ font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-left: auto; }
+  .multi{ position: relative; }
+  .multi summary{ list-style: none; cursor: pointer; background: var(--surface); color: var(--text-primary); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; font: 13px var(--font-display); user-select: none; }
+  .multi summary::-webkit-details-marker{ display: none; }
+  .multi summary::after{ content: " ▾"; color: var(--text-muted); }
+  .multi[open] summary{ border-color: var(--accent); }
+  .multi-panel{ position: absolute; z-index: 30; top: calc(100% + 6px); left: 0; width: 300px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 8px; box-shadow: 0 14px 30px rgba(0,0,0,.55); }
+  .multi-panel input{ width: 100%; margin-bottom: 6px; background: var(--surface); color: var(--text-primary); border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font: 13px var(--font-display); }
+  .multi-lista{ max-height: 340px; overflow-y: auto; }
+  .multi-lista label{ display: grid; grid-template-columns: 16px 10px 1fr auto; align-items: center; gap: 8px; padding: 4px 6px; border-radius: 5px; cursor: pointer; color: var(--text-secondary); }
+  .multi-lista label:hover{ background: var(--surface); color: var(--text-primary); }
+  .multi-lista input{ margin: 0; accent-color: var(--accent); }
+  .multi-lista .sw{ width: 10px; height: 10px; border-radius: 2px; }
+  .multi-lista .cnt{ font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); }
+  .chips{ display: inline-flex; flex-wrap: wrap; gap: 6px; }
+  .chip{ display: inline-flex; align-items: center; gap: 6px; background: var(--surface); border: 1px solid var(--accent); color: var(--text-primary); border-radius: 999px; padding: 2px 4px 2px 10px; font-size: 12.5px; }
+  .chip button{ background: none; border: 0; color: var(--text-muted); cursor: pointer; font-size: 14px; line-height: 1; padding: 0 4px; }
+  .chip button:hover{ color: var(--text-primary); }
 
   .grilla-wrap{ overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
   .grilla{ --z: 1; font-size: calc(11px * var(--z)); display: grid; grid-template-columns: 17em repeat(12, 10.6em); gap: .45em; padding: .8em; width: max-content; }
@@ -277,14 +294,21 @@
       <div class="controles">
         <div class="seg-btn" id="c-cliente"><button data-v="mobile" class="on">Móvil</button><button data-v="desktop">Escritorio</button></div>
         <label>Buscar <input type="search" id="c-buscar" placeholder="dominio"></label>
-        <label>Tecnología <select id="c-tec"></select></label>
+        <details class="multi" id="c-tec">
+          <summary>Tecnologías presentes <span id="c-tec-n"></span></summary>
+          <div class="multi-panel">
+            <input type="search" id="c-tec-buscar" placeholder="filtrar la lista">
+            <div class="multi-lista" id="c-tec-lista"></div>
+          </div>
+        </details>
+        <span class="chips" id="c-tec-chips"></span>
         <label>Tipo <select id="c-tipo"><option value="todos">Todos los cambios</option><option value="tecnologia">Entra o sale una tecnología</option><option value="version">Solo cambio de versión</option></select></label>
         <label>Orden <select id="c-orden"><option value="rank">Rank de enero</option><option value="cambios">Más cambios</option><option value="alfa">Alfabético</option></select></label>
         <label>Zoom <input type="range" id="c-zoom" min="0.6" max="1.8" step="0.1" value="1"></label>
         <span class="contador" id="c-contador"></span>
       </div>
       <div class="grilla-wrap" id="wrap-cambios"><div class="grilla" id="grilla"></div></div>
-      <p class="nota">Clic en un dominio para verlo ampliado con la evolución de cada métrica. Las métricas solo existen en los meses con tecnologías registradas: la extracción trae CrUX únicamente para esos sitio-mes. Familia = framework al que lleva la relación <code>implies</code> de Wappalyzer (ej. Remix → React); Angular agrupa Angular y AngularJS. La celda toma el color de su framework principal y la banda superior muestra todas las familias presentes.</p>
+      <p class="nota">"Tecnologías presentes" deja los sitios que tienen todas las tecnologías elegidas en algún mes de 2025, no necesariamente el mismo (ej. WordPress + Next.js incluye a los que pasaron de uno al otro y a los que tuvieron ambos a la vez); el número de cada opción es la cantidad de sitios con cambios que la tienen. Clic en un dominio para verlo ampliado con la evolución de cada métrica. Las métricas solo existen en los meses con tecnologías registradas: la extracción trae CrUX únicamente para esos sitio-mes. Familia = framework al que lleva la relación <code>implies</code> de Wappalyzer (ej. Remix → React); Angular agrupa Angular y AngularJS. La celda toma el color de su framework principal y la banda superior muestra todas las familias presentes.</p>
       <h3>Qué tecnologías entran y salen</h3>
       <div class="tabla-wrap" id="t-entran-salen"></div>
 
@@ -892,6 +916,31 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
   const etiqueta = ([t, v]) => v == null ? t : `${t} ${v}`;
 
   let cliente = "mobile", filtrados = [], dibujados = 0;
+  const seleccion = new Set();
+  // Tecnologías que aparecen en algún mes de cada sitio (se calcula una vez por cliente).
+  const cachePresentes = {};
+  function tecnologiasPresentes(D) {
+    if (!cachePresentes[cliente]) {
+      cachePresentes[cliente] = new Map(D.sitios.map(s => [s, new Set(s.meses.flatMap(m => m ? D.estados[m[0]].map(([t]) => t) : []))]));
+    }
+    return cachePresentes[cliente];
+  }
+  function dibujarOpciones() {
+    const D = C[cliente], presentes = tecnologiasPresentes(D);
+    const cuenta = {};
+    presentes.forEach(set => set.forEach(t => { cuenta[t] = (cuenta[t] || 0) + 1; }));
+    const q = document.getElementById("c-tec-buscar").value.trim().toLowerCase();
+    const opciones = Object.keys(cuenta).filter(t => !q || t.toLowerCase().includes(q)).sort((a, b) =>
+      C.mobile.familias.indexOf(familiaDe(a)) - C.mobile.familias.indexOf(familiaDe(b)) || cuenta[b] - cuenta[a]);
+    document.getElementById("c-tec-lista").innerHTML = opciones.map(t =>
+      `<label><input type="checkbox" value="${esc(t)}"${seleccion.has(t) ? " checked" : ""}><span class="sw" style="background:${colorFam(familiaDe(t))}"></span><span>${esc(t)}</span><span class="cnt">${num(cuenta[t])}</span></label>`).join("") ||
+      `<div class="nota" style="padding:6px">Ninguna tecnología coincide.</div>`;
+  }
+  function dibujarChips() {
+    document.getElementById("c-tec-n").textContent = seleccion.size ? `(${seleccion.size})` : "";
+    document.getElementById("c-tec-chips").innerHTML = [...seleccion].map(t =>
+      `<span class="chip"><span class="sw" style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${colorFam(familiaDe(t))}"></span>${esc(t)}<button data-t="${esc(t)}" aria-label="Quitar ${esc(t)}">×</button></span>`).join("");
+  }
   const grilla = document.getElementById("grilla");
   const LOTE = 40;
 
@@ -937,7 +986,7 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
   function aplicar() {
     const D = C[cliente];
     const q = document.getElementById("c-buscar").value.trim().toLowerCase();
-    const tec = document.getElementById("c-tec").value;
+    const presentes = tecnologiasPresentes(D);
     const tipo = document.getElementById("c-tipo").value;
     const orden = document.getElementById("c-orden").value;
     filtrados = D.sitios.map((s, idx) => ({ s, idx })).filter(({ s }) => {
@@ -945,7 +994,7 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
       const deTecnologia = s.cambios.some(c => c.entran.length || c.salen.length);
       if (tipo === "tecnologia" && !deTecnologia) return false;
       if (tipo === "version" && deTecnologia) return false;
-      if (tec && !s.cambios.some(c => c.entran.includes(tec) || c.salen.includes(tec) || c.version.includes(tec))) return false;
+      if (![...seleccion].every(t => presentes.get(s).has(t))) return false;
       return true;
     });
     const dom = s => s.origin.replace(/^https?:\/\/(www\.)?/, "");
@@ -994,9 +1043,7 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
       { t: "Sitios donde sale", n: 1, f: ([, c]) => num(c.sale) },
       { t: "Sitios con cambio de versión", n: 1, f: ([, c]) => num(c.version) },
     ], filas);
-    const sel = document.getElementById("c-tec"), previo = sel.value;
-    sel.innerHTML = `<option value="">Todas</option>` + filas.map(([t]) => `<option value="${esc(t)}">${esc(t)}</option>`).join("");
-    sel.value = filas.some(([t]) => t === previo) ? previo : "";
+    dibujarOpciones();
   }
 
   document.querySelectorAll("#c-cliente button").forEach(b => b.addEventListener("click", () => {
@@ -1004,7 +1051,20 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
     document.querySelectorAll("#c-cliente button").forEach(x => x.classList.toggle("on", x === b));
     resumen(); aplicar();
   }));
-  ["c-buscar", "c-tec", "c-tipo", "c-orden"].forEach(id => document.getElementById(id).addEventListener("input", aplicar));
+  ["c-buscar", "c-tipo", "c-orden"].forEach(id => document.getElementById(id).addEventListener("input", aplicar));
+  document.getElementById("c-tec-buscar").addEventListener("input", dibujarOpciones);
+  document.getElementById("c-tec-lista").addEventListener("change", e => {
+    const t = e.target.value;
+    e.target.checked ? seleccion.add(t) : seleccion.delete(t);
+    dibujarChips(); aplicar();
+  });
+  document.getElementById("c-tec-chips").addEventListener("click", e => {
+    const b = e.target.closest("button[data-t]");
+    if (!b) return;
+    seleccion.delete(b.dataset.t);
+    dibujarOpciones(); dibujarChips(); aplicar();
+  });
+  document.addEventListener("click", e => { const m = document.getElementById("c-tec"); if (m.open && !m.contains(e.target)) m.open = false; });
   document.getElementById("c-zoom").addEventListener("input", e => grilla.style.setProperty("--z", e.target.value));
 
   grilla.addEventListener("mousemove", e => {
