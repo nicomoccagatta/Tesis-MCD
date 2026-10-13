@@ -8,7 +8,7 @@ Repo visible para el director y el co-director. Todo el contenido debe leerse co
 
 ## Presentación
 
-La presentación de cátedra vive en `Presentaciones/02-presentacion_plan_de_trabajo.html` (+ `.pdf`). Es un deck HTML/CSS propio (estética dark data-science, Manrope + JetBrains Mono, acento cian) — **no es Beamer/LaTeX**, no reintroducir ese enfoque salvo pedido explícito. Para actualizarla: editar el `.html` directamente y regenerar el PDF con Chrome headless:
+Las presentaciones de `Presentaciones/` son el registro de lo expuesto hasta el 02/10/2026 (los avances nuevos van en la bitácora, ver abajo). La presentación de cátedra vive en `Presentaciones/02-presentacion_plan_de_trabajo.html` (+ `.pdf`). Es un deck HTML/CSS propio (estética dark data-science, Manrope + JetBrains Mono, acento cian) — **no es Beamer/LaTeX**, no reintroducir ese enfoque salvo pedido explícito. Para actualizarla: editar el `.html` directamente y regenerar el PDF con Chrome headless:
 
 ```
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu \
@@ -17,6 +17,14 @@ La presentación de cátedra vive en `Presentaciones/02-presentacion_plan_de_tra
 ```
 
 (El `.html` trae su propio `@media print { @page{ size: 13.333in 7.5in; } }` para que cada slide salga como una página completa.)
+
+## Bitácora de tesis
+
+Desde el 13/10/2026 los avances se entregan en `bitacora/bitacora.html`, no en presentaciones nuevas. Es una página HTML autocontenida (misma estética dark data-science que los decks) con una sección por tema y una línea de tiempo por fecha. Para actualizarla:
+
+- El texto se edita a mano en el HTML. Cada avance agrega una entrada con su fecha en "Bitácora por fecha" y actualiza la fecha de "Actualizado" de las secciones que toca (en la sección y en el índice lateral). Las entradas de fechas anteriores registran lo hecho en esa fecha: una corrección posterior va en una entrada nueva.
+- Las cifras de tablas y gráficos no se tipean: se regeneran las salidas de `analisis/` que cambien y después `analisis/.venv/bin/python bitacora/armar_bitacora.py`, que reemplaza la línea `const DATOS = ...;` del HTML.
+- Verificar el resultado abriéndolo en Chrome headless (captura de pantalla y consola sin errores) antes de entregarlo.
 
 ## Documento escrito (propuesta formal)
 
