@@ -22,7 +22,7 @@ Las presentaciones de `Presentaciones/` son el registro de lo expuesto hasta el 
 
 Desde el 13/10/2026 los avances se entregan en `bitacora/bitacora.html`, no en presentaciones nuevas. Es una página HTML autocontenida (misma estética dark data-science que los decks) con una sección por tema y una línea de tiempo por fecha. Para actualizarla:
 
-- El texto se edita a mano en el HTML. Cada avance agrega una entrada con su fecha en "Bitácora por fecha" y actualiza la fecha de "Actualizado" de las secciones que toca (en la sección y en el índice lateral). Las entradas de fechas anteriores registran lo hecho en esa fecha: una corrección posterior va en una entrada nueva.
+- El texto se edita a mano en el HTML. Cada avance agrega una entrada con su fecha en "Bitácora por fecha" y cambia el atributo `data-actualizado` de cada `<section>` que toca: de ese atributo salen el índice lateral (agrupado por fecha, la más reciente arriba), el "Actualizado …" de la sección y el "Estado al …". Las entradas de fechas anteriores registran lo hecho en esa fecha: una corrección posterior va en una entrada nueva.
 - Las cifras de tablas y gráficos no se tipean: se regeneran las salidas de `analisis/` que cambien y después `analisis/.venv/bin/python bitacora/armar_bitacora.py`, que reemplaza la línea `const DATOS = ...;` del HTML.
 - Verificar el resultado abriéndolo en Chrome headless (captura de pantalla y consola sin errores) antes de entregarlo.
 

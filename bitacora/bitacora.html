@@ -47,8 +47,9 @@
   nav.indice{ position: sticky; top: 0; height: 100vh; overflow-y: auto; border-right: 1px solid var(--border); padding: 22px 16px; background: var(--bg); }
   nav.indice .marca{ font-weight: 800; font-size: 15px; margin-bottom: 2px; }
   nav.indice .fecha-estado{ font-size: 12px; color: var(--text-muted); margin-bottom: 18px; }
-  nav.indice a{ display: flex; justify-content: space-between; gap: 8px; padding: 6px 10px; border-radius: 6px; color: var(--text-secondary); font-size: 13.5px; font-weight: 600; text-decoration: none; }
-  nav.indice a .act{ font-family: var(--font-mono); font-size: 10.5px; color: var(--text-muted); font-weight: 400; white-space: nowrap; }
+  nav.indice a{ display: block; padding: 5px 10px; border-radius: 6px; color: var(--text-secondary); font-size: 13.5px; font-weight: 600; text-decoration: none; }
+  nav.indice .grupo{ font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); margin: 16px 10px 4px; padding-top: 10px; border-top: 1px solid var(--border); }
+  nav.indice .grupo ~ a{ padding-left: 18px; }
   nav.indice a:hover{ background: var(--surface); color: var(--text-primary); }
   nav.indice a.activo{ background: var(--surface); color: var(--text-primary); box-shadow: inset 2px 0 0 var(--accent); }
   main{ padding: 28px 40px 80px; min-width: 0; }
@@ -168,7 +169,8 @@
     .layout{ grid-template-columns: 1fr; }
     nav.indice{ position: sticky; top: 0; height: auto; z-index: 20; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; gap: 4px; overflow-x: auto; white-space: nowrap; }
     nav.indice .marca, nav.indice .fecha-estado{ display: none; }
-    nav.indice a .act{ display: none; }
+    nav.indice .grupo{ display: none; }
+    nav.indice .grupo ~ a{ padding-left: 10px; }
     main{ padding: 20px 16px 60px; }
     .controles{ position: static; }
     header.portada h1{ font-size: 24px; }
@@ -179,21 +181,8 @@
 <div class="layout">
   <nav class="indice" aria-label="Secciones">
     <div class="marca">Bitácora de tesis</div>
-    <div class="fecha-estado">Estado al 13/10/2026</div>
-    <a href="#estado">Estado actual <span class="act">13/10</span></a>
-    <a href="#bitacora">Bitácora por fecha <span class="act">13/10</span></a>
-    <a href="#tema">Tema e hipótesis <span class="act">04/09</span></a>
-    <a href="#literatura">Estado de la cuestión <span class="act">22/09</span></a>
-    <a href="#datos">Datos y viabilidad <span class="act">02/10</span></a>
-    <a href="#exploratorio">DiD exploratorio <span class="act">04/09</span></a>
-    <a href="#panel">Panel piloto <span class="act">02/10</span></a>
-    <a href="#cambios">Cambios por sitio <span class="act">13/10</span></a>
-    <a href="#grafo">Grafo sitio ↔ librería <span class="act">02/10</span></a>
-    <a href="#wappalyzer">Detección (Wappalyzer) <span class="act">13/10</span></a>
-    <a href="#metodologia">Metodología <span class="act">04/09</span></a>
-    <a href="#extracciones">Extracciones BigQuery <span class="act">02/10</span></a>
-    <a href="#entregas">Entregas <span class="act">02/10</span></a>
-    <a href="#referencias">Referencias <span class="act">22/09</span></a>
+    <div class="fecha-estado" id="estado-al"></div>
+    <div id="indice-links"></div>
   </nav>
 
   <main>
@@ -210,7 +199,7 @@
     </header>
 
     <!-- ============================== ESTADO ACTUAL ============================== -->
-    <section id="estado">
+    <section id="estado" data-titulo="Estado actual" data-fijo>
       <h2>Estado actual</h2>
       <div class="sec-meta">Actualizado 13/10/2026 · semanas 5–10 de 48 (construcción del panel)</div>
       <div class="tiles">
@@ -257,7 +246,7 @@
     </section>
 
     <!-- ============================== BITÁCORA ============================== -->
-    <section id="bitacora">
+    <section id="bitacora" data-titulo="Bitácora por fecha" data-fijo>
       <h2>Bitácora por fecha</h2>
       <div class="sec-meta">Una entrada por fecha de trabajo, con lo que se hizo, lo que se decidió y dónde quedó registrado</div>
       <div class="timeline">
@@ -353,9 +342,9 @@
     </section>
 
     <!-- ============================== TEMA ============================== -->
-    <section id="tema">
+    <section id="tema" data-titulo="Tema e hipótesis" data-actualizado="2026-09-04">
       <h2>Tema, preguntas, hipótesis y objetivos</h2>
-      <div class="sec-meta">Actualizado 04/09/2026 · fuente: <code>TP Latex/Project/main.tex</code></div>
+      <div class="sec-meta">fuente: <code>TP Latex/Project/main.tex</code></div>
       <p>Core Web Vitals son las tres métricas con las que Google estandariza la velocidad percibida de un sitio: <b>LCP</b> (cuánto tarda en aparecer el elemento visual más grande), <b>INP</b> (qué tan rápido responde la página a una interacción) y <b>CLS</b> (cuánto se mueve el contenido de forma inesperada). Se recolectan de navegadores Chrome reales y se publican mensualmente en CrUX. HTTP Archive rastrea mensualmente millones de sitios y detecta con Wappalyzer qué tecnologías usa cada uno.</p>
       <p><b>Problema general.</b> Estimar el efecto causal de las migraciones de tecnología frontend, detectadas en el panel mensual de HTTP Archive, sobre las métricas de experiencia de usuario real publicadas en CrUX, tratando cada migración como un cuasi-experimento y aplicando un diseño de diferencias en diferencias robusto a tratamiento escalonado, con un grupo de control de sitios comparables que no migraron, utilizando exclusivamente datos públicos.</p>
       <h3>Preguntas de investigación</h3>
@@ -384,9 +373,9 @@
     </section>
 
     <!-- ============================== LITERATURA ============================== -->
-    <section id="literatura">
+    <section id="literatura" data-titulo="Estado de la cuestión" data-actualizado="2026-09-22">
       <h2>Estado de la cuestión</h2>
-      <div class="sec-meta">Actualizado 22/09/2026 · todas las citas verificadas contra el abstract o la metadata de la fuente</div>
+      <div class="sec-meta">todas las citas verificadas contra el abstract o la metadata de la fuente</div>
       <div class="tabla-wrap"><table class="t">
         <thead><tr><th>Línea de evidencia</th><th>Trabajos</th><th>Por qué no responde la pregunta</th></tr></thead>
         <tbody>
@@ -410,9 +399,9 @@
     </section>
 
     <!-- ============================== DATOS ============================== -->
-    <section id="datos">
+    <section id="datos" data-titulo="Datos y viabilidad" data-actualizado="2026-10-02">
       <h2>Datos y viabilidad</h2>
-      <div class="sec-meta">Actualizado 02/10/2026 · cifras leídas de los <code>.parquet</code> de <code>bigquery/</code></div>
+      <div class="sec-meta">cifras leídas de los <code>.parquet</code> de <code>bigquery/</code></div>
       <h3>Fuentes</h3>
       <ul>
         <li><code>httparchive.crawl.pages</code>: tecnología detectada por Wappalyzer por página, mes y cliente (móvil o escritorio). Particionada por <code>date</code>, clusterizada por <code>client</code>, <code>is_root_page</code>, <code>rank</code> y <code>page</code>.</li>
@@ -474,9 +463,9 @@
     </section>
 
     <!-- ============================== EXPLORATORIO ============================== -->
-    <section id="exploratorio">
+    <section id="exploratorio" data-titulo="DiD exploratorio" data-actualizado="2026-09-04">
       <h2>DiD exploratorio de dos períodos</h2>
-      <div class="sec-meta">Actualizado 04/09/2026 · junio 2025 vs junio 2026 · <code>cross_source/001</code></div>
+      <div class="sec-meta">junio 2025 vs junio 2026 · <code>cross_source/001</code></div>
       <p>Para cada par se compara la variación del p75 entre junio de 2025 y junio de 2026 de los orígenes que migraron contra la de los que siguieron en la tecnología de origen (páginas raíz del crawl móvil presentes en ambos meses). Un valor negativo indica mejora del grupo migrado respecto de su control.</p>
       <div class="tabla-wrap" id="t-did"></div>
       <p><b>No confirma H1.</b> En jQuery→React el grupo migrado queda peor que su control en LCP e INP. En los tres pares los tratados arrancan 200–300 ms peor que los controles, así que parte de lo medido es reversión a la media: es el argumento para emparejar el control y usar Callaway y Sant'Anna. Dos cortes anuales no distinguen el momento del tratamiento ni exigen persistencia del cambio.</p>
@@ -484,9 +473,9 @@
     </section>
 
     <!-- ============================== PANEL ============================== -->
-    <section id="panel">
+    <section id="panel" data-titulo="Panel piloto" data-actualizado="2026-10-02">
       <h2>Panel piloto con cohorte fija</h2>
-      <div class="sec-meta">Actualizado 02/10/2026 · <code>cross_source/007</code> (móvil) y <code>008</code> (escritorio) · <code>analisis/panel_piloto_scd2.py</code></div>
+      <div class="sec-meta"><code>cross_source/007</code> (móvil) y <code>008</code> (escritorio) · <code>analisis/panel_piloto_scd2.py</code></div>
       <p>Root pages con rank ≤ 10.000 en enero 2025 (rank tomado por HTTP Archive de la lista de CrUX de dic-2024, anterior a la ventana), seguidas los 12 meses de 2025 sin volver a filtrar por rank. Una fila por sitio × mes × tecnología detectada, con versión y p75 de LCP/INP/CLS de <code>device_summary</code> del mismo dispositivo. Reemplaza al filtro de rank mes a mes de <code>cross_source/003</code>/<code>004</code>.</p>
       <div class="tabla-wrap" id="t-panel"></div>
       <p class="nota">Relleno de un sitio-mes sin datos: con el otro cliente (las 6 tecnologías del panel coinciden entre móvil y escritorio en 98,2–100% de los sitio-mes con datos en ambos) o, si el hueco es de un mes, con el estado idéntico del mes anterior y el siguiente. La extracción no distingue una visita con la lista de Wappalyzer vacía de un mes sin visita: en ambos casos es dato faltante.</p>
@@ -508,9 +497,9 @@
     </section>
 
     <!-- ============================== CAMBIOS POR SITIO ============================== -->
-    <section id="cambios">
+    <section id="cambios" data-titulo="Cambios por sitio" data-actualizado="2026-10-13">
       <h2>Cambios de tecnología frontend sitio por sitio</h2>
-      <div class="sec-meta">Actualizado 13/10/2026 · cohorte fija top 10k, ene–dic 2025 · <code>analisis/cambios_frontend.py</code></div>
+      <div class="sec-meta">cohorte fija top 10k, ene–dic 2025 · <code>analisis/cambios_frontend.py</code></div>
       <p>Todos los sitios de la cohorte con al menos un cambio en sus tecnologías frontend entre dos meses observados consecutivos, <b>sin regla de persistencia</b>. Cuenta como cambio que entre o salga una tecnología de la lista o que una tecnología presente en ambos meses cambie de versión mayor (cuando la versión se detecta en los dos meses). Cada celda es un mes: arriba las tecnologías detectadas, abajo el p75 de LCP (segundos), CLS e INP (milisegundos) del mismo dispositivo.</p>
       <div class="tiles" id="tiles-cambios"></div>
       <div class="leyenda" id="leyenda-familias"></div>
@@ -536,9 +525,9 @@
     </section>
 
     <!-- ============================== GRAFO ============================== -->
-    <section id="grafo">
+    <section id="grafo" data-titulo="Grafo sitio ↔ librería" data-actualizado="2026-10-02">
       <h2>Grafo bipartito sitio ↔ librería</h2>
-      <div class="sec-meta">Actualizado 02/10/2026 · cohorte fija, dic-2025 · <code>analisis/grafo_bipartito.py</code> · explorador: <a href="../analisis/visualizaciones/explorador_grafo.html">explorador_grafo.html</a></div>
+      <div class="sec-meta">cohorte fija, dic-2025 · <code>analisis/grafo_bipartito.py</code> · explorador: <a href="../analisis/visualizaciones/explorador_grafo.html">explorador_grafo.html</a></div>
       <p>La capa estudiada son las librerías detectables en el HTML (Wappalyzer): varían entre sitios con el mismo framework. Las dependencias internas del framework (npm <code>package.json</code>) son fijas para cada versión publicada y quedan como capa de interpretación. Framework@versión es un nodo más del lado de tecnologías.</p>
       <div class="tabla-wrap" id="t-grafo"></div>
       <h3>Grupos por framework principal (móvil)</h3>
@@ -554,9 +543,9 @@
     </section>
 
     <!-- ============================== WAPPALYZER ============================== -->
-    <section id="wappalyzer">
+    <section id="wappalyzer" data-titulo="Detección (Wappalyzer)" data-actualizado="2026-10-13">
       <h2>Detección de tecnologías: auditoría de Wappalyzer</h2>
-      <div class="sec-meta">Actualizado 13/10/2026 · fork <a href="https://github.com/HTTPArchive/wappalyzer">HTTPArchive/wappalyzer</a> en <span class="mono" id="w-commit"></span> · <code>analisis/auditoria_wappalyzer.py</code></div>
+      <div class="sec-meta">fork <a href="https://github.com/HTTPArchive/wappalyzer">HTTPArchive/wappalyzer</a> en <span class="mono" id="w-commit"></span> · <code>analisis/auditoria_wappalyzer.py</code></div>
       <p>Wappalyzer pasó a ser de código cerrado; HTTP Archive mantiene un fork de la última versión abierta y lo usa para el crawl mensual (README del fork). Cada tecnología se detecta por reglas sobre variables globales de JavaScript (<code>js</code>), elementos del DOM (<code>dom</code>), URLs de scripts (<code>scriptSrc</code>), HTML, meta tags, cabeceras o cookies. Según el README, las reglas <code>xhr</code>, <code>scripts</code>, <code>robots</code> y <code>probe</code> no se usan en HTTP Archive.</p>
 
       <h3>Frameworks del relevamiento State of JS 2025 en el catálogo</h3>
@@ -577,9 +566,9 @@
     </section>
 
     <!-- ============================== METODOLOGÍA ============================== -->
-    <section id="metodologia">
+    <section id="metodologia" data-titulo="Metodología" data-actualizado="2026-09-04">
       <h2>Metodología</h2>
-      <div class="sec-meta">Actualizado 04/09/2026 · detalle en <code>TP Latex/Project/main.tex</code>, sección Solución propuesta</div>
+      <div class="sec-meta">detalle en <code>TP Latex/Project/main.tex</code>, sección Solución propuesta</div>
       <ol type="a">
         <li><b>Construcción del panel.</b> Tecnología por origen y mes desde HTTP Archive, cruzada con CrUX del mismo dispositivo; un panel por cliente. Cohorte point-in-time. La tecnología se versiona como dimensión de cambio lento (SCD tipo 2): el inicio de vigencia del valor nuevo es la fecha del evento.</li>
         <li><b>Detección y validación de eventos.</b> Una migración es un origen que deja la tecnología A y pasa a la B, sosteniendo el cambio al menos tres meses consecutivos. Validación manual de una muestra contra Wayback Machine.</li>
@@ -592,7 +581,7 @@
     </section>
 
     <!-- ============================== EXTRACCIONES ============================== -->
-    <section id="extracciones">
+    <section id="extracciones" data-titulo="Extracciones BigQuery" data-actualizado="2026-10-02">
       <h2>Registro de extracciones de BigQuery</h2>
       <div class="sec-meta">Generado desde el encabezado de cada <code>.sql</code> y <code>bigquery/usage-log.csv</code></div>
       <p>Cada extracción es un par <code>NNN-nombre.sql</code> + <code>.parquet</code> en una subcarpeta por tabla consultada (<code>cross_source/</code> cuando cruza fuentes), corrida con <code>bigquery/run_query.sh</code>. GB facturados por job; las filas anteriores al 01/10/2026 se completaron desde la metadata de cada job.</p>
@@ -601,7 +590,7 @@
     </section>
 
     <!-- ============================== ENTREGAS ============================== -->
-    <section id="entregas">
+    <section id="entregas" data-titulo="Entregas" data-actualizado="2026-10-13">
       <h2>Entregas y presentaciones</h2>
       <div class="sec-meta">Las presentaciones son el registro de lo expuesto en cada fecha y no se actualizan</div>
       <div class="tabla-wrap"><table class="t">
@@ -618,7 +607,7 @@
     </section>
 
     <!-- ============================== REFERENCIAS ============================== -->
-    <section id="referencias">
+    <section id="referencias" data-titulo="Referencias" data-actualizado="2026-09-22">
       <h2>Referencias</h2>
       <div class="sec-meta">Fuente: <code>TP Latex/Project/bibliografia.bib</code></div>
       <ul>
@@ -1113,8 +1102,22 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
   resumen(); aplicar();
 })();
 
-// ---------- Índice: sección activa ----------
+// ---------- Índice: fijas arriba, el resto agrupado por fecha de última actualización ----------
 (function indice() {
+  const fecha = iso => iso.split("-").reverse().join("/");
+  const secciones = [...document.querySelectorAll("main section")];
+  const fijas = secciones.filter(s => s.hasAttribute("data-fijo"));
+  const fechadas = secciones.filter(s => s.dataset.actualizado);
+  const fechas = [...new Set(fechadas.map(s => s.dataset.actualizado))].sort().reverse();
+  const link = s => `<a href="#${s.id}">${esc(s.dataset.titulo)}</a>`;
+  document.getElementById("indice-links").innerHTML = fijas.map(link).join("") + fechas.map(f =>
+    `<div class="grupo">${fecha(f)}</div>` + fechadas.filter(s => s.dataset.actualizado === f).map(link).join("")).join("");
+  document.getElementById("estado-al").textContent = "Estado al " + fecha(fechas[0]);
+  fechadas.forEach(s => s.querySelector(".sec-meta").insertAdjacentText("afterbegin", "Actualizado " + fecha(s.dataset.actualizado) + " · "));
+})();
+
+// ---------- Índice: sección activa ----------
+(function seccionActiva() {
   const links = [...document.querySelectorAll("nav.indice a")];
   const obs = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) links.forEach(l => l.classList.toggle("activo", l.getAttribute("href") === "#" + e.target.id));
