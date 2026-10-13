@@ -1,0 +1,1915 @@
+{
+ "fecha_descarga": "2026-10-13",
+ "muestra": "sample_data.pages_10k sep-2026, móvil",
+ "sitios_por_grupo": 40,
+ "semilla": 20261013,
+ "resumen": {
+  "A_aurora_si_wappalyzer_no": {
+   "sitios": 40,
+   "react_sin_version": 6,
+   "no_encontrado": 15,
+   "error": 6,
+   "react_con_version": 13,
+   "version_exacta": 12,
+   "version_misma_mayor": 1
+  },
+  "B_ambos": {
+   "sitios": 40,
+   "react_con_version": 19,
+   "version_exacta": 16,
+   "error": 10,
+   "no_encontrado": 9,
+   "version_distinta": 2,
+   "version_misma_mayor": 1,
+   "react_sin_version": 2
+  },
+  "C_wappalyzer_si_aurora_no": {
+   "sitios": 40,
+   "no_encontrado": 28,
+   "error": 5,
+   "react_con_version": 5,
+   "react_sin_version": 2
+  }
+ },
+ "sitios": [
+  {
+   "page": "https://www.sudouest.fr/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.8",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_sin_version",
+   "versiones_react_dom": [],
+   "marcas": [
+    "Minified React error"
+   ],
+   "scripts_listados": 18,
+   "scripts_bajados": 18,
+   "url_final": "https://www.sudouest.fr/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.abola.pt/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.3",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 10,
+   "scripts_bajados": 10,
+   "url_final": "https://www.abola.pt/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.hornbach.de/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.8",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 406: Unknown Error",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.thestreet.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.7",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://linkvertise.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.3.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 7,
+   "scripts_bajados": 7,
+   "url_final": "https://linkvertise.com/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.poppen.de/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.4",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 7,
+   "scripts_bajados": 7,
+   "url_final": "https://www.poppen.de/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://faphouse2.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.8",
+   "react_version_wappalyzer": null,
+   "rank": 1000,
+   "estado": "react_sin_version",
+   "versiones_react_dom": [],
+   "marcas": [
+    "Minified React error"
+   ],
+   "scripts_listados": 6,
+   "scripts_bajados": 6,
+   "url_final": "https://faphouse2.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.commonlit.org/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.2.0",
+    "18.3.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 20,
+   "scripts_bajados": 20,
+   "url_final": "https://www.commonlit.org/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://help.x.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "16.8.6",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://blox-fruits.fandom.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.bonprix.de/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.8",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 30,
+   "scripts_bajados": 30,
+   "url_final": "https://www.bonprix.de/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://m.elcolombiano.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 29,
+   "scripts_bajados": 29,
+   "url_final": "https://m.elcolombiano.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.deccanherald.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "16.14.0",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "16.14.0"
+   ],
+   "marcas": [
+    "Minified React error",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 10,
+   "scripts_bajados": 9,
+   "url_final": "https://www.deccanherald.com/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://network.mobile.rakuten.co.jp/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 18,
+   "scripts_bajados": 18,
+   "url_final": "https://network.mobile.rakuten.co.jp/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.allocine.fr/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.3.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 4,
+   "scripts_bajados": 4,
+   "url_final": "https://www.allocine.fr/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.southwest.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.2.0"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 22,
+   "scripts_bajados": 22,
+   "url_final": "https://www.southwest.com/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.tripadvisor.de/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.3",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.2.3"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 6,
+   "scripts_bajados": 6,
+   "url_final": "https://www.tripadvisor.de/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://rutube.ru/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_sin_version",
+   "versiones_react_dom": [],
+   "marcas": [
+    "Minified React error"
+   ],
+   "scripts_listados": 32,
+   "scripts_bajados": 32,
+   "url_final": "https://rutube.ru/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://es.stripchat.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 1000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 406: Not Acceptable",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://particuliers.sg.fr/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 13,
+   "scripts_bajados": 13,
+   "url_final": "https://particuliers.sg.fr/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.britannica.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 7,
+   "scripts_bajados": 7,
+   "url_final": "https://www.britannica.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://th.fhchannel.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.8",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_sin_version",
+   "versiones_react_dom": [],
+   "marcas": [
+    "Minified React error"
+   ],
+   "scripts_listados": 6,
+   "scripts_bajados": 6,
+   "url_final": "https://th.fhchannel.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.hollisterco.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1-next-f1338f8080-20240426",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 0,
+   "scripts_bajados": 0,
+   "url_final": "https://www.hollisterco.com/shop/wd",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.novinky.cz/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 1000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 0,
+   "scripts_bajados": 0,
+   "url_final": "https://www.novinky.cz/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.praktiker.gr/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 0,
+   "scripts_bajados": 0,
+   "url_final": "https://www.praktiker.gr/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.infoseek.co.jp/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.2.0"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 34,
+   "scripts_bajados": 34,
+   "url_final": "https://www.infoseek.co.jp/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.tf1info.fr/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.7",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.2.7"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 39,
+   "scripts_bajados": 39,
+   "url_final": "https://www.tf1info.fr/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.thetimes.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "16.9.0",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 1,
+   "scripts_bajados": 1,
+   "url_final": "https://www.thetimes.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.riverisland.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "16.14.0",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_sin_version",
+   "versiones_react_dom": [],
+   "marcas": [
+    "Minified React error",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 16,
+   "scripts_bajados": 16,
+   "url_final": "https://www.riverisland.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.sueddeutsche.de/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 7,
+   "scripts_bajados": 7,
+   "url_final": "https://www.sueddeutsche.de/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.nosalty.hu/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "16.14.0",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "16.14.0"
+   ],
+   "marcas": [
+    "Minified React error",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 28,
+   "scripts_bajados": 28,
+   "url_final": "https://www.nosalty.hu/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.dailymotion.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 1000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 2,
+   "scripts_bajados": 2,
+   "url_final": "https://www.dailymotion.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.football365.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "17.0.2",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "17.0.2"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 18,
+   "scripts_bajados": 17,
+   "url_final": "https://www.football365.com/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://asurascans.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.8",
+   "react_version_wappalyzer": null,
+   "rank": 1000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 3,
+   "scripts_bajados": 3,
+   "url_final": "https://asurascans.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://ring.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "17.0.2",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 24,
+   "scripts_bajados": 22,
+   "url_final": "https://latam-es.ring.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.privateproperty.co.za/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.2.0"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 2,
+   "scripts_bajados": 2,
+   "url_final": "https://www.privateproperty.co.za/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.coches.net/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.3.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 2,
+   "scripts_bajados": 2,
+   "url_final": "https://www.coches.net/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://m.bantubet.co.ao/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_sin_version",
+   "versiones_react_dom": [],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 141,
+   "scripts_bajados": 40,
+   "url_final": "https://m.bantubet.co.ao/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.sklum.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://healthy.kaiserpermanente.org/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora": "19.2.7",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.2.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 17,
+   "scripts_bajados": 17,
+   "url_final": "https://healthy.kaiserpermanente.org/front-door",
+   "coincide_con_aurora": "misma_mayor"
+  },
+  {
+   "page": "https://www.kupujemprodajem.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.2.1",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.2.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 42,
+   "scripts_bajados": 40,
+   "url_final": "https://www.kupujemprodajem.com/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.pomponik.pl/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.2.0"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 36,
+   "scripts_bajados": 36,
+   "url_final": "https://www.pomponik.pl/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.investorgain.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.3.0-canary-52684925-20251110",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.3.0-canary-52684925-20251110"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 23,
+   "scripts_bajados": 23,
+   "url_final": "https://www.investorgain.com/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://m.uber.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 404: Not Found",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.nykaa.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://auth.uber.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 404: Not Found",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.harborfreight.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.2.7",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://authenticate.riotgames.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "17.0.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "16.13.1",
+    "17.0.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 2,
+   "scripts_bajados": 2,
+   "url_final": "https://authenticate.riotgames.com/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.gov.gr/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.0-canary-178c267a4e-20241218",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://search.yahoo.co.jp/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 1000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 18,
+   "scripts_bajados": 18,
+   "url_final": "https://search.yahoo.co.jp/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.dhl.de/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": "16.13.1",
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "16.13.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 7,
+   "scripts_bajados": 7,
+   "url_final": "https://www.dhl.de/de/privatkunden.html",
+   "coincide_con_aurora": "distinta"
+  },
+  {
+   "page": "https://recuperacao.acesso.gov.br/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "17.0.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 2,
+   "scripts_bajados": 0,
+   "url_final": "https://recuperacao.acesso.gov.br/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://studio.code.org/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": "18.3.1",
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.3.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 18,
+   "scripts_bajados": 18,
+   "url_final": "https://studio.code.org/users/sign_in",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://br.pinterest.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.2.4",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 51,
+   "scripts_bajados": 40,
+   "url_final": "https://br.pinterest.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.lavenir.net/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.1.1",
+   "react_version_wappalyzer": "19.1.1",
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.2.3"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 3,
+   "scripts_bajados": 3,
+   "url_final": "https://www.lavenir.net/",
+   "coincide_con_aurora": "misma_mayor"
+  },
+  {
+   "page": "https://ee.co.uk/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.1-next-f1338f8080-20240426",
+   "react_version_wappalyzer": "18.3.1",
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.2.3"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 13,
+   "scripts_bajados": 13,
+   "url_final": "https://ee.co.uk/",
+   "coincide_con_aurora": "distinta"
+  },
+  {
+   "page": "https://www.aol.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.2.0-canary-0bdb9206-20250818",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.2.0-canary-0bdb9206-20250818"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 21,
+   "scripts_bajados": 21,
+   "url_final": "https://www.aol.com/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://br.stripchat.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 406: Not Acceptable",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://sigaa.ufpb.br/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.2.0"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 1,
+   "scripts_bajados": 1,
+   "url_final": "https://sigaa.ufpb.br/publico",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.angelone.in/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.0-canary-2c338b16f-20231116",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.3.0-canary-2c338b16f-20231116"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 30,
+   "scripts_bajados": 30,
+   "url_final": "https://www.angelone.in/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://my-best.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.3.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 21,
+   "scripts_bajados": 21,
+   "url_final": "https://my-best.com/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.meesho.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.1.2",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.joyn.de/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.2.0-canary-0bdb9206-20250818",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.2.0-canary-0bdb9206-20250818"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 48,
+   "scripts_bajados": 40,
+   "url_final": "https://www.joyn.de/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://map.yahoo.co.jp/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "16.13.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "16.13.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 5,
+   "scripts_bajados": 5,
+   "url_final": "https://map.yahoo.co.jp/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.pw.live/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.0-canary-178c267a4e-20241218",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.3.0-canary-178c267a4e-20241218"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 40,
+   "scripts_bajados": 40,
+   "url_final": "https://www.pw.live/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.creditonebank.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "16.14.0",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.fashionnova.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_sin_version",
+   "versiones_react_dom": [],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 160,
+   "scripts_bajados": 40,
+   "url_final": "https://www.fashionnova.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://mangafire.to/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.2.7",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_sin_version",
+   "versiones_react_dom": [],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 3,
+   "scripts_bajados": 3,
+   "url_final": "https://mangafire.to/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.walmart.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 1000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 90,
+   "scripts_bajados": 40,
+   "url_final": "https://www.walmart.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://fotoscapes.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.2.0"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 1,
+   "scripts_bajados": 1,
+   "url_final": "https://fotoscapes.com/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.pexels.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.playground.ru/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "16.13.1",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 14,
+   "scripts_bajados": 14,
+   "url_final": "https://www.playground.ru/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.tui.pl/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.1",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 66,
+   "scripts_bajados": 40,
+   "url_final": "https://www.tui.pl/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.walesonline.co.uk/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.3.0-canary-3f0b9e61-20260317",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 0,
+   "scripts_bajados": 0,
+   "url_final": "https://www.walesonline.co.uk/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://accounts.intuit.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.1-next-f1338f8080-20240426",
+   "react_version_wappalyzer": "18.3.1",
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 13,
+   "scripts_bajados": 13,
+   "url_final": "https://accounts.intuit.com/app/auth-router?route_case=legacyRedirect",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.infojobs.net/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "17.0.2",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 4,
+   "scripts_bajados": 4,
+   "url_final": "https://www.infojobs.net/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://progorod43.ru/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.1.0",
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.1.0"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 15,
+   "scripts_bajados": 15,
+   "url_final": "https://progorod43.ru/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.sport1.de/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "18.3.1-next-f1338f8080-20240426",
+   "react_version_wappalyzer": "18.3.1",
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.3.1-next-f1338f8080-20240426"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 23,
+   "scripts_bajados": 23,
+   "url_final": "https://www.sport1.de/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://doujin.desu.xxx/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.2.7",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.2.7"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 5,
+   "scripts_bajados": 5,
+   "url_final": "https://doujin.desu.xxx/",
+   "coincide_con_aurora": "exacta"
+  },
+  {
+   "page": "https://www.pakwheels.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora": "19.2.0",
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.grazia.it/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": "17.0.2",
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 27,
+   "scripts_bajados": 27,
+   "url_final": "https://www.grazia.it/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://saladofuturo.educacao.sp.gov.br/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.mariefrance.fr/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": "17.0.2",
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 12,
+   "scripts_bajados": 12,
+   "url_final": "https://www.mariefrance.fr/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.espn.com.mx/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 0,
+   "scripts_bajados": 0,
+   "url_final": "https://www.espn.com.mx/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.eneba.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.3.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 10,
+   "scripts_bajados": 10,
+   "url_final": "https://www.eneba.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.pleinevie.fr/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": "17.0.2",
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 10,
+   "scripts_bajados": 4,
+   "url_final": "https://www.pleinevie.fr/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.esquire.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 77,
+   "scripts_bajados": 40,
+   "url_final": "https://www.esquire.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.melty.fr/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": "17.0.2",
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 16,
+   "scripts_bajados": 16,
+   "url_final": "https://www.melty.fr/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.mxplayer.in/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 0,
+   "scripts_bajados": 0,
+   "url_final": "https://www.mxplayer.in/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.goodreads.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": "0.14.3",
+   "rank": 1000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 4,
+   "scripts_bajados": 4,
+   "url_final": "https://www.goodreads.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://forums.socialmediagirls.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 19,
+   "scripts_bajados": 19,
+   "url_final": "https://forums.socialmediagirls.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.elnacional.cat/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": "17.0.2",
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 2,
+   "scripts_bajados": 2,
+   "url_final": "https://www.elnacional.cat/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.hitta.se/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 21,
+   "scripts_bajados": 21,
+   "url_final": "https://www.hitta.se/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.fotogramas.es/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 83,
+   "scripts_bajados": 40,
+   "url_final": "https://www.fotogramas.es/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://poki.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 1000,
+   "estado": "react_sin_version",
+   "versiones_react_dom": [],
+   "marcas": [
+    "Minified React error"
+   ],
+   "scripts_listados": 66,
+   "scripts_bajados": 40,
+   "url_final": "https://poki.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.maybank2u.com.my/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "TimeoutError: The read operation timed out",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.livehindustan.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 33,
+   "scripts_bajados": 33,
+   "url_final": "https://www.livehindustan.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://rupiahpondok.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 13,
+   "scripts_bajados": 11,
+   "url_final": "https://prediksihk24.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.bahn.de/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 12,
+   "scripts_bajados": 7,
+   "url_final": "https://www.bahn.de/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://takbet.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.onlinehomeshop.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 16,
+   "scripts_bajados": 10,
+   "url_final": "https://www.onlinehomeshop.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.ice.co.il/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "17.0.2"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 7,
+   "scripts_bajados": 7,
+   "url_final": "https://www.ice.co.il/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.espn.com.br/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 0,
+   "scripts_bajados": 0,
+   "url_final": "https://www.espn.com.br/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://substack.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "18.3.1"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "reactjs.org/docs/error-decoder"
+   ],
+   "scripts_listados": 133,
+   "scripts_bajados": 40,
+   "url_final": "https://substack.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.geoguessr.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.3.0"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 24,
+   "scripts_bajados": 24,
+   "url_final": "https://www.geoguessr.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.espn.com.ve/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 1000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 0,
+   "scripts_bajados": 0,
+   "url_final": "https://www.espn.com.ve/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.elle.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 83,
+   "scripts_bajados": 40,
+   "url_final": "https://www.elle.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://shop.fconline.nexon.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 15,
+   "scripts_bajados": 11,
+   "url_final": "https://shop.fconline.nexon.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.samsung.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 1000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 19,
+   "scripts_bajados": 18,
+   "url_final": "https://www.samsung.com/ar/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://partsouq.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.thegatewaypundit.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 21,
+   "scripts_bajados": 21,
+   "url_final": "https://www.thegatewaypundit.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.amazon.jobs/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": "15.3.0",
+   "rank": 10000,
+   "estado": "react_sin_version",
+   "versiones_react_dom": [],
+   "marcas": [
+    "Minified React error"
+   ],
+   "scripts_listados": 5,
+   "scripts_bajados": 5,
+   "url_final": "https://www.amazon.jobs/en/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.espn.com.ar/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 0,
+   "scripts_bajados": 0,
+   "url_final": "https://www.espn.com.ar/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.sports.fr/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": "17.0.2",
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 24,
+   "scripts_bajados": 24,
+   "url_final": "https://www.sports.fr/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.espn.com.do/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 0,
+   "scripts_bajados": 0,
+   "url_final": "https://www.espn.com.do/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.harpersbazaar.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 75,
+   "scripts_bajados": 40,
+   "url_final": "https://www.harpersbazaar.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://point.pay.naver.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "react_con_version",
+   "versiones_react_dom": [
+    "19.3.0-canary-cbb046ab-20260731"
+   ],
+   "marcas": [
+    "Minified React error",
+    "__reactContainer$",
+    "__reactFiber$",
+    "react.dev/errors/"
+   ],
+   "scripts_listados": 36,
+   "scripts_bajados": 36,
+   "url_final": "https://point.pay.naver.com/main",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.tmz.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 5,
+   "scripts_bajados": 5,
+   "url_final": "https://www.tmz.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://toto12ultima.net/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 5000,
+   "estado": "no_encontrado",
+   "versiones_react_dom": [],
+   "marcas": [],
+   "scripts_listados": 9,
+   "scripts_bajados": 9,
+   "url_final": "https://toto12sky.com/",
+   "coincide_con_aurora": null
+  },
+  {
+   "page": "https://www.itau.com.br/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora": null,
+   "react_version_wappalyzer": null,
+   "rank": 10000,
+   "estado": "error",
+   "detalle": "HTTPError: HTTP Error 403: Forbidden",
+   "coincide_con_aurora": null
+  }
+ ]
+}

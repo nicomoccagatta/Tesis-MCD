@@ -42,3 +42,6 @@ skills-lock.json
 # Entorno virtual del análisis local
 analisis/.venv/
 __pycache__/
+
+# Dependencias de Node de analisis/aurora_local
+node_modules/

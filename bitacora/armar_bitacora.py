@@ -106,6 +106,9 @@ datos = {
     "grafo": grafo,
     "cambios_frontend": {c: salida(f"cambios_frontend_{c}.json") for c in CLIENTES},
     "auditoria_wappalyzer": salida("auditoria_wappalyzer_frontend.json"),
+    "react_muestra_10k": parquet("httparchive_sample_data_pages_10k/001-react-aurora-vs-wappalyzer"),
+    "validacion_aurora_en_vivo": salida("validacion_aurora_en_vivo.json"),
+    "validacion_aurora_local": salida("validacion_aurora_local.json"),
     "extracciones": extracciones,
     "cuota_por_mes_gb": cuota_por_mes,
 }

@@ -18,3 +18,4 @@ date,project,script,gb_dry_run,gb_billed,job_id
 2026-10-02,tesis-506222,cross_source/009-cobertura-top10k-crux-vs-crawl-ene2025,3.9333,2.7085,tesis_20261002_022718_71791
 2026-10-02,tesis-506222,httparchive_crawl_pages/004-root-pages-top10k-conteo-tecnologias-ene2025,30.9483,0.0105,tesis_20261002_022743_72335
 2026-10-13,tesis-506222,httparchive_sample_data_pages_10k/001-react-aurora-vs-wappalyzer,1.5231,1.4061,tesis_20261013_164138_93942
+2026-10-13,tesis-506222,httparchive_sample_data_pages_10k/002-react-aurora-vs-wappalyzer-por-pagina,0.8912,0.821,tesis_20261013_164814_2047

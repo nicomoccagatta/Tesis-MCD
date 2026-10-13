@@ -1,0 +1,988 @@
+{
+ "fecha_corrida_local": "2026-10-13",
+ "oficial": "sample_data.pages_10k sep-2026, móvil",
+ "resumen": {
+  "A_aurora_si_wappalyzer_no": {
+   "sitios": 40,
+   "misma_mayor": 3,
+   "exacta": 27,
+   "local_sin_react": 6,
+   "distinta": 3,
+   "error_local": 1
+  },
+  "B_ambos": {
+   "sitios": 40,
+   "exacta": 31,
+   "local_sin_react": 5,
+   "distinta": 2,
+   "misma_mayor": 2
+  },
+  "C_wappalyzer_si_aurora_no": {
+   "sitios": 40,
+   "local_sin_react": 37,
+   "oficial_sin_react": 3
+  }
+ },
+ "sitios": [
+  {
+   "page": "https://www.sudouest.fr/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.8",
+   "react_version_aurora_local": "19.3.0",
+   "error_local": null,
+   "comparacion": "misma_mayor"
+  },
+  {
+   "page": "https://www.abola.pt/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.3",
+   "react_version_aurora_local": "19.2.3",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.hornbach.de/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.8",
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.thestreet.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.7",
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://linkvertise.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.poppen.de/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.4",
+   "react_version_aurora_local": "19.2.4",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://faphouse2.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.8",
+   "react_version_aurora_local": "19.2.8",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.commonlit.org/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://help.x.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "16.8.6",
+   "react_version_aurora_local": "19.3.0-canary-cbb046ab-20260731",
+   "error_local": null,
+   "comparacion": "distinta"
+  },
+  {
+   "page": "https://blox-fruits.fandom.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.bonprix.de/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.8",
+   "react_version_aurora_local": "19.3.0",
+   "error_local": null,
+   "comparacion": "misma_mayor"
+  },
+  {
+   "page": "https://m.elcolombiano.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.deccanherald.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "16.14.0",
+   "react_version_aurora_local": "16.14.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://network.mobile.rakuten.co.jp/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.allocine.fr/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.southwest.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.tripadvisor.de/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.3",
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://rutube.ru/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://es.stripchat.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://particuliers.sg.fr/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.britannica.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": null,
+   "error_local": "TimeoutError: Navigation timeout of 90000 ms exceeded",
+   "comparacion": "error_local"
+  },
+  {
+   "page": "https://th.fhchannel.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.8",
+   "react_version_aurora_local": "19.2.8",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.hollisterco.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1-next-f1338f8080-20240426",
+   "react_version_aurora_local": "18.3.1-next-f1338f8080-20240426",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.novinky.cz/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.praktiker.gr/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.infoseek.co.jp/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.tf1info.fr/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.7",
+   "react_version_aurora_local": "19.2.7",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.thetimes.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "16.9.0",
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.riverisland.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "16.14.0",
+   "react_version_aurora_local": "16.14.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.sueddeutsche.de/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.nosalty.hu/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "16.14.0",
+   "react_version_aurora_local": "16.14.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.dailymotion.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.football365.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "17.0.2",
+   "react_version_aurora_local": "17.0.2",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://asurascans.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.8",
+   "react_version_aurora_local": "19.2.8",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://ring.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "17.0.2",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "distinta"
+  },
+  {
+   "page": "https://www.privateproperty.co.za/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.coches.net/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://m.bantubet.co.ao/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "19.3.0",
+   "error_local": null,
+   "comparacion": "distinta"
+  },
+  {
+   "page": "https://www.sklum.com/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://healthy.kaiserpermanente.org/",
+   "grupo": "A_aurora_si_wappalyzer_no",
+   "react_version_aurora_oficial": "19.2.7",
+   "react_version_aurora_local": "19.2.1",
+   "error_local": null,
+   "comparacion": "misma_mayor"
+  },
+  {
+   "page": "https://www.kupujemprodajem.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.2.1",
+   "react_version_aurora_local": "19.2.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.pomponik.pl/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.investorgain.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.3.0-canary-52684925-20251110",
+   "react_version_aurora_local": "19.3.0-canary-52684925-20251110",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://m.uber.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.nykaa.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://auth.uber.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.harborfreight.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.2.7",
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://authenticate.riotgames.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "17.0.1",
+   "react_version_aurora_local": "17.0.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.gov.gr/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.0-canary-178c267a4e-20241218",
+   "react_version_aurora_local": "19.2.0-canary-0bdb9206-20250818",
+   "error_local": null,
+   "comparacion": "distinta"
+  },
+  {
+   "page": "https://search.yahoo.co.jp/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.dhl.de/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://recuperacao.acesso.gov.br/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "17.0.1",
+   "react_version_aurora_local": "17.0.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://studio.code.org/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://br.pinterest.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.2.4",
+   "react_version_aurora_local": "19.3.0",
+   "error_local": null,
+   "comparacion": "misma_mayor"
+  },
+  {
+   "page": "https://www.lavenir.net/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.1.1",
+   "react_version_aurora_local": "19.2.3",
+   "error_local": null,
+   "comparacion": "misma_mayor"
+  },
+  {
+   "page": "https://ee.co.uk/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.1-next-f1338f8080-20240426",
+   "react_version_aurora_local": "18.3.1-next-f1338f8080-20240426",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.aol.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.2.0-canary-0bdb9206-20250818",
+   "react_version_aurora_local": "19.2.0-canary-0bdb9206-20250818",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://br.stripchat.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://sigaa.ufpb.br/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.angelone.in/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.0-canary-2c338b16f-20231116",
+   "react_version_aurora_local": "18.3.0-canary-2c338b16f-20231116",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://my-best.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.meesho.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.1.2",
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.joyn.de/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.2.0-canary-0bdb9206-20250818",
+   "react_version_aurora_local": "19.2.0-canary-0bdb9206-20250818",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://map.yahoo.co.jp/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "16.13.1",
+   "react_version_aurora_local": "16.13.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.pw.live/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.0-canary-178c267a4e-20241218",
+   "react_version_aurora_local": "18.3.0-canary-178c267a4e-20241218",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.creditonebank.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "16.14.0",
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.fashionnova.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://mangafire.to/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.2.7",
+   "react_version_aurora_local": "19.2.7",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.walmart.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://fotoscapes.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.2.0",
+   "react_version_aurora_local": "19.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.pexels.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.2.0",
+   "react_version_aurora_local": "18.2.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.playground.ru/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "16.13.1",
+   "react_version_aurora_local": "16.13.1",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.tui.pl/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.1",
+   "react_version_aurora_local": "19.1.5",
+   "error_local": null,
+   "comparacion": "distinta"
+  },
+  {
+   "page": "https://www.walesonline.co.uk/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.3.0-canary-3f0b9e61-20260317",
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://accounts.intuit.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.1-next-f1338f8080-20240426",
+   "react_version_aurora_local": "18.3.1-next-f1338f8080-20240426",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.infojobs.net/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "17.0.2",
+   "react_version_aurora_local": "17.0.2",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://progorod43.ru/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.1.0",
+   "react_version_aurora_local": "18.1.0",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.sport1.de/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "18.3.1-next-f1338f8080-20240426",
+   "react_version_aurora_local": "18.3.1-next-f1338f8080-20240426",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://doujin.desu.xxx/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.2.7",
+   "react_version_aurora_local": "19.2.7",
+   "error_local": null,
+   "comparacion": "exacta"
+  },
+  {
+   "page": "https://www.pakwheels.com/",
+   "grupo": "B_ambos",
+   "react_version_aurora_oficial": "19.2.0",
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.grazia.it/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://saladofuturo.educacao.sp.gov.br/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.mariefrance.fr/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.espn.com.mx/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.eneba.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.pleinevie.fr/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.esquire.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.melty.fr/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.mxplayer.in/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.goodreads.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://forums.socialmediagirls.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.elnacional.cat/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.hitta.se/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.fotogramas.es/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://poki.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.maybank2u.com.my/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.livehindustan.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://rupiahpondok.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.bahn.de/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://takbet.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.onlinehomeshop.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.ice.co.il/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.espn.com.br/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://substack.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": "18.3.1",
+   "error_local": null,
+   "comparacion": "oficial_sin_react"
+  },
+  {
+   "page": "https://www.geoguessr.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": "9.8.1",
+   "error_local": null,
+   "comparacion": "oficial_sin_react"
+  },
+  {
+   "page": "https://www.espn.com.ve/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.elle.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://shop.fconline.nexon.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.samsung.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://partsouq.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.thegatewaypundit.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.amazon.jobs/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.espn.com.ar/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.sports.fr/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.espn.com.do/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.harpersbazaar.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://point.pay.naver.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": "19.3.0-canary-cbb046ab-20260731",
+   "error_local": null,
+   "comparacion": "oficial_sin_react"
+  },
+  {
+   "page": "https://www.tmz.com/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://toto12ultima.net/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  },
+  {
+   "page": "https://www.itau.com.br/",
+   "grupo": "C_wappalyzer_si_aurora_no",
+   "react_version_aurora_oficial": null,
+   "react_version_aurora_local": null,
+   "error_local": null,
+   "comparacion": "local_sin_react"
+  }
+ ]
+}

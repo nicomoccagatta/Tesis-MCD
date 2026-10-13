@@ -1,0 +1,8 @@
+{
+  "name": "aurora-local",
+  "private": true,
+  "description": "Reproduce la custom metric aurora (react_version) de HTTP Archive en un Chrome local",
+  "dependencies": {
+    "puppeteer-core": "23.11.1"
+  }
+}
