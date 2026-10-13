@@ -20,9 +20,11 @@ Las presentaciones de `Presentaciones/` son el registro de lo expuesto hasta el 
 
 ## Bitácora de tesis
 
-Desde el 13/10/2026 los avances se entregan en `bitacora/bitacora.html`, no en presentaciones nuevas. Es una página HTML autocontenida (misma estética dark data-science que los decks) con una sección por tema y una línea de tiempo por fecha. Para actualizarla:
+Desde el 13/10/2026 los avances se entregan en `bitacora/bitacora.html`, no en presentaciones nuevas. Es una página HTML autocontenida (misma estética dark data-science que los decks) organizada por entrega: "Estado actual" arriba (cronograma, decisiones abiertas, próximos pasos), después una `<section class="entrega">` por entrega de la más reciente a la primera, y al final los anexos (registro de extracciones, referencias). Para actualizarla:
 
-- El texto se edita a mano en el HTML. Cada avance agrega una entrada con su fecha en "Bitácora por fecha" y cambia el atributo `data-actualizado` de cada `<section>` que toca: de ese atributo salen el orden de las secciones en la página y en el índice lateral (las fijas arriba, después agrupadas por fecha, la más reciente primero), el "Actualizado …" de la sección y el "Estado al …". Las entradas de fechas anteriores registran lo hecho en esa fecha: una corrección posterior va en una entrada nueva.
+- La entrega en curso lleva `data-fecha=""` y se muestra como XX/XX hasta que se sepa la fecha de presentación. Al presentarla se completa `data-fecha` y `data-estado="Presentada"`, y la entrega siguiente se agrega arriba.
+- Cada entrega abre con "Trabajo desde la entrega anterior" (un ítem por avance, con su fecha) y sigue con subsecciones `<h3 id="…" data-nav="…">`, que son las que aparecen en el índice lateral. El índice se arma solo desde esos atributos.
+- Si una cifra de una entrega anterior se corrige, esa entrega muestra la cifra vigente con una nota de lo presentado y de cuándo se corrigió.
 - Las cifras de tablas y gráficos no se tipean: se regeneran las salidas de `analisis/` que cambien y después `analisis/.venv/bin/python bitacora/armar_bitacora.py`, que reemplaza la línea `const DATOS = ...;` del HTML.
 - Verificar el resultado abriéndolo en Chrome headless (captura de pantalla y consola sin errores) antes de entregarlo.
 

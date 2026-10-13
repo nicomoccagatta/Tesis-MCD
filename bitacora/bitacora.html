@@ -48,8 +48,11 @@
   nav.indice .marca{ font-weight: 800; font-size: 15px; margin-bottom: 2px; }
   nav.indice .fecha-estado{ font-size: 12px; color: var(--text-muted); margin-bottom: 18px; }
   nav.indice a{ display: block; padding: 5px 10px; border-radius: 6px; color: var(--text-secondary); font-size: 13.5px; font-weight: 600; text-decoration: none; }
-  nav.indice .grupo{ font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); margin: 16px 10px 4px; padding-top: 10px; border-top: 1px solid var(--border); }
-  nav.indice .grupo ~ a{ padding-left: 18px; }
+  nav.indice .grupo{ font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); margin: 14px 10px 4px; padding-top: 10px; border-top: 1px solid var(--border); }
+  nav.indice a.entrega-link{ margin-top: 10px; color: var(--text-primary); }
+  nav.indice a.entrega-link .f{ display: block; font-family: var(--font-mono); font-size: 11px; color: var(--accent); font-weight: 400; }
+  nav.indice a.sub{ padding: 3px 10px 3px 20px; font-size: 12.5px; font-weight: 500; color: var(--text-muted); }
+  nav.indice a.sub:hover, nav.indice a.sub.activo{ color: var(--text-primary); }
   nav.indice a:hover{ background: var(--surface); color: var(--text-primary); }
   nav.indice a.activo{ background: var(--surface); color: var(--text-primary); box-shadow: inset 2px 0 0 var(--accent); }
   main{ padding: 28px 40px 80px; min-width: 0; }
@@ -65,7 +68,10 @@
   section{ padding: 34px 0 10px; border-bottom: 1px solid var(--border); }
   section > h2{ font-size: 22px; margin: 0; font-weight: 800; }
   .sec-meta{ font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); margin: 4px 0 16px; }
-  h3{ font-size: 16px; margin: 26px 0 8px; }
+  h3{ font-size: 17px; margin: 30px 0 8px; padding-top: 14px; border-top: 1px dashed var(--border); }
+  h4{ font-size: 14.5px; margin: 20px 0 6px; color: var(--text-primary); }
+  .entrega-cab{ display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 13px; color: var(--accent); margin-bottom: 4px; }
+  .entrega-cab .num{ font-weight: 600; }
   p{ margin: 8px 0 12px; color: var(--text-secondary); max-width: 860px; }
   p b, li b, td b{ color: var(--text-primary); font-weight: 600; }
   ul, ol{ color: var(--text-secondary); padding-left: 22px; max-width: 860px; }
@@ -169,8 +175,8 @@
     .layout{ grid-template-columns: 1fr; }
     nav.indice{ position: sticky; top: 0; height: auto; z-index: 20; border-right: 0; border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; gap: 4px; overflow-x: auto; white-space: nowrap; }
     nav.indice .marca, nav.indice .fecha-estado{ display: none; }
-    nav.indice .grupo{ display: none; }
-    nav.indice .grupo ~ a{ padding-left: 10px; }
+    nav.indice .grupo, nav.indice a.sub{ display: none; }
+    nav.indice a.entrega-link{ margin-top: 0; }
     main{ padding: 20px 16px 60px; }
     .controles{ position: static; }
     header.portada h1{ font-size: 24px; }
@@ -199,9 +205,9 @@
     </header>
 
     <!-- ============================== ESTADO ACTUAL ============================== -->
-    <section id="estado" data-titulo="Estado actual" data-fijo>
+    <section id="estado" class="fija" data-titulo="Estado actual" data-actualizado="2026-10-13">
       <h2>Estado actual</h2>
-      <div class="sec-meta">Actualizado 13/10/2026 · semanas 5–10 de 48 (construcción del panel)</div>
+      <div class="sec-meta">semanas 5–10 de 48 (construcción del panel)</div>
       <div class="tiles">
         <div class="tile"><div class="lab">Cohorte fija top 10k (ene-2025)</div><div class="val"><span data-dato="panel_piloto.mobile.sitios_cohorte"></span></div><div class="det">móvil · <span data-dato="panel_piloto.desktop.sitios_cohorte"></span> escritorio</div></div>
         <div class="tile"><div class="lab">Sitios con algún cambio frontend en 2025</div><div class="val"><span data-dato="cambios_frontend.mobile.resumen.sitios_con_cambio"></span></div><div class="det">móvil · <span data-dato="cambios_frontend.desktop.resumen.sitios_con_cambio"></span> escritorio · sin regla de persistencia</div></div>
@@ -209,7 +215,7 @@
         <div class="tile"><div class="lab">BigQuery facturado en oct-2026</div><div class="val"><span data-dato="cuota_por_mes_gb.2026-10" data-fmt="gb"></span></div><div class="det">de 1.024 GB de cuota gratuita mensual</div></div>
       </div>
 
-      <h3>Cronograma</h3>
+      <h3 id="cronograma" data-nav="Cronograma">Cronograma</h3>
       <div class="tabla-wrap"><table class="t">
         <thead><tr><th>Semana</th><th>Fechas</th><th>Tareas</th><th>Estado</th></tr></thead>
         <tbody>
@@ -227,278 +233,38 @@
       </table></div>
       <div class="nota">Verde: cerrado · amarillo: en curso · rayado: adicional al plan. Cronograma del documento escrito (<code>TP Latex/Project/main.tex</code>).</div>
 
-      <h3>Decisiones abiertas</h3>
+      <h3 id="decisiones" data-nav="Decisiones abiertas">Decisiones abiertas</h3>
       <ul>
         <li><b>Tratamiento jQuery→React:</b> estricto (jQuery desaparece; descarte por persistencia 6–10%) o incluyendo a los sitios que conservan jQuery (descarte 39–43%). Ver <a href="#panel">Panel piloto</a>.</li>
         <li><b>Scripts de terceros en el grafo:</b> si analytics, publicidad y tag managers entran como segunda capa. Ver <a href="#grafo">Grafo</a>.</li>
-        <li><b>Remix y React Router v7:</b> desde que Remix pasó a publicarse como React Router v7, Wappalyzer lo registra solo como React Router, sin distinguir el modo framework del uso como librería de ruteo. Ver <a href="#wappalyzer">Detección</a>.</li>
-        <li><b>Cambios de reglas de Wappalyzer dentro de 2023–2026</b> (React Router 15/10/2024, Next.js App Router 12/12/2023, WordPress 05/01/2026, jQuery 22/09/2026, entre otros): cómo tratarlos al detectar eventos en el panel completo. Ver <a href="#wappalyzer">Detección</a>.</li>
+        <li><b>Remix y React Router v7:</b> desde que Remix pasó a publicarse como React Router v7, Wappalyzer lo registra solo como React Router, sin distinguir el modo framework del uso como librería de ruteo. Ver <a href="#wappalyzer">Auditoría de Wappalyzer</a>.</li>
+        <li><b>Cambios de reglas de Wappalyzer dentro de 2023–2026</b> (React Router 15/10/2024, Next.js App Router 12/12/2023, WordPress 05/01/2026, jQuery 22/09/2026, entre otros): cómo tratarlos al detectar eventos en el panel completo. Ver <a href="#wappalyzer">Auditoría de Wappalyzer</a>.</li>
       </ul>
 
-      <h3>Próximos pasos</h3>
+      <h3 id="proximos" data-nav="Próximos pasos">Próximos pasos</h3>
       <ol>
         <li>Cohorte fija en el panel completo: elegir los sitios con el rank del mes anterior a la ventana y tratar los meses sin tecnologías registradas como dato faltante.</li>
-        <li>Escalar a la ventana 2023–2026 con la lista de tecnologías frontend de esta bitácora (45 tecnologías, 7 familias). Un mes completo móvil factura 6,1 GB; ambos clientes en 2023–2026 suman ~525 GB, dentro de la cuota; se filtra a las tecnologías del estudio y se agrega dentro de BigQuery.</li>
+        <li>Escalar a la ventana 2023–2026 con la lista de 45 tecnologías frontend en 7 familias. Un mes completo móvil factura 6,1 GB; ambos clientes en 2023–2026 suman ~525 GB, dentro de la cuota; se filtra a las tecnologías del estudio y se agrega dentro de BigQuery.</li>
         <li>Medir en el crawl completo, mes a mes en 2023–2026, el volumen de SvelteKit, Remix, Astro, Qwik y demás frameworks con pocas apariciones en el top 10k; la misma serie muestra si hay saltos en los meses de cambios de reglas.</li>
         <li>Dimensionar por potencia: cuántos eventos persistentes por par hacen falta para detectar efectos del orden de 40 ms.</li>
         <li>Grafo mensual y por versión: seguir los stacks en el tiempo y validar en Wayback Machine una muestra del recableado.</li>
       </ol>
     </section>
 
-    <!-- ============================== BITÁCORA ============================== -->
-    <section id="bitacora" data-titulo="Bitácora por fecha" data-fijo>
-      <h2>Bitácora por fecha</h2>
-      <div class="sec-meta">Una entrada por fecha de trabajo, con lo que se hizo, lo que se decidió y dónde quedó registrado</div>
-      <div class="timeline">
-        <div class="entrada">
-          <div class="cuando">13/10/2026</div>
-          <h4>Auditoría de frameworks en Wappalyzer, cambios por sitio y bitácora</h4>
-          <ul>
-            <li>SvelteKit y Remix están en el catálogo de Wappalyzer de HTTP Archive y se detectan en la cohorte (SvelteKit 23 sitios en algún mes de 2025, Remix 16, en móvil). No aparecían en los análisis porque el panel SCD-2 sigue 6 tecnologías fijas y el grafo exige ≥30 sitios por nodo y filtra por categoría.</li>
-            <li>De los frameworks del relevamiento State of JS 2025 faltan en el catálogo Analog, Vike, Expo, TanStack Router, Ripple y Redwood SDK. TanStack Start se agregó el 21/07/2026.</li>
-            <li>Remix pasó a publicarse como React Router v7 (remix.run, 15/05/2024). De los 15 sitios con Remix en enero 2025, 3 figuran en diciembre como React Router 7.x sin Remix (chatgpt.com, fortnite.com, shopify.com).</li>
-            <li>Historial de reglas del fork de HTTP Archive desde dic-2022: ningún cambio en las reglas de las tecnologías frontend durante 2025; dentro de 2023–2026 cambian, entre otras, React Router, Next.js App Router, SvelteKit, Svelte, Nuxt.js, WordPress y jQuery.</li>
-            <li>Lista de tecnologías frontend: 45 tecnologías en 7 familias (por la relación <code>implies</code> de Wappalyzer). Cuenta como cambio la entrada o salida de una tecnología y el cambio de versión mayor.</li>
-            <li>Vista de cambios sitio por sitio en 2025, sin regla de persistencia: 1.900 sitios en móvil y 1.677 en escritorio.</li>
-            <li>El formato de entrega pasa de presentaciones a esta bitácora.</li>
-          </ul>
-          <div class="links"><a href="#cambios">Cambios por sitio</a> · <a href="#wappalyzer">Detección</a> · <code>analisis/cambios_frontend.py</code> · <code>analisis/auditoria_wappalyzer.py</code></div>
-        </div>
-        <div class="entrada">
-          <div class="cuando">02/10/2026</div>
-          <h4>Cohorte fija y reunión de avance (panel piloto y grafo)</h4>
-          <ul>
-            <li>Cohorte fija: root pages con rank ≤ 10.000 en enero 2025, seguidas los 12 meses de 2025 sin volver a filtrar por rank (<code>cross_source/007</code> móvil, <code>008</code> escritorio). Panel balanceado: 73% / 78% sin relleno, 83% / 87% con relleno, frente al 26% del filtro mes a mes.</li>
-            <li>Un sitio-mes sin tecnologías registradas se trata como dato faltante, no como abandono.</li>
-            <li>Clasificación de las tecnologías detectadas por sus reglas de detección (<code>httparchive_wappalyzer_technologies/002</code>).</li>
-            <li>Reunión de avance con la Presentación 04.</li>
-          </ul>
-          <div class="links"><a href="#panel">Panel piloto</a> · <a href="#grafo">Grafo</a> · <a href="#entregas">Presentación 04</a></div>
-        </div>
-        <div class="entrada">
-          <div class="cuando">01/10/2026</div>
-          <h4>Panel piloto y grafo bipartito sitio ↔ librería</h4>
-          <ul>
-            <li>Primera extracción sitio × mes × tecnología del top 10k de 2025, móvil y escritorio, filtrando el rank mes a mes (<code>cross_source/003</code>, <code>004</code>): solo el 26% de los sitios quedaba los 12 meses. Reemplazada al día siguiente por la cohorte fija.</li>
-            <li>Grafo bipartito sitio ↔ tecnología, proyección sobre tecnologías y explorador interactivo.</li>
-            <li>Revisión de cifras: el dry-run no descuenta el clustering de <code>crawl.pages</code> y sobreestima lo facturado; desde entonces el ledger registra lo facturado por job. Costo real de un mes completo: 6,1 GB (<code>cross_source/006</code>).</li>
-          </ul>
-          <div class="links"><a href="#grafo">Grafo</a> · <a href="#extracciones">Extracciones</a></div>
-        </div>
-        <div class="entrada">
-          <div class="cuando">24/09/2026</div>
-          <h4>Reunión de avance, hito semanas 1–4</h4>
-          <ul>
-            <li>Presentación 03: revisión de literatura, diseño técnico del panel y cobertura del cruce entre fuentes.</li>
-            <li>Validación contra Wayback Machine: 23 orígenes del top 10k con jQuery sin React en mar y jun-2025 y React sin jQuery en mar y jun-2026; de 5 revisados, 4 confirman el cambio y 1 queda no concluyente (www.n-tv.de).</li>
-            <li>El resultado por dispositivo se toma de <code>device_summary</code> (<code>metrics_summary</code> agrega todos los dispositivos).</li>
-            <li>Tareas de la reunión: empezar la construcción del panel; investigar las librerías asociadas a cada versión de framework y evaluar un grafo bipartito.</li>
-          </ul>
-          <div class="links"><a href="#datos">Datos</a> · <a href="#entregas">Presentación 03</a></div>
-        </div>
-        <div class="entrada">
-          <div class="cuando">22/09/2026</div>
-          <h4>Cobertura del cruce 2018–2026 y reverificación de la literatura</h4>
-          <ul>
-            <li>Relevamiento semestral de cobertura entre HTTP Archive y CrUX (<code>cross_source/002</code>): desde 2023-01 se estabiliza en 87–92% / 76–84%.</li>
-            <li>Chequeo dirigido de la literatura sobre la combinación exacta del trabajo: único adyacente, <i>Symmetry</i> (dic. 2025), descartado. Cifras del embudo PRISMA de Ghattas et al. (2025) corregidas contra la fuente.</li>
-          </ul>
-          <div class="links"><a href="#literatura">Estado de la cuestión</a> · <a href="#datos">Datos</a></div>
-        </div>
-        <div class="entrada">
-          <div class="cuando">04/09/2026</div>
-          <h4>Versión final del documento escrito</h4>
-          <ul>
-            <li>Propuesta formal alineada al template actualizado por la cátedra: cronograma con fechas, 3 figuras y 2 tablas.</li>
-            <li>Migraciones y DiD exploratorio jun-2025 vs jun-2026 (<code>cross_source/001</code>). Las cifras de abandono de WordPress (116.864) y React→Next.js (10.047) de la Presentación 01 no reprodujeron con esta definición: quedan 65.407 y 9.059. jQuery→React reprodujo exacto (62.457).</li>
-          </ul>
-          <div class="links"><a href="#exploratorio">DiD exploratorio</a> · <a href="#entregas">Documento</a></div>
-        </div>
-        <div class="entrada">
-          <div class="cuando">28/08/2026</div>
-          <h4>Presentación de cátedra</h4>
-          <ul><li>Presentación 02, plan de trabajo (10 min).</li></ul>
-          <div class="links"><a href="#entregas">Presentación 02</a></div>
-        </div>
-        <div class="entrada">
-          <div class="cuando">23/08/2026</div>
-          <h4>Repositorio y pipeline de extracción</h4>
-          <ul>
-            <li>Proyecto <code>tesis-506222</code> en modo Sandbox (tablas de destino expiran a 60 días; sin Cloud Storage). Script <code>run_query.sh</code>: dry-run, tope de bytes facturados, exportación a Parquet y ledger de cuota.</li>
-            <li>Primeras extracciones versionadas: crecimiento del panel 2020–2026, semáforo de Core Web Vitals de julio 2026 (mismo mes en ambas fuentes) y verificación de unicidad de origin en <code>metrics_summary</code>.</li>
-          </ul>
-          <div class="links"><a href="#datos">Datos</a> · <a href="#extracciones">Extracciones</a></div>
-        </div>
-        <div class="entrada">
-          <div class="cuando">22/08/2026</div>
-          <h4>Presentación 01: viabilidad del dataset</h4>
-          <ul>
-            <li>Escala de <code>httparchive.crawl.pages</code> (metadata del 21/08/2026): 3.241.898.696 filas, 273 particiones mensuales, 1,52 PB.</li>
-            <li>Chequeo de viabilidad del 14/08/2026: cobertura de LCP/CLS/INP en CrUX y conteo inicial de migraciones jun-2025 → jun-2026.</li>
-          </ul>
-          <div class="links"><a href="#entregas">Presentación 01</a></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== TEMA ============================== -->
-    <section id="tema" data-titulo="Tema e hipótesis" data-actualizado="2026-09-04">
-      <h2>Tema, preguntas, hipótesis y objetivos</h2>
-      <div class="sec-meta">fuente: <code>TP Latex/Project/main.tex</code></div>
-      <p>Core Web Vitals son las tres métricas con las que Google estandariza la velocidad percibida de un sitio: <b>LCP</b> (cuánto tarda en aparecer el elemento visual más grande), <b>INP</b> (qué tan rápido responde la página a una interacción) y <b>CLS</b> (cuánto se mueve el contenido de forma inesperada). Se recolectan de navegadores Chrome reales y se publican mensualmente en CrUX. HTTP Archive rastrea mensualmente millones de sitios y detecta con Wappalyzer qué tecnologías usa cada uno.</p>
-      <p><b>Problema general.</b> Estimar el efecto causal de las migraciones de tecnología frontend, detectadas en el panel mensual de HTTP Archive, sobre las métricas de experiencia de usuario real publicadas en CrUX, tratando cada migración como un cuasi-experimento y aplicando un diseño de diferencias en diferencias robusto a tratamiento escalonado, con un grupo de control de sitios comparables que no migraron, utilizando exclusivamente datos públicos.</p>
-      <h3>Preguntas de investigación</h3>
-      <ol>
-        <li>¿Las migraciones desde tecnologías frontend con mayor carga de JavaScript bloqueante hacia frameworks modernos producen una mejora causal y estadísticamente significativa en LCP e INP, respecto de la trayectoria que hubieran seguido los mismos sitios de no migrar?</li>
-        <li>¿Ese efecto es homogéneo entre tipos de migración y niveles de tráfico, o varía según las características del sitio?</li>
-        <li>¿En qué medida el estimador clásico de efectos fijos bidireccionales sobreestima el efecto frente a un estimador robusto al sesgo de tratamiento escalonado?</li>
-      </ol>
-      <h3>Hipótesis</h3>
+    <!-- ============================== ENTREGA 5 ============================== -->
+    <section id="entrega-5" class="entrega" data-titulo="Entrega 5" data-fecha="" data-estado="En curso">
+      <div class="entrega-cab"></div>
+      <h2>Cambios de tecnología frontend sitio por sitio y auditoría de Wappalyzer</h2>
+      <div class="sec-meta">Formato de entrega: esta bitácora</div>
+      <h3>Trabajo desde la entrega anterior</h3>
       <ul>
-        <li><b>H1 (principal).</b> Las migraciones desde tecnologías con mayor carga de JavaScript bloqueante hacia frameworks modernos (ej. jQuery→React) mejoran LCP e INP frente a un grupo de control emparejado. El DiD exploratorio de dos períodos apunta en sentido contrario para jQuery→React (ver <a href="#exploratorio">DiD exploratorio</a>).</li>
-        <li><b>H2.</b> El efecto es heterogéneo: mayor desde tecnologías legacy (jQuery, plantillas de WordPress sin optimizar) que entre frameworks modernos, y varía según el tráfico del sitio.</li>
-        <li><b>H3.</b> TWFE sobreestima el efecto frente al estimador de Callaway y Sant'Anna por las comparaciones entre grupos ya tratados (Goodman-Bacon).</li>
+        <li><b>13/10/2026.</b> Auditoría de la detección de frameworks frontend en Wappalyzer: SvelteKit y Remix se detectan; no aparecían en los análisis por los filtros del panel (6 tecnologías fijas) y del grafo (≥30 sitios por nodo, filtro por categoría).</li>
+        <li><b>13/10/2026.</b> Lista de 45 tecnologías frontend en 7 familias (por la relación <code>implies</code> de Wappalyzer). Cuenta como cambio la entrada o salida de una tecnología y el cambio de versión mayor.</li>
+        <li><b>13/10/2026.</b> Vista de cambios sitio por sitio en 2025, sin regla de persistencia: 1.900 sitios en móvil y 1.677 en escritorio.</li>
+        <li><b>13/10/2026.</b> El formato de entrega pasa de presentaciones a esta bitácora.</li>
       </ul>
-      <h3>Objetivos</h3>
-      <p><b>General.</b> Estimar el efecto causal de las migraciones de tecnología frontend sobre Core Web Vitals, a partir de un panel longitudinal público construido con HTTP Archive y CrUX, mediante inferencia causal para datos de panel con tratamiento escalonado.</p>
-      <ol>
-        <li><b>Construcción del panel:</b> panel mensual de orígenes con tecnología detectada y Core Web Vitals, para una ventana de al menos seis años.</li>
-        <li><b>Detección y validación de migraciones</b> sobre un conjunto acotado de pares de tecnologías, con validación de la precisión de la detección.</li>
-        <li><b>Grupo de control</b> emparejado de sitios comparables que no migraron.</li>
-        <li><b>Estimación del efecto causal</b> sobre LCP, INP y CLS con DiD robusto a tratamiento escalonado.</li>
-        <li><b>Heterogeneidad</b> del efecto según el tipo de migración y las características del sitio.</li>
-      </ol>
-      <h3>Alcances</h3>
-      <p>Conjunto acotado de pares de migración con volumen suficiente y detección estable en Wappalyzer. Cohorte de sitios definida point-in-time para no introducir sesgo de supervivencia. Diseño observacional y cuasi-experimental: se estima el efecto promedio sobre los tratados (ATT) y su heterogeneidad.</p>
-    </section>
 
-    <!-- ============================== LITERATURA ============================== -->
-    <section id="literatura" data-titulo="Estado de la cuestión" data-actualizado="2026-09-22">
-      <h2>Estado de la cuestión</h2>
-      <div class="sec-meta">todas las citas verificadas contra el abstract o la metadata de la fuente</div>
-      <div class="tabla-wrap"><table class="t">
-        <thead><tr><th>Línea de evidencia</th><th>Trabajos</th><th>Por qué no responde la pregunta</th></tr></thead>
-        <tbody>
-          <tr><td class="k">Industrial</td><td>Core Web Vitals Technology Report y Web Almanac (HTTP Archive)</td><td>Transversal: compara sitios distintos en un mismo mes, sin seguir a los mismos sitios en el tiempo ni controlar por diferencias previas.</td></tr>
-          <tr><td class="k">Laboratorio</td><td>Tong, Jikson y Gunawan (2023); Tulsyan et al. (2024)</td><td>Aplicaciones de prueba a pequeña escala, o síntesis narrativa sin datos propios; sin usuarios reales.</td></tr>
-          <tr><td class="k">CrUX descriptivo</td><td>Sengupta et al. (2023)</td><td>Caracteriza la experiencia de navegación por dispositivo y país; no estudia tecnología ni migraciones.</td></tr>
-          <tr><td class="k">Revisión sistemática</td><td>Ghattas, Odeh y Mora (2025)</td><td>Ninguno de los 30 estudios incluidos estima el efecto de decisiones tecnológicas concretas sobre usuarios reales.</td></tr>
-          <tr><td class="k">Métodos causales</td><td>Card y Krueger (1994); Goodman-Bacon (2021); Callaway y Sant'Anna (2021); Sun y Abraham (2021); Wager y Athey (2018)</td><td>Maduros en econometría aplicada, sin aplicación identificada en performance web.</td></tr>
-        </tbody>
-      </table></div>
-      <h3>Revisión sistemática de Ghattas, Odeh y Mora (2025)</h3>
-      <p>PRISMA sobre 7 bases (IEEE Xplore, Google Scholar, Scopus, SpringerLink, ResearchGate, ACM Digital Library y DOAJ), 2010–2024: <b>6.657</b> registros identificados → <b>1.651</b> sin duplicados ni trabajos en otro idioma → <b>780</b> cribados por título y resumen → <b>120</b> con texto completo evaluado → <b>34</b> elegibles → <b>30</b> estudios de alta calidad incluidos (umbral ≥4,5/9).</p>
-      <h3>Chequeo propio (22/09/2026)</h3>
-      <p>Búsqueda dirigida a la combinación exacta del trabajo (causal + panel longitudinal + Core Web Vitals o CrUX + migración de tecnología). No es una búsqueda sistemática. Único trabajo adyacente: "Symmetry-Aware Causal-Inference-Driven Web Performance Modeling" (<i>Symmetry</i>, dic. 2025, DOI <code>10.3390/sym17122058</code>), descartado porque hace <i>causal discovery</i> sobre la estructura DOM de una página individual, no inferencia causal de panel entre sitios.</p>
-      <h3>Precedentes de uso de los datasets</h3>
-      <ul>
-        <li><b>Ruth, Kumar, Wang, Valenta y Durumeric (2022, ACM IMC):</b> evalúan rankings de popularidad (Alexa, Tranco, Cisco Umbrella, CrUX) contra tráfico de Cloudflare; el ranking de CrUX es el más preciso. Respalda la representatividad del panel de CrUX; no mide la precisión de los valores de LCP/INP/CLS.</li>
-        <li><b>Beugin, Barford y McDaniel (2026, arXiv):</b> combinan HTTP Archive y CrUX en un diseño longitudinal de 7 años sobre adopción y abandono de APIs web. Objetivo descriptivo, no estimación de efecto causal.</li>
-      </ul>
-      <p><b>Vacío.</b> Ningún trabajo combina seguimiento longitudinal de los mismos sitios, experiencia de usuario real y un diseño con lectura causal.</p>
-    </section>
-
-    <!-- ============================== DATOS ============================== -->
-    <section id="datos" data-titulo="Datos y viabilidad" data-actualizado="2026-10-02">
-      <h2>Datos y viabilidad</h2>
-      <div class="sec-meta">cifras leídas de los <code>.parquet</code> de <code>bigquery/</code></div>
-      <h3>Fuentes</h3>
-      <ul>
-        <li><code>httparchive.crawl.pages</code>: tecnología detectada por Wappalyzer por página, mes y cliente (móvil o escritorio). Particionada por <code>date</code>, clusterizada por <code>client</code>, <code>is_root_page</code>, <code>rank</code> y <code>page</code>.</li>
-        <li><code>chrome-ux-report.materialized.device_summary</code>: p75 de LCP, INP y CLS por origen, mes y dispositivo. Es la variable de resultado del panel (crawl móvil ↔ <code>phone</code>, escritorio ↔ <code>desktop</code>).</li>
-        <li><code>chrome-ux-report.materialized.metrics_summary</code>: un único p75 por origen y mes que agrega todos los dispositivos; se usa para cobertura y semáforos generales.</li>
-      </ul>
-      <p>Unidad de análisis: el origen web (dominio), sin datos personales. HTTP Archive arma el crawl del mes M con la lista de orígenes de CrUX del mes M−1.</p>
-      <div class="tiles">
-        <div class="tile"><div class="lab">Orígenes en CrUX, jul-2026</div><div class="val" data-dato="semaforo_jul2026.total_origins"></div><div class="det">sin duplicados por origin: <span data-dato="unicidad_origin_jul2026.distinct_origins"></span> distintos</div></div>
-        <div class="tile"><div class="lab">Root pages en HTTP Archive, jul-2026</div><div class="val" data-dato="crecimiento_root_pages.13.root_pages"></div><div class="det">páginas raíz distintas, ambos clientes (APPROX_COUNT_DISTINCT)</div></div>
-        <div class="tile"><div class="lab">Filas de <span class="mono">crawl.pages</span></div><div class="val">3.241.898.696</div><div class="det">273 particiones mensuales · 1,52 PB (metadata 21/08/2026)</div></div>
-      </div>
-
-      <div class="grafico">
-        <div class="titulo">Semáforo de Core Web Vitals, julio 2026</div>
-        <div class="subt">% de orígenes con dato en cada métrica, según los umbrales de Google</div>
-        <div class="barras-semaforo" id="semaforo"></div>
-        <div class="leyenda"><span><span class="sw" style="background:var(--good)"></span>Bueno</span><span><span class="sw" style="background:var(--warn)"></span>A mejorar</span><span><span class="sw" style="background:var(--crit)"></span>Malo</span><span class="nota">LCP ≤2,5 s / ≤4 s · INP ≤200 ms / ≤500 ms · CLS ≤0,10 / ≤0,25</span></div>
-        <div class="fuente">chrome-ux-report_materialized_metrics_summary/001 · la cobertura de INP es menor porque una página sin clics, toques ni teclas no reporta INP (web.dev/articles/inp)</div>
-      </div>
-
-      <div class="grafico">
-        <div class="titulo">Root pages en el crawl de HTTP Archive</div>
-        <div class="subt">Páginas raíz distintas (conteo aproximado, ambos clientes), cortes de enero y julio 2020–2026 · sombreado: ventana estable 2023–2026</div>
-        <div id="g-crecimiento"></div>
-        <div class="fuente">httparchive_crawl_pages/001</div>
-      </div>
-      <p>El panel no crece de forma monótona: hay dos rampas de expansión (2018–2019 y 2022–2023) y desde 2023 la serie se estabiliza con estacionalidad enero/julio.</p>
-
-      <div class="grafico">
-        <div class="titulo">Cobertura del cruce HTTP Archive ↔ CrUX</div>
-        <div class="subt">18 fechas semestrales, 2018–2026 · root pages de HTTP Archive contra orígenes de <span class="mono">metrics_summary</span></div>
-        <div class="leyenda"><span><span class="ln" style="background:var(--s1)"></span>% de root pages de HTTP Archive con dato en CrUX</span><span><span class="ln" style="background:var(--s2)"></span>% de orígenes de CrUX presentes en HTTP Archive</span></div>
-        <div id="g-cobertura"></div>
-        <div class="fuente">cross_source/002</div>
-      </div>
-      <p>Antes de 2019 el cruce es casi inutilizable; 2019–2022 es una zona de transición sin tendencia estable; desde 2023-01 la cobertura se estabiliza. Es la justificación de la ventana 2023–2026 a partir del propio cruce.</p>
-      <div class="tabla-wrap" id="t-cobertura"></div>
-
-      <h3>Cobertura del top 10k (crawl móvil)</h3>
-      <div class="tabla-wrap" id="t-top10k"></div>
-      <p class="nota">Los presentes con otro rank y las root pages top 10k del crawl que no son top 10k en CrUX del mismo mes se explican por el desfase M−1 entre las dos listas.</p>
-
-      <h3>Variables operativas del panel</h3>
-      <div class="tabla-wrap"><table class="t">
-        <thead><tr><th>Variable</th><th>Fuente</th><th>Granularidad</th><th>Rol en el diseño</th></tr></thead>
-        <tbody>
-          <tr><td class="k">Tecnología detectada (Wappalyzer)</td><td>HTTP Archive, <code>crawl.pages</code></td><td>Origen, mes y cliente</td><td>Define el tratamiento: su cambio sostenido es el evento de migración</td></tr>
-          <tr><td class="k">p75 de LCP e INP</td><td>CrUX, <code>device_summary</code></td><td>Origen, mes y dispositivo</td><td>Resultado principal (H1)</td></tr>
-          <tr><td class="k">p75 de CLS</td><td>CrUX, <code>device_summary</code></td><td>Origen, mes y dispositivo</td><td>Resultado secundario</td></tr>
-          <tr><td class="k">Rango de tráfico del origen</td><td>CrUX</td><td>Origen y mes</td><td>Covariable de emparejamiento y eje de heterogeneidad (H2)</td></tr>
-          <tr><td class="k">País predominante</td><td>CrUX, tablas por país</td><td>Origen y mes</td><td>Covariable de emparejamiento</td></tr>
-          <tr><td class="k">Cliente (móvil o escritorio)</td><td>HTTP Archive</td><td>Origen y mes</td><td>Estratificación: un panel por cliente</td></tr>
-        </tbody>
-      </table></div>
-
-      <h3>Costo de extracción</h3>
-      <p>El dry-run no descuenta el clustering de <code>crawl.pages</code> y sobreestima lo facturado (el panel piloto de 2025 estimó 234,9 GB y facturó 19,8 GB). Un mes completo del crawl móvil, con las mismas columnas que el panel, factura <b><span data-dato="extracciones_mes_completo_gb" data-fmt="gb"></span></b> para <b><span data-dato="costo_mes_completo_dic2025.sitios"></span></b> sitios y <b><span data-dato="costo_mes_completo_dic2025.filas_sitio_tecnologia"></span></b> filas sitio × tecnología. 2023–2026 en ambos clientes ≈ 525 GB: el límite es el volumen de filas, no el costo.</p>
-    </section>
-
-    <!-- ============================== EXPLORATORIO ============================== -->
-    <section id="exploratorio" data-titulo="DiD exploratorio" data-actualizado="2026-09-04">
-      <h2>DiD exploratorio de dos períodos</h2>
-      <div class="sec-meta">junio 2025 vs junio 2026 · <code>cross_source/001</code></div>
-      <p>Para cada par se compara la variación del p75 entre junio de 2025 y junio de 2026 de los orígenes que migraron contra la de los que siguieron en la tecnología de origen (páginas raíz del crawl móvil presentes en ambos meses). Un valor negativo indica mejora del grupo migrado respecto de su control.</p>
-      <div class="tabla-wrap" id="t-did"></div>
-      <p><b>No confirma H1.</b> En jQuery→React el grupo migrado queda peor que su control en LCP e INP. En los tres pares los tratados arrancan 200–300 ms peor que los controles, así que parte de lo medido es reversión a la media: es el argumento para emparejar el control y usar Callaway y Sant'Anna. Dos cortes anuales no distinguen el momento del tratamiento ni exigen persistencia del cambio.</p>
-      <p class="nota">Limitación: cruza la tecnología del crawl móvil con el p75 de <code>metrics_summary</code>, que agrega todos los dispositivos; el panel de la tesis usa <code>device_summary</code>.</p>
-    </section>
-
-    <!-- ============================== PANEL ============================== -->
-    <section id="panel" data-titulo="Panel piloto" data-actualizado="2026-10-02">
-      <h2>Panel piloto con cohorte fija</h2>
-      <div class="sec-meta"><code>cross_source/007</code> (móvil) y <code>008</code> (escritorio) · <code>analisis/panel_piloto_scd2.py</code></div>
-      <p>Root pages con rank ≤ 10.000 en enero 2025 (rank tomado por HTTP Archive de la lista de CrUX de dic-2024, anterior a la ventana), seguidas los 12 meses de 2025 sin volver a filtrar por rank. Una fila por sitio × mes × tecnología detectada, con versión y p75 de LCP/INP/CLS de <code>device_summary</code> del mismo dispositivo. Reemplaza al filtro de rank mes a mes de <code>cross_source/003</code>/<code>004</code>.</p>
-      <div class="tabla-wrap" id="t-panel"></div>
-      <p class="nota">Relleno de un sitio-mes sin datos: con el otro cliente (las 6 tecnologías del panel coinciden entre móvil y escritorio en 98,2–100% de los sitio-mes con datos en ambos) o, si el hueco es de un mes, con el estado idéntico del mes anterior y el siguiente. La extracción no distingue una visita con la lista de Wappalyzer vacía de un mes sin visita: en ambos casos es dato faltante.</p>
-
-      <h3>Eventos de migración: cambio crudo vs. persistente</h3>
-      <p>Un evento persistente exige 3 meses con el estado de origen antes del cambio y 3 con el estado de destino después. Solo los cambios crudos entre abril y octubre tienen 3 meses de cada lado dentro de 2025 (verificables).</p>
-      <div class="tabla-wrap" id="t-eventos"></div>
-
-      <h3>Ruido de detección por tecnología (dimensión SCD-2)</h3>
-      <div class="tabla-wrap" id="t-tramos"></div>
-      <p class="nota">Tramo de un mes interno = la tecnología aparece o desaparece un solo mes entre dos meses con el estado contrario; es consistente con ruido de detección.</p>
-
-      <h3>Versión detectada por Wappalyzer (dic-2025, móvil)</h3>
-      <div class="tabla-wrap" id="t-version"></div>
-      <p class="nota">La causa de la baja detección de versión en React y Vue no está verificada.</p>
-
-      <h3>Potencia</h3>
-      <p>Estimación con la varianza de los controles (cálculo presentado el 02/10/2026, no versionado como script): con 46–72 tratados, el efecto mínimo detectable en LCP va de ~60 ms (escritorio) a ~150 ms (móvil); detectar ~40 ms requiere de ~150 (escritorio) a ~900 (móvil) eventos por par.</p>
-    </section>
-
-    <!-- ============================== CAMBIOS POR SITIO ============================== -->
-    <section id="cambios" data-titulo="Cambios por sitio" data-actualizado="2026-10-13">
-      <h2>Cambios de tecnología frontend sitio por sitio</h2>
+      <h3 id="cambios" data-nav="Cambios de tecnología por sitio">Cambios de tecnología frontend sitio por sitio</h3>
       <div class="sec-meta">cohorte fija top 10k, ene–dic 2025 · <code>analisis/cambios_frontend.py</code></div>
       <p>Todos los sitios de la cohorte con al menos un cambio en sus tecnologías frontend entre dos meses observados consecutivos, <b>sin regla de persistencia</b>. Cuenta como cambio que entre o salga una tecnología de la lista o que una tecnología presente en ambos meses cambie de versión mayor (cuando la versión se detecta en los dos meses). Cada celda es un mes: arriba las tecnologías detectadas, abajo el p75 de LCP (segundos), CLS e INP (milisegundos) del mismo dispositivo.</p>
       <div class="tiles" id="tiles-cambios"></div>
@@ -519,56 +285,195 @@
       </div>
       <div class="grilla-wrap" id="wrap-cambios"><div class="grilla" id="grilla"></div></div>
       <p class="nota">Clic en un dominio para verlo ampliado con la evolución de cada métrica. Las métricas solo existen en los meses con tecnologías registradas: la extracción trae CrUX únicamente para esos sitio-mes. Familia = framework al que lleva la relación <code>implies</code> de Wappalyzer (ej. Remix → React); Angular agrupa Angular y AngularJS. La celda toma el color de su framework principal y la banda superior muestra todas las familias presentes.</p>
-
       <h3>Qué tecnologías entran y salen</h3>
       <div class="tabla-wrap" id="t-entran-salen"></div>
+
+      <h3 id="wappalyzer" data-nav="Auditoría de Wappalyzer">Detección de tecnologías: auditoría de Wappalyzer</h3>
+      <div class="sec-meta">fork <a href="https://github.com/HTTPArchive/wappalyzer">HTTPArchive/wappalyzer</a> en <span class="mono" id="w-commit"></span> · <code>analisis/auditoria_wappalyzer.py</code></div>
+      <p>Wappalyzer pasó a ser de código cerrado; HTTP Archive mantiene un fork de la última versión abierta y lo usa para el crawl mensual (README del fork). Cada tecnología se detecta por reglas sobre variables globales de JavaScript (<code>js</code>), elementos del DOM (<code>dom</code>), URLs de scripts (<code>scriptSrc</code>), HTML, meta tags, cabeceras o cookies. Según el README, las reglas <code>xhr</code>, <code>scripts</code>, <code>robots</code> y <code>probe</code> no se usan en HTTP Archive.</p>
+      <h4>Frameworks del relevamiento State of JS 2025 en el catálogo</h4>
+      <div class="tabla-wrap" id="t-stateofjs"></div>
+      <h4>Tecnologías frontend seguidas: reglas y sitios en la cohorte</h4>
+      <div class="tabla-wrap" id="t-tecnologias"></div>
+      <p class="nota">SolidJS tiene regla (<code>js: Solid$$</code>) y ningún sitio de la cohorte la activa; la causa no está verificada.</p>
+      <h4>Remix y React Router v7</h4>
+      <p>"What we planned to release as Remix v3 is now going to be released as React Router v7" (remix.run/blog/merging-remix-and-react-router, 15/05/2024). La regla de Remix busca la variable <code>__remixContext</code>; la de React Router, <code>__reactRouterVersion</code>, que el paquete define al cargarse en el navegador (<code>packages/react-router/lib/dom/lib.tsx</code>) y que Wappalyzer lee también en los sitios que pasaron de Remix a React Router 7 (tabla). El modo framework define además <code>window.__reactRouterContext</code>, que ninguna regla del catálogo usa.</p>
+      <div class="tabla-wrap" id="t-remix"></div>
+      <p class="nota">Que React Router v7 deje de definir <code>__remixContext</code> es consistente con estos datos, pero no se verificó en el código. Identificar el modo framework de React Router v7 requiere el HTML de la página, no la lista de tecnologías.</p>
+      <h4>Cambios de reglas desde dic-2022 (rama principal del fork)</h4>
+      <div class="tabla-wrap" id="t-reglas"></div>
+      <p class="nota">Fecha del commit que entra a la rama principal. No está verificado que el crawl de cada mes use la versión vigente en ese momento. En 2025 no hay cambios de reglas para estas tecnologías.</p>
+      <p class="nota">Corrección de la entrega 4: la clasificación de tecnologías por reglas de detección contaba <code>xhr</code> como regla de código en la página, y HTTP Archive no la usa; 13 tecnologías de la cohorte tienen <code>xhr</code> como única regla de ese tipo. Las cifras de esa clasificación (18,3 tecnologías por sitio detectables por código, 4,7 por infraestructura) no se recalcularon.</p>
     </section>
 
-    <!-- ============================== GRAFO ============================== -->
-    <section id="grafo" data-titulo="Grafo sitio ↔ librería" data-actualizado="2026-10-02">
-      <h2>Grafo bipartito sitio ↔ librería</h2>
-      <div class="sec-meta">cohorte fija, dic-2025 · <code>analisis/grafo_bipartito.py</code> · explorador: <a href="../analisis/visualizaciones/explorador_grafo.html">explorador_grafo.html</a></div>
+    <!-- ============================== ENTREGA 4 ============================== -->
+    <section id="entrega-4" class="entrega" data-titulo="Entrega 4" data-fecha="2026-10-02" data-estado="Presentada">
+      <div class="entrega-cab"></div>
+      <h2>Panel piloto y grafo bipartito sitio ↔ librería</h2>
+      <div class="sec-meta">Reunión de avance · <a href="../Presentaciones/04-presentacion_avance_panel_grafo.pdf">Presentación 04 (PDF)</a> · <a href="../Presentaciones/04-presentacion_avance_panel_grafo.html">HTML</a> · explorador: <a href="../analisis/visualizaciones/explorador_grafo.html">explorador_grafo.html</a></div>
+      <h3>Trabajo desde la entrega anterior</h3>
+      <ul>
+        <li><b>01/10/2026.</b> Primera extracción sitio × mes × tecnología del top 10k de 2025, móvil y escritorio, filtrando el rank mes a mes (<code>cross_source/003</code>, <code>004</code>): solo el 26% de los sitios quedaba los 12 meses. Reemplazada al día siguiente por la cohorte fija.</li>
+        <li><b>01/10/2026.</b> Grafo bipartito sitio ↔ tecnología, proyección sobre tecnologías y explorador interactivo.</li>
+        <li><b>01/10/2026.</b> Revisión de cifras: el dry-run no descuenta el clustering de <code>crawl.pages</code> y sobreestima lo facturado; desde entonces el ledger registra lo facturado por job. Costo real de un mes completo: 6,1 GB (<code>cross_source/006</code>).</li>
+        <li><b>02/10/2026.</b> Cohorte fija: root pages con rank ≤ 10.000 en enero 2025, seguidas los 12 meses de 2025 sin volver a filtrar por rank (<code>cross_source/007</code> móvil, <code>008</code> escritorio). Un sitio-mes sin tecnologías registradas se trata como dato faltante, no como abandono.</li>
+        <li><b>02/10/2026.</b> Clasificación de las tecnologías detectadas por sus reglas de detección (<code>httparchive_wappalyzer_technologies/002</code>).</li>
+      </ul>
+
+      <h3 id="panel" data-nav="Panel piloto con cohorte fija">Panel piloto con cohorte fija</h3>
+      <div class="sec-meta"><code>cross_source/007</code> (móvil) y <code>008</code> (escritorio) · <code>analisis/panel_piloto_scd2.py</code></div>
+      <p>Root pages con rank ≤ 10.000 en enero 2025 (rank tomado por HTTP Archive de la lista de CrUX de dic-2024, anterior a la ventana), seguidas los 12 meses de 2025 sin volver a filtrar por rank. Una fila por sitio × mes × tecnología detectada, con versión y p75 de LCP/INP/CLS de <code>device_summary</code> del mismo dispositivo.</p>
+      <div class="tabla-wrap" id="t-panel"></div>
+      <p class="nota">Relleno de un sitio-mes sin datos: con el otro cliente (las 6 tecnologías del panel coinciden entre móvil y escritorio en 98,2–100% de los sitio-mes con datos en ambos) o, si el hueco es de un mes, con el estado idéntico del mes anterior y el siguiente. La extracción no distingue una visita con la lista de Wappalyzer vacía de un mes sin visita: en ambos casos es dato faltante.</p>
+      <h4>Eventos de migración: cambio crudo vs. persistente</h4>
+      <p>Un evento persistente exige 3 meses con el estado de origen antes del cambio y 3 con el estado de destino después. Solo los cambios crudos entre abril y octubre tienen 3 meses de cada lado dentro de 2025 (verificables).</p>
+      <div class="tabla-wrap" id="t-eventos"></div>
+      <h4>Ruido de detección por tecnología (dimensión SCD-2)</h4>
+      <div class="tabla-wrap" id="t-tramos"></div>
+      <p class="nota">Tramo de un mes interno = la tecnología aparece o desaparece un solo mes entre dos meses con el estado contrario; es consistente con ruido de detección.</p>
+      <h4>Versión detectada por Wappalyzer (dic-2025, móvil)</h4>
+      <div class="tabla-wrap" id="t-version"></div>
+      <p class="nota">La causa de la baja detección de versión en React y Vue no está verificada.</p>
+      <h4>Potencia</h4>
+      <p>Estimación con la varianza de los controles (cálculo presentado en esta entrega, no versionado como script): con 46–72 tratados, el efecto mínimo detectable en LCP va de ~60 ms (escritorio) a ~150 ms (móvil); detectar ~40 ms requiere de ~150 (escritorio) a ~900 (móvil) eventos por par.</p>
+
+      <h3 id="top10k" data-nav="Cobertura del top 10k y costo">Cobertura del top 10k y costo de extracción</h3>
+      <div class="tabla-wrap" id="t-top10k"></div>
+      <p class="nota">Crawl móvil. Los presentes con otro rank y las root pages top 10k del crawl que no son top 10k en CrUX del mismo mes se explican por el desfase M−1: HTTP Archive arma el crawl del mes M con la lista de orígenes de CrUX del mes M−1.</p>
+      <p>El dry-run no descuenta el clustering de <code>crawl.pages</code> y sobreestima lo facturado (el panel piloto de 2025 estimó 234,9 GB y facturó 19,8 GB). Un mes completo del crawl móvil, con las mismas columnas que el panel, factura <b><span data-dato="extracciones_mes_completo_gb" data-fmt="gb"></span></b> para <b><span data-dato="costo_mes_completo_dic2025.sitios"></span></b> sitios y <b><span data-dato="costo_mes_completo_dic2025.filas_sitio_tecnologia"></span></b> filas sitio × tecnología. 2023–2026 en ambos clientes ≈ 525 GB: el límite es el volumen de filas, no el costo.</p>
+
+      <h3 id="grafo" data-nav="Grafo sitio ↔ librería">Grafo bipartito sitio ↔ librería</h3>
+      <div class="sec-meta">cohorte fija, dic-2025 · <code>analisis/grafo_bipartito.py</code></div>
       <p>La capa estudiada son las librerías detectables en el HTML (Wappalyzer): varían entre sitios con el mismo framework. Las dependencias internas del framework (npm <code>package.json</code>) son fijas para cada versión publicada y quedan como capa de interpretación. Framework@versión es un nodo más del lado de tecnologías.</p>
       <div class="tabla-wrap" id="t-grafo"></div>
-      <h3>Grupos por framework principal (móvil)</h3>
+      <h4>Grupos por framework principal (móvil)</h4>
       <div class="tabla-wrap" id="t-grupos"></div>
       <p class="nota">Descriptivo: compara sitios distintos, así que la diferencia de LCP entre grupos no se puede atribuir al framework.</p>
-      <h3>Versiones mayores con ≥ 30 sitios (móvil)</h3>
+      <h4>Versiones mayores con ≥ 30 sitios (móvil)</h4>
       <div class="tabla-wrap" id="t-versiones"></div>
-      <h3>Stacks de la proyección (móvil, exploratorio)</h3>
+      <h4>Stacks de la proyección (móvil, exploratorio)</h4>
       <div class="tabla-wrap" id="t-stacks"></div>
-      <h3>Recableado en las migraciones jQuery→React</h3>
+      <h4>Recableado en las migraciones jQuery→React</h4>
       <p id="p-recableado"></p>
       <p><b>Uso en el diseño causal.</b> El stack previo al evento entra como covariable de emparejamiento y como eje de heterogeneidad. Todo lo medido después del evento (librerías que llegan, proporción conservada) es posterior al tratamiento: describe mecanismos y no se usa como control.</p>
     </section>
 
-    <!-- ============================== WAPPALYZER ============================== -->
-    <section id="wappalyzer" data-titulo="Detección (Wappalyzer)" data-actualizado="2026-10-13">
-      <h2>Detección de tecnologías: auditoría de Wappalyzer</h2>
-      <div class="sec-meta">fork <a href="https://github.com/HTTPArchive/wappalyzer">HTTPArchive/wappalyzer</a> en <span class="mono" id="w-commit"></span> · <code>analisis/auditoria_wappalyzer.py</code></div>
-      <p>Wappalyzer pasó a ser de código cerrado; HTTP Archive mantiene un fork de la última versión abierta y lo usa para el crawl mensual (README del fork). Cada tecnología se detecta por reglas sobre variables globales de JavaScript (<code>js</code>), elementos del DOM (<code>dom</code>), URLs de scripts (<code>scriptSrc</code>), HTML, meta tags, cabeceras o cookies. Según el README, las reglas <code>xhr</code>, <code>scripts</code>, <code>robots</code> y <code>probe</code> no se usan en HTTP Archive.</p>
+    <!-- ============================== ENTREGA 3 ============================== -->
+    <section id="entrega-3" class="entrega" data-titulo="Entrega 3" data-fecha="2026-09-24" data-estado="Presentada">
+      <div class="entrega-cab"></div>
+      <h2>Avance del hito semanas 1–4: literatura, diseño del panel y cobertura del cruce</h2>
+      <div class="sec-meta">Reunión de avance · <a href="../Presentaciones/03-presentacion_avance_hito_1_4.pdf">Presentación 03 (PDF)</a> · <a href="../Presentaciones/03-presentacion_avance_hito_1_4.html">HTML</a></div>
+      <h3>Trabajo desde la entrega anterior</h3>
+      <ul>
+        <li><b>04/09/2026.</b> Versión final del documento escrito, alineada al template actualizado por la cátedra: cronograma con fechas, 3 figuras y 2 tablas. Incluye el DiD exploratorio de dos períodos (<code>cross_source/001</code>).</li>
+        <li><b>22/09/2026.</b> Relevamiento semestral de cobertura entre HTTP Archive y CrUX (<code>cross_source/002</code>).</li>
+        <li><b>22/09/2026.</b> Chequeo dirigido de la literatura sobre la combinación exacta del trabajo; cifras del embudo PRISMA de Ghattas et al. (2025) corregidas contra la fuente.</li>
+        <li><b>23/09/2026.</b> El resultado por dispositivo se toma de <code>device_summary</code> (<code>metrics_summary</code> agrega todos los dispositivos).</li>
+        <li><b>24/09/2026.</b> Validación de migraciones jQuery→React contra Wayback Machine.</li>
+        <li><b>Tareas de la reunión:</b> empezar la construcción del panel; investigar las librerías asociadas a cada versión de framework y evaluar un grafo bipartito (respondidas en la entrega 4).</li>
+      </ul>
 
-      <h3>Frameworks del relevamiento State of JS 2025 en el catálogo</h3>
-      <div class="tabla-wrap" id="t-stateofjs"></div>
+      <h3 id="documento" data-nav="Documento escrito (04/09)">Documento escrito (04/09/2026) y DiD exploratorio</h3>
+      <div class="sec-meta"><a href="../TP%20Latex/Project/main.pdf">Documento (PDF)</a> · <code>TP Latex/Project/main.tex</code> · <code>cross_source/001</code></div>
+      <p>Para cada par se compara la variación del p75 entre junio de 2025 y junio de 2026 de los orígenes que migraron contra la de los que siguieron en la tecnología de origen (páginas raíz del crawl móvil presentes en ambos meses). Un valor negativo indica mejora del grupo migrado respecto de su control.</p>
+      <div class="tabla-wrap" id="t-did"></div>
+      <p><b>No confirma H1.</b> En jQuery→React el grupo migrado queda peor que su control en LCP e INP. En los tres pares los tratados arrancan 200–300 ms peor que los controles, así que parte de lo medido es reversión a la media: es el argumento para emparejar el control y usar Callaway y Sant'Anna. Dos cortes anuales no distinguen el momento del tratamiento ni exigen persistencia del cambio.</p>
+      <p class="nota">Limitación: cruza la tecnología del crawl móvil con el p75 de <code>metrics_summary</code>, que agrega todos los dispositivos; el panel de la tesis usa <code>device_summary</code>.</p>
 
-      <h3>Tecnologías frontend seguidas: reglas y sitios en la cohorte</h3>
-      <div class="tabla-wrap" id="t-tecnologias"></div>
-      <p class="nota">SolidJS tiene regla (<code>js: Solid$$</code>) y ningún sitio de la cohorte la activa; la causa no está verificada.</p>
+      <h3 id="literatura" data-nav="Estado de la cuestión">Estado de la cuestión</h3>
+      <div class="sec-meta">todas las citas verificadas contra el abstract o la metadata de la fuente</div>
+      <div class="tabla-wrap"><table class="t">
+        <thead><tr><th>Línea de evidencia</th><th>Trabajos</th><th>Por qué no responde la pregunta</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Industrial</td><td>Core Web Vitals Technology Report y Web Almanac (HTTP Archive)</td><td>Transversal: compara sitios distintos en un mismo mes, sin seguir a los mismos sitios en el tiempo ni controlar por diferencias previas.</td></tr>
+          <tr><td class="k">Laboratorio</td><td>Tong, Jikson y Gunawan (2023); Tulsyan et al. (2024)</td><td>Aplicaciones de prueba a pequeña escala, o síntesis narrativa sin datos propios; sin usuarios reales.</td></tr>
+          <tr><td class="k">CrUX descriptivo</td><td>Sengupta et al. (2023)</td><td>Caracteriza la experiencia de navegación por dispositivo y país; no estudia tecnología ni migraciones.</td></tr>
+          <tr><td class="k">Revisión sistemática</td><td>Ghattas, Odeh y Mora (2025)</td><td>Ninguno de los 30 estudios incluidos estima el efecto de decisiones tecnológicas concretas sobre usuarios reales.</td></tr>
+          <tr><td class="k">Métodos causales</td><td>Card y Krueger (1994); Goodman-Bacon (2021); Callaway y Sant'Anna (2021); Sun y Abraham (2021); Wager y Athey (2018)</td><td>Maduros en econometría aplicada, sin aplicación identificada en performance web.</td></tr>
+        </tbody>
+      </table></div>
+      <h4>Revisión sistemática de Ghattas, Odeh y Mora (2025)</h4>
+      <p>PRISMA sobre 7 bases (IEEE Xplore, Google Scholar, Scopus, SpringerLink, ResearchGate, ACM Digital Library y DOAJ), 2010–2024: <b>6.657</b> registros identificados → <b>1.651</b> sin duplicados ni trabajos en otro idioma → <b>780</b> cribados por título y resumen → <b>120</b> con texto completo evaluado → <b>34</b> elegibles → <b>30</b> estudios de alta calidad incluidos (umbral ≥4,5/9).</p>
+      <h4>Chequeo propio (22/09/2026)</h4>
+      <p>Búsqueda dirigida a la combinación exacta del trabajo (causal + panel longitudinal + Core Web Vitals o CrUX + migración de tecnología). No es una búsqueda sistemática. Único trabajo adyacente: "Symmetry-Aware Causal-Inference-Driven Web Performance Modeling" (<i>Symmetry</i>, dic. 2025, DOI <code>10.3390/sym17122058</code>), descartado porque hace <i>causal discovery</i> sobre la estructura DOM de una página individual, no inferencia causal de panel entre sitios.</p>
+      <h4>Precedentes de uso de los datasets</h4>
+      <ul>
+        <li><b>Ruth, Kumar, Wang, Valenta y Durumeric (2022, ACM IMC):</b> evalúan rankings de popularidad (Alexa, Tranco, Cisco Umbrella, CrUX) contra tráfico de Cloudflare; el ranking de CrUX es el más preciso. Respalda la representatividad del panel de CrUX; no mide la precisión de los valores de LCP/INP/CLS.</li>
+        <li><b>Beugin, Barford y McDaniel (2026, arXiv):</b> combinan HTTP Archive y CrUX en un diseño longitudinal de 7 años sobre adopción y abandono de APIs web. Objetivo descriptivo, no estimación de efecto causal.</li>
+      </ul>
+      <p><b>Vacío.</b> Ningún trabajo combina seguimiento longitudinal de los mismos sitios, experiencia de usuario real y un diseño con lectura causal.</p>
 
-      <h3>Remix y React Router v7</h3>
-      <p>"What we planned to release as Remix v3 is now going to be released as React Router v7" (remix.run/blog/merging-remix-and-react-router, 15/05/2024). La regla de Remix busca la variable <code>__remixContext</code>; la de React Router, <code>__reactRouterVersion</code>, que el paquete define al cargarse en el navegador (<code>packages/react-router/lib/dom/lib.tsx</code>) y que Wappalyzer lee también en los sitios que pasaron de Remix a React Router 7 (tabla). El modo framework define además <code>window.__reactRouterContext</code>, que ninguna regla del catálogo usa.</p>
-      <div class="tabla-wrap" id="t-remix"></div>
-      <p class="nota">Que React Router v7 deje de definir <code>__remixContext</code> es consistente con estos datos, pero no se verificó en el código. Identificar el modo framework de React Router v7 requiere el HTML de la página, no la lista de tecnologías.</p>
+      <h3 id="diseno" data-nav="Diseño técnico del panel">Diseño técnico del panel</h3>
+      <p>Se cruza <code>crawl.pages</code> con <code>device_summary</code> por origen, mes y dispositivo (móvil ↔ <code>phone</code>, escritorio ↔ <code>desktop</code>). La tecnología se versiona como SCD tipo 2: cada fila es origen + tecnología + rango de vigencia, y el inicio de vigencia del valor nuevo es la fecha del evento. La cohorte de orígenes elegibles se define point-in-time, según su estado el mes anterior a cualquier migración posible, para no introducir sesgo de supervivencia.</p>
+      <div class="tabla-wrap"><table class="t">
+        <thead><tr><th>Variable</th><th>Fuente</th><th>Granularidad</th><th>Rol en el diseño</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Tecnología detectada (Wappalyzer)</td><td>HTTP Archive, <code>crawl.pages</code></td><td>Origen, mes y cliente</td><td>Define el tratamiento: su cambio sostenido es el evento de migración</td></tr>
+          <tr><td class="k">p75 de LCP e INP</td><td>CrUX, <code>device_summary</code></td><td>Origen, mes y dispositivo</td><td>Resultado principal (H1)</td></tr>
+          <tr><td class="k">p75 de CLS</td><td>CrUX, <code>device_summary</code></td><td>Origen, mes y dispositivo</td><td>Resultado secundario</td></tr>
+          <tr><td class="k">Rango de tráfico del origen</td><td>CrUX</td><td>Origen y mes</td><td>Covariable de emparejamiento y eje de heterogeneidad (H2)</td></tr>
+          <tr><td class="k">País predominante</td><td>CrUX, tablas por país</td><td>Origen y mes</td><td>Covariable de emparejamiento</td></tr>
+          <tr><td class="k">Cliente (móvil o escritorio)</td><td>HTTP Archive</td><td>Origen y mes</td><td>Estratificación: un panel por cliente</td></tr>
+        </tbody>
+      </table></div>
 
-      <h3>Cambios de reglas desde dic-2022 (rama principal del fork)</h3>
-      <div class="tabla-wrap" id="t-reglas"></div>
-      <p class="nota">Fecha del commit que entra a la rama principal. No está verificado que el crawl de cada mes use la versión vigente en ese momento. En 2025 no hay cambios de reglas para estas tecnologías.</p>
+      <h3 id="cobertura" data-nav="Cobertura del cruce 2018–2026">Cobertura del cruce HTTP Archive ↔ CrUX, 2018–2026</h3>
+      <div class="grafico">
+        <div class="titulo">Cobertura del cruce HTTP Archive ↔ CrUX</div>
+        <div class="subt">18 fechas semestrales, 2018–2026 · root pages de HTTP Archive contra orígenes de <span class="mono">metrics_summary</span></div>
+        <div class="leyenda"><span><span class="ln" style="background:var(--s1)"></span>% de root pages de HTTP Archive con dato en CrUX</span><span><span class="ln" style="background:var(--s2)"></span>% de orígenes de CrUX presentes en HTTP Archive</span></div>
+        <div id="g-cobertura"></div>
+        <div class="fuente">cross_source/002</div>
+      </div>
+      <p>Antes de 2019 el cruce es casi inutilizable; 2019–2022 es una zona de transición sin tendencia estable; desde 2023-01 la cobertura se estabiliza. Es la justificación de la ventana 2023–2026 a partir del propio cruce.</p>
+      <div class="tabla-wrap" id="t-cobertura"></div>
+
+      <h3 id="wayback" data-nav="Validación en Wayback Machine">Validación de migraciones jQuery→React en Wayback Machine</h3>
+      <div class="sec-meta"><code>httparchive_crawl_pages/002</code> · capturas de web.archive.org más cercanas al 15/06 de cada año</div>
+      <p>23 orígenes del top 10k con jQuery sin React en marzo y junio de 2025 y React sin jQuery en marzo y junio de 2026 (crawl móvil). De 5 revisados en el HTML archivado, 4 confirman el cambio; en www.n-tv.de el HTML de 2025 no referencia jQuery (puede venir dentro de un bundle), así que queda como no concluyente.</p>
+      <div class="tabla-wrap" id="t-wayback"></div>
     </section>
 
-    <!-- ============================== METODOLOGÍA ============================== -->
-    <section id="metodologia" data-titulo="Metodología" data-actualizado="2026-09-04">
-      <h2>Metodología</h2>
-      <div class="sec-meta">detalle en <code>TP Latex/Project/main.tex</code>, sección Solución propuesta</div>
+    <!-- ============================== ENTREGA 2 ============================== -->
+    <section id="entrega-2" class="entrega" data-titulo="Entrega 2" data-fecha="2026-08-28" data-estado="Presentada">
+      <div class="entrega-cab"></div>
+      <h2>Plan de trabajo</h2>
+      <div class="sec-meta">Presentación de cátedra (10 min) · <a href="../Presentaciones/02-presentacion_plan_de_trabajo.pdf">Presentación 02 (PDF)</a> · <a href="../Presentaciones/02-presentacion_plan_de_trabajo.html">HTML</a></div>
+      <h3>Trabajo desde la entrega anterior</h3>
+      <ul>
+        <li><b>23/08/2026.</b> Proyecto <code>tesis-506222</code> en modo Sandbox (tablas de destino expiran a 60 días; sin Cloud Storage). Script <code>run_query.sh</code>: dry-run, tope de bytes facturados, exportación a Parquet y ledger de cuota.</li>
+        <li><b>23/08/2026.</b> Primeras extracciones versionadas: crecimiento del panel 2020–2026, semáforo de Core Web Vitals de julio 2026 (mismo mes en ambas fuentes) y verificación de unicidad de origin en <code>metrics_summary</code>.</li>
+      </ul>
+
+      <h3 id="tema" data-nav="Tema, preguntas e hipótesis">Tema, preguntas e hipótesis</h3>
+      <p>Core Web Vitals son las tres métricas con las que Google estandariza la velocidad percibida de un sitio: <b>LCP</b> (cuánto tarda en aparecer el elemento visual más grande), <b>INP</b> (qué tan rápido responde la página a una interacción) y <b>CLS</b> (cuánto se mueve el contenido de forma inesperada). Se recolectan de navegadores Chrome reales y se publican mensualmente en CrUX. HTTP Archive rastrea mensualmente millones de sitios y detecta con Wappalyzer qué tecnologías usa cada uno.</p>
+      <p><b>Problema general.</b> Estimar el efecto causal de las migraciones de tecnología frontend, detectadas en el panel mensual de HTTP Archive, sobre las métricas de experiencia de usuario real publicadas en CrUX, tratando cada migración como un cuasi-experimento y aplicando un diseño de diferencias en diferencias robusto a tratamiento escalonado, con un grupo de control de sitios comparables que no migraron, utilizando exclusivamente datos públicos.</p>
+      <h4>Preguntas de investigación</h4>
+      <ol>
+        <li>¿Las migraciones desde tecnologías frontend con mayor carga de JavaScript bloqueante hacia frameworks modernos producen una mejora causal y estadísticamente significativa en LCP e INP, respecto de la trayectoria que hubieran seguido los mismos sitios de no migrar?</li>
+        <li>¿Ese efecto es homogéneo entre tipos de migración y niveles de tráfico, o varía según las características del sitio?</li>
+        <li>¿En qué medida el estimador clásico de efectos fijos bidireccionales sobreestima el efecto frente a un estimador robusto al sesgo de tratamiento escalonado?</li>
+      </ol>
+      <h4>Hipótesis</h4>
+      <ul>
+        <li><b>H1 (principal).</b> Las migraciones desde tecnologías con mayor carga de JavaScript bloqueante hacia frameworks modernos (ej. jQuery→React) mejoran LCP e INP frente a un grupo de control emparejado. El DiD exploratorio de la entrega 3 apunta en sentido contrario para jQuery→React (ver <a href="#documento">Documento escrito</a>).</li>
+        <li><b>H2.</b> El efecto es heterogéneo: mayor desde tecnologías legacy (jQuery, plantillas de WordPress sin optimizar) que entre frameworks modernos, y varía según el tráfico del sitio.</li>
+        <li><b>H3.</b> TWFE sobreestima el efecto frente al estimador de Callaway y Sant'Anna por las comparaciones entre grupos ya tratados (Goodman-Bacon).</li>
+      </ul>
+
+      <h3 id="objetivos" data-nav="Objetivos y alcances">Objetivos y alcances</h3>
+      <p><b>General.</b> Estimar el efecto causal de las migraciones de tecnología frontend sobre Core Web Vitals, a partir de un panel longitudinal público construido con HTTP Archive y CrUX, mediante inferencia causal para datos de panel con tratamiento escalonado.</p>
+      <ol>
+        <li><b>Construcción del panel:</b> panel mensual de orígenes con tecnología detectada y Core Web Vitals, para una ventana de al menos seis años.</li>
+        <li><b>Detección y validación de migraciones</b> sobre un conjunto acotado de pares de tecnologías, con validación de la precisión de la detección.</li>
+        <li><b>Grupo de control</b> emparejado de sitios comparables que no migraron.</li>
+        <li><b>Estimación del efecto causal</b> sobre LCP, INP y CLS con DiD robusto a tratamiento escalonado.</li>
+        <li><b>Heterogeneidad</b> del efecto según el tipo de migración y las características del sitio.</li>
+      </ol>
+      <p><b>Alcances.</b> Conjunto acotado de pares de migración con volumen suficiente y detección estable en Wappalyzer. Cohorte de sitios definida point-in-time para no introducir sesgo de supervivencia. Diseño observacional y cuasi-experimental: se estima el efecto promedio sobre los tratados (ATT) y su heterogeneidad.</p>
+      <p><b>Limitaciones.</b> CrUX solo cubre sitios con tráfico de Chrome suficiente. La detección de Wappalyzer no es perfecta y sus reglas cambiaron en el tiempo: se exige persistencia del cambio y validación manual de una muestra. La migración no es aleatoria: matching sobre covariables previas y verificación de tendencias paralelas.</p>
+
+      <h3 id="metodologia" data-nav="Metodología y herramientas">Metodología y herramientas</h3>
       <ol type="a">
         <li><b>Construcción del panel.</b> Tecnología por origen y mes desde HTTP Archive, cruzada con CrUX del mismo dispositivo; un panel por cliente. Cohorte point-in-time. La tecnología se versiona como dimensión de cambio lento (SCD tipo 2): el inicio de vigencia del valor nuevo es la fecha del evento.</li>
         <li><b>Detección y validación de eventos.</b> Una migración es un origen que deja la tecnología A y pasa a la B, sosteniendo el cambio al menos tres meses consecutivos. Validación manual de una muestra contra Wayback Machine.</li>
@@ -576,40 +481,71 @@
         <li><b>Estimación.</b> Estudio de eventos con el estimador de Callaway y Sant'Anna (evita el sesgo de TWFE que formaliza Goodman-Bacon); réplica con Sun y Abraham; errores clusterizados por origen; corrección de Benjamini-Hochberg entre pares.</li>
         <li><b>Heterogeneidad.</b> Bosques aleatorios causales (Wager y Athey) para el efecto condicional a covariables.</li>
       </ol>
-      <h3>Herramientas</h3>
-      <p>BigQuery (SQL) para la extracción; Python (pandas, DuckDB, networkx) para el análisis local; paquete <code>did</code> de R vía <code>rpy2</code> para Callaway y Sant'Anna; <code>pyfixest</code> para Sun y Abraham; <code>statsmodels</code> para TWFE; <code>scikit-learn</code> para el puntaje de propensión; <code>econml</code> o <code>grf</code> para bosques causales. Git y semillas fijas para reproducibilidad.</p>
+      <p><b>Herramientas.</b> BigQuery (SQL) para la extracción; Python (pandas, DuckDB, networkx) para el análisis local; paquete <code>did</code> de R vía <code>rpy2</code> para Callaway y Sant'Anna; <code>pyfixest</code> para Sun y Abraham; <code>statsmodels</code> para TWFE; <code>scikit-learn</code> para el puntaje de propensión; <code>econml</code> o <code>grf</code> para bosques causales. Git y semillas fijas para reproducibilidad.</p>
+      <p class="nota">El cronograma de la presentación estaba expresado en meses (semanas 1–43); la versión con fechas concretas (48 semanas desde el 31/08/2026) es la del documento escrito y está en <a href="#cronograma">Estado actual</a>.</p>
     </section>
 
-    <!-- ============================== EXTRACCIONES ============================== -->
-    <section id="extracciones" data-titulo="Extracciones BigQuery" data-actualizado="2026-10-02">
-      <h2>Registro de extracciones de BigQuery</h2>
-      <div class="sec-meta">Generado desde el encabezado de cada <code>.sql</code> y <code>bigquery/usage-log.csv</code></div>
+    <!-- ============================== ENTREGA 1 ============================== -->
+    <section id="entrega-1" class="entrega" data-titulo="Entrega 1" data-fecha="2026-08-22" data-estado="Presentada">
+      <div class="entrega-cab"></div>
+      <h2>Viabilidad del dataset: HTTP Archive + Chrome UX Report en BigQuery</h2>
+      <div class="sec-meta"><a href="../Presentaciones/01-presentacion_dataset_and_viability.pdf">Presentación 01 (PDF)</a></div>
+      <h3>Trabajo previo a la entrega</h3>
+      <ul>
+        <li><b>14/08/2026.</b> Chequeo de viabilidad en BigQuery: cobertura de LCP/CLS/INP en CrUX y conteo inicial de migraciones jun-2025 → jun-2026.</li>
+        <li><b>21/08/2026.</b> Escala de <code>httparchive.crawl.pages</code> (metadata) y serie de crecimiento del panel.</li>
+      </ul>
+
+      <h3 id="datos" data-nav="Fuentes y escala">Fuentes y escala</h3>
+      <ul>
+        <li><code>httparchive.crawl.pages</code>: tecnología detectada por Wappalyzer por página, mes y cliente (móvil o escritorio). Particionada por <code>date</code>, clusterizada por <code>client</code>, <code>is_root_page</code>, <code>rank</code> y <code>page</code>.</li>
+        <li><code>chrome-ux-report.materialized.device_summary</code>: p75 de LCP, INP y CLS por origen, mes y dispositivo. Es la variable de resultado del panel (crawl móvil ↔ <code>phone</code>, escritorio ↔ <code>desktop</code>).</li>
+        <li><code>chrome-ux-report.materialized.metrics_summary</code>: un único p75 por origen y mes que agrega todos los dispositivos; se usa para cobertura y semáforos generales.</li>
+      </ul>
+      <p>HTTP Archive y CrUX son fuentes distintas, mantenidas por equipos distintos; desde 2018 HTTP Archive usa la lista de orígenes de CrUX para decidir qué sitios rastrear. Unidad de análisis: el origen web (dominio), sin datos personales. Los datos son públicos y se acceden vía BigQuery.</p>
+      <div class="tiles">
+        <div class="tile"><div class="lab">Orígenes en CrUX, jul-2026</div><div class="val" data-dato="semaforo_jul2026.total_origins"></div><div class="det">sin duplicados por origin: <span data-dato="unicidad_origin_jul2026.distinct_origins"></span> distintos</div></div>
+        <div class="tile"><div class="lab">Root pages en HTTP Archive, jul-2026</div><div class="val" data-dato="crecimiento_root_pages.13.root_pages"></div><div class="det">páginas raíz distintas, ambos clientes (APPROX_COUNT_DISTINCT)</div></div>
+        <div class="tile"><div class="lab">Filas de <span class="mono">crawl.pages</span></div><div class="val">3.241.898.696</div><div class="det">273 particiones mensuales · 1,52 PB (metadata 21/08/2026)</div></div>
+      </div>
+
+      <h3 id="semaforo-cwv" data-nav="Semáforo de Core Web Vitals">Semáforo de Core Web Vitals</h3>
+      <div class="grafico">
+        <div class="titulo">Semáforo de Core Web Vitals, julio 2026</div>
+        <div class="subt">% de orígenes con dato en cada métrica, según los umbrales de Google</div>
+        <div class="barras-semaforo" id="semaforo"></div>
+        <div class="leyenda"><span><span class="sw" style="background:var(--good)"></span>Bueno</span><span><span class="sw" style="background:var(--warn)"></span>A mejorar</span><span><span class="sw" style="background:var(--crit)"></span>Malo</span><span class="nota">LCP ≤2,5 s / ≤4 s · INP ≤200 ms / ≤500 ms · CLS ≤0,10 / ≤0,25</span></div>
+        <div class="fuente">chrome-ux-report_materialized_metrics_summary/001 · la cobertura de INP es menor porque una página sin clics, toques ni teclas no reporta INP (web.dev/articles/inp)</div>
+      </div>
+      <p class="nota">En la presentación: solo LCP, junio 2026 (70,2% bueno, 20,0% a mejorar y 9,7% malo, sobre 17.732.012 orígenes con dato). El 23/08/2026 se pasó a julio 2026 y a las tres métricas, para usar el mismo mes en CrUX y en HTTP Archive.</p>
+
+      <h3 id="crecimiento" data-nav="Crecimiento del panel">Crecimiento del panel</h3>
+      <div class="grafico">
+        <div class="titulo">Root pages en el crawl de HTTP Archive</div>
+        <div class="subt">Páginas raíz distintas (conteo aproximado, ambos clientes), cortes de enero y julio 2020–2026 · sombreado: ventana estable 2023–2026</div>
+        <div id="g-crecimiento"></div>
+        <div class="fuente">httparchive_crawl_pages/001</div>
+      </div>
+      <p>El panel no crece de forma monótona: hay dos rampas de expansión (2018–2019 y 2022–2023) y desde 2023 la serie se estabiliza con estacionalidad enero/julio.</p>
+      <p class="nota">La presentación mostraba la serie desde 2016 (consulta del 21/08/2026); los puntos anteriores a 2020 no quedaron versionados como extracción.</p>
+
+      <h3 id="migraciones" data-nav="Migraciones jun-25 → jun-26">Migraciones detectadas entre junio 2025 y junio 2026</h3>
+      <div class="tabla-wrap" id="t-migraciones"></div>
+      <p class="nota">Vigente = <code>cross_source/001</code> (04/09/2026): páginas raíz del crawl móvil presentes en ambos meses. Las cifras sin extracción versionada se muestran solo como se presentaron.</p>
+    </section>
+
+    <!-- ============================== ANEXOS ============================== -->
+    <section id="extracciones" class="anexo" data-titulo="Extracciones BigQuery">
+      <h2>Anexo: registro de extracciones de BigQuery</h2>
+      <div class="sec-meta">generado desde el encabezado de cada <code>.sql</code> y <code>bigquery/usage-log.csv</code></div>
       <p>Cada extracción es un par <code>NNN-nombre.sql</code> + <code>.parquet</code> en una subcarpeta por tabla consultada (<code>cross_source/</code> cuando cruza fuentes), corrida con <code>bigquery/run_query.sh</code>. GB facturados por job; las filas anteriores al 01/10/2026 se completaron desde la metadata de cada job.</p>
       <div class="tabla-wrap" id="t-cuota"></div>
       <div class="tabla-wrap" id="t-extracciones"></div>
     </section>
 
-    <!-- ============================== ENTREGAS ============================== -->
-    <section id="entregas" data-titulo="Entregas" data-actualizado="2026-10-13">
-      <h2>Entregas y presentaciones</h2>
-      <div class="sec-meta">Las presentaciones son el registro de lo expuesto en cada fecha y no se actualizan</div>
-      <div class="tabla-wrap"><table class="t">
-        <thead><tr><th>Fecha</th><th>Entrega</th><th>Archivo</th></tr></thead>
-        <tbody>
-          <tr><td class="mono">13/10/2026</td><td>Bitácora de tesis (reemplaza a las presentaciones)</td><td><code>bitacora/bitacora.html</code></td></tr>
-          <tr><td class="mono">02/10/2026</td><td>Presentación 04 · Panel piloto y grafo bipartito sitio ↔ librería</td><td><a href="../Presentaciones/04-presentacion_avance_panel_grafo.pdf">PDF</a> · <a href="../Presentaciones/04-presentacion_avance_panel_grafo.html">HTML</a></td></tr>
-          <tr><td class="mono">24/09/2026</td><td>Presentación 03 · Avance del hito semanas 1–4</td><td><a href="../Presentaciones/03-presentacion_avance_hito_1_4.pdf">PDF</a> · <a href="../Presentaciones/03-presentacion_avance_hito_1_4.html">HTML</a></td></tr>
-          <tr><td class="mono">04/09/2026</td><td>Documento escrito (propuesta formal)</td><td><a href="../TP%20Latex/Project/main.pdf">PDF</a></td></tr>
-          <tr><td class="mono">28/08/2026</td><td>Presentación 02 · Plan de trabajo (presentación de cátedra)</td><td><a href="../Presentaciones/02-presentacion_plan_de_trabajo.pdf">PDF</a> · <a href="../Presentaciones/02-presentacion_plan_de_trabajo.html">HTML</a></td></tr>
-          <tr><td class="mono">22/08/2026</td><td>Presentación 01 · Viabilidad del dataset</td><td><a href="../Presentaciones/01-presentacion_dataset_and_viability.pdf">PDF</a></td></tr>
-        </tbody>
-      </table></div>
-    </section>
-
-    <!-- ============================== REFERENCIAS ============================== -->
-    <section id="referencias" data-titulo="Referencias" data-actualizado="2026-09-22">
-      <h2>Referencias</h2>
-      <div class="sec-meta">Fuente: <code>TP Latex/Project/bibliografia.bib</code></div>
+    <section id="referencias" class="anexo" data-titulo="Referencias">
+      <h2>Anexo: referencias</h2>
+      <div class="sec-meta">fuente: <code>TP Latex/Project/bibliografia.bib</code></div>
       <ul>
         <li>Beugin, Y., Barford, P. y McDaniel, P. (2026). Lessons from the Adoption and Deprecation of the Privacy Sandbox Web APIs. arXiv:2606.26390.</li>
         <li>Callaway, B. y Sant'Anna, P. H. C. (2021). Difference-in-Differences with multiple time periods. <i>Journal of Econometrics</i>. DOI 10.1016/j.jeconom.2020.12.001.</li>
@@ -787,6 +723,32 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
     { t: "Sin crawl", n: 1, f: r => num(r.crux_sin_crawl) },
     { t: "% del top 10k de CrUX en el crawl", n: 1, f: r => pct((r.crux_en_crawl_top10k + r.crux_en_crawl_otro_rank) / r.crux_origins_top10k * 100) },
   ], [{ mes: "ene-2025 (cross_source/009)", ...tk.ene2025 }, { mes: "dic-2025 (cross_source/005)", ...tk.dic2025 }]);
+})();
+
+// ---------- Entrega 1: migraciones presentadas vs. vigentes ----------
+(function migraciones() {
+  const g = Object.fromEntries(DATOS.did_exploratorio.map(r => [r.grupo, r]));
+  tabla("t-migraciones", [
+    { t: "Migración", k: 1, f: r => r[0] },
+    { t: "Presentado (22/08/2026)", n: 1, f: r => num(r[1]) },
+    { t: "Vigente", n: 1, f: r => r[2] ? num(g[r[2]].n_origins_http_archive) : "–" },
+    { t: "Nota", f: r => !r[2] ? "sin extracción versionada" : g[r[2]].n_origins_http_archive === r[1] ? "reprodujo" : "no reprodujo con la definición versionada (04/09/2026)" },
+  ], [["jQuery → React", 62457, "jquery_a_react"], ["Abandono de WordPress", 116864, "abandono_wordpress"], ["React → Next.js", 10047, "react_a_nextjs"],
+      ["Adoptaron React", 193684, null], ["Vue → React", 6598, null]]);
+})();
+
+// ---------- Entrega 3: ejemplos jQuery→React para Wayback Machine ----------
+(function wayback() {
+  const revisados = { "https://www.newsweek.com": "confirma", "https://www.chase.com": "confirma", "https://pbskids.org": "confirma",
+                      "https://www.pagina12.com.ar": "confirma", "https://www.n-tv.de": "no concluyente" };
+  tabla("t-wayback", [
+    { t: "Origen", k: 1, f: r => esc(r.origin.replace(/^https?:\/\//, "")) },
+    { t: "Rank", n: 1, f: r => "top " + num(r.rank / 1000) + "k" },
+    { t: "Wappalyzer jun-2025", f: r => esc(r.js_jun2025) },
+    { t: "Wappalyzer jun-2026", f: r => esc(r.js_jun2026) },
+    { t: "Wayback", f: r => `<a href="${esc(r.wayback_antes)}">2025</a> · <a href="${esc(r.wayback_despues)}">2026</a>` },
+    { t: "Revisión", f: r => revisados[r.origin] ? `<b>${revisados[r.origin]}</b>` : "–" },
+  ], DATOS.ejemplos_wayback);
 })();
 
 // ---------- DiD exploratorio ----------
@@ -1102,30 +1064,45 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
   resumen(); aplicar();
 })();
 
-// ---------- Índice: fijas arriba, el resto agrupado por fecha de última actualización ----------
+// ---------- Índice: estado actual, entregas (de la más reciente a la primera) y anexos ----------
 (function indice() {
-  const fecha = iso => iso.split("-").reverse().join("/");
+  const fecha = iso => iso ? iso.split("-").reverse().join("/") : "XX/XX";
   const secciones = [...document.querySelectorAll("main section")];
-  const fijas = secciones.filter(s => s.hasAttribute("data-fijo"));
-  const fechadas = secciones.filter(s => s.dataset.actualizado);
-  const fechas = [...new Set(fechadas.map(s => s.dataset.actualizado))].sort().reverse();
-  // La página sigue el mismo orden que el índice: fijas primero, después por fecha (más reciente arriba).
-  const orden = [...fijas, ...fechas.flatMap(f => fechadas.filter(s => s.dataset.actualizado === f))];
-  orden.forEach(s => s.parentElement.appendChild(s));
-  const link = s => `<a href="#${s.id}">${esc(s.dataset.titulo)}</a>`;
-  document.getElementById("indice-links").innerHTML = fijas.map(link).join("") + fechas.map(f =>
-    `<div class="grupo">${fecha(f)}</div>` + fechadas.filter(s => s.dataset.actualizado === f).map(link).join("")).join("");
-  document.getElementById("estado-al").textContent = "Estado al " + fecha(fechas[0]);
-  fechadas.forEach(s => s.querySelector(".sec-meta").insertAdjacentText("afterbegin", "Actualizado " + fecha(s.dataset.actualizado) + " · "));
+  const subs = s => [...s.querySelectorAll("h3[data-nav]")].map(h => `<a class="sub" href="#${h.id}">${esc(h.dataset.nav)}</a>`).join("");
+  let html = "", anexos = false;
+  secciones.forEach(s => {
+    if (s.classList.contains("entrega")) {
+      const etiqueta = `${fecha(s.dataset.fecha)}${s.dataset.fecha ? "" : " · " + s.dataset.estado.toLowerCase()}`;
+      s.querySelector(".entrega-cab").innerHTML = `<span class="num">${esc(s.dataset.titulo)}</span><span>${fecha(s.dataset.fecha)}</span><span class="estado-pill${s.dataset.fecha ? " done" : " progress"}">${esc(s.dataset.estado)}</span>`;
+      html += `<a class="entrega-link" href="#${s.id}">${esc(s.dataset.titulo)}<span class="f">${etiqueta}</span></a>` + subs(s);
+    } else if (s.classList.contains("anexo")) {
+      if (!anexos) { html += `<div class="grupo">Anexos</div>`; anexos = true; }
+      html += `<a href="#${s.id}">${esc(s.dataset.titulo)}</a>`;
+    } else {
+      html += `<a href="#${s.id}">${esc(s.dataset.titulo)}</a>`;
+    }
+  });
+  document.getElementById("indice-links").innerHTML = html;
+  const estado = document.getElementById("estado");
+  document.getElementById("estado-al").textContent = "Estado al " + fecha(estado.dataset.actualizado);
+  estado.querySelector(".sec-meta").insertAdjacentText("afterbegin", "Actualizado " + fecha(estado.dataset.actualizado) + " · ");
 })();
 
-// ---------- Índice: sección activa ----------
+// ---------- Índice: sección y subsección activas ----------
 (function seccionActiva() {
   const links = [...document.querySelectorAll("nav.indice a")];
-  const obs = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) links.forEach(l => l.classList.toggle("activo", l.getAttribute("href") === "#" + e.target.id));
-  }), { rootMargin: "-20% 0px -70% 0px" });
-  document.querySelectorAll("main section").forEach(s => obs.observe(s));
+  const destinos = links.map(l => document.querySelector(l.getAttribute("href")));
+  const marcar = () => {
+    const limite = innerHeight * 0.25;
+    let actual = null, actualSub = null;
+    destinos.forEach((d, i) => {
+      if (d.getBoundingClientRect().top > limite) return;
+      if (links[i].classList.contains("sub")) actualSub = links[i]; else { actual = links[i]; actualSub = null; }
+    });
+    links.forEach(l => l.classList.toggle("activo", l === actual || l === actualSub));
+  };
+  addEventListener("scroll", marcar, { passive: true });
+  marcar();
 })();
 </script>
 </body>
