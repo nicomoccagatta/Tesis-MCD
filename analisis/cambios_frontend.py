@@ -1,8 +1,15 @@
 """Cambios de tecnología frontend sitio por sitio, mes a mes, en la cohorte fija top 10k de 2025.
 
 Entrada: panel largo del cliente pedido (ver analisis/fuentes.py), una fila por sitio x mes x
-         tecnología detectada, con versión mayor y p75 de LCP/INP/CLS del mismo dispositivo, y la custom
-         metric "aurora" de HTTP Archive para los mismos sitio-mes (fuentes.AURORA_2025).
+         tecnología detectada con su versión mayor; la custom metric "aurora" de HTTP Archive de todas las
+         visitas a las páginas de la cohorte en 2025 (fuentes.AURORA_2025); y el p75 de LCP/INP/CLS de CrUX
+         del mismo dispositivo para los 12 meses (fuentes.CRUX_2025).
+
+Tecnologías y métricas son independientes: un mes muestra las métricas de CrUX aunque HTTP Archive no
+haya registrado tecnologías, y las tecnologías aunque CrUX no tenga métricas. Un mes sin tecnologías
+es una visita con la lista de Wappalyzer vacía o un mes sin visita de HTTP Archive (sin_visita): toda
+visita a una página de la cohorte en 2025 tiene su fila de aurora (verificado con
+httparchive_crawl_pages/010 para los meses sin filas en el panel).
 
 Estado de un sitio-mes = conjunto de tecnologías frontend detectadas (lista TECNOLOGIAS_FRONTEND)
 con su versión mayor cuando se conoce. Un sitio-mes sin filas en el panel no tiene tecnologías
@@ -25,8 +32,9 @@ es el registro crudo, previo a la regla de 3 meses de panel_piloto_scd2.py.
 
 Salida: analisis/salidas/cambios_frontend_<cliente>.json (Wappalyzer) y
 cambios_frontend_<cliente>_aurora.json (Wappalyzer + aurora). Las dos listan los mismos sitios, en el
-mismo orden: los que tienen al menos un cambio en alguna de las dos fuentes, con sus 12 estados
-mensuales, sus métricas y los cambios de esa fuente (vacío si solo cambia en la otra).
+mismo orden: los que tienen al menos un cambio en alguna de las dos fuentes, con sus 12 meses
+([estado o null si no hay tecnologías, lcp, inp, cls]) y los cambios de esa fuente (vacío si solo
+cambia en la otra).
 
 Uso: analisis/.venv/bin/python analisis/cambios_frontend.py [mobile|desktop]
 """
@@ -37,12 +45,13 @@ import re
 import duckdb
 
 from frontend import AURORA_CAMPOS, AURORA_VERSION_VUE, FAMILIAS, REACT_DOM_MAYORES, TECNOLOGIAS_FRONTEND
-from fuentes import AURORA_2025, COHORTE_ENERO, PANELES, SALIDAS, cliente_desde_argv
+from fuentes import AURORA_2025, COHORTE_ENERO, CRUX_2025, PANELES, SALIDAS, cliente_desde_argv
 
 CLIENTE = cliente_desde_argv()
 SALIDA = {"wappalyzer": SALIDAS / f"cambios_frontend_{CLIENTE}.json",
           "wappalyzer+aurora": SALIDAS / f"cambios_frontend_{CLIENTE}_aurora.json"}
 MESES = [f"2025-{m:02d}-01" for m in range(1, 13)]
+DISPOSITIVO_CRUX = {"mobile": "phone", "desktop": "desktop"}[CLIENTE]
 WAPPALYZER, PRESENCIA_AURORA, VERSION_AURORA = 0, 1, 2
 
 con = duckdb.connect()
@@ -50,14 +59,11 @@ con.execute(f"CREATE VIEW largo AS SELECT * FROM '{PANELES[CLIENTE]}'")
 con.execute("CREATE TABLE lista AS SELECT * FROM (VALUES "
             + ", ".join(f"('{t}')" for t in TECNOLOGIAS_FRONTEND) + ") AS l(technology)")
 
-# Un registro por sitio-mes observado: métricas y tecnologías frontend con versión.
+# Un registro por sitio-mes observado: tecnologías frontend con versión.
 filas = con.execute("""
 SELECT
   origin,
   strftime(date, '%Y-%m-%d') AS mes,
-  ANY_VALUE(p75_lcp) AS lcp,
-  ANY_VALUE(p75_inp) AS inp,
-  ANY_VALUE(p75_cls) AS cls,
   list_sort(list([technology, version_mayor::VARCHAR]) FILTER (WHERE technology IN (SELECT technology FROM lista)))
     AS frontend
 FROM largo
@@ -66,6 +72,9 @@ ORDER BY origin, date
 """).fetchall()
 
 rank_enero = dict(con.execute(f"SELECT origin, rank FROM '{COHORTE_ENERO}'").fetchall())
+metricas = {(o, m): (lcp, inp, None if cls is None else round(cls, 2)) for o, m, lcp, inp, cls in con.execute(f"""
+    SELECT origin, strftime(date, '%Y-%m-%d'), p75_lcp, p75_inp, p75_cls
+    FROM '{CRUX_2025}' WHERE device = '{DISPOSITIVO_CRUX}'""").fetchall()}
 
 campos_aurora = list(AURORA_CAMPOS.values()) + [AURORA_VERSION_VUE]
 fuentes_aurora = ", ".join(f"'{p}'" for p in AURORA_2025)
@@ -101,14 +110,14 @@ def combinar(estado, datos_aurora):
     return tuple(sorted((t, v, f) for t, (v, f) in d.items()))
 
 
-# Sitio-mes observados: métricas y el estado de cada fuente.
+# Sitio-mes observados: el estado de cada fuente.
 sitios, solo_aurora, sin_aurora = {}, {}, []
-for origin, mes, lcp, inp, cls, frontend in filas:
+for origin, mes, frontend in filas:
     estado = tuple((t, int(v) if v is not None else None, WAPPALYZER) for t, v in (frontend or []))
     if (origin, mes) not in aurora:
         sin_aurora.append((origin, mes))
         continue
-    sitios.setdefault(origin, {})[mes] = {"metricas": (lcp, inp, cls), "wappalyzer": estado,
+    sitios.setdefault(origin, {})[mes] = {"wappalyzer": estado,
                                           "wappalyzer+aurora": combinar(estado, aurora[(origin, mes)])}
 if sin_aurora:
     raise SystemExit(f"{len(sin_aurora)} sitio-mes observados sin fila de aurora, ej. {sin_aurora[:3]}")
@@ -215,20 +224,23 @@ for fuente, salida in SALIDA.items():
             resumen["sitios_con_cambio_de_tecnologia" if de_tecnologia else "sitios_solo_cambio_de_version"] += 1
         meses = []
         for m in MESES:
-            if m not in por_mes:
-                meses.append(None)
-                continue
-            estado = por_mes[m][fuente]
-            if estado not in indice_estado:
-                indice_estado[estado] = len(estados)
-                estados.append([[t, v, f] for t, v, f in estado])
-            lcp, inp, cls = por_mes[m]["metricas"]
-            meses.append([indice_estado[estado], lcp, inp, None if cls is None else round(cls, 2)])
-        sitio = {"origin": origin, "rank_enero": rank_enero.get(origin), "meses": meses, "cambios": cambios}
+            ie = None
+            if m in por_mes:
+                estado = por_mes[m][fuente]
+                if estado not in indice_estado:
+                    indice_estado[estado] = len(estados)
+                    estados.append([[t, v, f] for t, v, f in estado])
+                ie = indice_estado[estado]
+            meses.append([ie, *metricas.get((origin, m), (None, None, None))])
+        sin_visita = [i for i, m in enumerate(MESES) if m not in por_mes and (origin, m) not in aurora]
+        sitio = {"origin": origin, "rank_enero": rank_enero.get(origin), "meses": meses, "cambios": cambios,
+                 "sin_visita": sin_visita}
         if con_aurora and origin in solo_aurora:
             sitio["solo_aurora"] = solo_aurora[origin]
         salida_sitios.append(sitio)
-    resumen["sitio_mes_sin_datos_en_sitios_listados"] = sum(m is None for s in salida_sitios for m in s["meses"])
+    sin_tecnologias = [m for s in salida_sitios for m in s["meses"] if m[0] is None]
+    resumen["sitio_mes_sin_tecnologias_en_sitios_listados"] = len(sin_tecnologias)
+    resumen["sitio_mes_sin_tecnologias_con_metricas"] = sum(m[1] is not None for m in sin_tecnologias)
     comparacion = comparar_frameworks() if con_aurora else None
     efecto = efecto_de_aurora() if con_aurora else None
     salida.write_text(json.dumps({
