@@ -299,7 +299,7 @@
 
       <h3 id="cambios" data-nav="Cambios de tecnología por sitio">Cambios de tecnología frontend sitio por sitio</h3>
       <div class="sec-meta">cohorte fija top 10k, ene–dic 2025 · <code>analisis/cambios_frontend.py</code></div>
-      <p>Todos los sitios de la cohorte con al menos un cambio en sus tecnologías frontend entre dos meses observados consecutivos, <b>sin regla de persistencia</b>. El selector <b>Wappalyzer / Wappalyzer + aurora</b> muestra el panel antes y después de incorporar aurora (ver <a href="#react">Versiones con aurora</a>): la lista de sitios es la misma con las dos fuentes (los que tienen algún cambio con alguna de ellas) y solo cambia el contenido de las celdas. Cuenta como cambio que entre o salga una tecnología de la lista o que una tecnología presente en ambos meses cambie de versión mayor (cuando la versión se detecta en los dos meses). Cada celda es un mes: arriba las tecnologías detectadas, abajo el p75 de LCP (segundos), CLS e INP (milisegundos) del mismo dispositivo.</p>
+      <p>Todos los sitios de la cohorte con al menos un cambio en sus tecnologías frontend entre dos meses observados consecutivos, <b>sin regla de persistencia</b>. El selector <b>Wappalyzer / Wappalyzer + aurora</b> muestra el panel antes y después de incorporar aurora (ver <a href="#react">Versiones con aurora</a>): la lista de sitios y su orden son los mismos con las dos fuentes (se listan los que tienen algún cambio con alguna de ellas) y solo cambia el contenido de las celdas. Cuenta como cambio que entre o salga una tecnología de la lista o que una tecnología presente en ambos meses cambie de versión mayor (cuando la versión se detecta en los dos meses). Cada celda es un mes: arriba las tecnologías detectadas, abajo el p75 de LCP (segundos), CLS e INP (milisegundos) del mismo dispositivo.</p>
       <div class="tiles" id="tiles-cambios"></div>
       <div class="leyenda" id="leyenda-familias"></div>
       <div class="leyenda">
@@ -328,8 +328,8 @@
         <span class="contador" id="c-contador"></span>
       </div>
       <div class="grilla-wrap" id="wrap-cambios"><div class="grilla" id="grilla"></div></div>
-      <p class="nota"><b>Δ alrededor de un cambio:</b> mediana de hasta 3 meses con tecnologías registradas desde el cambio menos la mediana de hasta 3 de esos meses antes, sin cruzar otro cambio (hacen falta al menos 2 meses con dato de cada lado). Un cambio es <b>sostenido</b> si tiene 3 meses con tecnologías registradas de cada lado sin otro cambio. Al ordenar por una métrica, cada sitio se ubica por su cambio con mayor mejora o empeoramiento, que queda resaltado en la grilla. Es una comparación antes/después del propio sitio, sin grupo de control: sirve para encontrar ejemplos, no para estimar efectos (incluye estacionalidad y tendencias generales).</p>
-      <p class="nota">"Tecnologías presentes" deja los sitios que tienen todas las tecnologías elegidas en algún mes de 2025, no necesariamente el mismo (ej. WordPress + Next.js incluye a los que pasaron de uno al otro y a los que tuvieron ambos a la vez); el número de cada opción es la cantidad de sitios con cambios que la tienen. Clic en un dominio para verlo ampliado con la evolución de cada métrica. Tecnologías y métricas son independientes: las métricas vienen de CrUX para todos los meses que las tienen, aunque ese mes HTTP Archive no haya visitado el sitio o Wappalyzer no haya registrado tecnologías (<code>chrome-ux-report_materialized_device_summary/001</code>). Familia = framework al que lleva la relación <code>implies</code> de Wappalyzer (ej. Remix → React); Angular agrupa Angular y AngularJS. La celda toma el color de su framework principal y la banda superior muestra todas las familias presentes.</p>
+      <p class="nota"><b>Δ alrededor de un cambio:</b> mediana de hasta 3 meses con tecnologías registradas desde el cambio menos la mediana de hasta 3 de esos meses antes, sin cruzar otro cambio (hacen falta al menos 2 meses con dato de cada lado). Un cambio es <b>sostenido</b> si tiene 3 meses con tecnologías registradas de cada lado sin otro cambio. Al ordenar por una métrica, cada sitio se ubica por su cambio con mayor mejora o empeoramiento con cualquiera de las dos fuentes, que queda resaltado en la grilla; si ese cambio no aparece con la fuente elegida, la fila lo indica (ej. «con aurora»). Es una comparación antes/después del propio sitio, sin grupo de control: sirve para encontrar ejemplos, no para estimar efectos (incluye estacionalidad y tendencias generales).</p>
+      <p class="nota">"Tecnologías presentes" deja los sitios que tienen todas las tecnologías elegidas en algún mes de 2025, no necesariamente el mismo (ej. WordPress + Next.js incluye a los que pasaron de uno al otro y a los que tuvieron ambos a la vez); el número de cada opción es la cantidad de sitios listados que la tienen con alguna de las dos fuentes. Todos los filtros y el orden se calculan con las dos fuentes, para que el selector de fuente no cambie la lista: un sitio pasa un filtro si lo cumple con alguna de ellas, y «Más cambios» usa la fuente con más cambios del sitio. Clic en un dominio para verlo ampliado con la evolución de cada métrica. Tecnologías y métricas son independientes: las métricas vienen de CrUX para todos los meses que las tienen, aunque ese mes HTTP Archive no haya visitado el sitio o Wappalyzer no haya registrado tecnologías (<code>chrome-ux-report_materialized_device_summary/001</code>). Familia = framework al que lleva la relación <code>implies</code> de Wappalyzer (ej. Remix → React); Angular agrupa Angular y AngularJS. La celda toma el color de su framework principal y la banda superior muestra todas las familias presentes.</p>
       <h3>Qué tecnologías entran y salen</h3>
       <div class="tabla-wrap" id="t-entran-salen"></div>
 
@@ -1059,17 +1059,19 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
 
   let cliente = "mobile", filtrados = [], dibujados = 0;
   const seleccion = new Set();
-  // Tecnologías que aparecen en algún mes de cada sitio (se calcula una vez por cliente).
+  // Tecnologías que aparecen en algún mes de cada sitio con alguna de las dos fuentes, por índice de sitio
+  // (las dos fuentes listan los mismos sitios en el mismo orden; se calcula una vez por cliente).
   const cachePresentes = {};
-  function tecnologiasPresentes(D) {
-    const k = fuente + cliente;
-    if (!cachePresentes[k]) {
-      cachePresentes[k] = new Map(D.sitios.map(s => [s, new Set(s.meses.flatMap(m => conTecnologias(m) ? D.estados[m[0]].map(([t]) => t) : []))]));
+  function tecnologiasPresentes() {
+    if (!cachePresentes[cliente]) {
+      const porFuente = Object.values(FUENTES).map(F => F[cliente]).map(D =>
+        D.sitios.map(s => s.meses.flatMap(m => conTecnologias(m) ? D.estados[m[0]].map(([t]) => t) : [])));
+      cachePresentes[cliente] = porFuente[0].map((_, idx) => new Set(porFuente.flatMap(tecs => tecs[idx])));
     }
-    return cachePresentes[k];
+    return cachePresentes[cliente];
   }
   function dibujarOpciones() {
-    const D = datos(), presentes = tecnologiasPresentes(D);
+    const presentes = tecnologiasPresentes();
     const cuenta = {};
     presentes.forEach(set => set.forEach(t => { cuenta[t] = (cuenta[t] || 0) + 1; }));
     const q = document.getElementById("c-tec-buscar").value.trim().toLowerCase();
@@ -1113,12 +1115,15 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
       `<div class="banda">${banda}</div>${delta}<div class="techs">${techs}</div>${metricasHTML(lcp, inp, cls)}</div>`;
   }
   const tramo = r => r == null ? "sin rank" : "top " + (r >= 1000 ? num(r / 1000) + "k" : num(r));
+  const FUENTE_CORTA = { wappalyzer: "Wappalyzer", aurora: "aurora" };
   function filaHTML(D, s, idx, clave, metrica) {
     const dominio = s.origin.replace(/^https?:\/\//, "");
+    // El cambio que ordena puede venir solo de la otra fuente: entonces no se resalta ninguna celda y se aclara de dónde viene.
+    const claveEnEstaFuente = clave != null && clave.fuentes.includes(fuente);
     return `<div class="sitio"><button class="dom" data-idx="${idx}" title="${esc(s.origin)}">${esc(dominio)}</button>` +
       `<span class="meta">${tramo(s.rank_enero)} · ${s.cambios.length ? `${s.cambios.length} ${s.cambios.length === 1 ? "cambio" : "cambios"}` : "sin cambios con esta fuente"}</span>` +
-      (clave ? `<span class="meta delta-meta">${metrica.toUpperCase()} ${fmtDelta(metrica, clave.delta[metrica])} · ${MESES_CORTOS[clave.c.mes]}</span>` : "") + `</div>` +
-      s.meses.map((_, i) => celdaHTML(D, s, i, clave ? clave.c.mes : null)).join("");
+      (clave ? `<span class="meta delta-meta">${metrica.toUpperCase()} ${fmtDelta(metrica, clave.valor)} · ${MESES_CORTOS[clave.mes]}${claveEnEstaFuente ? "" : ` · con ${FUENTE_CORTA[clave.fuentes[0]]}`}</span>` : "") + `</div>` +
+      s.meses.map((_, i) => celdaHTML(D, s, i, claveEnEstaFuente ? clave.mes : null)).join("");
   }
   const encabezado = () => `<div class="hsitio">Sitio</div>` + C.mobile.meses.map(m => `<div class="hmes">${MESES_CORTOS[+m.slice(5) - 1]}</div>`).join("");
 
@@ -1135,7 +1140,7 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
     let h = titulo + `<div>${estado.length ? esc(estado.map(etiqueta).join(", ")) : "Sin tecnología frontend detectada"}</div>` + lineaMetricas;
     const c = s.cambios.find(c => c.mes === i);
     if (c) {
-      const x = metricasCambios(D, s).find(x => x.c === c);
+      const x = metricasCambios(s).find(x => x.c === c);
       h += `<div style="margin-top:4px;color:var(--accent)">${esc(textoCambio(D, s, c))}</div>` +
         `<div class="m">Δ ${textoDeltas(x)} (${x.sostenido ? "sostenido" : "no sostenido"})</div>`;
     }
@@ -1152,14 +1157,14 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
 
   // Métricas alrededor de cada cambio: mediana de hasta 3 meses con tecnologías desde el cambio menos la de hasta
   // 3 de esos meses antes, sin cruzar otro cambio. Sostenido = 3 meses con tecnologías de cada lado.
-  const cacheMetricas = {};
+  // Cache por objeto sitio: cada fuente y cliente tiene sus propios objetos.
+  const cacheMetricas = new Map();
   const mediana = v => { const o = [...v].sort((a, b) => a - b), k = o.length >> 1; return o.length % 2 ? o[k] : (o[k - 1] + o[k]) / 2; };
-  function metricasCambios(D, s) {
-    const cache = (cacheMetricas[fuente + cliente] ??= new Map());
-    if (!cache.has(s)) {
+  function metricasCambios(s) {
+    if (!cacheMetricas.has(s)) {
       const obs = s.meses.map((m, i) => conTecnologias(m) ? i : -1).filter(i => i >= 0);
       const pos = s.cambios.map(c => obs.indexOf(c.mes));
-      cache.set(s, s.cambios.map((c, k) => {
+      cacheMetricas.set(s, s.cambios.map((c, k) => {
         const p = pos[k], previo = k > 0 ? pos[k - 1] : 0, siguiente = k < pos.length - 1 ? pos[k + 1] : obs.length;
         const antes = obs.slice(Math.max(p - 3, previo), p), despues = obs.slice(p, Math.min(p + 3, siguiente));
         const delta = {};
@@ -1170,43 +1175,55 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
         return { c, sostenido: antes.length === 3 && despues.length === 3, delta };
       }));
     }
-    return cache.get(s);
+    return cacheMetricas.get(s);
   }
   const signo = v => v > 0 ? "+" : v < 0 ? "−" : "±";
   const fmtDelta = (m, v) => v == null ? "sin dato" :
     m === "lcp" ? signo(v) + num(Math.abs(v) / 1000, 1) + " s" : m === "inp" ? signo(v) + num(Math.abs(v)) + " ms" : signo(v) + num(Math.abs(v), 2);
   const textoDeltas = x => ["lcp", "inp", "cls"].map(m => `${m.toUpperCase()} ${fmtDelta(m, x.delta[m])}`).join(" · ");
 
+  const tieneCambioDeTecnologia = s => s.cambios.some(c => c.entran.length || c.salen.length);
+  const soloCambiaDeVersion = s => s.cambios.length > 0 && !tieneCambioDeTecnologia(s);
+  const tieneCambioSostenido = s => metricasCambios(s).some(x => x.sostenido);
+
+  // Filtros y orden se calculan con las dos fuentes a la vez, así el selector de fuente no cambia la lista ni su orden:
+  // un sitio pasa un filtro si lo cumple con alguna de las dos y se ordena por su valor extremo entre las dos.
   function aplicar() {
     const D = datos();
     const q = document.getElementById("c-buscar").value.trim().toLowerCase();
-    const presentes = tecnologiasPresentes(D);
+    const presentes = tecnologiasPresentes();
     const tipo = document.getElementById("c-tipo").value;
     const orden = document.getElementById("c-orden").value;
     const soloSostenidos = document.getElementById("c-sostenidos").checked;
-    filtrados = D.sitios.map((s, idx) => ({ s, idx })).filter(({ s }) => {
-      if (soloSostenidos && !metricasCambios(D, s).some(x => x.sostenido)) return false;
+    const versionesDelSitio = idx => Object.entries(FUENTES).map(([f, F]) => ({ fuente: f, s: F[cliente].sitios[idx] }));
+    filtrados = D.sitios.map((s, idx) => ({ s, idx })).filter(({ s, idx }) => {
+      const conAlgunaFuente = cumple => versionesDelSitio(idx).some(v => cumple(v.s));
+      if (soloSostenidos && !conAlgunaFuente(tieneCambioSostenido)) return false;
       if (q && !s.origin.toLowerCase().includes(q)) return false;
-      const deTecnologia = s.cambios.some(c => c.entran.length || c.salen.length);
-      if (tipo === "tecnologia" && !deTecnologia) return false;
-      if (tipo === "version" && (deTecnologia || !s.cambios.length)) return false;
-      if (![...seleccion].every(t => presentes.get(s).has(t))) return false;
+      if (tipo === "tecnologia" && !conAlgunaFuente(tieneCambioDeTecnologia)) return false;
+      if (tipo === "version" && !conAlgunaFuente(soloCambiaDeVersion)) return false;
+      if (![...seleccion].every(t => presentes[idx].has(t))) return false;
       return true;
     });
     const dom = s => s.origin.replace(/^https?:\/\/(www\.)?/, "");
+    const maxCambios = idx => Math.max(...versionesDelSitio(idx).map(v => v.s.cambios.length));
     if (orden === "rank") filtrados.sort((a, b) => (a.s.rank_enero ?? 1e9) - (b.s.rank_enero ?? 1e9) || dom(a.s).localeCompare(dom(b.s)));
-    if (orden === "cambios") filtrados.sort((a, b) => b.s.cambios.length - a.s.cambios.length || dom(a.s).localeCompare(dom(b.s)));
+    if (orden === "cambios") filtrados.sort((a, b) => maxCambios(b.idx) - maxCambios(a.idx) || dom(a.s).localeCompare(dom(b.s)));
     if (orden === "alfa") filtrados.sort((a, b) => dom(a.s).localeCompare(dom(b.s)));
     if (orden.includes("-")) {
-      // Cada sitio se ordena por su cambio con mayor mejora (o empeoramiento) de la métrica elegida.
+      // Cada sitio se ordena por su cambio con mayor mejora (o empeoramiento) de la métrica elegida, con cualquiera de las fuentes.
       const [metrica, sentido] = orden.split("-"), mejor = (a, b) => sentido === "mejora" ? b < a : b > a;
       filtrados.forEach(f => {
-        const xs = metricasCambios(D, f.s).filter(x => x.delta[metrica] != null && (!soloSostenidos || x.sostenido));
-        f.clave = xs.length ? xs.reduce((a, b) => mejor(a.delta[metrica], b.delta[metrica]) ? b : a) : null;
+        const candidatos = versionesDelSitio(f.idx).flatMap(v => metricasCambios(v.s)
+          .filter(x => x.delta[metrica] != null && (!soloSostenidos || x.sostenido))
+          .map(x => ({ fuente: v.fuente, mes: x.c.mes, valor: x.delta[metrica] })));
+        const extremo = candidatos.length ? candidatos.reduce((a, b) => mejor(a.valor, b.valor) ? b : a) : null;
+        const fuentesDelExtremo = extremo && candidatos.filter(x => x.mes === extremo.mes && x.valor === extremo.valor).map(x => x.fuente);
+        f.clave = extremo && { mes: extremo.mes, valor: extremo.valor, fuentes: fuentesDelExtremo };
         f.metrica = metrica;
       });
       filtrados.sort((a, b) => (a.clave == null) - (b.clave == null) ||
-        (a.clave && b.clave ? (sentido === "mejora" ? 1 : -1) * (a.clave.delta[metrica] - b.clave.delta[metrica]) : 0) || dom(a.s).localeCompare(dom(b.s)));
+        (a.clave && b.clave ? (sentido === "mejora" ? 1 : -1) * (a.clave.valor - b.clave.valor) : 0) || dom(a.s).localeCompare(dom(b.s)));
     }
     document.getElementById("c-contador").textContent = `${num(filtrados.length)} de ${num(D.sitios.length)} sitios listados · cohorte ${num(D.resumen.sitios_cohorte)}`;
     grilla.innerHTML = encabezado();
@@ -1327,7 +1344,7 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
         umbrales: [{ v: conf[k].u[0], color: "#0ca30c", t: "bueno ≤ " + conf[k].fmt(conf[k].u[0]) }, { v: conf[k].u[1], color: "#d03b3b", t: "malo > " + conf[k].fmt(conf[k].u[1]) }],
       });
     });
-    document.getElementById("m-cambios").innerHTML = metricasCambios(D, s).map(x =>
+    document.getElementById("m-cambios").innerHTML = metricasCambios(s).map(x =>
       `<li><b>${MESES_CORTOS[x.c.mes]}</b>: ${esc(textoCambio(D, s, x.c))} — Δ ${textoDeltas(x)} <span class="nota">(${x.sostenido ? "sostenido" : "no sostenido"})</span></li>`).join("");
     modal.classList.add("abierto");
     document.body.style.overflow = "hidden";
