@@ -23,3 +23,5 @@ date,project,script,gb_dry_run,gb_billed,job_id
 2026-10-13,tesis-506222,consola-usuario/aurora-id-soccerway-dic2025-custom-metrics-other,1940.1951,0.929,job_88cmEHZIGoeatCL37gHNGMxOrhCp
 2026-10-13,tesis-506222,httparchive_crawl_pages/006-aurora-cohorte-top10k-dic2025,1970.0859,3.3974,tesis_20261013_173203_53071
 2026-10-13,tesis-506222,httparchive_crawl_pages/007-aurora-cohorte-top10k-ene-nov2025,21326.3502,40.1793,tesis_20261013_173459_56575
+2026-10-14,tesis-506222,httparchive_crawl_pages/008-aurora-prueba-poda-or-dic2025,1970.0859,0.1059,tesis_20261014_125033_5933
+2026-10-14,tesis-506222,httparchive_crawl_pages/009-aurora-cohorte-top10k-2025-huecos,23296.4362,92.4162,tesis_20261014_125132_7215
