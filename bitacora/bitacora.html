@@ -155,7 +155,7 @@
   .chip button:hover{ color: var(--text-primary); }
 
   .grilla-wrap{ overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
-  .grilla{ --z: 1; font-size: calc(11px * var(--z)); display: grid; grid-template-columns: 17em repeat(12, 10.6em); gap: .45em; padding: .8em; width: max-content; }
+  .grilla{ --z: 1; font-size: calc(11px * var(--z)); display: grid; grid-template-columns: 17em repeat(12, 12em); gap: .45em; padding: .8em; width: max-content; }
   #wrap-cambios{ max-height: 78vh; overflow: auto; }
   .grilla .hmes, .grilla .hsitio{ font-family: var(--font-mono); font-size: 1em; color: var(--text-muted); text-align: center; position: sticky; top: 0; z-index: 3; background: var(--surface); padding: .3em 0; }
   .grilla .hsitio{ text-align: left; left: 0; z-index: 4; font-family: var(--font-display); }
@@ -167,8 +167,7 @@
   .celda{ position: relative; border-radius: .6em; border: 1px solid var(--fam); background: color-mix(in srgb, var(--fam) 20%, var(--surface)); padding: .45em .45em .4em; display: flex; flex-direction: column; gap: .35em; min-height: 7.2em; cursor: default; }
   .celda .banda{ display: flex; gap: 2px; height: .38em; }
   .celda .banda span{ flex: 1; border-radius: 2px; }
-  .celda .delta{ font-family: var(--font-mono); font-size: .84em; font-weight: 600; line-height: 1.5; color: var(--accent); max-height: 3em; overflow: hidden; }
-  .celda .delta span{ display: inline-block; white-space: nowrap; background: rgba(34,211,238,.14); border-radius: .3em; padding: 0 .35em; margin-right: .2em; }
+  .celda .mov{ color: var(--accent); background: rgba(34,211,238,.14); border-radius: .3em; padding: 0 .25em; }
   .celda.destacado{ box-shadow: 0 0 0 2px var(--accent), 0 0 14px rgba(34,211,238,.35); }
   .sitio .meta.delta-meta{ color: var(--accent); font-weight: 600; }
   .controles input[type=checkbox]{ accent-color: var(--accent); margin: 0; }
@@ -176,7 +175,8 @@
   details.detalle{ margin: 10px 0; }
   details.detalle summary{ cursor: pointer; color: var(--accent); font-size: 13.5px; font-weight: 600; }
   .celda.sin-datos.con-aurora{ border-color: var(--accent); }
-  .celda .techs{ font-weight: 700; font-size: 1em; line-height: 1.22; color: var(--text-primary); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.44em; }
+  .celda .renglones{ display: flex; flex-direction: column; }
+  .celda .renglon{ height: 1.36em; line-height: 1.36em; font-weight: 700; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .celda .metricas{ display: grid; grid-template-columns: repeat(3, 1fr); gap: .25em; margin-top: auto; }
   .metrica{ background: rgba(11,18,34,.72); border-radius: .35em; padding: .15em .1em .2em; text-align: center; border-top: .22em solid var(--st, var(--text-muted)); }
   .metrica b{ display: block; font-size: .78em; color: var(--text-secondary); font-weight: 600; letter-spacing: .02em; }
@@ -184,7 +184,7 @@
   .st-good{ --st: var(--good); } .st-ni{ --st: var(--warn); } .st-poor{ --st: var(--crit); } .st-na{ --st: #3a4766; }
   .celda.vacio{ --fam: var(--f-vacio); }
   .celda.sin-datos{ border: 1px dashed #3a4766; background: transparent; }
-  .celda.sin-datos .techs{ font-weight: 400; font-size: .9em; color: var(--text-muted); -webkit-line-clamp: 3; }
+  .celda .motivo{ font-size: .9em; line-height: 1.25; color: var(--text-muted); }
   .celda.cambio::before{ content: ""; position: absolute; left: -.42em; top: 12%; bottom: 12%; width: .26em; border-radius: 2px; background: var(--accent); }
   .cargando{ grid-column: 1 / -1; text-align: center; color: var(--text-muted); font-size: 1em; padding: 1em; }
 
@@ -299,12 +299,12 @@
 
       <h3 id="cambios" data-nav="Cambios de tecnología por sitio">Cambios de tecnología frontend sitio por sitio</h3>
       <div class="sec-meta">cohorte fija top 10k, ene–dic 2025 · <code>analisis/cambios_frontend.py</code></div>
-      <p>Todos los sitios de la cohorte con al menos un cambio en sus tecnologías frontend entre dos meses observados consecutivos, <b>sin regla de persistencia</b>. El selector <b>Wappalyzer / Wappalyzer + aurora</b> muestra el panel antes y después de incorporar aurora (ver <a href="#react">Versiones con aurora</a>): la lista de sitios y su orden son los mismos con las dos fuentes (se listan los que tienen algún cambio con alguna de ellas) y solo cambia el contenido de las celdas. Cuenta como cambio que entre o salga una tecnología de la lista o que una tecnología presente en ambos meses cambie de versión mayor (cuando la versión se detecta en los dos meses). Cada celda es un mes: arriba las tecnologías detectadas, abajo el p75 de LCP (segundos), CLS e INP (milisegundos) del mismo dispositivo.</p>
+      <p>Todos los sitios de la cohorte con al menos un cambio en sus tecnologías frontend entre dos meses observados consecutivos, <b>sin regla de persistencia</b>. El selector <b>Wappalyzer / Wappalyzer + aurora</b> muestra el panel antes y después de incorporar aurora (ver <a href="#react">Versiones con aurora</a>): la lista de sitios y su orden son los mismos con las dos fuentes (se listan los que tienen algún cambio con alguna de ellas) y solo cambia el contenido de las celdas. Cuenta como cambio que entre o salga una tecnología de la lista o que una tecnología presente en ambos meses cambie de versión mayor (cuando la versión se detecta en los dos meses). Cada celda es un mes: arriba las tecnologías del sitio, una por renglón y siempre en el mismo renglón (con las dos fuentes), vacío el mes en que no se detecta; abajo el p75 de LCP (segundos), CLS e INP (milisegundos) del mismo dispositivo.</p>
       <div class="tiles" id="tiles-cambios"></div>
       <div class="leyenda" id="leyenda-familias"></div>
       <div class="leyenda">
         <span><span class="sw" style="background:var(--good)"></span>Bueno</span><span><span class="sw" style="background:var(--warn)"></span>A mejorar</span><span><span class="sw" style="background:var(--crit)"></span>Malo</span>
-        <span><span class="sw" style="background:var(--accent);width:4px"></span>Mes con cambio respecto del mes observado anterior: <span class="mono" style="color:var(--accent)">+ entra</span> · <span class="mono" style="color:var(--accent)">− sale</span> · <span class="mono" style="color:var(--accent)">versión 6→7</span></span>
+        <span><span class="sw" style="background:var(--accent);width:4px"></span>Mes con cambio respecto del mes observado anterior, marcado en el renglón de cada tecnología: <span class="mono" style="color:var(--accent)">+ entra</span> · <span class="mono" style="color:var(--accent)">− sale</span> · <span class="mono" style="color:var(--accent)">versión 6→7</span></span>
         <span><span class="sw" style="border:1px dashed #3a4766;background:transparent"></span>Mes sin tecnologías: sin visita de HTTP Archive o lista de Wappalyzer vacía (las métricas de CrUX se muestran igual)</span>
         <span><span class="pa">React 19</span> dato de aurora (presencia o versión)</span>
       </div>
@@ -1096,23 +1096,54 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
     `<div class="metrica ${estadoCls("cls", cls)}"><b>CLS</b><span>${fmtCls(cls)}</span></div>` +
     `<div class="metrica ${estadoCls("inp", inp)}"><b>INP</b><span>${fmtInp(inp)}</span></div></div>`;
   const textoAurora = (sa, sep) => sa.map(([t, v]) => v == null ? t : `${t} ${v}`).join(sep);
+
+  // Renglones de cada sitio: las tecnologías que aparecen en algún mes con alguna de las dos fuentes (aurora sola
+  // incluida), en el orden del catálogo. Cada tecnología ocupa el mismo renglón en todos los meses y con las dos fuentes.
+  const ORDEN_CATALOGO = Object.keys(C.mobile.tecnologias);
+  const renglonesPorSitio = new Map();
+  Object.keys(FUENTES.aurora).forEach(cli => {
+    const versiones = Object.values(FUENTES).map(F => F[cli]);
+    versiones[0].sitios.forEach((_, idx) => {
+      const tecs = new Set(versiones.flatMap(D => {
+        const s = D.sitios[idx];
+        const deWappalyzer = s.meses.flatMap(m => conTecnologias(m) ? D.estados[m[0]].map(([t]) => t) : []);
+        const deAuroraSola = Object.values(s.solo_aurora || {}).flatMap(sa => sa.map(([t]) => t));
+        return [...deWappalyzer, ...deAuroraSola];
+      }));
+      const renglones = [...tecs].sort((a, b) => ORDEN_CATALOGO.indexOf(a) - ORDEN_CATALOGO.indexOf(b));
+      versiones.forEach(D => renglonesPorSitio.set(D.sitios[idx], renglones));
+    });
+  });
+  const renglonesHTML = lineas => `<div class="renglones">${lineas.map(l => `<div class="renglon">${l}</div>`).join("")}</div>`;
+
   function celdaHTML(D, s, i, destacar = null) {
     const [ie, lcp, inp, cls] = s.meses[i];
+    const renglones = renglonesPorSitio.get(s);
     if (ie == null) {
       const sa = s.solo_aurora && s.solo_aurora[i];
-      const texto = s.sin_visita.includes(i) ? "sin visita de HTTP Archive" : "Wappalyzer vacío" +
-        (sa ? `<br><span class="pa">aurora: ${esc(textoAurora(sa, " · "))}</span>` : "");
-      return `<div class="celda sin-datos${sa ? " con-aurora" : ""}" data-i="${i}"><div class="techs">${texto}</div>${metricasHTML(lcp, inp, cls)}</div>`;
+      const versionAurora = new Map(sa || []);
+      const lineas = renglones.map(t => versionAurora.has(t) ? `<span class="pa">${esc(textoAurora([[t, versionAurora.get(t)]], ""))}</span>` : "");
+      const motivo = s.sin_visita.includes(i) ? "sin visita de HTTP Archive" : "Wappalyzer vacío";
+      return `<div class="celda sin-datos${sa ? " con-aurora" : ""}" data-i="${i}"><div class="banda"></div>${renglonesHTML(lineas)}` +
+        `<div class="motivo">${motivo}</div>${metricasHTML(lcp, inp, cls)}</div>`;
     }
     const estado = D.estados[ie];
     const familias = [...new Set(estado.map(([t]) => familiaDe(t)))].sort((a, b) => C.mobile.familias.indexOf(a) - C.mobile.familias.indexOf(b));
     const principal = PRIORIDAD.find(f => familias.includes(f));
     const cambio = s.cambios.find(c => c.mes === i);
-    const delta = cambio ? `<div class="delta">${diferencial(D, s, cambio).map(d => `<span>${esc(d)}</span>`).join(" ")}</div>` : "";
+    const presente = new Map(estado.map(e => [e[0], e]));
+    const antes = cambio ? versionesAntesDe(D, s, i) : {};
+    const lineas = renglones.map(t => {
+      const sale = cambio && cambio.salen.includes(t), entra = cambio && cambio.entran.includes(t), cambiaVersion = cambio && cambio.version.includes(t);
+      if (sale) return `<span class="mov">− ${esc(t)}</span>`;
+      if (!presente.has(t)) return "";
+      if (entra) return `<span class="mov">+ ${etiquetaHTML(presente.get(t))}</span>`;
+      if (cambiaVersion) return `<span class="mov">${esc(t)} ${antes[t]}→${presente.get(t)[1]}</span>`;
+      return etiquetaHTML(presente.get(t));
+    });
     const banda = familias.length ? familias.map(f => `<span style="background:${colorFam(f)}"></span>`).join("") : `<span style="background:var(--f-vacio)"></span>`;
-    const techs = estado.length ? estado.map(etiquetaHTML).join(" · ") : "sin tecnología frontend";
     return `<div class="celda${estado.length ? "" : " vacio"}${cambio ? " cambio" : ""}${i === destacar ? " destacado" : ""}" data-i="${i}" style="${principal ? "--fam:" + colorFam(principal) : ""}">` +
-      `<div class="banda">${banda}</div>${delta}<div class="techs">${techs}</div>${metricasHTML(lcp, inp, cls)}</div>`;
+      `<div class="banda">${banda}</div>${renglonesHTML(lineas)}${estado.length ? "" : `<div class="motivo">sin tecnología frontend</div>`}${metricasHTML(lcp, inp, cls)}</div>`;
   }
   const tramo = r => r == null ? "sin rank" : "top " + (r >= 1000 ? num(r / 1000) + "k" : num(r));
   const FUENTE_CORTA = { wappalyzer: "Wappalyzer", aurora: "aurora" };
@@ -1147,10 +1178,13 @@ function lineas(el, { etiquetas, series, yMin, yMax, paso, yFmt, sombra, umbrale
     return h;
   }
   // Diferencial de un cambio respecto del mes observado anterior: "+ Astro", "− Remix", "React Router 6→7".
+  const versionesDelMes = (D, m) => Object.fromEntries(D.estados[m[0]]);
+  function versionesAntesDe(D, s, mes) {
+    const anterior = s.meses.slice(0, mes).filter(conTecnologias).pop();
+    return anterior ? versionesDelMes(D, anterior) : {};
+  }
   function diferencial(D, s, c) {
-    const anterior = s.meses.slice(0, c.mes).filter(conTecnologias).pop();
-    const versiones = m => Object.fromEntries(D.estados[m[0]]);
-    const antes = anterior ? versiones(anterior) : {}, ahora = versiones(s.meses[c.mes]);
+    const antes = versionesAntesDe(D, s, c.mes), ahora = versionesDelMes(D, s.meses[c.mes]);
     return [...c.entran.map(t => "+ " + t), ...c.salen.map(t => "− " + t), ...c.version.map(t => `${t} ${antes[t]}→${ahora[t]}`)];
   }
   const textoCambio = (D, s, c) => diferencial(D, s, c).join(" · ");
