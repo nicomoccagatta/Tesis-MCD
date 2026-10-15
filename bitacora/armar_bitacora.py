@@ -83,12 +83,19 @@ grafo = {}
 for cliente in CLIENTES:
     g = salida(f"grafo_bipartito_{cliente}.json")
     proyeccion = {k: v for k, v in g["proyeccion"].items() if k != "aristas"}
+    # Red proyectada del componente conexo principal: los nodos con coordenadas de grafo_bipartito.py.
+    en_red = {n: v for n, v in g["nodos"].items() if v["xy"]}
+    red = {
+        "nodos": [{"id": n, "sitios": v["sitios"], "comunidad": v["comunidad"], "xy": v["xy"]} for n, v in en_red.items()],
+        "aristas": [a for a in g["proyeccion"]["aristas"] if a["u"] in en_red and a["v"] in en_red],
+    }
     grafo[cliente] = {
         "mes": g["mes"], "sitios_mes": g["sitios_mes"], "bipartito": g["bipartito"], "proyeccion": proyeccion,
         "grupos_framework": [{k: v for k, v in grupo.items() if k != "librerias_top"} for grupo in g["grupos_framework"]],
         "cobertura_version": g["cobertura_version"], "versiones": g["versiones"],
         "recableado_jquery_react": g["recableado_jquery_react"],
-        "stacks": [{"tecnologias": s["tecnologias"][:8], "sitios_asignados": s["sitios_asignados"],
+        "red": red,
+        "stacks": [{"id": s["id"], "tecnologias": s["tecnologias"][:8], "sitios_asignados": s["sitios_asignados"],
                     "lcp_mediana_ms": s["lcp_mediana_ms"]} for s in g["stacks"]],
     }
 
