@@ -1,9 +1,9 @@
 """Actualiza los datos incrustados en bitacora.html con los resultados versionados del repo.
 
 Lee las salidas de analisis/salidas/, los .parquet de bigquery/ (vía DuckDB), el encabezado de
-cada .sql y bigquery/usage-log.csv, y reemplaza la línea `const DATOS = ...;` del HTML. La página
-queda autocontenida (abre con doble clic, sin servidor). El texto de cada sección se edita a mano
-en el HTML; las cifras de tablas y gráficos salen de acá.
+cada .sql, bigquery/usage-log.csv y bitacora/changelog.md. Reemplaza la línea `const DATOS = ...;`
+y la lista de "Trabajo desde la entrega anterior" de cada entrega. La página queda autocontenida
+(abre con doble clic, sin servidor). El resto del texto se edita a mano en el HTML.
 
 Antes de correrlo, regenerar las salidas que cambien:
   analisis/.venv/bin/python analisis/cambios_frontend.py mobile   (y desktop)
@@ -93,11 +93,33 @@ for cliente in CLIENTES:
         "mes": g["mes"], "sitios_mes": g["sitios_mes"], "bipartito": g["bipartito"], "proyeccion": proyeccion,
         "grupos_framework": [{k: v for k, v in grupo.items() if k != "librerias_top"} for grupo in g["grupos_framework"]],
         "cobertura_version": g["cobertura_version"], "versiones": g["versiones"],
+        "matriz_grupo_libreria": g["matriz_grupo_libreria"],
+        "matriz_version_libreria": g["matriz_version_libreria"],
+        "librerias_top": [{"libreria": k, "sitios": v} for k, v in g["libreria_total_sitios"].items()],
         "recableado_jquery_react": g["recableado_jquery_react"],
         "red": red,
         "stacks": [{"id": s["id"], "tecnologias": s["tecnologias"][:8], "sitios_asignados": s["sitios_asignados"],
                     "lcp_mediana_ms": s["lcp_mediana_ms"]} for s in g["stacks"]],
     }
+
+def extraccion_panel(corridas):
+    """Filas, tecnologías y GB facturados de la extracción que alimenta el panel y el grafo."""
+    archivos = {
+        "mobile": "cross_source/007-panel-cohorte-top10k-ene2025-2025",
+        "desktop": "cross_source/008-panel-cohorte-top10k-ene2025-2025-desktop",
+    }
+    salida = {}
+    for cliente, nombre in archivos.items():
+        filas, techs, por = con.execute(
+            "SELECT COUNT(*), COUNT(DISTINCT technology), "
+            "COUNT(*) * 1.0 / COUNT(DISTINCT origin || date) "
+            f"FROM '{BQ / nombre}.parquet'").fetchone()
+        salida[cliente] = {
+            "filas": filas, "tecnologias": techs, "por_sitio_mes": round(por, 1),
+            "gb_facturado": round(corridas[nombre][-1]["gb_facturado"], 1),
+        }
+    return salida
+
 
 datos = {
     "semaforo_jul2026": parquet("chrome-ux-report_materialized_metrics_summary/001-lcp-inp-cls-semaforo-jul2026")[0],
@@ -110,6 +132,7 @@ datos = {
                          "dic2025": parquet("cross_source/005-cobertura-top10k-crux-vs-crawl-dic2025")[0]},
     "costo_mes_completo_dic2025": parquet("cross_source/006-costo-mes-completo-sin-rank-dic2025")[0],
     "panel_piloto": {c: salida(f"panel_piloto_scd2_{c}.json") for c in CLIENTES},
+    "panel_extraccion": extraccion_panel(corridas),
     "grafo": grafo,
     "cambios_frontend": {c: salida(f"cambios_frontend_{c}.json") for c in CLIENTES},
     "cambios_frontend_aurora": {c: salida(f"cambios_frontend_{c}_aurora.json") for c in CLIENTES},
@@ -121,9 +144,46 @@ datos = {
     "cuota_por_mes_gb": cuota_por_mes,
 }
 
+def html_de(texto):
+    """Escapa el texto y pasa lo que está entre backticks a <code>."""
+    partes = re.split(r"`([^`]+)`", texto)
+    salida = []
+    for i, parte in enumerate(partes):
+        seguro = parte.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+        salida.append(f"<code>{seguro}</code>" if i % 2 else seguro)
+    return "".join(salida)
+
+
+def aplicar_changelog(html):
+    """Reemplaza la lista de trabajo de cada entrega por los ítems de changelog.md."""
+    items = {}
+    entrega = None
+    for linea in (AQUI / "changelog.md").read_text().splitlines():
+        marca = re.match(r"^## Entrega (\d+)\s*$", linea)
+        if marca:
+            entrega = int(marca.group(1))
+            items[entrega] = []
+            continue
+        item = re.match(r"^- \*\*(.+?)\*\*\s*(.*)$", linea)
+        if item and entrega is not None:
+            items[entrega].append((item.group(1).strip(), item.group(2).strip()))
+    if not items:
+        raise SystemExit("changelog.md no tiene entregas")
+    for n, lista in items.items():
+        filas = "\n".join(f"        <li><b>{html_de(rotulo)}</b> {html_de(texto)}</li>" for rotulo, texto in lista)
+        html, reemplazos = re.subn(
+            rf'(<section id="entrega-{n}"[\s\S]*?<details class="trabajo">\s*<summary>[^<]*</summary>\s*)<ul>[\s\S]*?</ul>',
+            rf"\1<ul>\n{filas}\n        </ul>",
+            html, count=1)
+        if reemplazos != 1:
+            raise SystemExit(f"No se encontró la lista de trabajo de la entrega {n}")
+    return html
+
+
 linea = "const DATOS = " + json.dumps(datos, ensure_ascii=False, separators=(",", ":")) + ";"
 html, n = re.subn(r"^const DATOS = .*;$", lambda _: linea, PAGINA.read_text(), count=1, flags=re.M)
 if n != 1:
     raise SystemExit(f"No se encontró la línea `const DATOS = ...;` en {PAGINA}")
+html = aplicar_changelog(html)
 PAGINA.write_text(html)
 print(f"{PAGINA.relative_to(RAIZ)}: {len(linea) / 1e6:.1f} MB de datos incrustados")

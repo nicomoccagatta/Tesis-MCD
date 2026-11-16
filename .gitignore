@@ -15,12 +15,34 @@
 .claude/*
 !.claude/skills/
 .claude/skills/*
-!.claude/skills/r-econometrics/
-!.claude/skills/python-panel-data/
-!.claude/skills/academic-paper-writer/
-!.claude/skills/latex-tables/
-!.claude/skills/latex/
-.agents/
+!.claude/skills/r-econometrics
+!.claude/skills/python-panel-data
+!.claude/skills/academic-paper-writer
+!.claude/skills/latex-tables
+!.claude/skills/latex
+!.claude/skills/bitacora
+
+# Cursor: mismos enlaces que .claude/skills
+.cursor/*
+!.cursor/skills/
+.cursor/skills/*
+!.cursor/skills/r-econometrics
+!.cursor/skills/python-panel-data
+!.cursor/skills/academic-paper-writer
+!.cursor/skills/latex-tables
+!.cursor/skills/latex
+!.cursor/skills/bitacora
+
+# Contenido de las skills. .claude/skills y .cursor/skills son enlaces.
+.agents/*
+!.agents/skills/
+.agents/skills/*
+!.agents/skills/r-econometrics/
+!.agents/skills/python-panel-data/
+!.agents/skills/academic-paper-writer/
+!.agents/skills/latex-tables/
+!.agents/skills/latex/
+!.agents/skills/bitacora/
 skills-lock.json
 
 # LaTeX auxiliares
