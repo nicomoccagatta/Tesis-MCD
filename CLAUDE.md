@@ -27,6 +27,7 @@ Desde el 13/10/2026 los avances se entregan en `bitacora/bitacora.html`, no en p
 - Si una cifra de una entrega anterior se corrige, esa entrega muestra la cifra vigente con una nota de lo presentado y de cuándo se corrigió.
 - Las cifras de tablas y gráficos no se tipean: se regeneran las salidas de `analisis/` que cambien y después `analisis/.venv/bin/python bitacora/armar_bitacora.py`, que reemplaza la línea `const DATOS = ...;` del HTML.
 - La bitácora muestra datos: no agregar decisiones, próximos pasos ni texto que el usuario no haya planteado, y en cifras por cliente móvil y escritorio van con la misma jerarquía.
+- Estilo de cada bloque: título, una descripción de una o dos líneas, y subtítulos. Bajo cada subtítulo, una lista de bullets con el dato. No párrafos que expliquen el mecanismo, el filtro o cómo se lee la pantalla.
 - Verificar el resultado abriéndolo en Chrome headless (captura de pantalla y consola sin errores) antes de entregarlo.
 
 ## Documento escrito (propuesta formal)

@@ -12,5 +12,6 @@ description: >
 2. Editar `bitacora/bitacora.html`. No crear decks en `Presentaciones/`.
 3. El badge queda **En curso** el día de la presentación. **Presentada** solo cuando el usuario avisa que ya presentó.
 4. Un PR por entrega. No mergear: lo mergea el usuario después del badge Presentada.
-5. "Trabajo desde la entrega anterior" es un `<details class="trabajo">` cerrado en cada entrega. En la entrega 1 el título es "Trabajo previo a la entrega". Los ítems se agregan en `bitacora/changelog.md` y se copian al HTML con `armar_bitacora.py`. No se escriben en el HTML ni se arman de memoria.
+5. "Trabajo desde la entrega anterior" es un `<details class="trabajo">` cerrado en cada entrega. En la entrega 1 el título es "Trabajo previo a la entrega". Los ítems se agregan en `bitacora/changelog.md` y se copian al HTML con `armar_bitacora.py`, del más reciente al más viejo. No se escriben en el HTML ni se arman de memoria.
 6. Si la entrega se dio con un deck, el cuerpo reproduce esas diapositivas y nada más. Una cifra corregida después lleva la nota de lo presentado y de cuándo se corrigió.
+7. Cada bloque es título, una descripción corta, subtítulos y bullets con el dato. Sin párrafos de procedimiento.

@@ -26,7 +26,11 @@ Debajo, la fila de la entrega y su título:
 
 Después de la cabecera, el trabajo del período va en un `<details class="trabajo">` cerrado. El título es el `<summary>`: "Trabajo desde la entrega anterior" (en la entrega 1, "Trabajo previo a la entrega").
 
-Los ítems salen de `bitacora/changelog.md`. Cada avance se anota ahí, en la entrega que corresponde, con su fecha. `armar_bitacora.py` copia esa lista al HTML. No se redacta en el HTML ni se reconstruye de memoria.
+Los ítems salen de `bitacora/changelog.md`. Cada avance se anota ahí, en la entrega que corresponde, con su fecha. `armar_bitacora.py` copia esa lista al HTML, del más reciente al más viejo. El mismo día conserva el orden del changelog. Un ítem sin fecha queda al final. No se redacta en el HTML ni se reconstruye de memoria.
+
+## Estilo
+
+Cada bloque: título, una descripción de una o dos líneas, subtítulos y, bajo cada uno, una lista de bullets con el dato. Sin párrafos de procedimiento. El detalle está en `CLAUDE.md`.
 
 ## Badge
 
@@ -41,6 +45,10 @@ Cada entrega del índice lateral se pliega. Al abrir esa entrega se muestran sus
 ## Lo que se mostró
 
 Si la entrega se dio con un deck de `Presentaciones/`, el cuerpo reproduce esas diapositivas: las mismas tablas, las mismas cifras y los mismos gráficos. No se agregan cortes, columnas ni secciones que no se hayan mostrado. Una cifra corregida después se muestra vigente, con una nota de lo presentado y de cuándo se corrigió. "Trabajo desde la entrega anterior" sigue siendo el registro del período.
+
+## Anexos
+
+El glosario es un anexo. Define los términos tal como se usan en la bitácora, en grupos, cada uno con una línea. Tecnología, framework y librería van primero, porque el catálogo de Wappalyzer les da otro sentido. No agrega términos que la bitácora no use.
 
 ## Un PR por entrega
 

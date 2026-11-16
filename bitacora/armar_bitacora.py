@@ -134,6 +134,7 @@ datos = {
     "panel_piloto": {c: salida(f"panel_piloto_scd2_{c}.json") for c in CLIENTES},
     "panel_extraccion": extraccion_panel(corridas),
     "grafo": grafo,
+    "grafo_aurora": {c: salida(f"grafo_aurora_{c}.json") for c in CLIENTES},
     "cambios_frontend": {c: salida(f"cambios_frontend_{c}.json") for c in CLIENTES},
     "cambios_frontend_aurora": {c: salida(f"cambios_frontend_{c}_aurora.json") for c in CLIENTES},
     "auditoria_wappalyzer": salida("auditoria_wappalyzer_frontend.json"),
@@ -154,8 +155,23 @@ def html_de(texto):
     return "".join(salida)
 
 
+def fecha_item(rotulo):
+    """Fecha DD/MM/AAAA del rótulo, o None si el ítem no empieza con una."""
+    marca = re.match(r"(\d{2})/(\d{2})/(\d{4})", rotulo)
+    return tuple(map(int, marca.groups()[::-1])) if marca else None
+
+
+def por_fecha_desc(lista):
+    """Más reciente primero. El mismo día conserva el orden del changelog. Sin fecha, al final."""
+    fechados, sin_fecha = [], []
+    for i, item in enumerate(lista):
+        (fechados if fecha_item(item[0]) else sin_fecha).append((fecha_item(item[0]), i, item))
+    fechados.sort(key=lambda x: (x[0], -x[1]), reverse=True)
+    return [item for _, _, item in fechados + sin_fecha]
+
+
 def aplicar_changelog(html):
-    """Reemplaza la lista de trabajo de cada entrega por los ítems de changelog.md."""
+    """Reemplaza la lista de trabajo de cada entrega por los ítems de changelog.md, del más reciente al más viejo."""
     items = {}
     entrega = None
     for linea in (AQUI / "changelog.md").read_text().splitlines():
@@ -169,7 +185,7 @@ def aplicar_changelog(html):
             items[entrega].append((item.group(1).strip(), item.group(2).strip()))
     if not items:
         raise SystemExit("changelog.md no tiene entregas")
-    for n, lista in items.items():
+    for n, lista in ((n, por_fecha_desc(lista)) for n, lista in items.items()):
         filas = "\n".join(f"        <li><b>{html_de(rotulo)}</b> {html_de(texto)}</li>" for rotulo, texto in lista)
         html, reemplazos = re.subn(
             rf'(<section id="entrega-{n}"[\s\S]*?<details class="trabajo">\s*<summary>[^<]*</summary>\s*)<ul>[\s\S]*?</ul>',

@@ -1,9 +1,10 @@
 # Changelog
 
-Un ítem por avance, con su fecha. "Trabajo desde la entrega anterior" sale de acá: se agrega el ítem en la entrega que corresponde y después se corre `analisis/.venv/bin/python bitacora/armar_bitacora.py`. No se redacta esa lista en el HTML.
+Un ítem por avance, con su fecha. "Trabajo desde la entrega anterior" sale de acá: se agrega el ítem en la entrega que corresponde y después se corre `analisis/.venv/bin/python bitacora/armar_bitacora.py`. No se redacta esa lista en el HTML. En la página el orden es cronológico descendente: lo aplica `armar_bitacora.py`, aunque acá queden anotados en otro orden.
 
 ## Entrega 5
 
+- **15/11/2026.** Proyección del grafo de diciembre 2025 rearmada con la versión de aurora (`analisis/grafo_aurora.py`): el nodo es framework@versión, y un par implies se conserva cuando las dos versiones están medidas.
 - **13/10/2026.** Auditoría de la detección de frameworks frontend en Wappalyzer: SvelteKit y Remix se detectan; no aparecían en los análisis por los filtros del panel (6 tecnologías fijas) y del grafo (≥30 sitios por nodo, filtro por categoría).
 - **13/10/2026.** Lista de 45 tecnologías frontend en 7 familias (por la relación `implies` de Wappalyzer). Cuenta como cambio la entrada o salida de una tecnología y el cambio de versión mayor.
 - **13/10/2026.** Vista de cambios sitio por sitio en 2025, sin regla de persistencia: 1.900 sitios en móvil y 1.677 en escritorio. Filtros por tecnologías presentes y por cambios sostenidos, y orden por la variación de LCP, INP o CLS alrededor de cada cambio para encontrar ejemplos.
