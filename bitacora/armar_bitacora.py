@@ -7,6 +7,7 @@ y la lista de "Trabajo desde la entrega anterior" de cada entrega. La página qu
 
 Antes de correrlo, regenerar las salidas que cambien:
   analisis/.venv/bin/python analisis/cambios_frontend.py mobile   (y desktop)
+  analisis/.venv/bin/python analisis/migraciones_frontend.py mobile   (y desktop; después de cambios_frontend)
   analisis/.venv/bin/python analisis/auditoria_wappalyzer.py <clon de HTTPArchive/wappalyzer>
 
 Uso: analisis/.venv/bin/python bitacora/armar_bitacora.py
@@ -121,6 +122,51 @@ def extraccion_panel(corridas):
     return salida
 
 
+def custom_metrics_muestra():
+    """Qué agregan otros campos de custom_metrics sobre Wappalyzer + aurora, en la muestra de 10k."""
+    con.execute("CREATE OR REPLACE TEMP VIEW senales AS SELECT *, '|' || coalesce(wappalyzer, '') || '|' AS w "
+                f"FROM '{BQ}/httparchive_sample_data_pages_10k/005-senales-frontend-custom-metrics-por-pagina.parquet'")
+    rutas = {
+        "Next": ("html_next OR html_next_data OR url_next", "w LIKE '%|Next.js|%' OR aurora_next IS NOT NULL"),
+        "Nuxt": ("html_nuxt OR url_nuxt", "w LIKE '%|Nuxt.js|%' OR aurora_nuxt IS NOT NULL"),
+        "SvelteKit": ("html_sveltekit OR url_sveltekit",
+                      "w LIKE '%|SvelteKit|%' OR w LIKE '%|Svelte|%' OR aurora_svelte IS NOT NULL"),
+        "Astro": ("html_astro OR url_astro", "w LIKE '%|Astro|%'"),
+    }
+    mapas = {
+        "React": ("sourcemap_ext LIKE '%tsx%' OR sourcemap_ext LIKE '%jsx%'",
+                  "w LIKE '%|React|%' OR aurora_react IS NOT NULL"),
+        "Vue": ("sourcemap_ext LIKE '%vue%'", "w LIKE '%|Vue.js|%' OR aurora_nuxt_vue IS NOT NULL"),
+        "Svelte": ("sourcemap_ext LIKE '%svelte%'",
+                   "w LIKE '%|Svelte|%' OR w LIKE '%|SvelteKit|%' OR aurora_svelte IS NOT NULL"),
+    }
+
+    def cruce(cliente, senal, base):
+        ambos, solo = con.execute(
+            f"SELECT count(*) FILTER (({senal}) AND ({base})), "
+            f"count(*) FILTER (({senal}) AND NOT coalesce(({base}), false)) FROM senales WHERE client = ?",
+            [cliente]).fetchone()
+        total = ambos + solo
+        return {"ambos": ambos, "solo_senal": solo, "pct_nuevas": round(100 * solo / total, 1) if total else None}
+
+    salida = {}
+    for cliente in CLIENTES:
+        paginas, bundler, bundler_wap, mapas_ext, webpack = con.execute(
+            "SELECT count(*), count(*) FILTER (coalesce(bundler, '') <> ''), "
+            "count(*) FILTER (coalesce(bundler, '') <> '' AND (w LIKE '%|Webpack|%' OR w LIKE '%|parcel|%')), "
+            "count(*) FILTER (coalesce(sourcemap_ext, '') <> ''), count(*) FILTER (w LIKE '%|Webpack|%') "
+            "FROM senales WHERE client = ?", [cliente]).fetchone()
+        salida[cliente] = {
+            "paginas": paginas, "bundler": bundler, "bundler_con_wappalyzer": bundler_wap,
+            "webpack_wappalyzer": webpack, "con_source_maps": mapas_ext,
+            "pct_bundler_con_wappalyzer": round(100 * bundler_wap / bundler, 1),
+            "pct_con_source_maps": round(100 * mapas_ext / paginas),
+            "rutas": {k: cruce(cliente, *v) for k, v in rutas.items()},
+            "source_maps": {k: cruce(cliente, *v) for k, v in mapas.items()},
+        }
+    return salida
+
+
 datos = {
     "semaforo_jul2026": parquet("chrome-ux-report_materialized_metrics_summary/001-lcp-inp-cls-semaforo-jul2026")[0],
     "unicidad_origin_jul2026": parquet("chrome-ux-report_materialized_metrics_summary/002-verificar-unicidad-origin-jul2026")[0],
@@ -134,13 +180,14 @@ datos = {
     "panel_piloto": {c: salida(f"panel_piloto_scd2_{c}.json") for c in CLIENTES},
     "panel_extraccion": extraccion_panel(corridas),
     "grafo": grafo,
-    "grafo_aurora": {c: salida(f"grafo_aurora_{c}.json") for c in CLIENTES},
     "cambios_frontend": {c: salida(f"cambios_frontend_{c}.json") for c in CLIENTES},
     "cambios_frontend_aurora": {c: salida(f"cambios_frontend_{c}_aurora.json") for c in CLIENTES},
+    "migraciones_frontend": {c: salida(f"migraciones_frontend_{c}.json") for c in CLIENTES},
     "auditoria_wappalyzer": salida("auditoria_wappalyzer_frontend.json"),
     "react_muestra_10k": parquet("httparchive_sample_data_pages_10k/001-react-aurora-vs-wappalyzer"),
     "validacion_aurora_en_vivo": salida("validacion_aurora_en_vivo.json"),
     "validacion_aurora_local": salida("validacion_aurora_local.json"),
+    "custom_metrics_muestra_10k": custom_metrics_muestra(),
     "extracciones": extracciones,
     "cuota_por_mes_gb": cuota_por_mes,
 }

@@ -1,0 +1,665 @@
+{
+ "cliente": "mobile",
+ "meses_por_lado": 3,
+ "grupos": [
+  "Next.js",
+  "React",
+  "Nuxt",
+  "Vue",
+  "Angular",
+  "Svelte",
+  "Otros frameworks",
+  "jQuery",
+  "Sin framework"
+ ],
+ "migraciones": [
+  {
+   "desde": "jQuery",
+   "hacia": "Sin framework",
+   "sitios": 71,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://anyxxx.com",
+    "https://apkhihe.net",
+    "https://azmip.com",
+    "https://baby-calendar.jp",
+    "https://bokepcuy.skin"
+   ]
+  },
+  {
+   "desde": "jQuery",
+   "hacia": "Otros frameworks",
+   "sitios": 36,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://boxrec.com",
+    "https://chartink.com",
+    "https://consultaremedios.com.br",
+    "https://fandomwire.com",
+    "https://getmodsapk.com"
+   ]
+  },
+  {
+   "desde": "jQuery",
+   "hacia": "React",
+   "sitios": 31,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://bigwinbuzz.com",
+    "https://bookwalker.jp",
+    "https://bscscan.com",
+    "https://etherscan.io",
+    "https://keirin.kdreams.jp"
+   ]
+  },
+  {
+   "desde": "React",
+   "hacia": "Next.js",
+   "sitios": 29,
+   "delta_lcp_mediana_ms": -100,
+   "ejemplos": [
+    "https://accounts.snapchat.com",
+    "https://finance.yahoo.co.jp",
+    "https://id.soccerway.com",
+    "https://ludoplayers.com",
+    "https://marathi.indiatimes.com"
+   ]
+  },
+  {
+   "desde": "Otros frameworks",
+   "hacia": "jQuery",
+   "sitios": 28,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://boxrec.com",
+    "https://fakti.online",
+    "https://liteapks.com",
+    "https://m.filmaffinity.com",
+    "https://m.turfomania.fr"
+   ]
+  },
+  {
+   "desde": "jQuery",
+   "hacia": "Next.js",
+   "sitios": 26,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://allabout.co.jp",
+    "https://apteka.103.by",
+    "https://biznes.interia.pl",
+    "https://cinepolis.com",
+    "https://esaj.tjsp.jus.br"
+   ]
+  },
+  {
+   "desde": "Sin framework",
+   "hacia": "jQuery",
+   "sitios": 20,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://9jarocks.net",
+    "https://celebrityjest.com",
+    "https://comicbook.com",
+    "https://footballforge.com",
+    "https://govdotin.com"
+   ]
+  },
+  {
+   "desde": "jQuery",
+   "hacia": "Vue",
+   "sitios": 17,
+   "delta_lcp_mediana_ms": -100,
+   "ejemplos": [
+    "https://az.m.wikipedia.org",
+    "https://bg3.wiki",
+    "https://dfashion.docomo.ne.jp",
+    "https://five88.com",
+    "https://kepco.jp"
+   ]
+  },
+  {
+   "desde": "React",
+   "hacia": "jQuery",
+   "sitios": 16,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://cottonon.com",
+    "https://jisin.jp",
+    "https://linktr.ee",
+    "https://m.genybet.fr",
+    "https://www.amarujala.com"
+   ]
+  },
+  {
+   "desde": "Otros frameworks",
+   "hacia": "React",
+   "sitios": 14,
+   "delta_lcp_mediana_ms": 150,
+   "ejemplos": [
+    "https://cnnportugal.iol.pt",
+    "https://de.pandora.net",
+    "https://musescore.com",
+    "https://sallysbakingaddiction.com",
+    "https://translate.yandex.ru"
+   ]
+  },
+  {
+   "desde": "Sin framework",
+   "hacia": "Otros frameworks",
+   "sitios": 13,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://adresowo.pl",
+    "https://football.kulichki.net",
+    "https://getbootstrap.com",
+    "https://m.gsmarena.com",
+    "https://playtech.ro"
+   ]
+  },
+  {
+   "desde": "React",
+   "hacia": "Sin framework",
+   "sitios": 13,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://auto.ru",
+    "https://cadenaser.com",
+    "https://lenta.ru",
+    "https://noticiastrabajo.huffingtonpost.es",
+    "https://spweb.brtb.jp"
+   ]
+  },
+  {
+   "desde": "React",
+   "hacia": "Otros frameworks",
+   "sitios": 12,
+   "delta_lcp_mediana_ms": -100,
+   "ejemplos": [
+    "https://cleartax.in",
+    "https://crictoday.com",
+    "https://developer.mozilla.org",
+    "https://fansided.com",
+    "https://madame.lefigaro.fr"
+   ]
+  },
+  {
+   "desde": "Sin framework",
+   "hacia": "Vue",
+   "sitios": 11,
+   "delta_lcp_mediana_ms": -100,
+   "ejemplos": [
+    "https://ci-en.dlsite.com",
+    "https://edu.rk.gov.ru",
+    "https://forexpipinsight.com",
+    "https://fr.pornhub.org",
+    "https://it.redtube.com"
+   ]
+  },
+  {
+   "desde": "Sin framework",
+   "hacia": "React",
+   "sitios": 9,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://conduit.psiphon.ca",
+    "https://faphouse.com",
+    "https://faphouse1.com",
+    "https://fhaccess.com",
+    "https://nlab.itmedia.co.jp"
+   ]
+  },
+  {
+   "desde": "Sin framework",
+   "hacia": "Next.js",
+   "sitios": 8,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://au.news.yahoo.com",
+    "https://espanol.yahoo.com",
+    "https://hk.news.yahoo.com",
+    "https://tw.news.yahoo.com",
+    "https://tw.sports.yahoo.com"
+   ]
+  },
+  {
+   "desde": "Next.js",
+   "hacia": "React",
+   "sitios": 8,
+   "delta_lcp_mediana_ms": -350,
+   "ejemplos": [
+    "https://haraj.com.sa",
+    "https://id.soccerway.com",
+    "https://liquipedia.net",
+    "https://probo.in",
+    "https://www.abola.pt"
+   ]
+  },
+  {
+   "desde": "Otros frameworks",
+   "hacia": "Sin framework",
+   "sitios": 8,
+   "delta_lcp_mediana_ms": -150,
+   "ejemplos": [
+    "https://one.google.com",
+    "https://www.bootbarn.com",
+    "https://www.climatempo.com.br",
+    "https://www.ilfattoquotidiano.it",
+    "https://www.lightnovelworld.co"
+   ]
+  },
+  {
+   "desde": "Vue",
+   "hacia": "jQuery",
+   "sitios": 7,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://danviet.vn",
+    "https://epoznan.pl",
+    "https://kinozal.tv",
+    "https://postal.pt",
+    "https://www.cancan.ro"
+   ]
+  },
+  {
+   "desde": "Vue",
+   "hacia": "Sin framework",
+   "sitios": 7,
+   "delta_lcp_mediana_ms": -100,
+   "ejemplos": [
+    "https://de.pornhub.org",
+    "https://five88.com",
+    "https://fr.pornhub.org",
+    "https://kite.zerodha.com",
+    "https://m.17track.net"
+   ]
+  },
+  {
+   "desde": "jQuery",
+   "hacia": "Svelte",
+   "sitios": 7,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://dolarhoy.com",
+    "https://m.dafiti.com.br",
+    "https://podolyaka.ru",
+    "https://sevastopolmedia.ru",
+    "https://www.lesoir.be"
+   ]
+  },
+  {
+   "desde": "Vue",
+   "hacia": "Nuxt",
+   "sitios": 7,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://epicentrk.ua",
+    "https://m.kolesa.kz",
+    "https://my.gov.uz",
+    "https://slickdeals.net",
+    "https://staatsloterij.nederlandseloterij.nl"
+   ]
+  },
+  {
+   "desde": "Vue",
+   "hacia": "React",
+   "sitios": 7,
+   "delta_lcp_mediana_ms": 300,
+   "ejemplos": [
+    "https://ixbt.games",
+    "https://pointmall.aeon.co.jp",
+    "https://vtv.vn",
+    "https://www.computerbild.de",
+    "https://www.elfster.com"
+   ]
+  },
+  {
+   "desde": "Otros frameworks",
+   "hacia": "Next.js",
+   "sitios": 7,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://public.app",
+    "https://www.calciomercato.com",
+    "https://www.gocomics.com",
+    "https://www.karkkainen.com",
+    "https://www.kobo.com"
+   ]
+  },
+  {
+   "desde": "jQuery",
+   "hacia": "Nuxt",
+   "sitios": 6,
+   "delta_lcp_mediana_ms": 450,
+   "ejemplos": [
+    "https://m.krisha.kz",
+    "https://mt1.89k.app",
+    "https://mtg.89k.app",
+    "https://otvet.mail.ru",
+    "https://www.storm.mg"
+   ]
+  },
+  {
+   "desde": "Svelte",
+   "hacia": "Sin framework",
+   "sitios": 6,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://www.djjohal.com",
+    "https://www.hltv.org",
+    "https://www.nsctotal.com.br",
+    "https://www.programme-tv.net",
+    "https://www.sociedademilitar.com.br"
+   ]
+  },
+  {
+   "desde": "Angular",
+   "hacia": "React",
+   "sitios": 5,
+   "delta_lcp_mediana_ms": 400,
+   "ejemplos": [
+    "https://aposta.la",
+    "https://www.aposta.la",
+    "https://www.autotrader.co.uk",
+    "https://www.fortnite.com",
+    "https://www.svenskaspel.se"
+   ]
+  },
+  {
+   "desde": "React",
+   "hacia": "Svelte",
+   "sitios": 5,
+   "delta_lcp_mediana_ms": -200,
+   "ejemplos": [
+    "https://d4swing.com",
+    "https://finanse.wp.pl",
+    "https://tech.wp.pl",
+    "https://wiadomosci.wp.pl",
+    "https://www.semrush.com"
+   ]
+  },
+  {
+   "desde": "React",
+   "hacia": "Angular",
+   "sitios": 5,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://ideogram.ai",
+    "https://m.888bets.co.mz",
+    "https://www.detran.sp.gov.br",
+    "https://www.euro.com.pl",
+    "https://www.wunderground.com"
+   ]
+  },
+  {
+   "desde": "Otros frameworks",
+   "hacia": "Svelte",
+   "sitios": 5,
+   "delta_lcp_mediana_ms": -100,
+   "ejemplos": [
+    "https://observador.pt",
+    "https://www.coingecko.com",
+    "https://www.lindependant.fr",
+    "https://www.rugbyrama.fr",
+    "https://www.sortiraparis.com"
+   ]
+  },
+  {
+   "desde": "React",
+   "hacia": "Vue",
+   "sitios": 4,
+   "delta_lcp_mediana_ms": -100,
+   "ejemplos": [
+    "https://asimjofa.com",
+    "https://randewoo.ru",
+    "https://workman.jp",
+    "https://www.msport.com"
+   ]
+  },
+  {
+   "desde": "Next.js",
+   "hacia": "Sin framework",
+   "sitios": 4,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://gendai.media",
+    "https://net.hr",
+    "https://www.polygon.com",
+    "https://www.upday.com"
+   ]
+  },
+  {
+   "desde": "jQuery",
+   "hacia": "Angular",
+   "sitios": 4,
+   "delta_lcp_mediana_ms": 1400,
+   "ejemplos": [
+    "https://portal.ajira.go.tz",
+    "https://printerval.com",
+    "https://upbhulekh.gov.in",
+    "https://www.rte.ie"
+   ]
+  },
+  {
+   "desde": "Otros frameworks",
+   "hacia": "Vue",
+   "sitios": 4,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://www.breuninger.com",
+    "https://www.cricketwireless.com",
+    "https://www.penti.com",
+    "https://www.trackwrestling.com"
+   ]
+  },
+  {
+   "desde": "Next.js",
+   "hacia": "jQuery",
+   "sitios": 3,
+   "delta_lcp_mediana_ms": -300,
+   "ejemplos": [
+    "https://bongda.com.vn",
+    "https://povo.jp",
+    "https://www.rokomari.com"
+   ]
+  },
+  {
+   "desde": "Nuxt",
+   "hacia": "Next.js",
+   "sitios": 3,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://cellphones.com.vn",
+    "https://www.ambitionbox.com",
+    "https://www.kwai.com"
+   ]
+  },
+  {
+   "desde": "Sin framework",
+   "hacia": "Svelte",
+   "sitios": 3,
+   "delta_lcp_mediana_ms": -100,
+   "ejemplos": [
+    "https://clients.cdiscount.com",
+    "https://www.djjohal.com",
+    "https://www.ouest-france.fr"
+   ]
+  },
+  {
+   "desde": "Angular",
+   "hacia": "Otros frameworks",
+   "sitios": 3,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://cnnportugal.iol.pt",
+    "https://tvi.iol.pt",
+    "https://tviplayer.iol.pt"
+   ]
+  },
+  {
+   "desde": "React",
+   "hacia": "Nuxt",
+   "sitios": 3,
+   "delta_lcp_mediana_ms": 300,
+   "ejemplos": [
+    "https://nordot.app",
+    "https://www.cnet.com",
+    "https://www.zdnet.com"
+   ]
+  },
+  {
+   "desde": "Sin framework",
+   "hacia": "Nuxt",
+   "sitios": 3,
+   "delta_lcp_mediana_ms": -100,
+   "ejemplos": [
+    "https://remaker.ai",
+    "https://www.adslzone.net",
+    "https://www.aiease.ai"
+   ]
+  },
+  {
+   "desde": "Nuxt",
+   "hacia": "React",
+   "sitios": 3,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://sita.sk",
+    "https://www.bitget.com",
+    "https://www.foxsports.com"
+   ]
+  },
+  {
+   "desde": "Svelte",
+   "hacia": "Otros frameworks",
+   "sitios": 2,
+   "delta_lcp_mediana_ms": 200,
+   "ejemplos": [
+    "https://chat.babel.com",
+    "https://www.todamateria.com.br"
+   ]
+  },
+  {
+   "desde": "Otros frameworks",
+   "hacia": "Nuxt",
+   "sitios": 2,
+   "delta_lcp_mediana_ms": 500,
+   "ejemplos": [
+    "https://daryo.uz",
+    "https://www.abnamro.nl"
+   ]
+  },
+  {
+   "desde": "Svelte",
+   "hacia": "jQuery",
+   "sitios": 2,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://m.demotywatory.pl",
+    "https://sevastopolmedia.ru"
+   ]
+  },
+  {
+   "desde": "Angular",
+   "hacia": "Next.js",
+   "sitios": 2,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://member.uhc.com",
+    "https://www.chileautos.cl"
+   ]
+  },
+  {
+   "desde": "Otros frameworks",
+   "hacia": "Angular",
+   "sitios": 2,
+   "delta_lcp_mediana_ms": 2000,
+   "ejemplos": [
+    "https://www.aa.com",
+    "https://www.unieuro.it"
+   ]
+  },
+  {
+   "desde": "Svelte",
+   "hacia": "Next.js",
+   "sitios": 2,
+   "delta_lcp_mediana_ms": -100,
+   "ejemplos": [
+    "https://www.decathlon.es",
+    "https://www.tecmundo.com.br"
+   ]
+  },
+  {
+   "desde": "Svelte",
+   "hacia": "Vue",
+   "sitios": 1,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://instanonimo.com"
+   ]
+  },
+  {
+   "desde": "Vue",
+   "hacia": "Otros frameworks",
+   "sitios": 1,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://ssstwitter.com"
+   ]
+  },
+  {
+   "desde": "Svelte",
+   "hacia": "React",
+   "sitios": 1,
+   "delta_lcp_mediana_ms": 200,
+   "ejemplos": [
+    "https://www.ad.nl"
+   ]
+  },
+  {
+   "desde": "Sin framework",
+   "hacia": "Angular",
+   "sitios": 1,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://www.bajajfinserv.in"
+   ]
+  },
+  {
+   "desde": "Vue",
+   "hacia": "Svelte",
+   "sitios": 1,
+   "delta_lcp_mediana_ms": -700,
+   "ejemplos": [
+    "https://www.kaluga-poisk.ru"
+   ]
+  },
+  {
+   "desde": "Nuxt",
+   "hacia": "Otros frameworks",
+   "sitios": 1,
+   "delta_lcp_mediana_ms": 0,
+   "ejemplos": [
+    "https://www.noticiasaominuto.com"
+   ]
+  },
+  {
+   "desde": "Next.js",
+   "hacia": "Angular",
+   "sitios": 1,
+   "delta_lcp_mediana_ms": 100,
+   "ejemplos": [
+    "https://www.peek-cloppenburg.de"
+   ]
+  },
+  {
+   "desde": "Next.js",
+   "hacia": "Vue",
+   "sitios": 1,
+   "delta_lcp_mediana_ms": 400,
+   "ejemplos": [
+    "https://www.winsports.co"
+   ]
+  }
+ ],
+ "migraciones_sostenidas": 501
+}

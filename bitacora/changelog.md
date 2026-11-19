@@ -4,7 +4,8 @@ Un ítem por avance, con su fecha. "Trabajo desde la entrega anterior" sale de a
 
 ## Entrega 5
 
-- **15/11/2026.** Proyección del grafo de diciembre 2025 rearmada con la versión de aurora (`analisis/grafo_aurora.py`): el nodo es framework@versión, y un par implies se conserva cuando las dos versiones están medidas.
+- **18/11/2026.** Grafo de migraciones entre frameworks (`analisis/migraciones_frontend.py`): cada flecha une el framework principal de un sitio antes y después de un cambio sostenido en 2025, con su variación de LCP. 501 migraciones sostenidas en móvil y 420 en escritorio.
+- **18/11/2026.** Revisión de los demás campos de `custom_metrics` (`cms`, `javascript`, `markup`, `css_variables`, `other`) en la muestra de 10k (`httparchive_sample_data_pages_10k/003`–`005`): para detectar frameworks frontend solo sirven Wappalyzer y aurora.
 - **13/10/2026.** Auditoría de la detección de frameworks frontend en Wappalyzer: SvelteKit y Remix se detectan; no aparecían en los análisis por los filtros del panel (6 tecnologías fijas) y del grafo (≥30 sitios por nodo, filtro por categoría).
 - **13/10/2026.** Lista de 45 tecnologías frontend en 7 familias (por la relación `implies` de Wappalyzer). Cuenta como cambio la entrada o salida de una tecnología y el cambio de versión mayor.
 - **13/10/2026.** Vista de cambios sitio por sitio en 2025, sin regla de persistencia: 1.900 sitios en móvil y 1.677 en escritorio. Filtros por tecnologías presentes y por cambios sostenidos, y orden por la variación de LCP, INP o CLS alrededor de cada cambio para encontrar ejemplos.

@@ -28,3 +28,6 @@ date,project,script,gb_dry_run,gb_billed,job_id
 2026-10-14,tesis-506222,chrome-ux-report_materialized_device_summary/001-cwv-cohorte-top10k-2025,19.7328,19.7332,tesis_20261014_131440_37681
 2026-10-14,tesis-506222,httparchive_crawl_pages/010-visitas-cohorte-top10k-2025-sin-datos,42.991,3.7854,tesis_20261014_131535_39365
 2026-10-14,tesis-506222,httparchive_crawl_pages/011-aurora-cohorte-top10k-2025-visitas-sin-wappalyzer,21437.5213,4.3076,tesis_20261014_132050_46857
+2026-11-18,tesis-506222,httparchive_sample_data_pages_10k/003-claves-custom-metrics-frontend,2.043,2.0437,tesis_20261118_205028_16389
+2026-11-18,tesis-506222,httparchive_sample_data_pages_10k/004-ejemplos-campos-frontend-por-framework,1.0,0.9794,tesis_20261118_205119_17217
+2026-11-18,tesis-506222,httparchive_sample_data_pages_10k/005-senales-frontend-custom-metrics-por-pagina,1.9931,1.9504,tesis_20261118_210610_27887
