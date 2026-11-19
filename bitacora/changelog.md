@@ -4,6 +4,8 @@ Un ítem por avance, con su fecha. "Trabajo desde la entrega anterior" sale de a
 
 ## Entrega 5
 
+- **19/11/2026.** ΔLCP de cada tecnología del grafo en toda la cohorte y dentro de cada framework (`analisis/grafo_tecnologias.py`), para ver cuánto de la diferencia de LCP viene del framework.
+- **19/11/2026.** Grafo de tecnologías asociadas a cada framework en diciembre 2025 (`analisis/grafo_tecnologias.py`): cada tecnología de Wappalyzer con 30 sitios o más se une a los frameworks principales con los que tiene lift ≥ 2, con la diferencia de LCP entre los sitios del framework con y sin ella.
 - **18/11/2026.** Grafo de migraciones entre frameworks (`analisis/migraciones_frontend.py`): cada flecha une el framework principal de un sitio antes y después de un cambio sostenido en 2025, con su variación de LCP. 501 migraciones sostenidas en móvil y 420 en escritorio.
 - **18/11/2026.** Revisión de los demás campos de `custom_metrics` (`cms`, `javascript`, `markup`, `css_variables`, `other`) en la muestra de 10k (`httparchive_sample_data_pages_10k/003`–`005`): para detectar frameworks frontend solo sirven Wappalyzer y aurora.
 - **13/10/2026.** Auditoría de la detección de frameworks frontend en Wappalyzer: SvelteKit y Remix se detectan; no aparecían en los análisis por los filtros del panel (6 tecnologías fijas) y del grafo (≥30 sitios por nodo, filtro por categoría).

@@ -8,6 +8,7 @@ y la lista de "Trabajo desde la entrega anterior" de cada entrega. La página qu
 Antes de correrlo, regenerar las salidas que cambien:
   analisis/.venv/bin/python analisis/cambios_frontend.py mobile   (y desktop)
   analisis/.venv/bin/python analisis/migraciones_frontend.py mobile   (y desktop; después de cambios_frontend)
+  analisis/.venv/bin/python analisis/grafo_tecnologias.py mobile      (y desktop)
   analisis/.venv/bin/python analisis/auditoria_wappalyzer.py <clon de HTTPArchive/wappalyzer>
 
 Uso: analisis/.venv/bin/python bitacora/armar_bitacora.py
@@ -183,6 +184,7 @@ datos = {
     "cambios_frontend": {c: salida(f"cambios_frontend_{c}.json") for c in CLIENTES},
     "cambios_frontend_aurora": {c: salida(f"cambios_frontend_{c}_aurora.json") for c in CLIENTES},
     "migraciones_frontend": {c: salida(f"migraciones_frontend_{c}.json") for c in CLIENTES},
+    "grafo_tecnologias": {c: salida(f"grafo_tecnologias_{c}.json") for c in CLIENTES},
     "auditoria_wappalyzer": salida("auditoria_wappalyzer_frontend.json"),
     "react_muestra_10k": parquet("httparchive_sample_data_pages_10k/001-react-aurora-vs-wappalyzer"),
     "validacion_aurora_en_vivo": salida("validacion_aurora_en_vivo.json"),

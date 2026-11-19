@@ -3,7 +3,7 @@
 Entrada: analisis/salidas/cambios_frontend_<cliente>_aurora.json (Wappalyzer + aurora), que lista los
 sitios con algún cambio de tecnología frontend y el estado de cada mes.
 
-Framework principal de un sitio-mes = el primero de GRUPOS presente en su estado. Las tecnologías que
+Framework principal de un sitio-mes = el primero de GRUPOS_PRINCIPAL (frontend.py) presente en su estado. Las tecnologías que
 implican un framework cuentan como ese framework (ej. Remix y Gatsby como React); jQuery solo es el
 principal si no hay otro framework, y WordPress no es un framework (un sitio WordPress sin framework
 queda en "Sin framework").
@@ -22,33 +22,18 @@ import json
 from collections import defaultdict
 from statistics import median
 
+from frontend import GRUPOS_PRINCIPAL, SIN_FRAMEWORK, framework_principal
 from fuentes import SALIDAS, cliente_desde_argv
 
 CLIENTE = cliente_desde_argv()
 LADO = 3
-
-GRUPOS = {
-    "Next.js": {"Next.js", "Next.js App Router", "Next.js Page Router SSG", "Next.js Page Router SSR"},
-    "React": {"React", "Remix", "React Router", "Gatsby", "Hydrogen", "Docusaurus", "RedwoodJS"},
-    "Nuxt": {"Nuxt.js"},
-    "Vue": {"Vue.js", "Gridsome", "VitePress"},
-    "Angular": {"Angular", "AngularJS"},
-    "Svelte": {"Svelte", "SvelteKit", "Sapper"},
-    "Otros frameworks": {"Astro", "Qwik", "Preact", "lit-html", "lit-element", "Alpine.js", "Htmx", "Ember.js",
-                         "Backbone.js", "Stimulus", "Inertia.js", "Quasar", "Meteor", "Stencil", "Aurelia",
-                         "Knockout.js", "Polymer", "SolidJS", "SolidStart", "TanStack Start", "Fresh", "Elm",
-                         "Eleventy"},
-    "jQuery": {"jQuery"},
-}
-SIN_FRAMEWORK = "Sin framework"
 
 datos = json.loads((SALIDAS / f"cambios_frontend_{CLIENTE}_aurora.json").read_text())
 estados = datos["estados"]
 
 
 def principal(indice):
-    tecnologias = {t[0] for t in estados[indice]}
-    return next((g for g, miembros in GRUPOS.items() if tecnologias & miembros), SIN_FRAMEWORK)
+    return framework_principal({t[0] for t in estados[indice]})
 
 
 aristas = defaultdict(lambda: {"sitios": [], "delta_lcp": []})
@@ -68,7 +53,7 @@ for sitio in datos["sitios"]:
 salida = {
     "cliente": CLIENTE,
     "meses_por_lado": LADO,
-    "grupos": list(GRUPOS) + [SIN_FRAMEWORK],
+    "grupos": list(GRUPOS_PRINCIPAL) + [SIN_FRAMEWORK],
     "migraciones": sorted((
         {"desde": a, "hacia": b, "sitios": len(v["sitios"]),
          "delta_lcp_mediana_ms": round(median(v["delta_lcp"])) if v["delta_lcp"] else None,

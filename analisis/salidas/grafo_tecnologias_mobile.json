@@ -1,0 +1,6677 @@
+{
+ "cliente": "mobile",
+ "mes": "2025-12-01",
+ "sitios": 6410,
+ "lcp_mediana_ms": 1700,
+ "parametros": {
+  "min_sitios": 30,
+  "min_coocurrencia": 15,
+  "min_lift": 2.0
+ },
+ "tipos": [
+  "Librerías JS y UI",
+  "Publicidad y marketing",
+  "Analytics y tags",
+  "CMS y ecommerce",
+  "Infraestructura",
+  "Otros"
+ ],
+ "frameworks": [
+  {
+   "id": "Next.js",
+   "sitios": 631,
+   "lcp_mediana_ms": 2100,
+   "xy": [
+    0.616,
+    -0.7877
+   ]
+  },
+  {
+   "id": "React",
+   "sitios": 1122,
+   "lcp_mediana_ms": 2100,
+   "xy": [
+    0.9405,
+    0.3397
+   ]
+  },
+  {
+   "id": "Nuxt",
+   "sitios": 109,
+   "lcp_mediana_ms": 1900,
+   "xy": [
+    0.4148,
+    0.9099
+   ]
+  },
+  {
+   "id": "Vue",
+   "sitios": 391,
+   "lcp_mediana_ms": 1900,
+   "xy": [
+    0.0147,
+    0.9999
+   ]
+  },
+  {
+   "id": "Angular",
+   "sitios": 153,
+   "lcp_mediana_ms": 3200,
+   "xy": [
+    -0.4807,
+    0.8769
+   ]
+  },
+  {
+   "id": "Svelte",
+   "sitios": 148,
+   "lcp_mediana_ms": 1700,
+   "xy": [
+    -0.8733,
+    0.4872
+   ]
+  },
+  {
+   "id": "Otros frameworks",
+   "sitios": 414,
+   "lcp_mediana_ms": 1700,
+   "xy": [
+    -0.9978,
+    -0.0663
+   ]
+  },
+  {
+   "id": "jQuery",
+   "sitios": 2283,
+   "lcp_mediana_ms": 1500,
+   "xy": [
+    -0.7451,
+    -0.6669
+   ]
+  },
+  {
+   "id": "Sin framework",
+   "sitios": 1159,
+   "lcp_mediana_ms": 1500,
+   "xy": [
+    -0.2481,
+    -0.9687
+   ]
+  }
+ ],
+ "tecnologias_con_min_sitios": 313,
+ "tecnologias_sin_asociacion": 186,
+ "asociaciones_descartadas_por_implies": 17,
+ "tecnologias": [
+  {
+   "id": "ADFOX",
+   "tipo": "Publicidad y marketing",
+   "sitios": 143,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    -1.1849,
+    -0.0335
+   ]
+  },
+  {
+   "id": "AMP",
+   "tipo": "Librerías JS y UI",
+   "sitios": 121,
+   "lcp_mediana_ms": 1600,
+   "delta_lcp_ms": -100,
+   "xy": [
+    -0.9284,
+    0.669
+   ]
+  },
+  {
+   "id": "AWIN",
+   "tipo": "Publicidad y marketing",
+   "sitios": 43,
+   "lcp_mediana_ms": 2400,
+   "delta_lcp_ms": 700,
+   "xy": [
+    0.6054,
+    -0.9774
+   ]
+  },
+  {
+   "id": "Adform",
+   "tipo": "Publicidad y marketing",
+   "sitios": 84,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    -1.0783,
+    0.1058
+   ]
+  },
+  {
+   "id": "Adjust",
+   "tipo": "Analytics y tags",
+   "sitios": 125,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    0.2938,
+    -0.9483
+   ]
+  },
+  {
+   "id": "Adobe Analytics",
+   "tipo": "Analytics y tags",
+   "sitios": 232,
+   "lcp_mediana_ms": 2100,
+   "delta_lcp_ms": 400,
+   "xy": [
+    -0.6691,
+    0.8521
+   ]
+  },
+  {
+   "id": "Adobe Experience Platform Launch",
+   "tipo": "Analytics y tags",
+   "sitios": 217,
+   "lcp_mediana_ms": 2400,
+   "delta_lcp_ms": 700,
+   "xy": [
+    -0.5298,
+    1.0604
+   ]
+  },
+  {
+   "id": "Adobe Target",
+   "tipo": "Publicidad y marketing",
+   "sitios": 74,
+   "lcp_mediana_ms": 2650,
+   "delta_lcp_ms": 950,
+   "xy": [
+    1.1772,
+    0.0685
+   ]
+  },
+  {
+   "id": "Akamai",
+   "tipo": "Infraestructura",
+   "sitios": 400,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    0.2684,
+    0.1535
+   ]
+  },
+  {
+   "id": "Akamai Bot Manager",
+   "tipo": "Infraestructura",
+   "sitios": 277,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.2378,
+    0.1309
+   ]
+  },
+  {
+   "id": "Akamai mPulse",
+   "tipo": "Analytics y tags",
+   "sitios": 224,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    1.2985,
+    0.378
+   ]
+  },
+  {
+   "id": "Algolia",
+   "tipo": "CMS y ecommerce",
+   "sitios": 50,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    0.7488,
+    -1.0285
+   ]
+  },
+  {
+   "id": "Amazon ALB",
+   "tipo": "Infraestructura",
+   "sitios": 328,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    -0.6592,
+    0.9419
+   ]
+  },
+  {
+   "id": "Amazon CloudFront",
+   "tipo": "Infraestructura",
+   "sitios": 760,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    -0.6129,
+    1.118
+   ]
+  },
+  {
+   "id": "Amazon S3",
+   "tipo": "Infraestructura",
+   "sitios": 262,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    0.1598,
+    0.6438
+   ]
+  },
+  {
+   "id": "Amazon SES",
+   "tipo": "Publicidad y marketing",
+   "sitios": 567,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    0.6016,
+    0.9445
+   ]
+  },
+  {
+   "id": "Amazon Webstore",
+   "tipo": "CMS y ecommerce",
+   "sitios": 59,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.8663,
+    -0.9016
+   ]
+  },
+  {
+   "id": "Amplitude",
+   "tipo": "Analytics y tags",
+   "sitios": 88,
+   "lcp_mediana_ms": 2050,
+   "delta_lcp_ms": 350,
+   "xy": [
+    0.8569,
+    0.5103
+   ]
+  },
+  {
+   "id": "Apache Traffic Server",
+   "tipo": "Infraestructura",
+   "sitios": 31,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    -0.4337,
+    -0.928
+   ]
+  },
+  {
+   "id": "Apollo",
+   "tipo": "Librerías JS y UI",
+   "sitios": 80,
+   "lcp_mediana_ms": 2900,
+   "delta_lcp_ms": 1200,
+   "xy": [
+    0.7753,
+    -0.3063
+   ]
+  },
+  {
+   "id": "Apple Sign-in",
+   "tipo": "Infraestructura",
+   "sitios": 68,
+   "lcp_mediana_ms": 2500,
+   "delta_lcp_ms": 800,
+   "xy": [
+    0.8002,
+    0.5762
+   ]
+  },
+  {
+   "id": "Apple iCloud Mail",
+   "tipo": "Infraestructura",
+   "sitios": 743,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    0.7471,
+    -0.1905
+   ]
+  },
+  {
+   "id": "Appsflyer",
+   "tipo": "Analytics y tags",
+   "sitios": 88,
+   "lcp_mediana_ms": 2550,
+   "delta_lcp_ms": 850,
+   "xy": [
+    0.4949,
+    -1.0346
+   ]
+  },
+  {
+   "id": "Arc XP",
+   "tipo": "CMS y ecommerce",
+   "sitios": 34,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    0.9852,
+    0.155
+   ]
+  },
+  {
+   "id": "Axios",
+   "tipo": "Librerías JS y UI",
+   "sitios": 113,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    -0.3929,
+    0.5829
+   ]
+  },
+  {
+   "id": "Azure Front Door",
+   "tipo": "Infraestructura",
+   "sitios": 46,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    -0.2953,
+    -1.1528
+   ]
+  },
+  {
+   "id": "Babel",
+   "tipo": "Otros",
+   "sitios": 141,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    0.4555,
+    0.7113
+   ]
+  },
+  {
+   "id": "Boomerang",
+   "tipo": "Librerías JS y UI",
+   "sitios": 252,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.2015,
+    0.6313
+   ]
+  },
+  {
+   "id": "Branch",
+   "tipo": "Publicidad y marketing",
+   "sitios": 43,
+   "lcp_mediana_ms": 2500,
+   "delta_lcp_ms": 800,
+   "xy": [
+    0.9451,
+    0.5297
+   ]
+  },
+  {
+   "id": "Braze",
+   "tipo": "Publicidad y marketing",
+   "sitios": 49,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    0.7443,
+    -0.2693
+   ]
+  },
+  {
+   "id": "Cart Functionality",
+   "tipo": "CMS y ecommerce",
+   "sitios": 1131,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    -0.9716,
+    0.3246
+   ]
+  },
+  {
+   "id": "CleverTap",
+   "tipo": "Publicidad y marketing",
+   "sitios": 36,
+   "lcp_mediana_ms": 2450,
+   "delta_lcp_ms": 750,
+   "xy": [
+    0.3714,
+    -0.9134
+   ]
+  },
+  {
+   "id": "Closure Library",
+   "tipo": "Librerías JS y UI",
+   "sitios": 56,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    -0.0658,
+    -1.0223
+   ]
+  },
+  {
+   "id": "Confiant",
+   "tipo": "Infraestructura",
+   "sitios": 122,
+   "lcp_mediana_ms": 1500,
+   "delta_lcp_ms": -200,
+   "xy": [
+    -1.1402,
+    -0.3016
+   ]
+  },
+  {
+   "id": "Contact Form 7",
+   "tipo": "Librerías JS y UI",
+   "sitios": 45,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    -0.768,
+    -0.8556
+   ]
+  },
+  {
+   "id": "Contentful",
+   "tipo": "CMS y ecommerce",
+   "sitios": 40,
+   "lcp_mediana_ms": 2550,
+   "delta_lcp_ms": 850,
+   "xy": [
+    0.7622,
+    -0.3418
+   ]
+  },
+  {
+   "id": "Crazy Egg",
+   "tipo": "Analytics y tags",
+   "sitios": 73,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    0.8817,
+    0.6083
+   ]
+  },
+  {
+   "id": "DataDome",
+   "tipo": "Infraestructura",
+   "sitios": 46,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    1.0323,
+    0.5061
+   ]
+  },
+  {
+   "id": "Datadog",
+   "tipo": "Analytics y tags",
+   "sitios": 234,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    0.5787,
+    -1.0602
+   ]
+  },
+  {
+   "id": "Didomi",
+   "tipo": "Infraestructura",
+   "sitios": 235,
+   "lcp_mediana_ms": 1500,
+   "delta_lcp_ms": -200,
+   "xy": [
+    -1.057,
+    0.4385
+   ]
+  },
+  {
+   "id": "DocuSign",
+   "tipo": "Otros",
+   "sitios": 360,
+   "lcp_mediana_ms": 2400,
+   "delta_lcp_ms": 700,
+   "xy": [
+    0.9837,
+    0.0681
+   ]
+  },
+  {
+   "id": "DoubleClick Campaign Manager (DCM)",
+   "tipo": "Publicidad y marketing",
+   "sitios": 132,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    -1.179,
+    -0.1236
+   ]
+  },
+  {
+   "id": "Dropbox",
+   "tipo": "CMS y ecommerce",
+   "sitios": 64,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    0.7759,
+    -0.1877
+   ]
+  },
+  {
+   "id": "Dynatrace",
+   "tipo": "Analytics y tags",
+   "sitios": 85,
+   "lcp_mediana_ms": 2700,
+   "delta_lcp_ms": 1000,
+   "xy": [
+    0.9626,
+    -0.6902
+   ]
+  },
+  {
+   "id": "Element UI",
+   "tipo": "Librerías JS y UI",
+   "sitios": 88,
+   "lcp_mediana_ms": 2500,
+   "delta_lcp_ms": 800,
+   "xy": [
+    0.172,
+    1.1066
+   ]
+  },
+  {
+   "id": "Elementor",
+   "tipo": "CMS y ecommerce",
+   "sitios": 35,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    -0.6282,
+    -0.9158
+   ]
+  },
+  {
+   "id": "Emotion",
+   "tipo": "Librerías JS y UI",
+   "sitios": 227,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.729,
+    -0.3123
+   ]
+  },
+  {
+   "id": "Envoy",
+   "tipo": "Infraestructura",
+   "sitios": 300,
+   "lcp_mediana_ms": 2100,
+   "delta_lcp_ms": 400,
+   "xy": [
+    0.7811,
+    -0.236
+   ]
+  },
+  {
+   "id": "Express",
+   "tipo": "CMS y ecommerce",
+   "sitios": 105,
+   "lcp_mediana_ms": 2100,
+   "delta_lcp_ms": 400,
+   "xy": [
+    1.181,
+    0.4731
+   ]
+  },
+  {
+   "id": "FullStory",
+   "tipo": "Analytics y tags",
+   "sitios": 34,
+   "lcp_mediana_ms": 2250,
+   "delta_lcp_ms": 550,
+   "xy": [
+    0.7653,
+    -0.9053
+   ]
+  },
+  {
+   "id": "Google Hosted Libraries",
+   "tipo": "Infraestructura",
+   "sitios": 401,
+   "lcp_mediana_ms": 1600,
+   "delta_lcp_ms": -100,
+   "xy": [
+    -0.6037,
+    -0.7939
+   ]
+  },
+  {
+   "id": "Google Sign-in",
+   "tipo": "Infraestructura",
+   "sitios": 576,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    -1.0392,
+    0.5797
+   ]
+  },
+  {
+   "id": "GraphQL",
+   "tipo": "Infraestructura",
+   "sitios": 81,
+   "lcp_mediana_ms": 2900,
+   "delta_lcp_ms": 1200,
+   "xy": [
+    0.7521,
+    -0.6551
+   ]
+  },
+  {
+   "id": "Hammer.js",
+   "tipo": "Librerías JS y UI",
+   "sitios": 174,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    -0.281,
+    0.9824
+   ]
+  },
+  {
+   "id": "Hotjar",
+   "tipo": "Analytics y tags",
+   "sitios": 263,
+   "lcp_mediana_ms": 2100,
+   "delta_lcp_ms": 400,
+   "xy": [
+    0.9192,
+    -0.5935
+   ]
+  },
+  {
+   "id": "HubSpot",
+   "tipo": "Publicidad y marketing",
+   "sitios": 111,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.6423,
+    -1.1467
+   ]
+  },
+  {
+   "id": "IIS",
+   "tipo": "Infraestructura",
+   "sitios": 104,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    -0.3052,
+    0.9495
+   ]
+  },
+  {
+   "id": "Impact",
+   "tipo": "Publicidad y marketing",
+   "sitios": 42,
+   "lcp_mediana_ms": 2550,
+   "delta_lcp_ms": 850,
+   "xy": [
+    1.2131,
+    0.3031
+   ]
+  },
+  {
+   "id": "Insider",
+   "tipo": "Publicidad y marketing",
+   "sitios": 53,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.8178,
+    -0.9746
+   ]
+  },
+  {
+   "id": "Integral Ad Science",
+   "tipo": "Publicidad y marketing",
+   "sitios": 75,
+   "lcp_mediana_ms": 1400,
+   "delta_lcp_ms": -300,
+   "xy": [
+    0.9108,
+    -0.9944
+   ]
+  },
+  {
+   "id": "JSS",
+   "tipo": "Librerías JS y UI",
+   "sitios": 32,
+   "lcp_mediana_ms": 2450,
+   "delta_lcp_ms": 750,
+   "xy": [
+    1.0988,
+    0.4449
+   ]
+  },
+  {
+   "id": "Java",
+   "tipo": "Infraestructura",
+   "sitios": 422,
+   "lcp_mediana_ms": 2100,
+   "delta_lcp_ms": 400,
+   "xy": [
+    -0.6364,
+    0.7679
+   ]
+  },
+  {
+   "id": "JuicyAds",
+   "tipo": "Publicidad y marketing",
+   "sitios": 60,
+   "lcp_mediana_ms": 1350,
+   "delta_lcp_ms": -350,
+   "xy": [
+    -0.9796,
+    -0.5232
+   ]
+  },
+  {
+   "id": "Linkedin Ads",
+   "tipo": "Publicidad y marketing",
+   "sitios": 46,
+   "lcp_mediana_ms": 3450,
+   "delta_lcp_ms": 1750,
+   "xy": [
+    1.1295,
+    0.3599
+   ]
+  },
+  {
+   "id": "Linkedin Insight Tag",
+   "tipo": "Analytics y tags",
+   "sitios": 127,
+   "lcp_mediana_ms": 2400,
+   "delta_lcp_ms": 700,
+   "xy": [
+    0.5367,
+    -1.1388
+   ]
+  },
+  {
+   "id": "Loadable-Components",
+   "tipo": "Librerías JS y UI",
+   "sitios": 142,
+   "lcp_mediana_ms": 2400,
+   "delta_lcp_ms": 700,
+   "xy": [
+    1.0655,
+    0.1966
+   ]
+  },
+  {
+   "id": "Lodash",
+   "tipo": "Librerías JS y UI",
+   "sitios": 530,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    0.1256,
+    0.6603
+   ]
+  },
+  {
+   "id": "LottieFiles",
+   "tipo": "Otros",
+   "sitios": 74,
+   "lcp_mediana_ms": 2750,
+   "delta_lcp_ms": 1050,
+   "xy": [
+    0.976,
+    -0.7953
+   ]
+  },
+  {
+   "id": "Lozad.js",
+   "tipo": "Librerías JS y UI",
+   "sitios": 98,
+   "lcp_mediana_ms": 1500,
+   "delta_lcp_ms": -200,
+   "xy": [
+    -0.9897,
+    0.1235
+   ]
+  },
+  {
+   "id": "MUI",
+   "tipo": "Librerías JS y UI",
+   "sitios": 61,
+   "lcp_mediana_ms": 2600,
+   "delta_lcp_ms": 900,
+   "xy": [
+    0.519,
+    -0.951
+   ]
+  },
+  {
+   "id": "Medallia",
+   "tipo": "Publicidad y marketing",
+   "sitios": 61,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.8529,
+    -0.648
+   ]
+  },
+  {
+   "id": "Microsoft Advertising",
+   "tipo": "Publicidad y marketing",
+   "sitios": 698,
+   "lcp_mediana_ms": 2000,
+   "delta_lcp_ms": 300,
+   "xy": [
+    0.9582,
+    -0.8997
+   ]
+  },
+  {
+   "id": "Mixpanel",
+   "tipo": "Analytics y tags",
+   "sitios": 65,
+   "lcp_mediana_ms": 2500,
+   "delta_lcp_ms": 800,
+   "xy": [
+    1.0669,
+    0.0955
+   ]
+  },
+  {
+   "id": "MobX",
+   "tipo": "Librerías JS y UI",
+   "sitios": 56,
+   "lcp_mediana_ms": 2550,
+   "delta_lcp_ms": 850,
+   "xy": [
+    0.8088,
+    -0.1932
+   ]
+  },
+  {
+   "id": "Moment.js",
+   "tipo": "Librerías JS y UI",
+   "sitios": 208,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    -0.4395,
+    1.0624
+   ]
+  },
+  {
+   "id": "New Relic",
+   "tipo": "Analytics y tags",
+   "sitios": 207,
+   "lcp_mediana_ms": 2000,
+   "delta_lcp_ms": 300,
+   "xy": [
+    0.7457,
+    -1.1236
+   ]
+  },
+  {
+   "id": "OneSignal",
+   "tipo": "Publicidad y marketing",
+   "sitios": 173,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    -1.1486,
+    0.0492
+   ]
+  },
+  {
+   "id": "OneTrust",
+   "tipo": "Infraestructura",
+   "sitios": 571,
+   "lcp_mediana_ms": 2000,
+   "delta_lcp_ms": 300,
+   "xy": [
+    0.8153,
+    -0.2688
+   ]
+  },
+  {
+   "id": "OpenResty",
+   "tipo": "Infraestructura",
+   "sitios": 99,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    0.4334,
+    0.7178
+   ]
+  },
+  {
+   "id": "Optimizely",
+   "tipo": "Publicidad y marketing",
+   "sitios": 107,
+   "lcp_mediana_ms": 2100,
+   "delta_lcp_ms": 400,
+   "xy": [
+    0.4234,
+    -0.9839
+   ]
+  },
+  {
+   "id": "Parse.ly",
+   "tipo": "Analytics y tags",
+   "sitios": 59,
+   "lcp_mediana_ms": 1500,
+   "delta_lcp_ms": -200,
+   "xy": [
+    0.8895,
+    -0.8171
+   ]
+  },
+  {
+   "id": "PayPal",
+   "tipo": "CMS y ecommerce",
+   "sitios": 167,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    0.8359,
+    -0.2216
+   ]
+  },
+  {
+   "id": "PerimeterX",
+   "tipo": "Infraestructura",
+   "sitios": 34,
+   "lcp_mediana_ms": 2650,
+   "delta_lcp_ms": 950,
+   "xy": [
+    -0.4099,
+    -1.0684
+   ]
+  },
+  {
+   "id": "Permutive",
+   "tipo": "Otros",
+   "sitios": 117,
+   "lcp_mediana_ms": 1600,
+   "delta_lcp_ms": -100,
+   "xy": [
+    0.3545,
+    -1.0351
+   ]
+  },
+  {
+   "id": "Pinterest Conversion Tag",
+   "tipo": "Analytics y tags",
+   "sitios": 194,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.8848,
+    -0.7296
+   ]
+  },
+  {
+   "id": "Popper",
+   "tipo": "Otros",
+   "sitios": 231,
+   "lcp_mediana_ms": 1650,
+   "delta_lcp_ms": -50,
+   "xy": [
+    -0.609,
+    1.017
+   ]
+  },
+  {
+   "id": "Priority Hints",
+   "tipo": "Infraestructura",
+   "sitios": 1760,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    0.0544,
+    0.1104
+   ]
+  },
+  {
+   "id": "PubSubJS",
+   "tipo": "Librerías JS y UI",
+   "sitios": 49,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    1.1373,
+    0.1476
+   ]
+  },
+  {
+   "id": "PushPushGo",
+   "tipo": "Publicidad y marketing",
+   "sitios": 36,
+   "lcp_mediana_ms": 1400,
+   "delta_lcp_ms": -300,
+   "xy": [
+    -0.1542,
+    -1.1339
+   ]
+  },
+  {
+   "id": "Quantum Metric",
+   "tipo": "Analytics y tags",
+   "sitios": 43,
+   "lcp_mediana_ms": 2600,
+   "delta_lcp_ms": 900,
+   "xy": [
+    1.2108,
+    0.3907
+   ]
+  },
+  {
+   "id": "Radix UI",
+   "tipo": "Librerías JS y UI",
+   "sitios": 86,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    0.4545,
+    -0.8878
+   ]
+  },
+  {
+   "id": "Really Simple SSL & Security",
+   "tipo": "Infraestructura",
+   "sitios": 32,
+   "lcp_mediana_ms": 1400,
+   "delta_lcp_ms": -300,
+   "xy": [
+    -0.9145,
+    -0.5809
+   ]
+  },
+  {
+   "id": "Reddit Ads",
+   "tipo": "Publicidad y marketing",
+   "sitios": 118,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.8378,
+    -1.0713
+   ]
+  },
+  {
+   "id": "Ruby",
+   "tipo": "Infraestructura",
+   "sitios": 94,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    1.2404,
+    0.539
+   ]
+  },
+  {
+   "id": "Ruby on Rails",
+   "tipo": "CMS y ecommerce",
+   "sitios": 93,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    1.2757,
+    0.2084
+   ]
+  },
+  {
+   "id": "Sailthru",
+   "tipo": "Publicidad y marketing",
+   "sitios": 42,
+   "lcp_mediana_ms": 1500,
+   "delta_lcp_ms": -200,
+   "xy": [
+    0.6942,
+    -0.9609
+   ]
+  },
+  {
+   "id": "Salesforce",
+   "tipo": "Publicidad y marketing",
+   "sitios": 293,
+   "lcp_mediana_ms": 2100,
+   "delta_lcp_ms": 400,
+   "xy": [
+    1.1145,
+    0.6549
+   ]
+  },
+  {
+   "id": "Salesforce Marketing Cloud Account Engagement",
+   "tipo": "Publicidad y marketing",
+   "sitios": 160,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    1.0252,
+    -0.0102
+   ]
+  },
+  {
+   "id": "Segment",
+   "tipo": "Publicidad y marketing",
+   "sitios": 85,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    0.798,
+    -0.7329
+   ]
+  },
+  {
+   "id": "Sentry",
+   "tipo": "Infraestructura",
+   "sitios": 496,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.586,
+    0.0636
+   ]
+  },
+  {
+   "id": "ShareThis",
+   "tipo": "Librerías JS y UI",
+   "sitios": 46,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    -0.8525,
+    -0.8237
+   ]
+  },
+  {
+   "id": "Smart Ad Server",
+   "tipo": "Publicidad y marketing",
+   "sitios": 107,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    -1.132,
+    -0.2008
+   ]
+  },
+  {
+   "id": "SoundManager",
+   "tipo": "Librerías JS y UI",
+   "sitios": 38,
+   "lcp_mediana_ms": 1500,
+   "delta_lcp_ms": -200,
+   "xy": [
+    1.1174,
+    0.2704
+   ]
+  },
+  {
+   "id": "SpeedCurve",
+   "tipo": "Analytics y tags",
+   "sitios": 57,
+   "lcp_mediana_ms": 1500,
+   "delta_lcp_ms": -200,
+   "xy": [
+    0.6663,
+    -1.0581
+   ]
+  },
+  {
+   "id": "Stripe",
+   "tipo": "CMS y ecommerce",
+   "sitios": 165,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    1.1268,
+    0.542
+   ]
+  },
+  {
+   "id": "Taboola",
+   "tipo": "Publicidad y marketing",
+   "sitios": 411,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    -0.9646,
+    -0.2534
+   ]
+  },
+  {
+   "id": "Tailwind CSS",
+   "tipo": "Librerías JS y UI",
+   "sitios": 396,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    0.5102,
+    0.0606
+   ]
+  },
+  {
+   "id": "Teads",
+   "tipo": "Publicidad y marketing",
+   "sitios": 100,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    -1.0548,
+    -0.2476
+   ]
+  },
+  {
+   "id": "Tealium",
+   "tipo": "Publicidad y marketing",
+   "sitios": 103,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    0.9692,
+    0.6132
+   ]
+  },
+  {
+   "id": "TikTok Pixel",
+   "tipo": "Analytics y tags",
+   "sitios": 439,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.4379,
+    -1.1005
+   ]
+  },
+  {
+   "id": "TrafficStars",
+   "tipo": "Publicidad y marketing",
+   "sitios": 102,
+   "lcp_mediana_ms": 1550,
+   "delta_lcp_ms": -150,
+   "xy": [
+    -0.7866,
+    0.6562
+   ]
+  },
+  {
+   "id": "TripleLift",
+   "tipo": "Publicidad y marketing",
+   "sitios": 250,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    -1.1701,
+    0.148
+   ]
+  },
+  {
+   "id": "Twitter Emoji (Twemoji)",
+   "tipo": "Librerías JS y UI",
+   "sitios": 74,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    -0.8557,
+    -0.5124
+   ]
+  },
+  {
+   "id": "Unpkg",
+   "tipo": "Infraestructura",
+   "sitios": 243,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    0.9493,
+    0.6996
+   ]
+  },
+  {
+   "id": "Usercentrics",
+   "tipo": "Infraestructura",
+   "sitios": 49,
+   "lcp_mediana_ms": 1500,
+   "delta_lcp_ms": -200,
+   "xy": [
+    1.1878,
+    0.2193
+   ]
+  },
+  {
+   "id": "VWO",
+   "tipo": "Publicidad y marketing",
+   "sitios": 76,
+   "lcp_mediana_ms": 2300,
+   "delta_lcp_ms": 600,
+   "xy": [
+    0.797,
+    -0.5806
+   ]
+  },
+  {
+   "id": "W3 Total Cache",
+   "tipo": "CMS y ecommerce",
+   "sitios": 34,
+   "lcp_mediana_ms": 1500,
+   "delta_lcp_ms": -200,
+   "xy": [
+    -0.6783,
+    -0.8448
+   ]
+  },
+  {
+   "id": "WP-PageNavi",
+   "tipo": "CMS y ecommerce",
+   "sitios": 30,
+   "lcp_mediana_ms": 1600,
+   "delta_lcp_ms": -100,
+   "xy": [
+    -0.9351,
+    -0.6689
+   ]
+  },
+  {
+   "id": "Webpack",
+   "tipo": "Otros",
+   "sitios": 1080,
+   "lcp_mediana_ms": 2000,
+   "delta_lcp_ms": 300,
+   "xy": [
+    0.3184,
+    1.0736
+   ]
+  },
+  {
+   "id": "Windows Server",
+   "tipo": "Infraestructura",
+   "sitios": 104,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    -0.3585,
+    1.0224
+   ]
+  },
+  {
+   "id": "WordPress Super Cache",
+   "tipo": "CMS y ecommerce",
+   "sitios": 35,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    -0.9127,
+    -0.7564
+   ]
+  },
+  {
+   "id": "Zendesk",
+   "tipo": "Publicidad y marketing",
+   "sitios": 452,
+   "lcp_mediana_ms": 1900,
+   "delta_lcp_ms": 200,
+   "xy": [
+    0.7821,
+    0.663
+   ]
+  },
+  {
+   "id": "comScore",
+   "tipo": "Analytics y tags",
+   "sitios": 492,
+   "lcp_mediana_ms": 1600,
+   "delta_lcp_ms": -100,
+   "xy": [
+    0.8495,
+    -0.5137
+   ]
+  },
+  {
+   "id": "crypto-js",
+   "tipo": "Librerías JS y UI",
+   "sitios": 109,
+   "lcp_mediana_ms": 2000,
+   "delta_lcp_ms": 300,
+   "xy": [
+    -0.1393,
+    1.1112
+   ]
+  },
+  {
+   "id": "styled-components",
+   "tipo": "Librerías JS y UI",
+   "sitios": 234,
+   "lcp_mediana_ms": 2200,
+   "delta_lcp_ms": 500,
+   "xy": [
+    0.8027,
+    -0.8231
+   ]
+  },
+  {
+   "id": "toastr",
+   "tipo": "Librerías JS y UI",
+   "sitios": 43,
+   "lcp_mediana_ms": 1800,
+   "delta_lcp_ms": 100,
+   "xy": [
+    -0.95,
+    -0.8503
+   ]
+  },
+  {
+   "id": "web-vitals",
+   "tipo": "Librerías JS y UI",
+   "sitios": 249,
+   "lcp_mediana_ms": 1700,
+   "delta_lcp_ms": 0,
+   "xy": [
+    1.0537,
+    0.5903
+   ]
+  }
+ ],
+ "aristas": [
+  {
+   "tecnologia": "TrafficStars",
+   "framework": "Svelte",
+   "sitios": 54,
+   "lift": 22.93,
+   "pct_del_framework": 36.5,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1600,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "AMP",
+   "framework": "Svelte",
+   "sitios": 48,
+   "lift": 17.18,
+   "pct_del_framework": 32.4,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1650,
+   "delta_lcp_ms": 50
+  },
+  {
+   "tecnologia": "Element UI",
+   "framework": "Vue",
+   "sitios": 63,
+   "lift": 11.74,
+   "pct_del_framework": 16.1,
+   "lcp_con_ms": 2500,
+   "lcp_sin_ms": 1800,
+   "delta_lcp_ms": 700
+  },
+  {
+   "tecnologia": "Radix UI",
+   "framework": "Next.js",
+   "sitios": 73,
+   "lift": 8.62,
+   "pct_del_framework": 11.6,
+   "lcp_con_ms": 2200,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "MUI",
+   "framework": "Next.js",
+   "sitios": 39,
+   "lift": 6.49,
+   "pct_del_framework": 6.2,
+   "lcp_con_ms": 2300,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "IIS",
+   "framework": "Angular",
+   "sitios": 15,
+   "lift": 6.04,
+   "pct_del_framework": 9.8,
+   "lcp_con_ms": 3500,
+   "lcp_sin_ms": 3150,
+   "delta_lcp_ms": 350
+  },
+  {
+   "tecnologia": "Windows Server",
+   "framework": "Angular",
+   "sitios": 15,
+   "lift": 6.04,
+   "pct_del_framework": 9.8,
+   "lcp_con_ms": 3500,
+   "lcp_sin_ms": 3150,
+   "delta_lcp_ms": 350
+  },
+  {
+   "tecnologia": "Axios",
+   "framework": "Vue",
+   "sitios": 41,
+   "lift": 5.95,
+   "pct_del_framework": 10.5,
+   "lcp_con_ms": 1800,
+   "lcp_sin_ms": 1900,
+   "delta_lcp_ms": -100
+  },
+  {
+   "tecnologia": "Arc XP",
+   "framework": "React",
+   "sitios": 34,
+   "lift": 5.71,
+   "pct_del_framework": 3.0,
+   "lcp_con_ms": 1900,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "Loadable-Components",
+   "framework": "React",
+   "sitios": 142,
+   "lift": 5.71,
+   "pct_del_framework": 12.7,
+   "lcp_con_ms": 2400,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 400
+  },
+  {
+   "tecnologia": "SoundManager",
+   "framework": "React",
+   "sitios": 37,
+   "lift": 5.56,
+   "pct_del_framework": 3.3,
+   "lcp_con_ms": 1500,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -600
+  },
+  {
+   "tecnologia": "AWIN",
+   "framework": "Next.js",
+   "sitios": 23,
+   "lift": 5.43,
+   "pct_del_framework": 3.6,
+   "lcp_con_ms": 2800,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 700
+  },
+  {
+   "tecnologia": "Sailthru",
+   "framework": "Next.js",
+   "sitios": 22,
+   "lift": 5.32,
+   "pct_del_framework": 3.5,
+   "lcp_con_ms": 1400,
+   "lcp_sin_ms": 2200,
+   "delta_lcp_ms": -800
+  },
+  {
+   "tecnologia": "Emotion",
+   "framework": "Next.js",
+   "sitios": 118,
+   "lift": 5.28,
+   "pct_del_framework": 18.7,
+   "lcp_con_ms": 2200,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "Google Sign-in",
+   "framework": "Svelte",
+   "sitios": 67,
+   "lift": 5.04,
+   "pct_del_framework": 45.3,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "Contentful",
+   "framework": "Next.js",
+   "sitios": 19,
+   "lift": 4.83,
+   "pct_del_framework": 3.0,
+   "lcp_con_ms": 2400,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 300
+  },
+  {
+   "tecnologia": "FullStory",
+   "framework": "Next.js",
+   "sitios": 16,
+   "lift": 4.78,
+   "pct_del_framework": 2.5,
+   "lcp_con_ms": 2500,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 400
+  },
+  {
+   "tecnologia": "styled-components",
+   "framework": "Next.js",
+   "sitios": 105,
+   "lift": 4.56,
+   "pct_del_framework": 16.6,
+   "lcp_con_ms": 2200,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "Segment",
+   "framework": "Next.js",
+   "sitios": 38,
+   "lift": 4.54,
+   "pct_del_framework": 6.0,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 2200,
+   "delta_lcp_ms": -500
+  },
+  {
+   "tecnologia": "Apollo",
+   "framework": "Next.js",
+   "sitios": 34,
+   "lift": 4.32,
+   "pct_del_framework": 5.4,
+   "lcp_con_ms": 2950,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 850
+  },
+  {
+   "tecnologia": "GraphQL",
+   "framework": "Next.js",
+   "sitios": 34,
+   "lift": 4.26,
+   "pct_del_framework": 5.4,
+   "lcp_con_ms": 2950,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 850
+  },
+  {
+   "tecnologia": "CleverTap",
+   "framework": "Next.js",
+   "sitios": 15,
+   "lift": 4.23,
+   "pct_del_framework": 2.4,
+   "lcp_con_ms": 2500,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 400
+  },
+  {
+   "tecnologia": "OpenResty",
+   "framework": "Vue",
+   "sitios": 25,
+   "lift": 4.14,
+   "pct_del_framework": 6.4,
+   "lcp_con_ms": 1600,
+   "lcp_sin_ms": 1900,
+   "delta_lcp_ms": -300
+  },
+  {
+   "tecnologia": "Tailwind CSS",
+   "framework": "Next.js",
+   "sitios": 161,
+   "lift": 4.13,
+   "pct_del_framework": 25.5,
+   "lcp_con_ms": 1900,
+   "lcp_sin_ms": 2200,
+   "delta_lcp_ms": -300
+  },
+  {
+   "tecnologia": "Hammer.js",
+   "framework": "Angular",
+   "sitios": 17,
+   "lift": 4.09,
+   "pct_del_framework": 11.1,
+   "lcp_con_ms": 3100,
+   "lcp_sin_ms": 3250,
+   "delta_lcp_ms": -150
+  },
+  {
+   "tecnologia": "Optimizely",
+   "framework": "Next.js",
+   "sitios": 43,
+   "lift": 4.08,
+   "pct_del_framework": 6.8,
+   "lcp_con_ms": 1900,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "Appsflyer",
+   "framework": "Next.js",
+   "sitios": 35,
+   "lift": 4.04,
+   "pct_del_framework": 5.5,
+   "lcp_con_ms": 2900,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 800
+  },
+  {
+   "tecnologia": "Tailwind CSS",
+   "framework": "Nuxt",
+   "sitios": 27,
+   "lift": 4.01,
+   "pct_del_framework": 24.8,
+   "lcp_con_ms": 2500,
+   "lcp_sin_ms": 1800,
+   "delta_lcp_ms": 700
+  },
+  {
+   "tecnologia": "Datadog",
+   "framework": "Next.js",
+   "sitios": 92,
+   "lift": 3.99,
+   "pct_del_framework": 14.6,
+   "lcp_con_ms": 2400,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 400
+  },
+  {
+   "tecnologia": "SpeedCurve",
+   "framework": "Next.js",
+   "sitios": 22,
+   "lift": 3.92,
+   "pct_del_framework": 3.5,
+   "lcp_con_ms": 1400,
+   "lcp_sin_ms": 2200,
+   "delta_lcp_ms": -800
+  },
+  {
+   "tecnologia": "Algolia",
+   "framework": "Next.js",
+   "sitios": 19,
+   "lift": 3.86,
+   "pct_del_framework": 3.0,
+   "lcp_con_ms": 2400,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 300
+  },
+  {
+   "tecnologia": "Insider",
+   "framework": "Next.js",
+   "sitios": 20,
+   "lift": 3.83,
+   "pct_del_framework": 3.2,
+   "lcp_con_ms": 2550,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 450
+  },
+  {
+   "tecnologia": "MobX",
+   "framework": "React",
+   "sitios": 37,
+   "lift": 3.77,
+   "pct_del_framework": 3.3,
+   "lcp_con_ms": 2600,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 500
+  },
+  {
+   "tecnologia": "Linkedin Ads",
+   "framework": "React",
+   "sitios": 29,
+   "lift": 3.6,
+   "pct_del_framework": 2.6,
+   "lcp_con_ms": 3600,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 1600
+  },
+  {
+   "tecnologia": "Amazon Webstore",
+   "framework": "Next.js",
+   "sitios": 20,
+   "lift": 3.44,
+   "pct_del_framework": 3.2,
+   "lcp_con_ms": 2350,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 250
+  },
+  {
+   "tecnologia": "Moment.js",
+   "framework": "Angular",
+   "sitios": 17,
+   "lift": 3.42,
+   "pct_del_framework": 11.1,
+   "lcp_con_ms": 2200,
+   "lcp_sin_ms": 3300,
+   "delta_lcp_ms": -1100
+  },
+  {
+   "tecnologia": "Lodash",
+   "framework": "Angular",
+   "sitios": 43,
+   "lift": 3.4,
+   "pct_del_framework": 28.1,
+   "lcp_con_ms": 3400,
+   "lcp_sin_ms": 3100,
+   "delta_lcp_ms": 300
+  },
+  {
+   "tecnologia": "JSS",
+   "framework": "React",
+   "sitios": 19,
+   "lift": 3.39,
+   "pct_del_framework": 1.7,
+   "lcp_con_ms": 2700,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 600
+  },
+  {
+   "tecnologia": "Braze",
+   "framework": "Next.js",
+   "sitios": 16,
+   "lift": 3.32,
+   "pct_del_framework": 2.5,
+   "lcp_con_ms": 1950,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -150
+  },
+  {
+   "tecnologia": "Lozad.js",
+   "framework": "Otros frameworks",
+   "sitios": 21,
+   "lift": 3.32,
+   "pct_del_framework": 5.1,
+   "lcp_con_ms": 1500,
+   "lcp_sin_ms": 1700,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "Parse.ly",
+   "framework": "Next.js",
+   "sitios": 19,
+   "lift": 3.27,
+   "pct_del_framework": 3.0,
+   "lcp_con_ms": 1300,
+   "lcp_sin_ms": 2200,
+   "delta_lcp_ms": -900
+  },
+  {
+   "tecnologia": "DataDome",
+   "framework": "React",
+   "sitios": 26,
+   "lift": 3.23,
+   "pct_del_framework": 2.3,
+   "lcp_con_ms": 2200,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "Branch",
+   "framework": "React",
+   "sitios": 24,
+   "lift": 3.19,
+   "pct_del_framework": 2.1,
+   "lcp_con_ms": 2550,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 450
+  },
+  {
+   "tecnologia": "Amplitude",
+   "framework": "React",
+   "sitios": 49,
+   "lift": 3.18,
+   "pct_del_framework": 4.4,
+   "lcp_con_ms": 2000,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -100
+  },
+  {
+   "tecnologia": "Adform",
+   "framework": "Otros frameworks",
+   "sitios": 17,
+   "lift": 3.13,
+   "pct_del_framework": 4.1,
+   "lcp_con_ms": 2300,
+   "lcp_sin_ms": 1700,
+   "delta_lcp_ms": 600
+  },
+  {
+   "tecnologia": "Adobe Experience Platform Launch",
+   "framework": "Angular",
+   "sitios": 16,
+   "lift": 3.09,
+   "pct_del_framework": 10.5,
+   "lcp_con_ms": 3200,
+   "lcp_sin_ms": 3200,
+   "delta_lcp_ms": 0
+  },
+  {
+   "tecnologia": "MobX",
+   "framework": "Next.js",
+   "sitios": 17,
+   "lift": 3.08,
+   "pct_del_framework": 2.7,
+   "lcp_con_ms": 2500,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 400
+  },
+  {
+   "tecnologia": "Popper",
+   "framework": "Angular",
+   "sitios": 17,
+   "lift": 3.08,
+   "pct_del_framework": 11.1,
+   "lcp_con_ms": 3100,
+   "lcp_sin_ms": 3300,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "Amazon ALB",
+   "framework": "Angular",
+   "sitios": 24,
+   "lift": 3.07,
+   "pct_del_framework": 15.7,
+   "lcp_con_ms": 3500,
+   "lcp_sin_ms": 3200,
+   "delta_lcp_ms": 300
+  },
+  {
+   "tecnologia": "Pinterest Conversion Tag",
+   "framework": "Next.js",
+   "sitios": 58,
+   "lift": 3.04,
+   "pct_del_framework": 9.2,
+   "lcp_con_ms": 2450,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 450
+  },
+  {
+   "tecnologia": "Apache Traffic Server",
+   "framework": "Sin framework",
+   "sitios": 17,
+   "lift": 3.03,
+   "pct_del_framework": 1.5,
+   "lcp_con_ms": 1300,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "Sentry",
+   "framework": "Next.js",
+   "sitios": 148,
+   "lift": 3.03,
+   "pct_del_framework": 23.5,
+   "lcp_con_ms": 2150,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 50
+  },
+  {
+   "tecnologia": "Medallia",
+   "framework": "Next.js",
+   "sitios": 18,
+   "lift": 3.0,
+   "pct_del_framework": 2.9,
+   "lcp_con_ms": 2450,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 350
+  },
+  {
+   "tecnologia": "Didomi",
+   "framework": "Svelte",
+   "sitios": 16,
+   "lift": 2.95,
+   "pct_del_framework": 10.8,
+   "lcp_con_ms": 1750,
+   "lcp_sin_ms": 1700,
+   "delta_lcp_ms": 50
+  },
+  {
+   "tecnologia": "VWO",
+   "framework": "Next.js",
+   "sitios": 22,
+   "lift": 2.94,
+   "pct_del_framework": 3.5,
+   "lcp_con_ms": 2750,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 650
+  },
+  {
+   "tecnologia": "Adjust",
+   "framework": "Next.js",
+   "sitios": 36,
+   "lift": 2.93,
+   "pct_del_framework": 5.7,
+   "lcp_con_ms": 2100,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 0
+  },
+  {
+   "tecnologia": "Babel",
+   "framework": "Vue",
+   "sitios": 25,
+   "lift": 2.91,
+   "pct_del_framework": 6.4,
+   "lcp_con_ms": 2400,
+   "lcp_sin_ms": 1900,
+   "delta_lcp_ms": 500
+  },
+  {
+   "tecnologia": "Amazon S3",
+   "framework": "Angular",
+   "sitios": 18,
+   "lift": 2.88,
+   "pct_del_framework": 11.8,
+   "lcp_con_ms": 3350,
+   "lcp_sin_ms": 3200,
+   "delta_lcp_ms": 150
+  },
+  {
+   "tecnologia": "Permutive",
+   "framework": "Next.js",
+   "sitios": 33,
+   "lift": 2.87,
+   "pct_del_framework": 5.2,
+   "lcp_con_ms": 1400,
+   "lcp_sin_ms": 2200,
+   "delta_lcp_ms": -800
+  },
+  {
+   "tecnologia": "DocuSign",
+   "framework": "React",
+   "sitios": 180,
+   "lift": 2.86,
+   "pct_del_framework": 16.0,
+   "lcp_con_ms": 2500,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 500
+  },
+  {
+   "tecnologia": "Dropbox",
+   "framework": "React",
+   "sitios": 32,
+   "lift": 2.86,
+   "pct_del_framework": 2.9,
+   "lcp_con_ms": 2300,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "OneSignal",
+   "framework": "Otros frameworks",
+   "sitios": 32,
+   "lift": 2.86,
+   "pct_del_framework": 7.7,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1700,
+   "delta_lcp_ms": 0
+  },
+  {
+   "tecnologia": "ADFOX",
+   "framework": "Otros frameworks",
+   "sitios": 26,
+   "lift": 2.82,
+   "pct_del_framework": 6.3,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1700,
+   "delta_lcp_ms": 0
+  },
+  {
+   "tecnologia": "DoubleClick Campaign Manager (DCM)",
+   "framework": "Otros frameworks",
+   "sitios": 24,
+   "lift": 2.82,
+   "pct_del_framework": 5.8,
+   "lcp_con_ms": 1600,
+   "lcp_sin_ms": 1700,
+   "delta_lcp_ms": -100
+  },
+  {
+   "tecnologia": "Envoy",
+   "framework": "Next.js",
+   "sitios": 83,
+   "lift": 2.81,
+   "pct_del_framework": 13.2,
+   "lcp_con_ms": 2500,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 500
+  },
+  {
+   "tecnologia": "Mixpanel",
+   "framework": "React",
+   "sitios": 32,
+   "lift": 2.81,
+   "pct_del_framework": 2.9,
+   "lcp_con_ms": 2900,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 800
+  },
+  {
+   "tecnologia": "PubSubJS",
+   "framework": "React",
+   "sitios": 24,
+   "lift": 2.8,
+   "pct_del_framework": 2.1,
+   "lcp_con_ms": 2450,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 350
+  },
+  {
+   "tecnologia": "TikTok Pixel",
+   "framework": "Next.js",
+   "sitios": 121,
+   "lift": 2.8,
+   "pct_del_framework": 19.2,
+   "lcp_con_ms": 2500,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 500
+  },
+  {
+   "tecnologia": "Usercentrics",
+   "framework": "React",
+   "sitios": 24,
+   "lift": 2.8,
+   "pct_del_framework": 2.1,
+   "lcp_con_ms": 1400,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -700
+  },
+  {
+   "tecnologia": "Impact",
+   "framework": "React",
+   "sitios": 20,
+   "lift": 2.72,
+   "pct_del_framework": 1.8,
+   "lcp_con_ms": 2600,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 500
+  },
+  {
+   "tecnologia": "Adobe Analytics",
+   "framework": "Angular",
+   "sitios": 15,
+   "lift": 2.71,
+   "pct_del_framework": 9.8,
+   "lcp_con_ms": 3000,
+   "lcp_sin_ms": 3250,
+   "delta_lcp_ms": -250
+  },
+  {
+   "tecnologia": "Boomerang",
+   "framework": "Angular",
+   "sitios": 16,
+   "lift": 2.66,
+   "pct_del_framework": 10.5,
+   "lcp_con_ms": 3650,
+   "lcp_sin_ms": 3100,
+   "delta_lcp_ms": 550
+  },
+  {
+   "tecnologia": "Quantum Metric",
+   "framework": "React",
+   "sitios": 20,
+   "lift": 2.66,
+   "pct_del_framework": 1.8,
+   "lcp_con_ms": 2400,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 300
+  },
+  {
+   "tecnologia": "Linkedin Insight Tag",
+   "framework": "Next.js",
+   "sitios": 33,
+   "lift": 2.64,
+   "pct_del_framework": 5.2,
+   "lcp_con_ms": 2600,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 500
+  },
+  {
+   "tecnologia": "Envoy",
+   "framework": "React",
+   "sitios": 137,
+   "lift": 2.61,
+   "pct_del_framework": 12.2,
+   "lcp_con_ms": 2100,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 0
+  },
+  {
+   "tecnologia": "Sentry",
+   "framework": "Nuxt",
+   "sitios": 22,
+   "lift": 2.61,
+   "pct_del_framework": 20.2,
+   "lcp_con_ms": 2200,
+   "lcp_sin_ms": 1800,
+   "delta_lcp_ms": 400
+  },
+  {
+   "tecnologia": "PerimeterX",
+   "framework": "Sin framework",
+   "sitios": 16,
+   "lift": 2.6,
+   "pct_del_framework": 1.4,
+   "lcp_con_ms": 2750,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 1250
+  },
+  {
+   "tecnologia": "Express",
+   "framework": "React",
+   "sitios": 47,
+   "lift": 2.56,
+   "pct_del_framework": 4.2,
+   "lcp_con_ms": 2100,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 0
+  },
+  {
+   "tecnologia": "HubSpot",
+   "framework": "Next.js",
+   "sitios": 28,
+   "lift": 2.56,
+   "pct_del_framework": 4.4,
+   "lcp_con_ms": 2850,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 750
+  },
+  {
+   "tecnologia": "Dropbox",
+   "framework": "Next.js",
+   "sitios": 16,
+   "lift": 2.54,
+   "pct_del_framework": 2.5,
+   "lcp_con_ms": 2350,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 250
+  },
+  {
+   "tecnologia": "OpenResty",
+   "framework": "React",
+   "sitios": 44,
+   "lift": 2.54,
+   "pct_del_framework": 3.9,
+   "lcp_con_ms": 1900,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "Cart Functionality",
+   "framework": "Svelte",
+   "sitios": 65,
+   "lift": 2.49,
+   "pct_del_framework": 43.9,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1600,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "Emotion",
+   "framework": "React",
+   "sitios": 99,
+   "lift": 2.49,
+   "pct_del_framework": 8.8,
+   "lcp_con_ms": 2400,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 400
+  },
+  {
+   "tecnologia": "OneTrust",
+   "framework": "Next.js",
+   "sitios": 137,
+   "lift": 2.44,
+   "pct_del_framework": 21.7,
+   "lcp_con_ms": 2000,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -100
+  },
+  {
+   "tecnologia": "Akamai Bot Manager",
+   "framework": "Angular",
+   "sitios": 16,
+   "lift": 2.42,
+   "pct_del_framework": 10.5,
+   "lcp_con_ms": 3650,
+   "lcp_sin_ms": 3100,
+   "delta_lcp_ms": 550
+  },
+  {
+   "tecnologia": "Stripe",
+   "framework": "React",
+   "sitios": 70,
+   "lift": 2.42,
+   "pct_del_framework": 6.2,
+   "lcp_con_ms": 2200,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "Azure Front Door",
+   "framework": "Sin framework",
+   "sitios": 20,
+   "lift": 2.4,
+   "pct_del_framework": 1.7,
+   "lcp_con_ms": 1550,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 50
+  },
+  {
+   "tecnologia": "Twitter Emoji (Twemoji)",
+   "framework": "jQuery",
+   "sitios": 63,
+   "lift": 2.39,
+   "pct_del_framework": 2.8,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "Java",
+   "framework": "Angular",
+   "sitios": 24,
+   "lift": 2.38,
+   "pct_del_framework": 15.7,
+   "lcp_con_ms": 3900,
+   "lcp_sin_ms": 3100,
+   "delta_lcp_ms": 800
+  },
+  {
+   "tecnologia": "Really Simple SSL & Security",
+   "framework": "jQuery",
+   "sitios": 27,
+   "lift": 2.37,
+   "pct_del_framework": 1.2,
+   "lcp_con_ms": 1400,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": -100
+  },
+  {
+   "tecnologia": "Apollo",
+   "framework": "React",
+   "sitios": 33,
+   "lift": 2.36,
+   "pct_del_framework": 2.9,
+   "lcp_con_ms": 2700,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 600
+  },
+  {
+   "tecnologia": "New Relic",
+   "framework": "Next.js",
+   "sitios": 48,
+   "lift": 2.36,
+   "pct_del_framework": 7.6,
+   "lcp_con_ms": 1900,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "Akamai Bot Manager",
+   "framework": "Next.js",
+   "sitios": 64,
+   "lift": 2.35,
+   "pct_del_framework": 10.1,
+   "lcp_con_ms": 2300,
+   "lcp_sin_ms": 2050,
+   "delta_lcp_ms": 250
+  },
+  {
+   "tecnologia": "WP-PageNavi",
+   "framework": "jQuery",
+   "sitios": 25,
+   "lift": 2.34,
+   "pct_del_framework": 1.1,
+   "lcp_con_ms": 1800,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 300
+  },
+  {
+   "tecnologia": "web-vitals",
+   "framework": "React",
+   "sitios": 102,
+   "lift": 2.34,
+   "pct_del_framework": 9.1,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -400
+  },
+  {
+   "tecnologia": "Braze",
+   "framework": "React",
+   "sitios": 20,
+   "lift": 2.33,
+   "pct_del_framework": 1.8,
+   "lcp_con_ms": 2250,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 150
+  },
+  {
+   "tecnologia": "WordPress Super Cache",
+   "framework": "jQuery",
+   "sitios": 29,
+   "lift": 2.33,
+   "pct_del_framework": 1.3,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "Reddit Ads",
+   "framework": "Next.js",
+   "sitios": 27,
+   "lift": 2.32,
+   "pct_del_framework": 4.3,
+   "lcp_con_ms": 2400,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 300
+  },
+  {
+   "tecnologia": "ShareThis",
+   "framework": "jQuery",
+   "sitios": 38,
+   "lift": 2.32,
+   "pct_del_framework": 1.7,
+   "lcp_con_ms": 1650,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 150
+  },
+  {
+   "tecnologia": "Smart Ad Server",
+   "framework": "Otros frameworks",
+   "sitios": 16,
+   "lift": 2.32,
+   "pct_del_framework": 3.9,
+   "lcp_con_ms": 2100,
+   "lcp_sin_ms": 1700,
+   "delta_lcp_ms": 400
+  },
+  {
+   "tecnologia": "Teads",
+   "framework": "Otros frameworks",
+   "sitios": 15,
+   "lift": 2.32,
+   "pct_del_framework": 3.6,
+   "lcp_con_ms": 1900,
+   "lcp_sin_ms": 1700,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "Babel",
+   "framework": "React",
+   "sitios": 57,
+   "lift": 2.31,
+   "pct_del_framework": 5.1,
+   "lcp_con_ms": 2100,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 0
+  },
+  {
+   "tecnologia": "Integral Ad Science",
+   "framework": "Next.js",
+   "sitios": 17,
+   "lift": 2.3,
+   "pct_del_framework": 2.7,
+   "lcp_con_ms": 1400,
+   "lcp_sin_ms": 2200,
+   "delta_lcp_ms": -800
+  },
+  {
+   "tecnologia": "Microsoft Advertising",
+   "framework": "Next.js",
+   "sitios": 158,
+   "lift": 2.3,
+   "pct_del_framework": 25.0,
+   "lcp_con_ms": 2250,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 250
+  },
+  {
+   "tecnologia": "PushPushGo",
+   "framework": "Sin framework",
+   "sitios": 15,
+   "lift": 2.3,
+   "pct_del_framework": 1.3,
+   "lcp_con_ms": 1300,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "Amazon SES",
+   "framework": "Nuxt",
+   "sitios": 22,
+   "lift": 2.28,
+   "pct_del_framework": 20.2,
+   "lcp_con_ms": 1600,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": -400
+  },
+  {
+   "tecnologia": "Closure Library",
+   "framework": "Sin framework",
+   "sitios": 23,
+   "lift": 2.27,
+   "pct_del_framework": 2.0,
+   "lcp_con_ms": 2500,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 1000
+  },
+  {
+   "tecnologia": "PayPal",
+   "framework": "React",
+   "sitios": 66,
+   "lift": 2.26,
+   "pct_del_framework": 5.9,
+   "lcp_con_ms": 2450,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 350
+  },
+  {
+   "tecnologia": "crypto-js",
+   "framework": "Vue",
+   "sitios": 15,
+   "lift": 2.26,
+   "pct_del_framework": 3.8,
+   "lcp_con_ms": 2800,
+   "lcp_sin_ms": 1900,
+   "delta_lcp_ms": 900
+  },
+  {
+   "tecnologia": "Contact Form 7",
+   "framework": "jQuery",
+   "sitios": 36,
+   "lift": 2.25,
+   "pct_del_framework": 1.6,
+   "lcp_con_ms": 1650,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 150
+  },
+  {
+   "tecnologia": "Priority Hints",
+   "framework": "Next.js",
+   "sitios": 389,
+   "lift": 2.25,
+   "pct_del_framework": 61.6,
+   "lcp_con_ms": 2000,
+   "lcp_sin_ms": 2200,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "Webpack",
+   "framework": "Nuxt",
+   "sitios": 41,
+   "lift": 2.23,
+   "pct_del_framework": 37.6,
+   "lcp_con_ms": 1800,
+   "lcp_sin_ms": 1900,
+   "delta_lcp_ms": -100
+  },
+  {
+   "tecnologia": "Taboola",
+   "framework": "Otros frameworks",
+   "sitios": 59,
+   "lift": 2.22,
+   "pct_del_framework": 14.3,
+   "lcp_con_ms": 1900,
+   "lcp_sin_ms": 1600,
+   "delta_lcp_ms": 300
+  },
+  {
+   "tecnologia": "Tealium",
+   "framework": "React",
+   "sitios": 40,
+   "lift": 2.22,
+   "pct_del_framework": 3.6,
+   "lcp_con_ms": 2400,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 300
+  },
+  {
+   "tecnologia": "Boomerang",
+   "framework": "React",
+   "sitios": 97,
+   "lift": 2.2,
+   "pct_del_framework": 8.6,
+   "lcp_con_ms": 2200,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "Axios",
+   "framework": "Otros frameworks",
+   "sitios": 16,
+   "lift": 2.19,
+   "pct_del_framework": 3.9,
+   "lcp_con_ms": 1550,
+   "lcp_sin_ms": 1700,
+   "delta_lcp_ms": -150
+  },
+  {
+   "tecnologia": "Crazy Egg",
+   "framework": "React",
+   "sitios": 28,
+   "lift": 2.19,
+   "pct_del_framework": 2.5,
+   "lcp_con_ms": 1450,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -650
+  },
+  {
+   "tecnologia": "PayPal",
+   "framework": "Next.js",
+   "sitios": 36,
+   "lift": 2.19,
+   "pct_del_framework": 5.7,
+   "lcp_con_ms": 2250,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 150
+  },
+  {
+   "tecnologia": "Apple Sign-in",
+   "framework": "React",
+   "sitios": 26,
+   "lift": 2.18,
+   "pct_del_framework": 2.3,
+   "lcp_con_ms": 2850,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 750
+  },
+  {
+   "tecnologia": "Salesforce Marketing Cloud Account Engagement",
+   "framework": "React",
+   "sitios": 61,
+   "lift": 2.18,
+   "pct_del_framework": 5.4,
+   "lcp_con_ms": 1900,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "TripleLift",
+   "framework": "Otros frameworks",
+   "sitios": 35,
+   "lift": 2.17,
+   "pct_del_framework": 8.5,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1700,
+   "delta_lcp_ms": 0
+  },
+  {
+   "tecnologia": "Adobe Target",
+   "framework": "React",
+   "sitios": 28,
+   "lift": 2.16,
+   "pct_del_framework": 2.5,
+   "lcp_con_ms": 2650,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 550
+  },
+  {
+   "tecnologia": "Apple iCloud Mail",
+   "framework": "React",
+   "sitios": 279,
+   "lift": 2.15,
+   "pct_del_framework": 24.9,
+   "lcp_con_ms": 2300,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 300
+  },
+  {
+   "tecnologia": "Ruby on Rails",
+   "framework": "React",
+   "sitios": 35,
+   "lift": 2.15,
+   "pct_del_framework": 3.1,
+   "lcp_con_ms": 2300,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "W3 Total Cache",
+   "framework": "jQuery",
+   "sitios": 26,
+   "lift": 2.15,
+   "pct_del_framework": 1.1,
+   "lcp_con_ms": 1600,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "Akamai mPulse",
+   "framework": "React",
+   "sitios": 84,
+   "lift": 2.14,
+   "pct_del_framework": 7.5,
+   "lcp_con_ms": 2250,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 150
+  },
+  {
+   "tecnologia": "Contentful",
+   "framework": "React",
+   "sitios": 15,
+   "lift": 2.14,
+   "pct_del_framework": 1.3,
+   "lcp_con_ms": 2700,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 600
+  },
+  {
+   "tecnologia": "Sentry",
+   "framework": "React",
+   "sitios": 186,
+   "lift": 2.14,
+   "pct_del_framework": 16.6,
+   "lcp_con_ms": 2700,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 700
+  },
+  {
+   "tecnologia": "Google Hosted Libraries",
+   "framework": "jQuery",
+   "sitios": 304,
+   "lift": 2.13,
+   "pct_del_framework": 13.3,
+   "lcp_con_ms": 1500,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 0
+  },
+  {
+   "tecnologia": "OneTrust",
+   "framework": "React",
+   "sitios": 213,
+   "lift": 2.13,
+   "pct_del_framework": 19.0,
+   "lcp_con_ms": 2100,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 0
+  },
+  {
+   "tecnologia": "Ruby",
+   "framework": "React",
+   "sitios": 35,
+   "lift": 2.13,
+   "pct_del_framework": 3.1,
+   "lcp_con_ms": 2300,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "JuicyAds",
+   "framework": "jQuery",
+   "sitios": 45,
+   "lift": 2.11,
+   "pct_del_framework": 2.0,
+   "lcp_con_ms": 1300,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "Akamai",
+   "framework": "Angular",
+   "sitios": 20,
+   "lift": 2.09,
+   "pct_del_framework": 13.1,
+   "lcp_con_ms": 3650,
+   "lcp_sin_ms": 3100,
+   "delta_lcp_ms": 550
+  },
+  {
+   "tecnologia": "Amazon CloudFront",
+   "framework": "Angular",
+   "sitios": 38,
+   "lift": 2.09,
+   "pct_del_framework": 24.8,
+   "lcp_con_ms": 3450,
+   "lcp_sin_ms": 3000,
+   "delta_lcp_ms": 450
+  },
+  {
+   "tecnologia": "Priority Hints",
+   "framework": "Svelte",
+   "sitios": 85,
+   "lift": 2.09,
+   "pct_del_framework": 57.4,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1600,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "toastr",
+   "framework": "jQuery",
+   "sitios": 32,
+   "lift": 2.09,
+   "pct_del_framework": 1.4,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "Amazon S3",
+   "framework": "React",
+   "sitios": 95,
+   "lift": 2.07,
+   "pct_del_framework": 8.5,
+   "lcp_con_ms": 2800,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 800
+  },
+  {
+   "tecnologia": "Hammer.js",
+   "framework": "Vue",
+   "sitios": 22,
+   "lift": 2.07,
+   "pct_del_framework": 5.6,
+   "lcp_con_ms": 2650,
+   "lcp_sin_ms": 1900,
+   "delta_lcp_ms": 750
+  },
+  {
+   "tecnologia": "Akamai",
+   "framework": "React",
+   "sitios": 144,
+   "lift": 2.06,
+   "pct_del_framework": 12.8,
+   "lcp_con_ms": 2100,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 0
+  },
+  {
+   "tecnologia": "Apple iCloud Mail",
+   "framework": "Next.js",
+   "sitios": 151,
+   "lift": 2.06,
+   "pct_del_framework": 23.9,
+   "lcp_con_ms": 2200,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "LottieFiles",
+   "framework": "Next.js",
+   "sitios": 15,
+   "lift": 2.06,
+   "pct_del_framework": 2.4,
+   "lcp_con_ms": 2300,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "Salesforce",
+   "framework": "React",
+   "sitios": 105,
+   "lift": 2.05,
+   "pct_del_framework": 9.4,
+   "lcp_con_ms": 2500,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 500
+  },
+  {
+   "tecnologia": "Unpkg",
+   "framework": "React",
+   "sitios": 87,
+   "lift": 2.05,
+   "pct_del_framework": 7.8,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": -400
+  },
+  {
+   "tecnologia": "Zendesk",
+   "framework": "React",
+   "sitios": 162,
+   "lift": 2.05,
+   "pct_del_framework": 14.4,
+   "lcp_con_ms": 2150,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 50
+  },
+  {
+   "tecnologia": "Confiant",
+   "framework": "Otros frameworks",
+   "sitios": 16,
+   "lift": 2.03,
+   "pct_del_framework": 3.9,
+   "lcp_con_ms": 1500,
+   "lcp_sin_ms": 1700,
+   "delta_lcp_ms": -200
+  },
+  {
+   "tecnologia": "Dynatrace",
+   "framework": "Next.js",
+   "sitios": 17,
+   "lift": 2.03,
+   "pct_del_framework": 2.7,
+   "lcp_con_ms": 3600,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 1500
+  },
+  {
+   "tecnologia": "Lodash",
+   "framework": "React",
+   "sitios": 188,
+   "lift": 2.03,
+   "pct_del_framework": 16.8,
+   "lcp_con_ms": 2400,
+   "lcp_sin_ms": 2000,
+   "delta_lcp_ms": 400
+  },
+  {
+   "tecnologia": "Akamai",
+   "framework": "Next.js",
+   "sitios": 79,
+   "lift": 2.01,
+   "pct_del_framework": 12.5,
+   "lcp_con_ms": 2200,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "Elementor",
+   "framework": "jQuery",
+   "sitios": 25,
+   "lift": 2.01,
+   "pct_del_framework": 1.1,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 1500,
+   "delta_lcp_ms": 200
+  },
+  {
+   "tecnologia": "Hotjar",
+   "framework": "Next.js",
+   "sitios": 52,
+   "lift": 2.01,
+   "pct_del_framework": 8.2,
+   "lcp_con_ms": 2500,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 400
+  },
+  {
+   "tecnologia": "Akamai Bot Manager",
+   "framework": "React",
+   "sitios": 97,
+   "lift": 2.0,
+   "pct_del_framework": 8.6,
+   "lcp_con_ms": 2200,
+   "lcp_sin_ms": 2100,
+   "delta_lcp_ms": 100
+  },
+  {
+   "tecnologia": "Priority Hints",
+   "framework": "Nuxt",
+   "sitios": 60,
+   "lift": 2.0,
+   "pct_del_framework": 55.0,
+   "lcp_con_ms": 1750,
+   "lcp_sin_ms": 2300,
+   "delta_lcp_ms": -550
+  },
+  {
+   "tecnologia": "comScore",
+   "framework": "Next.js",
+   "sitios": 97,
+   "lift": 2.0,
+   "pct_del_framework": 15.4,
+   "lcp_con_ms": 1700,
+   "lcp_sin_ms": 2200,
+   "delta_lcp_ms": -500
+  }
+ ],
+ "min_estrato": 10,
+ "estratificado": [
+  {
+   "tecnologia": "ADFOX",
+   "sitios": 143,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 137,
+   "pct_sitios_en_estratos": 86,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 13,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "React",
+     "sitios": 26,
+     "delta_lcp_ms": -50
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 26,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 42,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 16,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "AMP",
+   "sitios": 121,
+   "delta_bruto_ms": -100,
+   "delta_dentro_ms": 54,
+   "pct_sitios_en_estratos": 90,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 12,
+     "delta_lcp_ms": -250
+    },
+    {
+     "framework": "Svelte",
+     "sitios": 48,
+     "delta_lcp_ms": 50
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 33,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 16,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "AWIN",
+   "sitios": 43,
+   "delta_bruto_ms": 700,
+   "delta_dentro_ms": 700,
+   "pct_sitios_en_estratos": 53,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 23,
+     "delta_lcp_ms": 700
+    }
+   ]
+  },
+  {
+   "tecnologia": "Adform",
+   "sitios": 84,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 249,
+   "pct_sitios_en_estratos": 75,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 16,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 17,
+     "delta_lcp_ms": 600
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 18,
+     "delta_lcp_ms": 350
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 12,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Adjust",
+   "sitios": 125,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": -87,
+   "pct_sitios_en_estratos": 80,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 36,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "React",
+     "sitios": 43,
+     "delta_lcp_ms": -300
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 21,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Adobe Analytics",
+   "sitios": 232,
+   "delta_bruto_ms": 400,
+   "delta_dentro_ms": 155,
+   "pct_sitios_en_estratos": 100,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 33,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "React",
+     "sitios": 62,
+     "delta_lcp_ms": 150
+    },
+    {
+     "framework": "Vue",
+     "sitios": 15,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "Angular",
+     "sitios": 15,
+     "delta_lcp_ms": -250
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 16,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 55,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 35,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Adobe Experience Platform Launch",
+   "sitios": 217,
+   "delta_bruto_ms": 700,
+   "delta_dentro_ms": 590,
+   "pct_sitios_en_estratos": 99,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 30,
+     "delta_lcp_ms": 550
+    },
+    {
+     "framework": "React",
+     "sitios": 60,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "Vue",
+     "sitios": 15,
+     "delta_lcp_ms": 800
+    },
+    {
+     "framework": "Angular",
+     "sitios": 16,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 15,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 55,
+     "delta_lcp_ms": 900
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 23,
+     "delta_lcp_ms": 600
+    }
+   ]
+  },
+  {
+   "tecnologia": "Adobe Target",
+   "sitios": 74,
+   "delta_bruto_ms": 950,
+   "delta_dentro_ms": 748,
+   "pct_sitios_en_estratos": 78,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 10,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "React",
+     "sitios": 28,
+     "delta_lcp_ms": 550
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 20,
+     "delta_lcp_ms": 1200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Akamai",
+   "sitios": 400,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 281,
+   "pct_sitios_en_estratos": 98,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 79,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "React",
+     "sitios": 144,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Vue",
+     "sitios": 24,
+     "delta_lcp_ms": 700
+    },
+    {
+     "framework": "Angular",
+     "sitios": 20,
+     "delta_lcp_ms": 550
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 20,
+     "delta_lcp_ms": 250
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 70,
+     "delta_lcp_ms": 750
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 33,
+     "delta_lcp_ms": 500
+    }
+   ]
+  },
+  {
+   "tecnologia": "Akamai Bot Manager",
+   "sitios": 277,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 353,
+   "pct_sitios_en_estratos": 97,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 64,
+     "delta_lcp_ms": 250
+    },
+    {
+     "framework": "React",
+     "sitios": 97,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Vue",
+     "sitios": 16,
+     "delta_lcp_ms": 250
+    },
+    {
+     "framework": "Angular",
+     "sitios": 16,
+     "delta_lcp_ms": 550
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 14,
+     "delta_lcp_ms": 600
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 42,
+     "delta_lcp_ms": 650
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 21,
+     "delta_lcp_ms": 1000
+    }
+   ]
+  },
+  {
+   "tecnologia": "Akamai mPulse",
+   "sitios": 224,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 392,
+   "pct_sitios_en_estratos": 99,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 40,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "React",
+     "sitios": 84,
+     "delta_lcp_ms": 150
+    },
+    {
+     "framework": "Vue",
+     "sitios": 17,
+     "delta_lcp_ms": 1200
+    },
+    {
+     "framework": "Angular",
+     "sitios": 13,
+     "delta_lcp_ms": 600
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 12,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 42,
+     "delta_lcp_ms": 1000
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 13,
+     "delta_lcp_ms": -200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Algolia",
+   "sitios": 50,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 227,
+   "pct_sitios_en_estratos": 60,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 19,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "React",
+     "sitios": 11,
+     "delta_lcp_ms": 100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Amazon ALB",
+   "sitios": 328,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 45,
+   "pct_sitios_en_estratos": 95,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 51,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "React",
+     "sitios": 83,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Angular",
+     "sitios": 24,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 23,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 102,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 30,
+     "delta_lcp_ms": -200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Amazon CloudFront",
+   "sitios": 760,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 43,
+   "pct_sitios_en_estratos": 99,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 126,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "React",
+     "sitios": 185,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 17,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Vue",
+     "sitios": 45,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Angular",
+     "sitios": 38,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 60,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 175,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 104,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "Amazon S3",
+   "sitios": 262,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 521,
+   "pct_sitios_en_estratos": 95,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 32,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "React",
+     "sitios": 95,
+     "delta_lcp_ms": 800
+    },
+    {
+     "framework": "Vue",
+     "sitios": 18,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Angular",
+     "sitios": 18,
+     "delta_lcp_ms": 150
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 11,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 55,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 19,
+     "delta_lcp_ms": 500
+    }
+   ]
+  },
+  {
+   "tecnologia": "Amazon SES",
+   "sitios": 567,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": -133,
+   "pct_sitios_en_estratos": 99,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 93,
+     "delta_lcp_ms": -300
+    },
+    {
+     "framework": "React",
+     "sitios": 130,
+     "delta_lcp_ms": -50
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 22,
+     "delta_lcp_ms": -400
+    },
+    {
+     "framework": "Vue",
+     "sitios": 41,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Svelte",
+     "sitios": 11,
+     "delta_lcp_ms": -300
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 44,
+     "delta_lcp_ms": -50
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 148,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 70,
+     "delta_lcp_ms": -100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Amazon Webstore",
+   "sitios": 59,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 277,
+   "pct_sitios_en_estratos": 75,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 20,
+     "delta_lcp_ms": 250
+    },
+    {
+     "framework": "React",
+     "sitios": 11,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 13,
+     "delta_lcp_ms": 300
+    }
+   ]
+  },
+  {
+   "tecnologia": "Amplitude",
+   "sitios": 88,
+   "delta_bruto_ms": 350,
+   "delta_dentro_ms": 115,
+   "pct_sitios_en_estratos": 82,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 13,
+     "delta_lcp_ms": 900
+    },
+    {
+     "framework": "React",
+     "sitios": 49,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 10,
+     "delta_lcp_ms": 150
+    }
+   ]
+  },
+  {
+   "tecnologia": "Apache Traffic Server",
+   "sitios": 31,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": -200,
+   "pct_sitios_en_estratos": 55,
+   "por_framework": [
+    {
+     "framework": "Sin framework",
+     "sitios": 17,
+     "delta_lcp_ms": -200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Apollo",
+   "sitios": 80,
+   "delta_bruto_ms": 1200,
+   "delta_dentro_ms": 727,
+   "pct_sitios_en_estratos": 84,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 34,
+     "delta_lcp_ms": 850
+    },
+    {
+     "framework": "React",
+     "sitios": 33,
+     "delta_lcp_ms": 600
+    }
+   ]
+  },
+  {
+   "tecnologia": "Apple Sign-in",
+   "sitios": 68,
+   "delta_bruto_ms": 800,
+   "delta_dentro_ms": 551,
+   "pct_sitios_en_estratos": 72,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 13,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "React",
+     "sitios": 26,
+     "delta_lcp_ms": 750
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 10,
+     "delta_lcp_ms": 100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Apple iCloud Mail",
+   "sitios": 743,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 307,
+   "pct_sitios_en_estratos": 100,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 151,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "React",
+     "sitios": 279,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 10,
+     "delta_lcp_ms": 750
+    },
+    {
+     "framework": "Vue",
+     "sitios": 45,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Angular",
+     "sitios": 26,
+     "delta_lcp_ms": 550
+    },
+    {
+     "framework": "Svelte",
+     "sitios": 15,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 48,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 82,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 87,
+     "delta_lcp_ms": 400
+    }
+   ]
+  },
+  {
+   "tecnologia": "Appsflyer",
+   "sitios": 88,
+   "delta_bruto_ms": 850,
+   "delta_dentro_ms": 956,
+   "pct_sitios_en_estratos": 72,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 35,
+     "delta_lcp_ms": 800
+    },
+    {
+     "framework": "React",
+     "sitios": 28,
+     "delta_lcp_ms": 1150
+    }
+   ]
+  },
+  {
+   "tecnologia": "Arc XP",
+   "sitios": 34,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": -200,
+   "pct_sitios_en_estratos": 100,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 34,
+     "delta_lcp_ms": -200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Axios",
+   "sitios": 113,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": -43,
+   "pct_sitios_en_estratos": 89,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 24,
+     "delta_lcp_ms": 50
+    },
+    {
+     "framework": "Vue",
+     "sitios": 41,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 16,
+     "delta_lcp_ms": -150
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 20,
+     "delta_lcp_ms": 50
+    }
+   ]
+  },
+  {
+   "tecnologia": "Azure Front Door",
+   "sitios": 46,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": 50,
+   "pct_sitios_en_estratos": 43,
+   "por_framework": [
+    {
+     "framework": "Sin framework",
+     "sitios": 20,
+     "delta_lcp_ms": 50
+    }
+   ]
+  },
+  {
+   "tecnologia": "Babel",
+   "sitios": 141,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 21,
+   "pct_sitios_en_estratos": 87,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 57,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Vue",
+     "sitios": 25,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 29,
+     "delta_lcp_ms": -300
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 12,
+     "delta_lcp_ms": -100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Boomerang",
+   "sitios": 252,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 377,
+   "pct_sitios_en_estratos": 99,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 42,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "React",
+     "sitios": 97,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Vue",
+     "sitios": 19,
+     "delta_lcp_ms": 900
+    },
+    {
+     "framework": "Angular",
+     "sitios": 16,
+     "delta_lcp_ms": 550
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 12,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 44,
+     "delta_lcp_ms": 1000
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 19,
+     "delta_lcp_ms": 400
+    }
+   ]
+  },
+  {
+   "tecnologia": "Branch",
+   "sitios": 43,
+   "delta_bruto_ms": 800,
+   "delta_dentro_ms": 483,
+   "pct_sitios_en_estratos": 84,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 12,
+     "delta_lcp_ms": 550
+    },
+    {
+     "framework": "React",
+     "sitios": 24,
+     "delta_lcp_ms": 450
+    }
+   ]
+  },
+  {
+   "tecnologia": "Braze",
+   "sitios": 49,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 17,
+   "pct_sitios_en_estratos": 73,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 16,
+     "delta_lcp_ms": -150
+    },
+    {
+     "framework": "React",
+     "sitios": 20,
+     "delta_lcp_ms": 150
+    }
+   ]
+  },
+  {
+   "tecnologia": "Cart Functionality",
+   "sitios": 1131,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": -10,
+   "pct_sitios_en_estratos": 100,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 144,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "React",
+     "sitios": 308,
+     "delta_lcp_ms": -350
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 22,
+     "delta_lcp_ms": -50
+    },
+    {
+     "framework": "Vue",
+     "sitios": 85,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Angular",
+     "sitios": 26,
+     "delta_lcp_ms": 250
+    },
+    {
+     "framework": "Svelte",
+     "sitios": 65,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 76,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 278,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 127,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "CleverTap",
+   "sitios": 36,
+   "delta_bruto_ms": 750,
+   "delta_dentro_ms": 460,
+   "pct_sitios_en_estratos": 69,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 15,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "React",
+     "sitios": 10,
+     "delta_lcp_ms": 550
+    }
+   ]
+  },
+  {
+   "tecnologia": "Closure Library",
+   "sitios": 56,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 638,
+   "pct_sitios_en_estratos": 75,
+   "por_framework": [
+    {
+     "framework": "jQuery",
+     "sitios": 19,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 23,
+     "delta_lcp_ms": 1000
+    }
+   ]
+  },
+  {
+   "tecnologia": "Confiant",
+   "sitios": 122,
+   "delta_bruto_ms": -200,
+   "delta_dentro_ms": -246,
+   "pct_sitios_en_estratos": 96,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 21,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "React",
+     "sitios": 26,
+     "delta_lcp_ms": -700
+    },
+    {
+     "framework": "Vue",
+     "sitios": 10,
+     "delta_lcp_ms": -450
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 16,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 30,
+     "delta_lcp_ms": -50
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 14,
+     "delta_lcp_ms": -100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Contact Form 7",
+   "sitios": 45,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": 150,
+   "pct_sitios_en_estratos": 80,
+   "por_framework": [
+    {
+     "framework": "jQuery",
+     "sitios": 36,
+     "delta_lcp_ms": 150
+    }
+   ]
+  },
+  {
+   "tecnologia": "Contentful",
+   "sitios": 40,
+   "delta_bruto_ms": 850,
+   "delta_dentro_ms": 432,
+   "pct_sitios_en_estratos": 85,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 19,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "React",
+     "sitios": 15,
+     "delta_lcp_ms": 600
+    }
+   ]
+  },
+  {
+   "tecnologia": "Crazy Egg",
+   "sitios": 73,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": -258,
+   "pct_sitios_en_estratos": 71,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 12,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "React",
+     "sitios": 28,
+     "delta_lcp_ms": -650
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 12,
+     "delta_lcp_ms": 300
+    }
+   ]
+  },
+  {
+   "tecnologia": "DataDome",
+   "sitios": 46,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 170,
+   "pct_sitios_en_estratos": 87,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 14,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "React",
+     "sitios": 26,
+     "delta_lcp_ms": 100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Datadog",
+   "sitios": 234,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 272,
+   "pct_sitios_en_estratos": 93,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 92,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "React",
+     "sitios": 77,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Vue",
+     "sitios": 12,
+     "delta_lcp_ms": 900
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 14,
+     "delta_lcp_ms": -50
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 23,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Didomi",
+   "sitios": 235,
+   "delta_bruto_ms": -200,
+   "delta_dentro_ms": -299,
+   "pct_sitios_en_estratos": 95,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 23,
+     "delta_lcp_ms": -300
+    },
+    {
+     "framework": "React",
+     "sitios": 42,
+     "delta_lcp_ms": -600
+    },
+    {
+     "framework": "Vue",
+     "sitios": 14,
+     "delta_lcp_ms": -600
+    },
+    {
+     "framework": "Svelte",
+     "sitios": 16,
+     "delta_lcp_ms": 50
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 24,
+     "delta_lcp_ms": -400
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 46,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 58,
+     "delta_lcp_ms": -300
+    }
+   ]
+  },
+  {
+   "tecnologia": "DocuSign",
+   "sitios": 360,
+   "delta_bruto_ms": 700,
+   "delta_dentro_ms": 483,
+   "pct_sitios_en_estratos": 97,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 54,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "React",
+     "sitios": 180,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "Vue",
+     "sitios": 13,
+     "delta_lcp_ms": 800
+    },
+    {
+     "framework": "Angular",
+     "sitios": 11,
+     "delta_lcp_ms": 1200
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 18,
+     "delta_lcp_ms": 700
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 22,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 52,
+     "delta_lcp_ms": 550
+    }
+   ]
+  },
+  {
+   "tecnologia": "DoubleClick Campaign Manager (DCM)",
+   "sitios": 132,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": -64,
+   "pct_sitios_en_estratos": 92,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 15,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "React",
+     "sitios": 26,
+     "delta_lcp_ms": -500
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 24,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 42,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 14,
+     "delta_lcp_ms": 50
+    }
+   ]
+  },
+  {
+   "tecnologia": "Dropbox",
+   "sitios": 64,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 217,
+   "pct_sitios_en_estratos": 75,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 16,
+     "delta_lcp_ms": 250
+    },
+    {
+     "framework": "React",
+     "sitios": 32,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Dynatrace",
+   "sitios": 85,
+   "delta_bruto_ms": 1000,
+   "delta_dentro_ms": 815,
+   "pct_sitios_en_estratos": 85,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 17,
+     "delta_lcp_ms": 1500
+    },
+    {
+     "framework": "React",
+     "sitios": 27,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Angular",
+     "sitios": 14,
+     "delta_lcp_ms": 700
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 14,
+     "delta_lcp_ms": 900
+    }
+   ]
+  },
+  {
+   "tecnologia": "Element UI",
+   "sitios": 88,
+   "delta_bruto_ms": 800,
+   "delta_dentro_ms": 715,
+   "pct_sitios_en_estratos": 98,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 10,
+     "delta_lcp_ms": 700
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 13,
+     "delta_lcp_ms": 800
+    },
+    {
+     "framework": "Vue",
+     "sitios": 63,
+     "delta_lcp_ms": 700
+    }
+   ]
+  },
+  {
+   "tecnologia": "Elementor",
+   "sitios": 35,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": 200,
+   "pct_sitios_en_estratos": 71,
+   "por_framework": [
+    {
+     "framework": "jQuery",
+     "sitios": 25,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Emotion",
+   "sitios": 227,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 237,
+   "pct_sitios_en_estratos": 96,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 118,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "React",
+     "sitios": 99,
+     "delta_lcp_ms": 400
+    }
+   ]
+  },
+  {
+   "tecnologia": "Envoy",
+   "sitios": 300,
+   "delta_bruto_ms": 400,
+   "delta_dentro_ms": 154,
+   "pct_sitios_en_estratos": 93,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 83,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "React",
+     "sitios": 137,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Vue",
+     "sitios": 15,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 15,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 30,
+     "delta_lcp_ms": -150
+    }
+   ]
+  },
+  {
+   "tecnologia": "Express",
+   "sitios": 105,
+   "delta_bruto_ms": 400,
+   "delta_dentro_ms": 50,
+   "pct_sitios_en_estratos": 78,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 10,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "React",
+     "sitios": 47,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Angular",
+     "sitios": 12,
+     "delta_lcp_ms": -400
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 13,
+     "delta_lcp_ms": 300
+    }
+   ]
+  },
+  {
+   "tecnologia": "FullStory",
+   "sitios": 34,
+   "delta_bruto_ms": 550,
+   "delta_dentro_ms": 644,
+   "pct_sitios_en_estratos": 79,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 16,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "React",
+     "sitios": 11,
+     "delta_lcp_ms": 1000
+    }
+   ]
+  },
+  {
+   "tecnologia": "Google Hosted Libraries",
+   "sitios": 401,
+   "delta_bruto_ms": -100,
+   "delta_dentro_ms": -7,
+   "pct_sitios_en_estratos": 94,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 30,
+     "delta_lcp_ms": -250
+    },
+    {
+     "framework": "Vue",
+     "sitios": 19,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 22,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 304,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "Google Sign-in",
+   "sitios": 576,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 182,
+   "pct_sitios_en_estratos": 99,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 100,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "React",
+     "sitios": 140,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 17,
+     "delta_lcp_ms": 800
+    },
+    {
+     "framework": "Vue",
+     "sitios": 46,
+     "delta_lcp_ms": -150
+    },
+    {
+     "framework": "Svelte",
+     "sitios": 67,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 48,
+     "delta_lcp_ms": 50
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 102,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 51,
+     "delta_lcp_ms": 100
+    }
+   ]
+  },
+  {
+   "tecnologia": "GraphQL",
+   "sitios": 81,
+   "delta_bruto_ms": 1200,
+   "delta_dentro_ms": 727,
+   "pct_sitios_en_estratos": 83,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 34,
+     "delta_lcp_ms": 850
+    },
+    {
+     "framework": "React",
+     "sitios": 33,
+     "delta_lcp_ms": 600
+    }
+   ]
+  },
+  {
+   "tecnologia": "Hammer.js",
+   "sitios": 174,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": -52,
+   "pct_sitios_en_estratos": 91,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 53,
+     "delta_lcp_ms": -500
+    },
+    {
+     "framework": "Vue",
+     "sitios": 22,
+     "delta_lcp_ms": 750
+    },
+    {
+     "framework": "Angular",
+     "sitios": 17,
+     "delta_lcp_ms": -150
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 11,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 55,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "Hotjar",
+   "sitios": 263,
+   "delta_bruto_ms": 400,
+   "delta_dentro_ms": 415,
+   "pct_sitios_en_estratos": 96,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 52,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "React",
+     "sitios": 64,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "Vue",
+     "sitios": 27,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Angular",
+     "sitios": 12,
+     "delta_lcp_ms": 2950
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 30,
+     "delta_lcp_ms": 150
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 50,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 17,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "HubSpot",
+   "sitios": 111,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 490,
+   "pct_sitios_en_estratos": 82,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 28,
+     "delta_lcp_ms": 750
+    },
+    {
+     "framework": "React",
+     "sitios": 36,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 10,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 17,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "IIS",
+   "sitios": 104,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": 154,
+   "pct_sitios_en_estratos": 78,
+   "por_framework": [
+    {
+     "framework": "Angular",
+     "sitios": 15,
+     "delta_lcp_ms": 350
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 51,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 15,
+     "delta_lcp_ms": -200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Impact",
+   "sitios": 42,
+   "delta_bruto_ms": 850,
+   "delta_dentro_ms": 538,
+   "pct_sitios_en_estratos": 76,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 12,
+     "delta_lcp_ms": 600
+    },
+    {
+     "framework": "React",
+     "sitios": 20,
+     "delta_lcp_ms": 500
+    }
+   ]
+  },
+  {
+   "tecnologia": "Insider",
+   "sitios": 53,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 365,
+   "pct_sitios_en_estratos": 81,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 20,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "React",
+     "sitios": 12,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 11,
+     "delta_lcp_ms": 500
+    }
+   ]
+  },
+  {
+   "tecnologia": "Integral Ad Science",
+   "sitios": 75,
+   "delta_bruto_ms": -300,
+   "delta_dentro_ms": -551,
+   "pct_sitios_en_estratos": 79,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 17,
+     "delta_lcp_ms": -800
+    },
+    {
+     "framework": "React",
+     "sitios": 26,
+     "delta_lcp_ms": -850
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 16,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "JSS",
+   "sitios": 32,
+   "delta_bruto_ms": 750,
+   "delta_dentro_ms": 503,
+   "pct_sitios_en_estratos": 97,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 12,
+     "delta_lcp_ms": 350
+    },
+    {
+     "framework": "React",
+     "sitios": 19,
+     "delta_lcp_ms": 600
+    }
+   ]
+  },
+  {
+   "tecnologia": "Java",
+   "sitios": 422,
+   "delta_bruto_ms": 400,
+   "delta_dentro_ms": 332,
+   "pct_sitios_en_estratos": 98,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 50,
+     "delta_lcp_ms": 50
+    },
+    {
+     "framework": "React",
+     "sitios": 101,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "Vue",
+     "sitios": 33,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "Angular",
+     "sitios": 24,
+     "delta_lcp_ms": 800
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 25,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 134,
+     "delta_lcp_ms": 250
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 48,
+     "delta_lcp_ms": 100
+    }
+   ]
+  },
+  {
+   "tecnologia": "JuicyAds",
+   "sitios": 60,
+   "delta_bruto_ms": -350,
+   "delta_dentro_ms": -200,
+   "pct_sitios_en_estratos": 75,
+   "por_framework": [
+    {
+     "framework": "jQuery",
+     "sitios": 45,
+     "delta_lcp_ms": -200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Linkedin Ads",
+   "sitios": 46,
+   "delta_bruto_ms": 1750,
+   "delta_dentro_ms": 1600,
+   "pct_sitios_en_estratos": 63,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 29,
+     "delta_lcp_ms": 1600
+    }
+   ]
+  },
+  {
+   "tecnologia": "Linkedin Insight Tag",
+   "sitios": 127,
+   "delta_bruto_ms": 700,
+   "delta_dentro_ms": 462,
+   "pct_sitios_en_estratos": 83,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 33,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "React",
+     "sitios": 36,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 10,
+     "delta_lcp_ms": 550
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 27,
+     "delta_lcp_ms": 400
+    }
+   ]
+  },
+  {
+   "tecnologia": "Loadable-Components",
+   "sitios": 142,
+   "delta_bruto_ms": 700,
+   "delta_dentro_ms": 400,
+   "pct_sitios_en_estratos": 100,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 142,
+     "delta_lcp_ms": 400
+    }
+   ]
+  },
+  {
+   "tecnologia": "Lodash",
+   "sitios": 530,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 299,
+   "pct_sitios_en_estratos": 99,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 80,
+     "delta_lcp_ms": 550
+    },
+    {
+     "framework": "React",
+     "sitios": 188,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 10,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "Vue",
+     "sitios": 48,
+     "delta_lcp_ms": 350
+    },
+    {
+     "framework": "Angular",
+     "sitios": 43,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 51,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 74,
+     "delta_lcp_ms": 50
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 29,
+     "delta_lcp_ms": -400
+    }
+   ]
+  },
+  {
+   "tecnologia": "LottieFiles",
+   "sitios": 74,
+   "delta_bruto_ms": 1050,
+   "delta_dentro_ms": 838,
+   "pct_sitios_en_estratos": 65,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 15,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "React",
+     "sitios": 21,
+     "delta_lcp_ms": 1600
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 12,
+     "delta_lcp_ms": 300
+    }
+   ]
+  },
+  {
+   "tecnologia": "Lozad.js",
+   "sitios": 98,
+   "delta_bruto_ms": -200,
+   "delta_dentro_ms": -114,
+   "pct_sitios_en_estratos": 78,
+   "por_framework": [
+    {
+     "framework": "Vue",
+     "sitios": 10,
+     "delta_lcp_ms": -450
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 21,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 45,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "MUI",
+   "sitios": 61,
+   "delta_bruto_ms": 900,
+   "delta_dentro_ms": 344,
+   "pct_sitios_en_estratos": 100,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 39,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "React",
+     "sitios": 22,
+     "delta_lcp_ms": 600
+    }
+   ]
+  },
+  {
+   "tecnologia": "Medallia",
+   "sitios": 61,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 309,
+   "pct_sitios_en_estratos": 75,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 18,
+     "delta_lcp_ms": 350
+    },
+    {
+     "framework": "React",
+     "sitios": 17,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 11,
+     "delta_lcp_ms": 100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Microsoft Advertising",
+   "sitios": 698,
+   "delta_bruto_ms": 300,
+   "delta_dentro_ms": 192,
+   "pct_sitios_en_estratos": 99,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 158,
+     "delta_lcp_ms": 250
+    },
+    {
+     "framework": "React",
+     "sitios": 205,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 10,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "Vue",
+     "sitios": 50,
+     "delta_lcp_ms": 350
+    },
+    {
+     "framework": "Angular",
+     "sitios": 16,
+     "delta_lcp_ms": -350
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 45,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 148,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 58,
+     "delta_lcp_ms": 50
+    }
+   ]
+  },
+  {
+   "tecnologia": "Mixpanel",
+   "sitios": 65,
+   "delta_bruto_ms": 800,
+   "delta_dentro_ms": 595,
+   "pct_sitios_en_estratos": 68,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 12,
+     "delta_lcp_ms": 50
+    },
+    {
+     "framework": "React",
+     "sitios": 32,
+     "delta_lcp_ms": 800
+    }
+   ]
+  },
+  {
+   "tecnologia": "MobX",
+   "sitios": 56,
+   "delta_bruto_ms": 850,
+   "delta_dentro_ms": 469,
+   "pct_sitios_en_estratos": 96,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 17,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "React",
+     "sitios": 37,
+     "delta_lcp_ms": 500
+    }
+   ]
+  },
+  {
+   "tecnologia": "Moment.js",
+   "sitios": 208,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 72,
+   "pct_sitios_en_estratos": 98,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 48,
+     "delta_lcp_ms": 600
+    },
+    {
+     "framework": "Vue",
+     "sitios": 21,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Angular",
+     "sitios": 17,
+     "delta_lcp_ms": -1100
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 23,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 95,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "New Relic",
+   "sitios": 207,
+   "delta_bruto_ms": 300,
+   "delta_dentro_ms": 76,
+   "pct_sitios_en_estratos": 89,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 48,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "React",
+     "sitios": 72,
+     "delta_lcp_ms": 50
+    },
+    {
+     "framework": "Vue",
+     "sitios": 10,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 39,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 15,
+     "delta_lcp_ms": 100
+    }
+   ]
+  },
+  {
+   "tecnologia": "OneSignal",
+   "sitios": 173,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": 8,
+   "pct_sitios_en_estratos": 92,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 14,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "React",
+     "sitios": 31,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 32,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 67,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 15,
+     "delta_lcp_ms": -300
+    }
+   ]
+  },
+  {
+   "tecnologia": "OneTrust",
+   "sitios": 571,
+   "delta_bruto_ms": 300,
+   "delta_dentro_ms": 79,
+   "pct_sitios_en_estratos": 98,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 137,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "React",
+     "sitios": 213,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Vue",
+     "sitios": 31,
+     "delta_lcp_ms": 650
+    },
+    {
+     "framework": "Angular",
+     "sitios": 20,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 33,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 78,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 45,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "OpenResty",
+   "sitios": 99,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": -193,
+   "pct_sitios_en_estratos": 93,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 44,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "Vue",
+     "sitios": 25,
+     "delta_lcp_ms": -300
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 13,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 10,
+     "delta_lcp_ms": -150
+    }
+   ]
+  },
+  {
+   "tecnologia": "Optimizely",
+   "sitios": 107,
+   "delta_bruto_ms": 400,
+   "delta_dentro_ms": 169,
+   "pct_sitios_en_estratos": 85,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 43,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "React",
+     "sitios": 32,
+     "delta_lcp_ms": 350
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 16,
+     "delta_lcp_ms": 800
+    }
+   ]
+  },
+  {
+   "tecnologia": "Parse.ly",
+   "sitios": 59,
+   "delta_bruto_ms": -200,
+   "delta_dentro_ms": -402,
+   "pct_sitios_en_estratos": 86,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 19,
+     "delta_lcp_ms": -900
+    },
+    {
+     "framework": "React",
+     "sitios": 12,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 10,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 10,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "PayPal",
+   "sitios": 167,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 318,
+   "pct_sitios_en_estratos": 87,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 36,
+     "delta_lcp_ms": 150
+    },
+    {
+     "framework": "React",
+     "sitios": 66,
+     "delta_lcp_ms": 350
+    },
+    {
+     "framework": "Vue",
+     "sitios": 11,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 12,
+     "delta_lcp_ms": 700
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 21,
+     "delta_lcp_ms": 400
+    }
+   ]
+  },
+  {
+   "tecnologia": "PerimeterX",
+   "sitios": 34,
+   "delta_bruto_ms": 950,
+   "delta_dentro_ms": 1186,
+   "pct_sitios_en_estratos": 82,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 12,
+     "delta_lcp_ms": 1100
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 16,
+     "delta_lcp_ms": 1250
+    }
+   ]
+  },
+  {
+   "tecnologia": "Permutive",
+   "sitios": 117,
+   "delta_bruto_ms": -100,
+   "delta_dentro_ms": -330,
+   "pct_sitios_en_estratos": 97,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 33,
+     "delta_lcp_ms": -800
+    },
+    {
+     "framework": "React",
+     "sitios": 35,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 14,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 20,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 11,
+     "delta_lcp_ms": -100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Pinterest Conversion Tag",
+   "sitios": 194,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 349,
+   "pct_sitios_en_estratos": 92,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 58,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "React",
+     "sitios": 56,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Vue",
+     "sitios": 22,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 10,
+     "delta_lcp_ms": 550
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 33,
+     "delta_lcp_ms": 500
+    }
+   ]
+  },
+  {
+   "tecnologia": "Popper",
+   "sitios": 231,
+   "delta_bruto_ms": -50,
+   "delta_dentro_ms": -33,
+   "pct_sitios_en_estratos": 95,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 33,
+     "delta_lcp_ms": -700
+    },
+    {
+     "framework": "Vue",
+     "sitios": 27,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "Angular",
+     "sitios": 17,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 143,
+     "delta_lcp_ms": 50
+    }
+   ]
+  },
+  {
+   "tecnologia": "Priority Hints",
+   "sitios": 1760,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": -51,
+   "pct_sitios_en_estratos": 100,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 389,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "React",
+     "sitios": 391,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 60,
+     "delta_lcp_ms": -550
+    },
+    {
+     "framework": "Vue",
+     "sitios": 94,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Angular",
+     "sitios": 28,
+     "delta_lcp_ms": -400
+    },
+    {
+     "framework": "Svelte",
+     "sitios": 85,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 119,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 331,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 263,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "PubSubJS",
+   "sitios": 49,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 177,
+   "pct_sitios_en_estratos": 71,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 24,
+     "delta_lcp_ms": 350
+    },
+    {
+     "framework": "Vue",
+     "sitios": 11,
+     "delta_lcp_ms": -200
+    }
+   ]
+  },
+  {
+   "tecnologia": "PushPushGo",
+   "sitios": 36,
+   "delta_bruto_ms": -300,
+   "delta_dentro_ms": -200,
+   "pct_sitios_en_estratos": 42,
+   "por_framework": [
+    {
+     "framework": "Sin framework",
+     "sitios": 15,
+     "delta_lcp_ms": -200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Quantum Metric",
+   "sitios": 43,
+   "delta_bruto_ms": 900,
+   "delta_dentro_ms": 650,
+   "pct_sitios_en_estratos": 70,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 10,
+     "delta_lcp_ms": 1350
+    },
+    {
+     "framework": "React",
+     "sitios": 20,
+     "delta_lcp_ms": 300
+    }
+   ]
+  },
+  {
+   "tecnologia": "Radix UI",
+   "sitios": 86,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 106,
+   "pct_sitios_en_estratos": 97,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 73,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "React",
+     "sitios": 10,
+     "delta_lcp_ms": 150
+    }
+   ]
+  },
+  {
+   "tecnologia": "Really Simple SSL & Security",
+   "sitios": 32,
+   "delta_bruto_ms": -300,
+   "delta_dentro_ms": -100,
+   "pct_sitios_en_estratos": 84,
+   "por_framework": [
+    {
+     "framework": "jQuery",
+     "sitios": 27,
+     "delta_lcp_ms": -100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Reddit Ads",
+   "sitios": 118,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 511,
+   "pct_sitios_en_estratos": 90,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 27,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "React",
+     "sitios": 35,
+     "delta_lcp_ms": 600
+    },
+    {
+     "framework": "Vue",
+     "sitios": 14,
+     "delta_lcp_ms": 800
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 11,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 19,
+     "delta_lcp_ms": 500
+    }
+   ]
+  },
+  {
+   "tecnologia": "Ruby",
+   "sitios": 94,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 64,
+   "pct_sitios_en_estratos": 68,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 35,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 29,
+     "delta_lcp_ms": -100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Ruby on Rails",
+   "sitios": 93,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 64,
+   "pct_sitios_en_estratos": 69,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 35,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 29,
+     "delta_lcp_ms": -100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Sailthru",
+   "sitios": 42,
+   "delta_bruto_ms": -200,
+   "delta_dentro_ms": -800,
+   "pct_sitios_en_estratos": 52,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 22,
+     "delta_lcp_ms": -800
+    }
+   ]
+  },
+  {
+   "tecnologia": "Salesforce",
+   "sitios": 293,
+   "delta_bruto_ms": 400,
+   "delta_dentro_ms": 281,
+   "pct_sitios_en_estratos": 96,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 53,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "React",
+     "sitios": 105,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "Vue",
+     "sitios": 15,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "Angular",
+     "sitios": 11,
+     "delta_lcp_ms": -550
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 21,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 43,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 33,
+     "delta_lcp_ms": 400
+    }
+   ]
+  },
+  {
+   "tecnologia": "Salesforce Marketing Cloud Account Engagement",
+   "sitios": 160,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": 31,
+   "pct_sitios_en_estratos": 88,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 18,
+     "delta_lcp_ms": 450
+    },
+    {
+     "framework": "React",
+     "sitios": 61,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 13,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 34,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 15,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Segment",
+   "sitios": 85,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": -195,
+   "pct_sitios_en_estratos": 75,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 38,
+     "delta_lcp_ms": -500
+    },
+    {
+     "framework": "React",
+     "sitios": 26,
+     "delta_lcp_ms": 250
+    }
+   ]
+  },
+  {
+   "tecnologia": "Sentry",
+   "sitios": 496,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 380,
+   "pct_sitios_en_estratos": 100,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 148,
+     "delta_lcp_ms": 50
+    },
+    {
+     "framework": "React",
+     "sitios": 186,
+     "delta_lcp_ms": 700
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 22,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Vue",
+     "sitios": 51,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "Angular",
+     "sitios": 10,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "Svelte",
+     "sitios": 10,
+     "delta_lcp_ms": 700
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 15,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 36,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 18,
+     "delta_lcp_ms": 300
+    }
+   ]
+  },
+  {
+   "tecnologia": "ShareThis",
+   "sitios": 46,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": 150,
+   "pct_sitios_en_estratos": 83,
+   "por_framework": [
+    {
+     "framework": "jQuery",
+     "sitios": 38,
+     "delta_lcp_ms": 150
+    }
+   ]
+  },
+  {
+   "tecnologia": "Smart Ad Server",
+   "sitios": 107,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": 124,
+   "pct_sitios_en_estratos": 90,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 23,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 16,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 35,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 22,
+     "delta_lcp_ms": 300
+    }
+   ]
+  },
+  {
+   "tecnologia": "SoundManager",
+   "sitios": 38,
+   "delta_bruto_ms": -200,
+   "delta_dentro_ms": -600,
+   "pct_sitios_en_estratos": 97,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 37,
+     "delta_lcp_ms": -600
+    }
+   ]
+  },
+  {
+   "tecnologia": "SpeedCurve",
+   "sitios": 57,
+   "delta_bruto_ms": -200,
+   "delta_dentro_ms": -620,
+   "pct_sitios_en_estratos": 70,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 22,
+     "delta_lcp_ms": -800
+    },
+    {
+     "framework": "React",
+     "sitios": 18,
+     "delta_lcp_ms": -400
+    }
+   ]
+  },
+  {
+   "tecnologia": "Stripe",
+   "sitios": 165,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 190,
+   "pct_sitios_en_estratos": 87,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 32,
+     "delta_lcp_ms": 250
+    },
+    {
+     "framework": "React",
+     "sitios": 70,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 13,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 10,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 19,
+     "delta_lcp_ms": 300
+    }
+   ]
+  },
+  {
+   "tecnologia": "Taboola",
+   "sitios": 411,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": 48,
+   "pct_sitios_en_estratos": 97,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 63,
+     "delta_lcp_ms": -400
+    },
+    {
+     "framework": "React",
+     "sitios": 66,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Vue",
+     "sitios": 20,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Svelte",
+     "sitios": 13,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 59,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 123,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 53,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "Tailwind CSS",
+   "sitios": 396,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": -73,
+   "pct_sitios_en_estratos": 98,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 161,
+     "delta_lcp_ms": -300
+    },
+    {
+     "framework": "React",
+     "sitios": 60,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 27,
+     "delta_lcp_ms": 700
+    },
+    {
+     "framework": "Vue",
+     "sitios": 15,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Svelte",
+     "sitios": 14,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 31,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 23,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 58,
+     "delta_lcp_ms": 100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Teads",
+   "sitios": 100,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": 78,
+   "pct_sitios_en_estratos": 83,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 10,
+     "delta_lcp_ms": 650
+    },
+    {
+     "framework": "React",
+     "sitios": 18,
+     "delta_lcp_ms": -500
+    },
+    {
+     "framework": "Svelte",
+     "sitios": 10,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 15,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 30,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Tealium",
+   "sitios": 103,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 272,
+   "pct_sitios_en_estratos": 83,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 19,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "React",
+     "sitios": 40,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 13,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 13,
+     "delta_lcp_ms": 800
+    }
+   ]
+  },
+  {
+   "tecnologia": "TikTok Pixel",
+   "sitios": 439,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 489,
+   "pct_sitios_en_estratos": 99,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 121,
+     "delta_lcp_ms": 500
+    },
+    {
+     "framework": "React",
+     "sitios": 94,
+     "delta_lcp_ms": 600
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 10,
+     "delta_lcp_ms": 1000
+    },
+    {
+     "framework": "Vue",
+     "sitios": 38,
+     "delta_lcp_ms": 50
+    },
+    {
+     "framework": "Angular",
+     "sitios": 12,
+     "delta_lcp_ms": 1750
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 27,
+     "delta_lcp_ms": 600
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 105,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 26,
+     "delta_lcp_ms": 550
+    }
+   ]
+  },
+  {
+   "tecnologia": "TrafficStars",
+   "sitios": 102,
+   "delta_bruto_ms": -150,
+   "delta_dentro_ms": 21,
+   "pct_sitios_en_estratos": 87,
+   "por_framework": [
+    {
+     "framework": "Svelte",
+     "sitios": 54,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 35,
+     "delta_lcp_ms": -100
+    }
+   ]
+  },
+  {
+   "tecnologia": "TripleLift",
+   "sitios": 250,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": -188,
+   "pct_sitios_en_estratos": 95,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 33,
+     "delta_lcp_ms": -500
+    },
+    {
+     "framework": "React",
+     "sitios": 50,
+     "delta_lcp_ms": -400
+    },
+    {
+     "framework": "Vue",
+     "sitios": 12,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 35,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 84,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 23,
+     "delta_lcp_ms": -300
+    }
+   ]
+  },
+  {
+   "tecnologia": "Twitter Emoji (Twemoji)",
+   "sitios": 74,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": 200,
+   "pct_sitios_en_estratos": 85,
+   "por_framework": [
+    {
+     "framework": "jQuery",
+     "sitios": 63,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Unpkg",
+   "sitios": 243,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 47,
+   "pct_sitios_en_estratos": 94,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 24,
+     "delta_lcp_ms": 250
+    },
+    {
+     "framework": "React",
+     "sitios": 87,
+     "delta_lcp_ms": -400
+    },
+    {
+     "framework": "Vue",
+     "sitios": 15,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 19,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 65,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 19,
+     "delta_lcp_ms": 100
+    }
+   ]
+  },
+  {
+   "tecnologia": "Usercentrics",
+   "sitios": 49,
+   "delta_bruto_ms": -200,
+   "delta_dentro_ms": -700,
+   "pct_sitios_en_estratos": 49,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 24,
+     "delta_lcp_ms": -700
+    }
+   ]
+  },
+  {
+   "tecnologia": "VWO",
+   "sitios": 76,
+   "delta_bruto_ms": 600,
+   "delta_dentro_ms": 747,
+   "pct_sitios_en_estratos": 75,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 22,
+     "delta_lcp_ms": 650
+    },
+    {
+     "framework": "React",
+     "sitios": 19,
+     "delta_lcp_ms": 900
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 16,
+     "delta_lcp_ms": 700
+    }
+   ]
+  },
+  {
+   "tecnologia": "W3 Total Cache",
+   "sitios": 34,
+   "delta_bruto_ms": -200,
+   "delta_dentro_ms": 100,
+   "pct_sitios_en_estratos": 76,
+   "por_framework": [
+    {
+     "framework": "jQuery",
+     "sitios": 26,
+     "delta_lcp_ms": 100
+    }
+   ]
+  },
+  {
+   "tecnologia": "WP-PageNavi",
+   "sitios": 30,
+   "delta_bruto_ms": -100,
+   "delta_dentro_ms": 300,
+   "pct_sitios_en_estratos": 83,
+   "por_framework": [
+    {
+     "framework": "jQuery",
+     "sitios": 25,
+     "delta_lcp_ms": 300
+    }
+   ]
+  },
+  {
+   "tecnologia": "Webpack",
+   "sitios": 1080,
+   "delta_bruto_ms": 400,
+   "delta_dentro_ms": 10,
+   "pct_sitios_en_estratos": 41,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 149,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 41,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "Vue",
+     "sitios": 58,
+     "delta_lcp_ms": 400
+    },
+    {
+     "framework": "Angular",
+     "sitios": 31,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 35,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 72,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 59,
+     "delta_lcp_ms": 300
+    }
+   ]
+  },
+  {
+   "tecnologia": "Windows Server",
+   "sitios": 104,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": 154,
+   "pct_sitios_en_estratos": 78,
+   "por_framework": [
+    {
+     "framework": "Angular",
+     "sitios": 15,
+     "delta_lcp_ms": 350
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 51,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 15,
+     "delta_lcp_ms": -200
+    }
+   ]
+  },
+  {
+   "tecnologia": "WordPress Super Cache",
+   "sitios": 35,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": 200,
+   "pct_sitios_en_estratos": 83,
+   "por_framework": [
+    {
+     "framework": "jQuery",
+     "sitios": 29,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "Zendesk",
+   "sitios": 452,
+   "delta_bruto_ms": 200,
+   "delta_dentro_ms": 77,
+   "pct_sitios_en_estratos": 99,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 79,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "React",
+     "sitios": 162,
+     "delta_lcp_ms": 50
+    },
+    {
+     "framework": "Nuxt",
+     "sitios": 13,
+     "delta_lcp_ms": -300
+    },
+    {
+     "framework": "Vue",
+     "sitios": 43,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "Angular",
+     "sitios": 11,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 21,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 69,
+     "delta_lcp_ms": 300
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 49,
+     "delta_lcp_ms": 0
+    }
+   ]
+  },
+  {
+   "tecnologia": "comScore",
+   "sitios": 492,
+   "delta_bruto_ms": -100,
+   "delta_dentro_ms": -193,
+   "pct_sitios_en_estratos": 97,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 97,
+     "delta_lcp_ms": -500
+    },
+    {
+     "framework": "React",
+     "sitios": 123,
+     "delta_lcp_ms": -400
+    },
+    {
+     "framework": "Vue",
+     "sitios": 19,
+     "delta_lcp_ms": -300
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 42,
+     "delta_lcp_ms": -200
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 131,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 66,
+     "delta_lcp_ms": -100
+    }
+   ]
+  },
+  {
+   "tecnologia": "crypto-js",
+   "sitios": 109,
+   "delta_bruto_ms": 300,
+   "delta_dentro_ms": 390,
+   "pct_sitios_en_estratos": 72,
+   "por_framework": [
+    {
+     "framework": "React",
+     "sitios": 19,
+     "delta_lcp_ms": 200
+    },
+    {
+     "framework": "Vue",
+     "sitios": 15,
+     "delta_lcp_ms": 900
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 45,
+     "delta_lcp_ms": 300
+    }
+   ]
+  },
+  {
+   "tecnologia": "styled-components",
+   "sitios": 234,
+   "delta_bruto_ms": 500,
+   "delta_dentro_ms": 155,
+   "pct_sitios_en_estratos": 100,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 105,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "React",
+     "sitios": 129,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "toastr",
+   "sitios": 43,
+   "delta_bruto_ms": 100,
+   "delta_dentro_ms": 200,
+   "pct_sitios_en_estratos": 74,
+   "por_framework": [
+    {
+     "framework": "jQuery",
+     "sitios": 32,
+     "delta_lcp_ms": 200
+    }
+   ]
+  },
+  {
+   "tecnologia": "web-vitals",
+   "sitios": 249,
+   "delta_bruto_ms": 0,
+   "delta_dentro_ms": -169,
+   "pct_sitios_en_estratos": 92,
+   "por_framework": [
+    {
+     "framework": "Next.js",
+     "sitios": 29,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "React",
+     "sitios": 102,
+     "delta_lcp_ms": -400
+    },
+    {
+     "framework": "Vue",
+     "sitios": 13,
+     "delta_lcp_ms": 0
+    },
+    {
+     "framework": "Otros frameworks",
+     "sitios": 15,
+     "delta_lcp_ms": -100
+    },
+    {
+     "framework": "jQuery",
+     "sitios": 49,
+     "delta_lcp_ms": 100
+    },
+    {
+     "framework": "Sin framework",
+     "sitios": 21,
+     "delta_lcp_ms": -200
+    }
+   ]
+  }
+ ]
+}

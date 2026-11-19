@@ -30,6 +30,28 @@ TECNOLOGIAS_FRONTEND = {
     "Fresh": "Otros", "Elm": "Otros", "Eleventy": "Otros",
 }
 
+# Framework principal de un sitio-mes: el primer grupo presente, en este orden. Las tecnologías que
+# implican un framework cuentan como ese framework; jQuery solo es el principal si no hay otro.
+GRUPOS_PRINCIPAL = {
+    "Next.js": {"Next.js", "Next.js App Router", "Next.js Page Router SSG", "Next.js Page Router SSR"},
+    "React": {"React", "Remix", "React Router", "Gatsby", "Hydrogen", "Docusaurus", "RedwoodJS"},
+    "Nuxt": {"Nuxt.js"},
+    "Vue": {"Vue.js", "Gridsome", "VitePress"},
+    "Angular": {"Angular", "AngularJS"},
+    "Svelte": {"Svelte", "SvelteKit", "Sapper"},
+    "Otros frameworks": {"Astro", "Qwik", "Preact", "lit-html", "lit-element", "Alpine.js", "Htmx", "Ember.js",
+                         "Backbone.js", "Stimulus", "Inertia.js", "Quasar", "Meteor", "Stencil", "Aurelia",
+                         "Knockout.js", "Polymer", "SolidJS", "SolidStart", "TanStack Start", "Fresh", "Elm",
+                         "Eleventy"},
+    "jQuery": {"jQuery"},
+}
+SIN_FRAMEWORK = "Sin framework"
+
+
+def framework_principal(tecnologias):
+    return next((g for g, miembros in GRUPOS_PRINCIPAL.items() if tecnologias & miembros), SIN_FRAMEWORK)
+
+
 # Campos de la custom metric "aurora" de HTTP Archive (custom_metrics.other.aurora) que completan la
 # detección de Wappalyzer: presencia y versión de cada framework que aurora mide. La versión de React
 # sale del hook de React DevTools (último renderer registrado): solo las versiones mayores 16-19 son de
