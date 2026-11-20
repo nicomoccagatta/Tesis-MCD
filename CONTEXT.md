@@ -68,7 +68,7 @@ Viabilidad verificada con queries reales en BigQuery:
 
 ## Estructura del repo
 
-- `README.md` y `LICENSE`: descripción del repositorio. Licencia MIT para el código (`analisis/`, `bigquery/`); el texto de la tesis, la bitácora y las presentaciones quedan con todos los derechos reservados.
+- `README.md` y `LICENSE`: descripción del repositorio. Todo el contenido queda con todos los derechos reservados: el repositorio público se puede leer y no autoriza a publicarlo.
 - `TP Latex/Project/`: propuesta escrita (`main.tex`/`main.pdf`).
 - `TP Latex/Template/`: plantilla ITBA original de referencia, sin tocar.
 - `bitacora/`: bitácora de tesis, el formato de entrega desde el 13/10/2026 (reemplaza a las presentaciones). `bitacora.html` es una página autocontenida organizada por entrega, con cada sección como página aparte: estado actual (cifras principales y cronograma), entregas 5 (presentada, 20/11/2026) a 1 (22/08/2026) con el trabajo de cada período y sus datos, y anexos (glosario, registro de extracciones de BigQuery, referencias). Las cifras corregidas después de una entrega se muestran vigentes con una nota de lo presentado. El texto se edita a mano en el HTML; "Trabajo desde la entrega anterior" sale de `bitacora/changelog.md`, y las cifras de tablas y gráficos se incrustan con `armar_bitacora.py` desde `analisis/salidas/`, los `.parquet`, los encabezados de cada `.sql` y `usage-log.csv`.

@@ -22,8 +22,8 @@ Las queries leen datasets públicos de BigQuery: `httparchive.crawl.pages` y `ch
 
 ## Licencia
 
-El código (scripts de `analisis/` y queries de `bigquery/`) está bajo la licencia MIT (ver `LICENSE`): otra persona puede copiarlo y compartirlo.
+Copyright (c) 2026 Nicolás Moccagatta. Todos los derechos reservados (ver `LICENSE`).
 
-El texto de la tesis, la bitácora y las presentaciones son del autor, con todos los derechos reservados. Están en el repositorio para leerlos.
+El repositorio es público para que se pueda leer. No autoriza a copiarlo, publicarlo ni distribuirlo.
 
 Los datos de HTTP Archive y de Chrome UX Report se usan según las condiciones de cada fuente. El catálogo de detección es el fork público [HTTPArchive/wappalyzer](https://github.com/HTTPArchive/wappalyzer).
