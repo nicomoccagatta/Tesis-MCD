@@ -391,7 +391,7 @@
     </section>
 
     <!-- ============================== ENTREGA 5 ============================== -->
-    <section id="entrega-5" class="entrega" data-titulo="Entrega 5" data-fecha="2026-11-20" data-estado="En curso">
+    <section id="entrega-5" class="entrega" data-titulo="Entrega 5" data-fecha="2026-11-20" data-estado="Presentada">
       <div class="entrega-cab"></div>
       <h2>Cambios de tecnología frontend sitio por sitio y auditoría de Wappalyzer</h2>
       <div class="sec-meta">Formato de entrega: esta bitácora</div>
@@ -400,8 +400,13 @@
         <ul>
         <li><b>19/11/2026.</b> ΔLCP de cada tecnología del grafo en toda la cohorte y dentro de cada framework (<code>analisis/grafo_tecnologias.py</code>), para ver cuánto de la diferencia de LCP viene del framework.</li>
         <li><b>19/11/2026.</b> Grafo de tecnologías asociadas a cada framework en diciembre 2025 (<code>analisis/grafo_tecnologias.py</code>): cada tecnología de Wappalyzer con 30 sitios o más se une a los frameworks principales con los que tiene lift ≥ 2, con la diferencia de LCP entre los sitios del framework con y sin ella.</li>
-        <li><b>18/11/2026.</b> Grafo de migraciones entre frameworks (<code>analisis/migraciones_frontend.py</code>): cada flecha une el framework principal de un sitio antes y después de un cambio sostenido en 2025, con su variación de LCP. 501 migraciones sostenidas en móvil y 420 en escritorio.</li>
         <li><b>18/11/2026.</b> Revisión de los demás campos de <code>custom_metrics</code> (<code>cms</code>, <code>javascript</code>, <code>markup</code>, <code>css_variables</code>, <code>other</code>) en la muestra de 10k (<code>httparchive_sample_data_pages_10k/003</code>–<code>005</code>): para detectar frameworks frontend solo sirven Wappalyzer y aurora.</li>
+        <li><b>18/11/2026.</b> Grafo de migraciones entre frameworks (<code>analisis/migraciones_frontend.py</code>): cada flecha une el framework principal de un sitio antes y después de un cambio sostenido en 2025, con su variación de LCP. 501 migraciones sostenidas en móvil y 420 en escritorio.</li>
+        <li><b>15/11/2026.</b> Proyección del grafo de diciembre 2025 rearmada con la versión de aurora (<code>analisis/grafo_aurora.py</code>): el nodo es framework@versión, y un par implies se conserva cuando las dos versiones están medidas. La sección salió de la entrega el 19/11.</li>
+        <li><b>15/11/2026.</b> Glosario de tecnología, framework y librería, y de las fuentes, las métricas y la tecnología del panel.</li>
+        <li><b>15/11/2026.</b> La entrega 4 queda con las diapositivas de la reunión del 02/10, y los ítems de cada entrega pasan a salir de este changelog.</li>
+        <li><b>15/10/2026.</b> Panel de cambios: cada tecnología ocupa un renglón fijo en todos los meses y con las dos fuentes, y el mes con cambio se marca en el renglón de la tecnología que entra, sale o cambia de versión.</li>
+        <li><b>15/10/2026.</b> La bitácora pasa a una página por sección, la proyección sobre tecnologías se dibuja en la página y el estado actual muestra móvil y escritorio con la misma jerarquía.</li>
         <li><b>14/10/2026.</b> aurora completada para los mismos sitio-mes que el panel: faltaban los meses con rank &gt; 50.000 (3.634 sitio-mes, ej. id.soccerway.com de julio a diciembre) y 176 sitios de la cohorte de escritorio que no estaban en la lista móvil (<code>httparchive_crawl_pages/009</code>, 92,4 GB facturados). El panel lista los mismos sitios con las dos fuentes.</li>
         <li><b>14/10/2026.</b> Tecnologías y métricas pasan a ser independientes en el panel: el p75 de LCP, INP y CLS sale de CrUX para los 12 meses (<code>chrome-ux-report_materialized_device_summary/001</code>), así que un mes sin tecnologías muestra igual sus métricas (en móvil, 6.287 de los 9.843 sitio-mes sin tecnologías las tienen). De esos 9.843, HTTP Archive no visitó el sitio en 8.279 (ej. www.primark.com en octubre) y en el resto la visita tiene la lista de Wappalyzer vacía; las 79 visitas de ese tipo sin aurora la tienen ahora (<code>httparchive_crawl_pages/010</code> y <code>011</code>).</li>
         <li><b>13/10/2026.</b> Auditoría de la detección de frameworks frontend en Wappalyzer: SvelteKit y Remix se detectan; no aparecían en los análisis por los filtros del panel (6 tecnologías fijas) y del grafo (≥30 sitios por nodo, filtro por categoría).</li>
