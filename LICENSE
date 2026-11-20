@@ -1,6 +1,17 @@
+La licencia MIT de abajo cubre el código: los scripts de `analisis/` y las
+queries de `bigquery/`.
+
+El texto de la tesis (`TP Latex/`), la bitácora (`bitacora/`) y las
+presentaciones (`Presentaciones/`) son Copyright (c) 2026 Nicolás Moccagatta.
+Todos los derechos reservados. Están en el repositorio para ser leídos. Esta
+nota no autoriza a publicarlos ni a distribuirlos.
+
 MIT License
 
 Copyright (c) 2026 Nicolás Moccagatta
+
+The following applies to the code only (scripts under `analisis/` and SQL
+under `bigquery/`).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
