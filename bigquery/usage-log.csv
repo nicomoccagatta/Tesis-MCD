@@ -17,3 +17,17 @@ date,project,script,gb_dry_run,gb_billed,job_id
 2026-10-02,tesis-506222,httparchive_wappalyzer_technologies/002-reglas-de-deteccion-por-tecnologia,0.0004,0.0105,tesis_20261002_021021_56355
 2026-10-02,tesis-506222,cross_source/009-cobertura-top10k-crux-vs-crawl-ene2025,3.9333,2.7085,tesis_20261002_022718_71791
 2026-10-02,tesis-506222,httparchive_crawl_pages/004-root-pages-top10k-conteo-tecnologias-ene2025,30.9483,0.0105,tesis_20261002_022743_72335
+2026-10-13,tesis-506222,httparchive_sample_data_pages_10k/001-react-aurora-vs-wappalyzer,1.5231,1.4061,tesis_20261013_164138_93942
+2026-10-13,tesis-506222,httparchive_sample_data_pages_10k/002-react-aurora-vs-wappalyzer-por-pagina,0.8912,0.821,tesis_20261013_164814_2047
+2026-10-13,tesis-506222,consola-usuario/aurora-id-soccerway-dic2025-react-version,1940.1951,0.758,job_hAZsM5yRDAVeruRijTDnBEtVvBzm
+2026-10-13,tesis-506222,consola-usuario/aurora-id-soccerway-dic2025-custom-metrics-other,1940.1951,0.929,job_88cmEHZIGoeatCL37gHNGMxOrhCp
+2026-10-13,tesis-506222,httparchive_crawl_pages/006-aurora-cohorte-top10k-dic2025,1970.0859,3.3974,tesis_20261013_173203_53071
+2026-10-13,tesis-506222,httparchive_crawl_pages/007-aurora-cohorte-top10k-ene-nov2025,21326.3502,40.1793,tesis_20261013_173459_56575
+2026-10-14,tesis-506222,httparchive_crawl_pages/008-aurora-prueba-poda-or-dic2025,1970.0859,0.1059,tesis_20261014_125033_5933
+2026-10-14,tesis-506222,httparchive_crawl_pages/009-aurora-cohorte-top10k-2025-huecos,23296.4362,92.4162,tesis_20261014_125132_7215
+2026-10-14,tesis-506222,chrome-ux-report_materialized_device_summary/001-cwv-cohorte-top10k-2025,19.7328,19.7332,tesis_20261014_131440_37681
+2026-10-14,tesis-506222,httparchive_crawl_pages/010-visitas-cohorte-top10k-2025-sin-datos,42.991,3.7854,tesis_20261014_131535_39365
+2026-10-14,tesis-506222,httparchive_crawl_pages/011-aurora-cohorte-top10k-2025-visitas-sin-wappalyzer,21437.5213,4.3076,tesis_20261014_132050_46857
+2026-11-18,tesis-506222,httparchive_sample_data_pages_10k/003-claves-custom-metrics-frontend,2.043,2.0437,tesis_20261118_205028_16389
+2026-11-18,tesis-506222,httparchive_sample_data_pages_10k/004-ejemplos-campos-frontend-por-framework,1.0,0.9794,tesis_20261118_205119_17217
+2026-11-18,tesis-506222,httparchive_sample_data_pages_10k/005-senales-frontend-custom-metrics-por-pagina,1.9931,1.9504,tesis_20261118_210610_27887

@@ -8,7 +8,7 @@ Repo visible para el director y el co-director. Todo el contenido debe leerse co
 
 ## Presentación
 
-La presentación de cátedra vive en `Presentaciones/02-presentacion_plan_de_trabajo.html` (+ `.pdf`). Es un deck HTML/CSS propio (estética dark data-science, Manrope + JetBrains Mono, acento cian) — **no es Beamer/LaTeX**, no reintroducir ese enfoque salvo pedido explícito. Para actualizarla: editar el `.html` directamente y regenerar el PDF con Chrome headless:
+Las presentaciones de `Presentaciones/` son el registro de lo expuesto hasta el 02/10/2026 (los avances nuevos van en la bitácora, ver abajo). La presentación de cátedra vive en `Presentaciones/02-presentacion_plan_de_trabajo.html` (+ `.pdf`). Es un deck HTML/CSS propio (estética dark data-science, Manrope + JetBrains Mono, acento cian) — **no es Beamer/LaTeX**, no reintroducir ese enfoque salvo pedido explícito. Para actualizarla: editar el `.html` directamente y regenerar el PDF con Chrome headless:
 
 ```
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --disable-gpu \
@@ -17,6 +17,18 @@ La presentación de cátedra vive en `Presentaciones/02-presentacion_plan_de_tra
 ```
 
 (El `.html` trae su propio `@media print { @page{ size: 13.333in 7.5in; } }` para que cada slide salga como una página completa.)
+
+## Bitácora de tesis
+
+Desde el 13/10/2026 los avances se entregan en `bitacora/bitacora.html`, no en presentaciones nuevas. Es una página HTML autocontenida (misma estética dark data-science que los decks) organizada por entrega: "Estado actual" (cifras principales y cronograma), una `<section class="entrega">` por entrega de la más reciente a la primera, y los anexos (registro de extracciones, referencias). Cada `<section>` se muestra como una página aparte: el índice lateral cambia de página por el hash de la URL. Para actualizarla:
+
+- Cómo se arma cada entrega: `bitacora/organizacion.md` (skill `bitacora`, se lee antes de editar). La fecha va en `data-fecha` cuando se conoce; si no, se muestra XX/XX. El badge queda `En curso` también el día de la presentación. `data-estado="Presentada"` solo cuando el usuario avisa que ya presentó. Un PR por entrega; lo mergea el usuario. La entrega siguiente se agrega arriba después de eso.
+- Cada entrega abre con "Trabajo desde la entrega anterior" (un ítem por avance, con su fecha) y sigue con subsecciones `<h3 id="…" data-nav="…">`, que son las que aparecen en el índice lateral. El índice se arma solo desde esos atributos.
+- Si una cifra de una entrega anterior se corrige, esa entrega muestra la cifra vigente con una nota de lo presentado y de cuándo se corrigió.
+- Las cifras de tablas y gráficos no se tipean: se regeneran las salidas de `analisis/` que cambien y después `analisis/.venv/bin/python bitacora/armar_bitacora.py`, que reemplaza la línea `const DATOS = ...;` del HTML.
+- La bitácora muestra datos: no agregar decisiones, próximos pasos ni texto que el usuario no haya planteado, y en cifras por cliente móvil y escritorio van con la misma jerarquía.
+- Estilo de cada bloque: título, una descripción de una o dos líneas, y subtítulos. Bajo cada subtítulo, una lista de bullets con el dato. No párrafos que expliquen el mecanismo, el filtro o cómo se lee la pantalla.
+- Verificar el resultado abriéndolo en Chrome headless (captura de pantalla y consola sin errores) antes de entregarlo.
 
 ## Documento escrito (propuesta formal)
 
