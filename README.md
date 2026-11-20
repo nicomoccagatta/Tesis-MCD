@@ -6,7 +6,7 @@ Alumno: Moccagatta, Nicolás (Leg. 106396). Director: Ariel Olaf Salgado Corrado
 
 Estima el efecto de las migraciones de tecnología frontend sobre Core Web Vitals (LCP, INP y CLS). El panel junta HTTP Archive, que detecta la tecnología de cada sitio, y Chrome UX Report, que publica la experiencia de usuarios reales de Chrome. Las dos fuentes están en BigQuery. El diseño es de diferencias en diferencias, robusto a tratamiento escalonado.
 
-La [bitácora](https://nicomoccagatta.github.io/Tesis-MCD/) es el registro del trabajo, entrega por entrega. `index.html` abre `bitacora/bitacora.html`.
+La [bitácora](https://nicomoccagatta.github.io/Tesis-MCD/) es el registro del trabajo, entrega por entrega.
 
 ## Contenido
 
